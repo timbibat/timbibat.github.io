@@ -1,0 +1,87 @@
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+}
+
+.hero-gradient {
+    background: var(--primary-gradient);
+}
+
+.btn-gradient {
+    background: var(--primary-gradient);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-gradient:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.skill-badge {
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    transition: transform 0.3s ease;
+}
+
+.skill-badge:hover {
+    transform: scale(1.05);
+}
+
+.navbar-glass {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.availability-badge {
+    background: var(--success-gradient);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 5px rgba(79, 172, 254, 0.3);
+    }
+
+    to {
+        box-shadow: 0 0 20px rgba(79, 172, 254, 0.6);
+    }
+}
+
+.stat-number {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    transition: all 0.3s ease;
+}
+
+.project-card img {
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover img {
+    transform: scale(1.05);
+}
+
+.project-item {
+    display: none;
+}
+
+.project-item.visible {
+    display: block;
+}
