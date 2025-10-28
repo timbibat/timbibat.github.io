@@ -3,15 +3,44 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Navigation functionality
     const navLinks = document.querySelectorAll('.nav-link');
+    let isScrolling = false;
+
+    // Function to update active navigation
+    function updateActiveNav(targetId) {
+        navLinks.forEach(nav => {
+            nav.classList.remove('bg-primary', 'text-white');
+            nav.classList.add('text-muted');
+        });
+
+        const activeLink = document.querySelector(`.nav-link[href="#${targetId}"]`);
+        if (activeLink) {
+            activeLink.classList.remove('text-muted');
+            activeLink.classList.add('bg-primary', 'text-white');
+        }
+    }
 
     navLinks.forEach(link => {
         link.addEventListener('click', function (e) {
-            navLinks.forEach(nav => {
-                nav.classList.remove('bg-primary', 'text-white');
-                nav.classList.add('text-muted');
-            });
-            this.classList.remove('text-muted');
-            this.classList.add('bg-primary', 'text-white');
+            e.preventDefault();
+
+            // Get target section
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+
+            if (targetSection) {
+                isScrolling = true;
+
+                updateActiveNav(targetId);
+
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+
+                setTimeout(() => {
+                    isScrolling = false;
+                }, 1000);
+            }
         });
 
         link.addEventListener('mouseenter', function () {
@@ -31,9 +60,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Scroll spy functionality
     window.addEventListener('scroll', function () {
+        if (isScrolling) return;
+
         let current = '';
-        const scrollPosition = window.scrollY + 150;
-        const sections = document.querySelectorAll('[id]');
+        const scrollPosition = window.scrollY + 200;
+        const sections = document.querySelectorAll('[id="about"], [id="skills"], [id="projects"], [id="contact"]');
 
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -44,15 +75,12 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        navLinks.forEach(link => {
-            link.classList.remove('bg-primary', 'text-white');
-            link.classList.add('text-muted');
-
-            if (link.getAttribute('href') === '#' + current) {
-                link.classList.remove('text-muted');
-                link.classList.add('bg-primary', 'text-white');
-            }
-        });
+        if (window.scrollY < 100) {
+            current = 'about';
+        }
+        if (current) {
+            updateActiveNav(current);
+        }
     });
 
     // Content cards hover effects
@@ -75,31 +103,38 @@ document.addEventListener('DOMContentLoaded', function () {
         const toggleContainer = document.getElementById('toggleContainer');
 
         // Show toggle button only if there are more than 4 projects
-        if (projects.length > 4) {
+        if (typeof projects !== 'undefined' && projects.length > 4) {
             toggleContainer.style.display = 'block';
         }
 
-        toggleBtn.addEventListener('click', function () {
-            isExpanded = !isExpanded;
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', function () {
+                if (typeof isExpanded === 'undefined') {
+                    window.isExpanded = false;
+                }
 
-            if (isExpanded) {
-                // Show all projects
-                document.querySelectorAll('.project-item').forEach(item => {
-                    item.classList.add('visible');
-                });
-                this.innerHTML = '<i class="fas fa-chevron-up me-2"></i>Show Less';
-            } else {
-                // Show only first 4 projects
-                document.querySelectorAll('.project-item').forEach((item, index) => {
-                    if (index >= 4) {
-                        item.classList.remove('visible');
-                    }
-                });
-                this.innerHTML = '<i class="fas fa-chevron-down me-2"></i>Show More';
-            }
-        });
+                isExpanded = !isExpanded;
+
+                if (isExpanded) {
+                    // Show all projects
+                    document.querySelectorAll('.project-item').forEach(item => {
+                        item.classList.add('visible');
+                    });
+                    this.innerHTML = '<i class="fas fa-chevron-up me-2"></i>Show Less';
+                } else {
+                    // Show only first 4 projects
+                    document.querySelectorAll('.project-item').forEach((item, index) => {
+                        if (index >= 4) {
+                            item.classList.remove('visible');
+                        }
+                    });
+                    this.innerHTML = '<i class="fas fa-chevron-down me-2"></i>Show More';
+                }
+            });
+        }
     }
 
     // Initialize everything after DOM loads
     setupToggleButton();
+    updateActiveNav('about');
 });
