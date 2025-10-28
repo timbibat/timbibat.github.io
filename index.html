@@ -90,6 +90,14 @@
         .project-card:hover img {
             transform: scale(1.05);
         }
+
+        .project-item {
+            display: none;
+        }
+
+        .project-item.visible {
+            display: block;
+        }
     </style>
 </head>
 
@@ -290,9 +298,9 @@
                         Here are some of my recent projects that showcase my technical skills and creativity.
                     </p>
 
-                    <div class="row g-4">
+                    <div class="row g-4 justify-content-center">
                         <!-- Project 1 -->
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 project-item visible">
                             <div class="project-card h-100 bg-white rounded-4 overflow-hidden shadow"
                                 style="transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)'"
                                 onmouseout="this.style.transform='translateY(0)'">
@@ -324,12 +332,46 @@
                         </div>
 
                         <!-- Project 2 -->
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 project-item visible">
                             <div class="project-card h-100 bg-white rounded-4 overflow-hidden shadow"
                                 style="transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)'"
                                 onmouseout="this.style.transform='translateY(0)'">
                                 <div class="position-relative overflow-hidden">
-                                    <img src="assets/img/Screenshot 2025-10-28 123912.png" class="card-img-top"
+                                    <img src="assets\img\Screenshot 2025-10-28 181400.png" class="card-img-top"
+                                        alt="S25Ultra" style="height: 250px; object-fit: cover;">
+                                    <div class="position-absolute top-0 start-0 p-3">
+                                        <span class="badge bg-warning text-dark">PHP</span>
+                                        <span class="badge bg-info text-dark">Web Design</span>
+                                    </div>
+                                </div>
+                                <div class="card-body p-4">
+                                    <h5 class="card-title fw-bold text-primary mb-3">PUP Classroom Reservation</h5>
+                                    <p class="card-text text-muted mb-4">
+                                        A web-based classroom reservation system for Polytechnic University of the
+                                        Philippines.
+                                        Built with HTML, CSS, Bootstrap, and PHP for optimal user experience and
+                                        functionality.
+                                    </p>
+                                    <div class="d-flex gap-2">
+                                        <button class="btn btn-outline-secondary btn-sm disabled">
+                                            <i class="fas fa-eye me-1"></i>Demo
+                                        </button>
+                                        <a href="https://github.com/timbibat/pup_classroom_reservation.git"
+                                            class="btn btn-gradient text-white btn-sm fw-semibold" target="_blank">
+                                            <i class="fab fa-github me-1"></i>GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 3 -->
+                        <div class="col-lg-6 project-item visible">
+                            <div class="project-card h-100 bg-white rounded-4 overflow-hidden shadow"
+                                style="transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)'"
+                                onmouseout="this.style.transform='translateY(0)'">
+                                <div class="position-relative overflow-hidden">
+                                    <img src="assets\img\Screenshot 2025-10-28 182118.png" class="card-img-top"
                                         alt="S25Ultra" style="height: 250px; object-fit: cover;">
                                     <div class="position-absolute top-0 start-0 p-3">
                                         <span class="badge bg-warning text-dark">Python</span>
@@ -339,7 +381,8 @@
                                 <div class="card-body p-4">
                                     <h5 class="card-title fw-bold text-primary mb-3">DBTK</h5>
                                     <p class="card-text text-muted mb-4">
-                                        A website dedicated to showcase our final group project for OOP using Python Flask
+                                        A website dedicated to showcase our final group project for OOP using Python
+                                        Flask
                                         framework.
                                         Built with HTML, CSS, Bootstrap, and Flask for optimal user experience. This
                                         project is inspired by Don't Blame the Kids appareling brand.
@@ -358,14 +401,14 @@
                             </div>
                         </div>
 
-                        <!-- Project 3 -->
-                        <div class="col-lg-6">
+                        <!-- Project 4 -->
+                        <div class="col-lg-6 project-item visible">
                             <div class="project-card h-100 bg-white rounded-4 overflow-hidden shadow"
                                 style="transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)'"
                                 onmouseout="this.style.transform='translateY(0)'">
                                 <div class="position-relative overflow-hidden">
-                                    <img src="assets/img/Screenshot (314).png" class="card-img-top" alt="S25Ultra"
-                                        style="height: 250px; object-fit: cover;">
+                                    <img src="assets\img\Screenshot 2025-10-28 181959.png" class="card-img-top"
+                                        alt="S25Ultra" style="height: 250px; object-fit: cover;">
                                     <div class="position-absolute top-0 start-0 p-3">
                                         <span class="badge bg-info text-dark">Web Design</span>
                                     </div>
@@ -390,6 +433,48 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Project 5 -->
+                        <div class="col-lg-6 project-item">
+                            <div class="project-card h-100 bg-white rounded-4 overflow-hidden shadow"
+                                style="transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)'"
+                                onmouseout="this.style.transform='translateY(0)'">
+                                <div class="position-relative overflow-hidden">
+                                    <div class="bg-light d-flex align-items-center justify-content-center"
+                                        style="height: 200px;">
+                                        <i class="fa fa-laptop fa-3x text-muted"></i>
+                                    </div>
+                                    <div class="position-absolute top-0 start-0 p-3">
+                                        <span class="badge bg-info text-dark">Web Design</span>
+                                    </div>
+                                </div>
+                                <div class="card-body p-4">
+                                    <h5 class="card-title fw-bold text-primary mb-3">Stay Tuned!</h5>
+                                    <p class="card-text text-muted mb-4">
+                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi soluta quas,
+                                        accusantium ullam vel, provident repudiandae quis tenetur at illo, vero a culpa
+                                        fuga aut consequuntur porro numquam sunt beatae.
+                                    </p>
+                                    <div class="d-flex gap-2">
+                                        <a href="#"
+                                            class="btn btn-gradient text-white btn-sm fw-semibold disabled" target="_blank">
+                                            <i class="fas fa-external-link-alt me-1"></i>Live Demo
+                                        </a>
+                                        <a href="#"
+                                            class="btn btn-outline-primary btn-sm disabled" target="_blank">
+                                            <i class="fab fa-github me-1"></i>GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Show More/Less Button -->
+                    <div class="text-center mt-5" id="toggleContainer">
+                        <button class="btn btn-gradient text-white btn-lg px-4 fw-semibold" id="toggleBtn">
+                            <i class="fas fa-chevron-down me-2"></i>Show More
+                        </button>
                     </div>
                 </div>
 
@@ -493,6 +578,28 @@
                     this.style.transform = 'translateY(0)';
                     this.style.boxShadow = '0 0.125rem 0.25rem rgba(0, 0, 0, 0.075)';
                 });
+            });
+
+            const projectItems = document.querySelectorAll('.project-item');
+            const toggleBtn = document.getElementById('toggleBtn');
+            let isExpanded = false;
+
+            toggleBtn.addEventListener('click', function() {
+                if (!isExpanded) {
+                    projectItems.forEach(item => {
+                        item.classList.add('visible');
+                    });
+                    this.innerHTML = '<i class="fas fa-chevron-up me-2"></i>See Less';
+                    isExpanded = true;
+                } else {
+                    projectItems.forEach((item, index) => {
+                        if (index >= 4) {
+                            item.classList.remove('visible');
+                        }
+                    });
+                    this.innerHTML = '<i class="fas fa-chevron-down me-2"></i>Show More';
+                    isExpanded = false;
+                }
             });
         });
     </script>
