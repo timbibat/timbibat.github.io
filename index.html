@@ -446,6 +446,19 @@
                     }
                 });
             });
+
+            const contentCards = document.querySelectorAll('[id="about"], [id="skills"], [id="projects"]');
+            contentCards.forEach(card => {
+                card.addEventListener('mouseenter', function () {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.15)';
+                });
+
+                card.addEventListener('mouseleave', function () {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 0.125rem 0.25rem rgba(0, 0, 0, 0.075)';
+                });
+            });
         });
     </script>
 </body>
