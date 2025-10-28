@@ -7,202 +7,316 @@
     <title>Timothy Bibat</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700,900" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .hero-gradient {
+            background: var(--primary-gradient);
+        }
+
+        .btn-gradient {
+            background: var(--primary-gradient);
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .skill-badge {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-badge:hover {
+            transform: scale(1.05);
+        }
+
+        .navbar-glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .availability-badge {
+            background: var(--success-gradient);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 5px rgba(79, 172, 254, 0.3);
+            }
+
+            to {
+                box-shadow: 0 0 20px rgba(79, 172, 254, 0.6);
+            }
+        }
+
+        .stat-number {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            transition: all 0.3s ease;
+        }
+
+        .project-card img {
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 
-<body class="bg-light" data-bs-spy="scroll" data-bs-target="#navbar" data-bs-smooth-scroll="true" data-bs-offset="150">
-    <header class="m-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card shadow-lg border-0 mt-n5 position-relative">
-                        <div class="card-body p-3 p-md-4">
-                            <div class="row align-items-center">
-                                <!-- Profile Image -->
-                                <div class="col-12 col-md-auto text-center text-md-start mb-3 mb-md-0">
-                                    <div class="position-relative d-inline-block">
-                                        <div class="bg-white rounded-circle p-1 shadow-lg d-flex align-items-center justify-content-center"
-                                            style="width:120px; height:120px;">
-                                            <img src="assets/img/Timothy.jpg" alt="Timothy Bibat"
-                                                class="rounded-circle img-fluid border border-3 border-white"
-                                                style="width:110px; height:110px; object-fit:cover;">
-                                        </div>
-                                    </div>
-                                </div>
+<body class="loading" data-bs-spy="scroll" data-bs-target="#navbar" data-bs-smooth-scroll="true" data-bs-offset="150"
+    style="transition: opacity 0.8s ease;">
 
-                                <!-- Profile Info -->
-                                <div class="col-12 col-md text-center text-md-start mb-3 mb-md-0">
-                                    <h1 class="display-6 fw-bold mb-2 text-dark">Timothy Bibat</h1>
-                                    <p class="h5 text-muted mb-3">Student</p>
-                                    <div
-                                        class="d-flex flex-column flex-sm-row gap-2 justify-content-center justify-content-md-start">
-                                        <span class="badge bg-success px-2 px-sm-3 py-2 text-nowrap"
-                                            style="font-size: 0.8rem;">
-                                            <i class="fa fa-map-marker me-1"></i>Available for opportunities
-                                        </span>
-                                    </div>
-                                </div>
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white position-relative overflow-hidden" style="padding: 4rem 0;">
+        <!-- Background Pattern -->
+        <div class="position-absolute top-0 start-0 w-100 h-100"
+            style="background: url('data:image/svg+xml,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 1000 1000&quot;><circle cx=&quot;20%&quot; cy=&quot;80%&quot; r=&quot;300&quot; fill=&quot;rgba(255,255,255,0.1)&quot;/><circle cx=&quot;80%&quot; cy=&quot;20%&quot; r=&quot;200&quot; fill=&quot;rgba(255,255,255,0.08)&quot;/><circle cx=&quot;60%&quot; cy=&quot;60%&quot; r=&quot;150&quot; fill=&quot;rgba(255,255,255,0.06)&quot;/></svg>');">
+        </div>
 
-                                <!-- Action Buttons -->
-                                <div class="col-12 col-md-auto">
-                                    <div class="d-flex flex-column gap-2">
-                                        <a href="#contact" class="btn btn-primary btn-lg px-4 w-100">
-                                            <i class="fa fa-envelope me-2"></i>Contact Me
-                                        </a>
-                                        <button class="btn btn-outline-primary btn-lg px-4 w-100">
-                                            <i class="fa fa-download me-2"></i>Download CV
-                                        </button>
+        <div class="container position-relative">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-10">
+                    <div class="bg-white bg-opacity-95 p-4 p-md-5 position-relative rounded-4 shadow-lg"
+                        style="backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.2);">
+                        <div class="row align-items-center">
+                            <!-- Profile Image -->
+                            <div class="col-12 col-md-auto text-center text-md-start mb-4 mb-md-0">
+                                <div class="position-relative d-inline-block">
+                                    <div class="hero-gradient rounded-circle p-2 shadow-lg d-flex align-items-center justify-content-center"
+                                        style="width:140px; height:140px;">
+                                        <img src="assets/img/Timothy.jpg" alt="Timothy Bibat"
+                                            class="rounded-circle img-fluid border border-3 border-white"
+                                            style="width:130px; height:130px; object-fit:cover;">
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Stats Section -->
-                            <div class="row mt-4 pt-3 border-top g-0">
-                                <div class="col-4 text-center">
-                                    <div class="h4 fw-bold text-primary mb-0">5+</div>
-                                    <small class="text-muted d-block">Projects</small>
+                            <!-- Profile Info -->
+                            <div class="col-12 col-md text-center text-md-start mb-4 mb-md-0">
+                                <h1 class="display-5 fw-bold mb-2 text-dark">Timothy Bibat</h1>
+                                <p class="h5 text-muted mb-3">Student</p>
+                                <div
+                                    class="d-flex flex-column flex-sm-row gap-2 justify-content-center justify-content-md-start">
+                                    <span class="availability-badge badge px-3 py-2 text-nowrap">
+                                        <i class="fas fa-circle me-2" style="font-size: 8px;"></i>Available for
+                                        opportunities
+                                    </span>
                                 </div>
-                                <div class="col-4 text-center border-start border-end">
-                                    <div class="h4 fw-bold text-primary mb-0">10+</div>
-                                    <small class="text-muted d-block">Skills</small>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="col-12 col-md-auto">
+                                <div class="d-flex flex-column gap-3">
+                                    <a href="#contact" class="btn btn-gradient text-white btn-lg px-4 fw-semibold">
+                                        <i class="fas fa-envelope me-2"></i>Contact Me
+                                    </a>
+                                    <button class="btn btn-outline-primary btn-lg px-4 fw-semibold">
+                                        <i class="fas fa-download me-2"></i>Download CV
+                                    </button>
                                 </div>
-                                <div class="col-4 text-center">
-                                    <div class="h4 fw-bold text-primary mb-0">2+</div>
-                                    <small class="text-muted d-block">Years Learning</small>
-                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Stats Section -->
+                        <hr class="my-4"
+                            style="height: 2px; background: var(--primary-gradient); border: none; border-radius: 2px; opacity: 0.3;">
+                        <div class="row text-center g-4">
+                            <div class="col-4">
+                                <div class="stat-number h2 fw-bold mb-0">5+</div>
+                                <small class="text-muted d-block">Projects Completed</small>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-number h2 fw-bold mb-0">10+</div>
+                                <small class="text-muted d-block">Technologies</small>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-number h2 fw-bold mb-0">2+</div>
+                                <small class="text-muted d-block">Years Experience</small>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+    </section>
 
-    <!-- Navigation Bar-->
+    <!-- Navigation Bar -->
     <div class="sticky-top" style="z-index: 1020;">
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="card border-0 shadow-sm"
-                        style="background: rgba(255, 255, 255, 0.707); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
-                        <div class="card-body py-3">
-                            <nav class="nav nav-fill" id="navbar">
-                                <a class="nav-link bg-primary text-white rounded-pill px-4 py-2 mx-1 text-decoration-none fw-semibold"
-                                    href="#about">
-                                    <i class="fa fa-user me-2"></i>About Me
-                                </a>
-                                <a class="nav-link text-muted rounded-pill px-4 py-2 mx-1 text-decoration-none fw-semibold"
-                                    href="#skills">
-                                    <i class="fa fa-cogs me-2"></i>Skills
-                                </a>
-                                <a class="nav-link text-muted rounded-pill px-4 py-2 mx-1 text-decoration-none fw-semibold"
-                                    href="#projects">
-                                    <i class="fa fa-folder me-2"></i>Projects
-                                </a>
-                                <a class="nav-link text-muted rounded-pill px-4 py-2 mx-1 text-decoration-none fw-semibold"
-                                    href="#contact">
-                                    <i class="fa fa-envelope me-2"></i>Contact
-                                </a>
-                            </nav>
-                        </div>
+                    <div class="navbar-glass rounded-pill my-3 p-2">
+                        <nav class="nav nav-fill" id="navbar">
+                            <a class="nav-link bg-primary text-white rounded-pill px-4 py-2 mx-1 text-decoration-none fw-semibold"
+                                href="#about" style="transition: all 0.3s ease;">
+                                <i class="fas fa-user me-2"></i>About Me
+                            </a>
+                            <a class="nav-link text-muted rounded-pill px-4 py-2 mx-1 text-decoration-none fw-semibold"
+                                href="#skills" style="transition: all 0.3s ease;">
+                                <i class="fas fa-cogs me-2"></i>Skills
+                            </a>
+                            <a class="nav-link text-muted rounded-pill px-4 py-2 mx-1 text-decoration-none fw-semibold"
+                                href="#projects" style="transition: all 0.3s ease;">
+                                <i class="fas fa-folder me-2"></i>Projects
+                            </a>
+                            <a class="nav-link text-muted rounded-pill px-4 py-2 mx-1 text-decoration-none fw-semibold"
+                                href="#contact" style="transition: all 0.3s ease;">
+                                <i class="fas fa-envelope me-2"></i>Contact
+                            </a>
+                        </nav>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- MAIN CONTENT-->
-    <div class="container">
+    <!-- Main Content -->
+    <div class="container mb-5">
         <div class="row">
-            <div class="col-12 my-4">
-                <div class="card shadow rounded mb-4 p-4" id="about">
-                    <h2 class="card-title mb-3">About Me</h2>
-                    <p class="card-text">
+            <div class="col-12">
+
+                <!-- About Section -->
+                <div class="bg-white bg-opacity-90 p-4 p-md-5 mb-5 rounded-4 shadow" id="about"
+                    style="backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); transition: all 0.3s ease;">
+                    <h2 class="mb-4 fw-bold">
+                        <i class="fas fa-user-circle text-primary me-3"></i>About Me
+                    </h2>
+                    <p class="lead mb-4">
                         I am Timothy Bibat, a dedicated and passionate student currently pursuing my studies with a keen
                         interest in technology and innovation. I am eager to learn and grow, constantly seeking new
-                        challenges that will help me develop my skills and knowledge. With a strong foundation in
-                        problem-solving and a collaborative mindset, I am excited to contribute to meaningful projects
-                        and make a positive impact in the tech world.
+                        challenges that will help me develop my skills and knowledge.
+                    </p>
+                    <p class="text-muted">
+                        With a strong foundation in problem-solving and a collaborative mindset, I am excited to
+                        contribute
+                        to meaningful projects and make a positive impact in the tech world. My journey combines
+                        academic
+                        excellence with hands-on experience in modern web technologies.
                     </p>
                 </div>
-                <div class="card shadow rounded mb-4 p-4" id="skills">
-                    <h2 class="card-title mb-4">Skills & Technologies</h2>
 
-                    <div class="row">
+                <!-- Skills Section -->
+                <div class="bg-white bg-opacity-90 p-4 p-md-5 mb-5 rounded-4 shadow" id="skills"
+                    style="backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); transition: all 0.3s ease;">
+                    <h2 class="mb-5 fw-bold">
+                        <i class="fas fa-code text-primary me-3"></i>Skills & Technologies
+                    </h2>
+
+                    <div class="row g-4">
                         <div class="col-lg-4 mb-4">
-                            <div class="border-start border-primary border-4 ps-3">
-                                <h5 class="text-primary mb-3">
-                                    <i class="fa fa-code me-2"></i>Programming & Frameworks
+                            <div class="h-100 p-4 rounded-3"
+                                style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);">
+                                <h5 class="text-primary mb-4 fw-semibold">
+                                    <i class="fas fa-laptop-code me-2"></i>Programming & Frameworks
                                 </h5>
                                 <div class="d-flex flex-wrap gap-2">
-                                    <span class="badge bg-primary fs-6 px-3 py-2">Python</span>
-                                    <span class="badge bg-danger fs-6 px-3 py-2">HTML/CSS</span>
-                                    <span class="badge bg-warning fs-6 px-3 py-2">C++</span>
-                                    <span class="badge bg-info fs-6 px-3 py-2">Bootstrap</span>
+                                    <span class="skill-badge badge fs-6 px-3 py-2">Python</span>
+                                    <span class="skill-badge badge fs-6 px-3 py-2">HTML/CSS</span>
+                                    <span class="skill-badge badge fs-6 px-3 py-2">C++</span>
+                                    <span class="skill-badge badge fs-6 px-3 py-2">Bootstrap</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-lg-4 mb-4">
-                            <div class="border-start border-success border-4 ps-3">
-                                <h5 class="text-success mb-3">
-                                    <i class="fa fa-wrench me-2"></i>Tools & Databases
+                            <div class="h-100 p-4 rounded-3"
+                                style="background: linear-gradient(135deg, rgba(75, 172, 254, 0.1) 0%, rgba(0, 242, 254, 0.1) 100%);">
+                                <h5 class="text-info mb-4 fw-semibold">
+                                    <i class="fas fa-tools me-2"></i>Tools & Databases
                                 </h5>
                                 <div class="d-flex flex-wrap gap-2">
-                                    <span class="badge bg-dark fs-6 px-3 py-2">Git/GitHub</span>
-                                    <span class="badge bg-primary fs-6 px-3 py-2">VS Code</span>
-                                    <span class="badge bg-success fs-6 px-3 py-2">MySQL</span>
-                                    <span class="badge bg-secondary fs-6 px-3 py-2">Visual Studio</span>
+                                    <span class="skill-badge badge fs-6 px-3 py-2">Git/GitHub</span>
+                                    <span class="skill-badge badge fs-6 px-3 py-2">VS Code</span>
+                                    <span class="skill-badge badge fs-6 px-3 py-2">MySQL</span>
+                                    <span class="skill-badge badge fs-6 px-3 py-2">Visual Studio</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-lg-4 mb-4">
-                            <div class="border-start border-info border-4 ps-3">
-                                <h5 class="text-info mb-3">
-                                    <i class="fa fa-paint-brush me-2"></i>Design & Media
+                            <div class="h-100 p-4 rounded-3"
+                                style="background: linear-gradient(135deg, rgba(240, 147, 251, 0.1) 0%, rgba(245, 87, 108, 0.1) 100%);">
+                                <h5 class="text-danger mb-4 fw-semibold">
+                                    <i class="fas fa-palette me-2"></i>Design & Media
                                 </h5>
                                 <div class="d-flex flex-wrap gap-2">
-                                    <span class="badge bg-primary fs-6 px-3 py-2">Photoshop</span>
-                                    <span class="badge bg-success fs-6 px-3 py-2">Figma</span>
-                                    <span class="badge bg-warning fs-6 px-3 py-2">Canva</span>
-                                    <span class="badge bg-danger fs-6 px-3 py-2">CapCut</span>
+                                    <span class="skill-badge badge fs-6 px-3 py-2">Photoshop</span>
+                                    <span class="skill-badge badge fs-6 px-3 py-2">Figma</span>
+                                    <span class="skill-badge badge fs-6 px-3 py-2">Canva</span>
+                                    <span class="skill-badge badge fs-6 px-3 py-2">CapCut</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Projects Grid -->
-                <div class="card shadow rounded mb-4 p-4" id="projects">
-                    <h2 class="card-title mb-4">Projects</h2>
-                    <p class="text-muted mb-4">
-                        This section showcases some of the projects I have worked on, demonstrating my skills and
-                        experience in various technologies.
+                <!-- Projects Section -->
+                <div class="bg-white bg-opacity-90 p-4 p-md-5 mb-5 rounded-4 shadow" id="projects"
+                    style="backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); transition: all 0.3s ease;">
+                    <h2 class="mb-4 fw-bold">
+                        <i class="fas fa-rocket text-primary me-3"></i>Featured Projects
+                    </h2>
+                    <p class="text-muted mb-5 lead">
+                        Here are some of my recent projects that showcase my technical skills and creativity.
                     </p>
 
                     <div class="row g-4">
                         <!-- Project 1 -->
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <div class="card h-100 border-0 shadow-sm">
-                                <img src="assets/img/Screenshot (270).png" class="card-img-top"
-                                    alt="Anime Royale Rumble" style="height: 200px; object-fit: cover;">
-                                <div class="card-body d-flex flex-column">
-                                    <h5 class="card-title text-primary">Anime Royale Rumble</h5>
-                                    <p class="card-text small text-muted mb-2">
-                                        <i class="fa fa-code me-1"></i>Python
+                        <div class="col-lg-6">
+                            <div class="project-card h-100 bg-white rounded-4 overflow-hidden shadow"
+                                style="transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)'"
+                                onmouseout="this.style.transform='translateY(0)'">
+                                <div class="position-relative overflow-hidden">
+                                    <img src="assets/img/Screenshot (270).png" class="card-img-top"
+                                        alt="Anime Royale Rumble" style="height: 250px; object-fit: cover;">
+                                    <div class="position-absolute top-0 start-0 p-3">
+                                        <span class="badge bg-warning text-dark">Python</span>
+                                    </div>
+                                </div>
+                                <div class="card-body p-4">
+                                    <h5 class="card-title fw-bold text-primary mb-3">Anime Royale Rumble</h5>
+                                    <p class="card-text text-muted mb-4">
+                                        An immersive 2D fighting game featuring head-to-head combat between iconic anime
+                                        characters.
+                                        Built with Python and modern game development principles.
                                     </p>
-                                    <p class="card-text flex-grow-1">2D fighting game with head-to-head combat between
-                                        anime characters.</p>
-                                    <div class="d-flex gap-2 mt-auto">
+                                    <div class="d-flex gap-2">
                                         <button class="btn btn-outline-secondary btn-sm disabled">
-                                            <i class="fa fa-eye me-1"></i>Demo
+                                            <i class="fas fa-eye me-1"></i>Demo
                                         </button>
                                         <a href="https://github.com/timbibat/Anime-Royale-Rumble.git"
-                                            class="btn btn-primary btn-sm" target="_blank">
-                                            <i class="fa fa-github me-1"></i>GitHub
+                                            class="btn btn-gradient text-white btn-sm fw-semibold" target="_blank">
+                                            <i class="fab fa-github me-1"></i>GitHub
                                         </a>
                                     </div>
                                 </div>
