@@ -209,14 +209,84 @@
                         Here are some of my recent projects that showcase my technical skills and creativity.
                     </p>
 
-                    <div class="row g-4 justify-content-center" id="projectsContainer">
-                    </div>
+                    <!-- Project Tabs Navigation -->
+                    <ul class="nav nav-tabs border-0 mb-4" id="projectTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active fw-semibold px-4 py-3 border-0 rounded-pill me-2 mb-2"
+                                id="all-tab" data-bs-toggle="tab" data-bs-target="#all-projects" type="button"
+                                role="tab" aria-controls="all-projects" aria-selected="true">
+                                <i class="fas fa-th-large me-2"></i>All Projects
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link fw-semibold px-4 py-3 border-0 rounded-pill me-2 mb-2" id="web-tab"
+                                data-bs-toggle="tab" data-bs-target="#web-projects" type="button" role="tab"
+                                aria-controls="web-projects" aria-selected="false">
+                                <i class="fas fa-code me-2"></i>Web Development
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link fw-semibold px-4 py-3 border-0 rounded-pill me-2 mb-2"
+                                id="multimedia-tab" data-bs-toggle="tab" data-bs-target="#multimedia-projects"
+                                type="button" role="tab" aria-controls="multimedia-projects" aria-selected="false">
+                                <i class="fas fa-photo-video me-2"></i>Multimedia
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link fw-semibold px-4 py-3 border-0 rounded-pill me-2 mb-2"
+                                id="design-tab" data-bs-toggle="tab" data-bs-target="#design-projects" type="button"
+                                role="tab" aria-controls="design-projects" aria-selected="false">
+                                <i class="fas fa-palette me-2"></i>Design
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link fw-semibold px-4 py-3 border-0 rounded-pill me-2 mb-2"
+                                id="certificate-tab" data-bs-toggle="tab" data-bs-target="#certificate-projects"
+                                type="button" role="tab" aria-controls="certificate-projects" aria-selected="false">
+                                <i class="fas fa-certificate me-2"></i>Certificates
+                            </button>
+                        </li>
+                    </ul>
 
-                    <!-- Show More/Less Button -->
-                    <div class="text-center mt-4" id="toggleContainer" style="display: none;">
-                        <button class="btn btn-gradient text-white btn-lg px-4 fw-semibold" id="toggleBtn">
-                            <i class="fas fa-chevron-down me-2"></i>Show More
-                        </button>
+                    <!-- Tab Content -->
+                    <div class="tab-content" id="projectTabContent">
+                        <!-- All Projects Tab -->
+                        <div class="tab-pane fade show active" id="all-projects" role="tabpanel"
+                            aria-labelledby="all-tab">
+                            <div class="row g-4 justify-content-center" id="allProjectsContainer">
+                                <!-- All projects will be loaded here -->
+                            </div>
+                        </div>
+
+                        <!-- Web Development Tab -->
+                        <div class="tab-pane fade" id="web-projects" role="tabpanel" aria-labelledby="web-tab">
+                            <div class="row g-4 justify-content-center" id="webProjectsContainer">
+                                <!-- Web development projects will be loaded here -->
+                            </div>
+                        </div>
+
+                        <!-- Multimedia Tab -->
+                        <div class="tab-pane fade" id="multimedia-projects" role="tabpanel"
+                            aria-labelledby="multimedia-tab">
+                            <div class="row g-4 justify-content-center" id="multimediaProjectsContainer">
+                                <!-- Multimedia projects will be loaded here -->
+                            </div>
+                        </div>
+
+                        <!-- Design Tab -->
+                        <div class="tab-pane fade" id="design-projects" role="tabpanel" aria-labelledby="design-tab">
+                            <div class="row g-4 justify-content-center" id="designProjectsContainer">
+                                <!-- Design projects will be loaded here -->
+                            </div>
+                        </div>
+
+                        <!-- Certificates Tab -->
+                        <div class="tab-pane fade" id="certificate-projects" role="tabpanel"
+                            aria-labelledby="certificate-tab">
+                            <div class="row g-4 justify-content-center" id="certificateProjectsContainer">
+                                <!-- Certificate projects will be loaded here -->
+                            </div>
+                        </div>
                     </div>
                 </div>
 

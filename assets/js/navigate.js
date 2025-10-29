@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     document.body.style.opacity = '1';
 
-    // Navigation functionality
-    const navLinks = document.querySelectorAll('.nav-link');
+    // Navigation functionality - ONLY for main navigation, NOT project tabs
+    const navLinks = document.querySelectorAll('#navbar .nav-link'); // Only main navigation
     let isScrolling = false;
 
     // Function to update active navigation
@@ -12,18 +12,18 @@ document.addEventListener('DOMContentLoaded', function () {
             nav.classList.add('text-muted');
         });
 
-        const activeLink = document.querySelector(`.nav-link[href="#${targetId}"]`);
+        const activeLink = document.querySelector(`#navbar .nav-link[href="#${targetId}"]`);
         if (activeLink) {
             activeLink.classList.remove('text-muted');
             activeLink.classList.add('bg-primary', 'text-white');
         }
     }
 
+    // Main navigation click handlers
     navLinks.forEach(link => {
         link.addEventListener('click', function (e) {
             e.preventDefault();
 
-            // Get target section
             const targetId = this.getAttribute('href').substring(1);
             const targetSection = document.getElementById(targetId);
 
@@ -97,44 +97,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Setup toggle button
-    function setupToggleButton() {
-        const toggleBtn = document.getElementById('toggleBtn');
-        const toggleContainer = document.getElementById('toggleContainer');
-
-        // Show toggle button only if there are more than 4 projects
-        if (typeof projects !== 'undefined' && projects.length > 4) {
-            toggleContainer.style.display = 'block';
-        }
-
-        if (toggleBtn) {
-            toggleBtn.addEventListener('click', function () {
-                if (typeof isExpanded === 'undefined') {
-                    window.isExpanded = false;
-                }
-
-                isExpanded = !isExpanded;
-
-                if (isExpanded) {
-                    // Show all projects
-                    document.querySelectorAll('.project-item').forEach(item => {
-                        item.classList.add('visible');
-                    });
-                    this.innerHTML = '<i class="fas fa-chevron-up me-2"></i>Show Less';
-                } else {
-                    // Show only first 4 projects
-                    document.querySelectorAll('.project-item').forEach((item, index) => {
-                        if (index >= 4) {
-                            item.classList.remove('visible');
-                        }
-                    });
-                    this.innerHTML = '<i class="fas fa-chevron-down me-2"></i>Show More';
-                }
-            });
-        }
-    }
-
-    // Initialize everything after DOM loads
-    setupToggleButton();
+    // Initialize everything
     updateActiveNav('about');
+    
+    console.log('Navigation initialized');
 });
