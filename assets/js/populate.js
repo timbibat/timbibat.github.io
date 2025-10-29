@@ -28,7 +28,7 @@ function createProjectHTML(project, isVisible = true) {
         project.demoUrl,
         'btn-gradient text-white',
         'fas fa-external-link-alt',
-        'Live Demo',
+        'View',
         'Demo',
         'fas fa-eye'
     );
