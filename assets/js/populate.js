@@ -1,6 +1,8 @@
 // Constants & Configuration
 const CATEGORY_LABELS = {
     'all': 'All Projects',
+    'activities': 'Activities',
+    'game': 'Game Development',
     'web': 'Web Development',
     'multimedia': 'Multimedia',
     'design': 'Design',
@@ -132,6 +134,8 @@ function renderProjectsInContainer(containerId, projectList) {
 function renderAllProjectTabs() {
     const tabs = [
         { category: 'all', containerId: 'allProjectsContainer' },
+        { category: 'activities', containerId: 'activitiesProjectsContainer' },
+        { category: 'game', containerId: 'gameProjectsContainer' },
         { category: 'web', containerId: 'webProjectsContainer' },
         { category: 'multimedia', containerId: 'multimediaProjectsContainer' },
         { category: 'design', containerId: 'designProjectsContainer' },

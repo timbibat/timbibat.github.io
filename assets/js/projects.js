@@ -6,7 +6,7 @@ const projects = [
         image: "assets/img/WD/Screenshot (270).png",
         badges: ["Python", "Game Development"],
         badgeColors: ["bg-warning text-dark", "bg-success text-white"],
-        category: "web", // Web development project
+        category: "game", // Game development project
         demoUrl: null,
         githubUrl: "https://github.com/timbibat/Anime-Royale-Rumble.git"
     },
@@ -34,23 +34,22 @@ const projects = [
     },
     {
         id: 4,
-        title: "Samsung S25 Ultra Showcase",
+        title: "Samsung S25 Ultra",
         description: "A responsive web showcase highlighting the features and specifications of the Samsung S25 Ultra. Built with HTML, CSS, and Bootstrap for optimal user experience.",
         image: "assets/img/WD/Screenshot 2025-10-28 181959.png",
         badges: ["HTML/CSS", "Bootstrap", "Responsive"],
         badgeColors: ["bg-danger text-white", "bg-primary text-white", "bg-success text-white"],
-        category: "web", // Web development project
+        category: "activities", // Activities project
         demoUrl: "https://timbibat.github.io/S25Ultra/",
         githubUrl: "https://github.com/timbibat/S25Ultra"
     },
-    // Placeholder for multimedia projects
     {
         id: 5,
-        title: "Video Editing Portfolio",
-        description: "A collection of creative video projects showcasing advanced editing techniques, transitions, and storytelling through visual media using CapCut.",
+        title: "Stay Tuned!",
+        description: "More exciting projects are coming soon! This space is reserved for upcoming web development, multimedia, and design projects that showcase continuous learning and growth.",
         image: null,
-        badges: ["CapCut", "Video Editing", "Creative"],
-        badgeColors: ["bg-danger text-white", "bg-primary text-white", "bg-warning text-dark"],
+        badges: ["Coming Soon"],
+        badgeColors: ["bg-secondary text-white"],
         category: "multimedia", // Multimedia project
         demoUrl: null,
         githubUrl: null
@@ -131,6 +130,17 @@ const projects = [
         category: "design", // Design project
         demoUrl: "https://drive.google.com/file/d/14LKxQ0cMt9RCpa5K0mfBY7ETN7zuw4Za/view?usp=sharing",
         githubUrl: null
+    },
+    {
+        id: 12,
+        title: "Japan",
+        description: "A responsive web showcase highlighting the culture and attractions of Japan. Built with HTML, CSS, and Bootstrap for optimal user experience.",
+        image: "assets/img/WD/Screenshot 2025-10-31 122216.png",
+        badges: ["HTML/CSS", "Bootstrap"],
+        badgeColors: ["bg-danger text-white", "bg-primary text-white"],
+        category: "activities", // Activities project
+        demoUrl: "https://timbibat.github.io/Japan/",
+        githubUrl: "https://github.com/timbibat/Japan.git"
     },
 ];
 

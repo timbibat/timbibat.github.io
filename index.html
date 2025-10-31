@@ -245,6 +245,20 @@
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
+                            <button class="nav-link fw-semibold px-4 py-3 border-0 rounded-pill me-2 mb-2"
+                                id="activities-tab" data-bs-toggle="tab" data-bs-target="#activities-projects"
+                                type="button" role="tab" aria-controls="activities-projects" aria-selected="false">
+                                <i class="fas fa-tasks me-2"></i>Activities
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link fw-semibold px-4 py-3 border-0 rounded-pill me-2 mb-2" id="game-tab"
+                                data-bs-toggle="tab" data-bs-target="#game-projects" type="button" role="tab"
+                                aria-controls="game-projects" aria-selected="false">
+                                <i class="fas fa-gamepad me-2"></i>Game Development
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
                             <button class="nav-link fw-semibold px-4 py-3 border-0 rounded-pill me-2 mb-2" id="web-tab"
                                 data-bs-toggle="tab" data-bs-target="#web-projects" type="button" role="tab"
                                 aria-controls="web-projects" aria-selected="false">
@@ -281,6 +295,20 @@
                             aria-labelledby="all-tab">
                             <div class="row g-4 justify-content-center" id="allProjectsContainer">
                                 <!-- All projects will be loaded here -->
+                            </div>
+                        </div>
+
+                        <!-- Activities Tab -->
+                        <div class="tab-pane fade" id="activities-projects" role="tabpanel" aria-labelledby="activities-tab">
+                            <div class="row g-4 justify-content-center" id="activitiesProjectsContainer">
+                                <!-- Activities projects will be loaded here -->
+                            </div>
+                        </div>
+
+                        <!-- Game Development Tab -->
+                        <div class="tab-pane fade" id="game-projects" role="tabpanel" aria-labelledby="game-tab">
+                            <div class="row g-4 justify-content-center" id="gameProjectsContainer">
+                                <!-- Game development projects will be loaded here -->
                             </div>
                         </div>
 
