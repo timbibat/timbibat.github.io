@@ -236,54 +236,75 @@
                     </p>
 
                     <!-- Project Tabs Navigation -->
-                    <ul class="nav nav-tabs border-0 mb-4" id="projectTabs" role="tablist">
+                    <ul class="nav nav-tabs border-0 mb-4" id="projectTabs" role="tablist"
+                        aria-label="Project categories" style="-webkit-overflow-scrolling: touch;">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active fw-semibold px-4 py-3 border-0 rounded-pill me-2 mb-2"
-                                id="all-tab" data-bs-toggle="tab" data-bs-target="#all-projects" type="button"
-                                role="tab" aria-controls="all-projects" aria-selected="true">
-                                <i class="fas fa-th-large me-2"></i>All Projects
+                            <button class="nav-link active fw-semibold rounded-pill me-2 mb-2 px-3 py-2" id="all-tab"
+                                data-bs-toggle="tab" data-bs-target="#all-projects" type="button" role="tab"
+                                aria-controls="all-projects" aria-selected="true">
+                                <i class="fas fa-th-large me-2" aria-hidden="true"></i>
+                                <span class="d-inline d-sm-none">All</span>
+                                <span class="d-none d-sm-inline">All Projects</span>
                             </button>
                         </li>
+
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link fw-semibold px-4 py-3 border-0 rounded-pill me-2 mb-2"
-                                id="activities-tab" data-bs-toggle="tab" data-bs-target="#activities-projects"
-                                type="button" role="tab" aria-controls="activities-projects" aria-selected="false">
-                                <i class="fas fa-tasks me-2"></i>Activities
+                            <button class="nav-link fw-semibold rounded-pill me-2 mb-2 px-3 py-2" id="activities-tab"
+                                data-bs-toggle="tab" data-bs-target="#activities-projects" type="button" role="tab"
+                                aria-controls="activities-projects" aria-selected="false">
+                                <i class="fas fa-tasks me-2" aria-hidden="true"></i>
+                                <span class="d-inline d-sm-none">Act</span>
+                                <span class="d-none d-sm-inline">Activities</span>
                             </button>
                         </li>
+
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link fw-semibold px-4 py-3 border-0 rounded-pill me-2 mb-2" id="game-tab"
+                            <button class="nav-link fw-semibold rounded-pill me-2 mb-2 px-3 py-2" id="game-tab"
                                 data-bs-toggle="tab" data-bs-target="#game-projects" type="button" role="tab"
                                 aria-controls="game-projects" aria-selected="false">
-                                <i class="fas fa-gamepad me-2"></i>Game Development
+                                <i class="fas fa-gamepad me-2" aria-hidden="true"></i>
+                                <span class="d-inline d-sm-none">Game</span>
+                                <span class="d-none d-sm-inline">Game Development</span>
                             </button>
                         </li>
+
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link fw-semibold px-4 py-3 border-0 rounded-pill me-2 mb-2" id="web-tab"
+                            <button class="nav-link fw-semibold rounded-pill me-2 mb-2 px-3 py-2" id="web-tab"
                                 data-bs-toggle="tab" data-bs-target="#web-projects" type="button" role="tab"
                                 aria-controls="web-projects" aria-selected="false">
-                                <i class="fas fa-code me-2"></i>Web Development
+                                <i class="fas fa-code me-2" aria-hidden="true"></i>
+                                <span class="d-inline d-sm-none">Web</span>
+                                <span class="d-none d-sm-inline">Web Development</span>
                             </button>
                         </li>
+
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link fw-semibold px-4 py-3 border-0 rounded-pill me-2 mb-2"
-                                id="multimedia-tab" data-bs-toggle="tab" data-bs-target="#multimedia-projects"
-                                type="button" role="tab" aria-controls="multimedia-projects" aria-selected="false">
-                                <i class="fas fa-photo-video me-2"></i>Multimedia
+                            <button class="nav-link fw-semibold rounded-pill me-2 mb-2 px-3 py-2" id="multimedia-tab"
+                                data-bs-toggle="tab" data-bs-target="#multimedia-projects" type="button" role="tab"
+                                aria-controls="multimedia-projects" aria-selected="false">
+                                <i class="fas fa-photo-video me-2" aria-hidden="true"></i>
+                                <span class="d-inline d-sm-none">Media</span>
+                                <span class="d-none d-sm-inline">Multimedia</span>
                             </button>
                         </li>
+
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link fw-semibold px-4 py-3 border-0 rounded-pill me-2 mb-2"
-                                id="design-tab" data-bs-toggle="tab" data-bs-target="#design-projects" type="button"
-                                role="tab" aria-controls="design-projects" aria-selected="false">
-                                <i class="fas fa-palette me-2"></i>Design
+                            <button class="nav-link fw-semibold rounded-pill me-2 mb-2 px-3 py-2" id="design-tab"
+                                data-bs-toggle="tab" data-bs-target="#design-projects" type="button" role="tab"
+                                aria-controls="design-projects" aria-selected="false">
+                                <i class="fas fa-palette me-2" aria-hidden="true"></i>
+                                <span class="d-inline d-sm-none">Design</span>
+                                <span class="d-none d-sm-inline">Design</span>
                             </button>
                         </li>
+
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link fw-semibold px-4 py-3 border-0 rounded-pill me-2 mb-2"
-                                id="certificate-tab" data-bs-toggle="tab" data-bs-target="#certificate-projects"
-                                type="button" role="tab" aria-controls="certificate-projects" aria-selected="false">
-                                <i class="fas fa-certificate me-2"></i>Certificates
+                            <button class="nav-link fw-semibold rounded-pill me-2 mb-2 px-3 py-2" id="certificate-tab"
+                                data-bs-toggle="tab" data-bs-target="#certificate-projects" type="button" role="tab"
+                                aria-controls="certificate-projects" aria-selected="false">
+                                <i class="fas fa-certificate me-2" aria-hidden="true"></i>
+                                <span class="d-inline d-sm-none">Certs</span>
+                                <span class="d-none d-sm-inline">Certificates</span>
                             </button>
                         </li>
                     </ul>
@@ -299,7 +320,8 @@
                         </div>
 
                         <!-- Activities Tab -->
-                        <div class="tab-pane fade" id="activities-projects" role="tabpanel" aria-labelledby="activities-tab">
+                        <div class="tab-pane fade" id="activities-projects" role="tabpanel"
+                            aria-labelledby="activities-tab">
                             <div class="row g-4 justify-content-center" id="activitiesProjectsContainer">
                                 <!-- Activities projects will be loaded here -->
                             </div>
