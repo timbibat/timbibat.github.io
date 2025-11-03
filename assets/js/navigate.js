@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let current = '';
         const scrollPosition = window.scrollY + 200;
-        const sections = document.querySelectorAll('[id="about"], [id="skills"], [id="projects"], [id="contact"]');
+        const sections = document.querySelectorAll('[id="about"], [id="tech-stack"], [id="projects"], [id="contact"]');
 
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Content cards hover effects
-    const contentCards = document.querySelectorAll('[id="about"], [id="skills"], [id="projects"]');
+    const contentCards = document.querySelectorAll('[id="about"], [id="tech-stack"], [id="projects"]');
     contentCards.forEach(card => {
         card.addEventListener('mouseenter', function () {
             this.style.transform = 'translateY(-5px)';

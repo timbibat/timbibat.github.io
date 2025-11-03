@@ -78,14 +78,14 @@ const projects = [
     },
     {
         id: 8,
-        title: "Stay Tuned!",
-        description: "More exciting projects are coming soon! This space is reserved for upcoming web development, multimedia, and design projects that showcase continuous learning and growth.",
-        image: null,
-        badges: ["Coming Soon"],
-        badgeColors: ["bg-secondary text-white"],
-        category: "web", // Web development project
+        title: "Pelikula Cinema",
+        description: "A website that uses Gmail API to send email notifications for booking confirmations. Built with HTML, CSS, Bootstrap, and PHP for optimal user experience and functionality.",
+        image: "assets/img/WD/Screenshot 2025-10-07 230422.png",
+        badges: ["HTML/CSS", "Bootstrap", "PHP"],
+        badgeColors: ["bg-danger text-white", "bg-primary text-white", "bg-warning text-dark"],
+        category: "web", // Activities project
         demoUrl: null,
-        githubUrl: null
+        githubUrl: "https://github.com/timbibat/Pelikula-Cinema.git"
     },
     {
         id: 9,
