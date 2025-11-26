@@ -39,7 +39,7 @@ const portfolioDetails = {
             category: "Web Design",
             image: "assets/img/WD/Screenshot 2025-10-28 181400.png",
             description: "A web-based classroom reservation system for PUP. Built with PHP and Bootstrap.",
-            link: "null",
+            link: null,
             git: "https://github.com/timbibat/pup_classroom_reservation"
         },
         {
@@ -55,8 +55,8 @@ const portfolioDetails = {
             category: "Web Design",
             image: "assets/img/WD/Screenshot 2025-10-07 230422.png",
             description: "A cinema website project for System Integration and Architecture subject. Built with HTML, CSS, PHP and JavaScript. It also integrates Gmail API, SMS integration, and AI chatbot using Ollama API.",
-            link: "https://dbtkco.vercel.app/",
-            git: "https://github.com/timbibat/dbtkco"
+            link: null,
+            git: null,
         },
     ]
 };
