@@ -11,9 +11,7 @@ function renderPortfolio() {
             activitiesContainer.innerHTML += `
             <div class="col">
                 <div class="project-card h-100 bg-white rounded-4 overflow-hidden shadow" 
-                    style="transition: all 0.3s ease;"
-                    onmouseover="this.style.transform='translateY(-8px)'" 
-                    onmouseout="this.style.transform='translateY(0)'">
+                    style="transition: all 0.3s ease;">
                     <div class="position-relative overflow-hidden">
                         <img src="${act.image}" class="card-img-top" alt="${act.name}" style="height: 250px; object-fit: cover;">
                         <div class="position-absolute top-0 start-0 p-3">
@@ -43,9 +41,7 @@ function renderPortfolio() {
             projectsContainer.innerHTML += `
             <div class="col">
                 <div class="project-card h-100 bg-white rounded-4 overflow-hidden shadow" 
-                    style="transition: all 0.3s ease;"
-                    onmouseover="this.style.transform='translateY(-8px)'" 
-                    onmouseout="this.style.transform='translateY(0)'">
+                    style="transition: all 0.3s ease;">
                     <div class="position-relative overflow-hidden">
                         <img src="${proj.image}" class="card-img-top" alt="${proj.name}" style="height: 250px; object-fit: cover;">
                         <div class="position-absolute top-0 start-0 p-3">
