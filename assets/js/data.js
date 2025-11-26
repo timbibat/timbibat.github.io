@@ -31,7 +31,7 @@ const portfolioDetails = {
             category: "Game Development",
             image: "assets/img/WD/Screenshot (270).png",
             description: "An immersive 2D fighting game featuring head-to-head combat between iconic anime characters.",
-            link: "#",
+            link: null,
             git: "https://github.com/timbibat/Anime-Royale-Rumble"
         },
         {
@@ -39,7 +39,7 @@ const portfolioDetails = {
             category: "Web Design",
             image: "assets/img/WD/Screenshot 2025-10-28 181400.png",
             description: "A web-based classroom reservation system for PUP. Built with PHP and Bootstrap.",
-            link: "#",
+            link: "null",
             git: "https://github.com/timbibat/pup_classroom_reservation"
         },
         {
@@ -49,6 +49,14 @@ const portfolioDetails = {
             description: "Final group project for OOP using Python Flask. Inspired by Don't Blame the Kids brand.",
             link: "https://dbtkco.vercel.app/",
             git: "https://github.com/timbibat/dbtkco"
-        }
+        },
+        {
+            name: "Pelikula Cinema",
+            category: "Web Design",
+            image: "assets/img/WD/Screenshot 2025-10-07 230422.png",
+            description: "A cinema website project for System Integration and Architecture subject. Built with HTML, CSS, PHP and JavaScript. It also integrates Gmail API, SMS integration, and AI chatbot using Ollama API.",
+            link: "https://dbtkco.vercel.app/",
+            git: "https://github.com/timbibat/dbtkco"
+        },
     ]
 };
