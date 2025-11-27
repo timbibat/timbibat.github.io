@@ -1,24 +1,85 @@
-<div class="hero-gradient text-white p-5 text-center position-relative rounded-4 overflow-hidden" id="contact">
-    <div class="position-absolute top-0 end-0 w-100 h-100" style="background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%); 
-                                animation: pulse 4s ease-in-out infinite;">
+<div class="hero-gradient text-white p-4 p-md-5 mb-5 rounded-4 shadow position-relative overflow-hidden" id="contact">
+
+    <div class="position-absolute top-0 end-0 w-100 h-100"
+        style="background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%); animation: pulse 4s ease-in-out infinite;">
     </div>
 
-    <div class="position-relative">
-        <h2 class="mb-4 fw-bold">
-            <i class="fas fa-paper-plane me-3"></i>Let's Work Together!
-        </h2>
-        <p class="lead mb-4">
-            I'm currently looking for new opportunities and exciting projects.
-            My inbox is always open for collaborations and discussions.
-        </p>
-        <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-            <a href="mailto:timothybibat654@gmail.com" class="btn btn-light btn-lg fw-semibold px-4">
-                <i class="fas fa-envelope me-2"></i>Send Email
-            </a>
-            <a href="https://www.linkedin.com/in/timothy-bibat-5ab419182"
-                class="btn btn-outline-light btn-lg fw-semibold px-4">
-                <i class="fab fa-linkedin me-2"></i>LinkedIn
-            </a>
+    <div class="position-relative z-1">
+        <div class="row align-items-center g-5">
+
+            <div class="col-lg-6">
+                <h2 class="display-6 fw-bold mb-3 text-white">
+                    <i class="fas fa-paper-plane me-3"></i>Let's Connect
+                </h2>
+
+                <p class="lead mb-4 text-white">
+                    I'm currently looking for new opportunities in Web Development and Security.
+                    Have a project in mind? Fill out the form or send me a direct email.
+                </p>
+
+                <div class="d-flex flex-column gap-3 mb-4">
+                    <div class="d-flex align-items-center">
+                        <div class="bg-white bg-opacity-25 p-3 rounded-circle me-3 text-white">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <small class="text-white opacity-75 text-uppercase fw-bold">Email Me</small>
+                            <div class="fs-6 fw-bold text-white">timothybibat654@gmail.com</div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center">
+                        <div class="bg-white bg-opacity-25 p-3 rounded-circle me-3 text-white">
+                            <i class="fab fa-linkedin-in"></i>
+                        </div>
+                        <div>
+                            <small class="text-white opacity-75 text-uppercase fw-bold">LinkedIn</small>
+                            <div>
+                                <a href="https://www.linkedin.com/in/timothy-bibat-5ab419182"
+                                    class="text-decoration-none text-white fw-bold">
+                                    Connect with me
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="bg-white p-4 rounded-4 shadow-lg">
+                    <h5 class="text-dark fw-bold mb-3">Send a Message</h5>
+
+                    <form action="https://formspree.io/f/xnnkpwnv" method="POST">
+
+                        <div class="mb-3">
+                            <label for="name" class="form-label small text-muted fw-bold">YOUR NAME</label>
+                            <input type="text" name="name" class="form-control bg-light border-0 py-2" id="name"
+                                placeholder="John Doe" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label small text-muted fw-bold">EMAIL ADDRESS</label>
+                            <input type="email" name="email" class="form-control bg-light border-0 py-2" id="email"
+                                placeholder="name@example.com" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="message" class="form-label small text-muted fw-bold">MESSAGE</label>
+                            <textarea name="message" class="form-control bg-light border-0 py-2" id="message" rows="4"
+                                placeholder="Hi Timothy, I'd like to discuss..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100 fw-bold py-2 shadow-sm">
+                            Send Message <i class="fas fa-arrow-right ms-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
         </div>
     </div>
+</div>
+
+<div class="text-center text-muted small pb-4">
+    <p class="mb-0">&copy; 2025 Timothy Bibat. Built with Bootstrap & JavaScript.</p>
 </div>
