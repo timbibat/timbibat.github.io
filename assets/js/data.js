@@ -23,7 +23,15 @@ const portfolioDetails = {
             description: "A responsive website showcasing the magical world of Harry Potter.",
             link: "https://timbibat.github.io/HarryPotter/",
             git: "https://github.com/timbibat/HarryPotter"
-        }
+        },
+        {
+            name: "Dragon Ball API",
+            category: "Web Design",
+            image: "assets/img/WD/Screenshot 2025-12-15 213911.png",
+            description: "This is a website showcasing the Dragon Ball universe using API",
+            link: "https://timbibat.github.io/DragonBall/",
+            git: "https://github.com/timbibat/DragonBall"
+        },
     ],
     projects: [
         {
