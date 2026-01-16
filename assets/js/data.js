@@ -32,6 +32,14 @@ const portfolioDetails = {
             link: "https://timbibat.github.io/DragonBall/",
             git: "https://github.com/timbibat/DragonBall"
         },
+        {
+            name: "PackIT",
+            category: "Web Design",
+            image: "assets/img/WD/Screenshot 2026-01-16 143328.png",
+            description: "A responsive website that helps users to deliver packages easily and conveniently.",
+            link: null,
+            git: "https://github.com/Jamexuu/EasyBuy-x-PackIT/tree/main/PackIT"
+        }
     ],
     projects: [
         {
@@ -60,11 +68,19 @@ const portfolioDetails = {
         },
         {
             name: "Pelikula Cinema",
-            category: "Web Design",
+            category: "API Integration",
             image: "assets/img/WD/Screenshot 2025-10-07 230422.png",
             description: "A cinema website project for System Integration and Architecture subject. Built with HTML, CSS, PHP and JavaScript. It also integrates Gmail API, SMS integration, and AI chatbot using Ollama API.",
             link: null,
             git: null,
         },
+        {
+            name: "EasyBuy x PackIT",
+            category: "API Integration",
+            image: "assets/img/WD/Screenshot 2026-01-16 143328.png",
+            description: "This website is a collaboration project of EasyBuy and PackIT to provide a seamless package delivery experience through the use of API integration.",
+            link: null,
+            git: "https://github.com/Jamexuu/EasyBuy-x-PackIT/"
+        }
     ]
 };
