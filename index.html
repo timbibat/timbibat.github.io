@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Timothy Bibat — Portfolio</title>
-    <meta name="description" content="Timothy Bibat's professional portfolio — aspiring cybersecurity professional, web developer, and UI/UX designer.">
+    <meta name="description"
+        content="Timothy Bibat's professional portfolio — aspiring cybersecurity professional, web developer, and UI/UX designer.">
     <link href="assets/img/Icon 5.png" rel="icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -290,10 +291,10 @@
                 }, 50);
             });
 
-            loadPage('about');
+            loadPage('about', true);
         });
 
-        function loadPage(content) {
+        function loadPage(content, isInitialLoad = false) { // Add the parameter with a default value
             const maincontent = document.getElementById('maincontent');
 
             // Page exit animation
@@ -317,10 +318,17 @@
                             renderPortfolio();
                         }
 
-                        // Scroll to top of content on mobile
-                        if (window.innerWidth < 992) {
-                            maincontent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        // --- NEW MOBILE SCROLL LOGIC ---
+                        if (window.innerWidth < 992 && !isInitialLoad) {
+                            if (content === 'about') {
+                                // If "About Me" is clicked, scroll to the very top (Profile Section)
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                            } else {
+                                // For Tech-Stack, Portfolio, and Contact, scroll to the main content
+                                maincontent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }
                         }
+                        // -------------------------------
                     })
                     .catch(error => console.error('Error fetching file:', error));
             }, 300);
