@@ -1,8 +1,7 @@
 <!-- Will Add more cards here in the future -->
-<div class="bg-white bg-opacity-90 p-4 p-md-5 mb-5 rounded-4 shadow" id="about"
-    style="backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); transition: all 0.3s ease;">
+<div class="glass-card p-4 p-md-5 mb-5" id="about">
     <h2 class="mb-4 fw-bold">
-        <i class="fas fa-user-circle text-success me-3"></i>About Me
+        <span class="glow-text"><i class="fas fa-user-circle me-2"></i></span>About Me
     </h2>
     <p class="lead mb-2">
         I am Timothy Bibat, an aspiring cybersecurity professional currently pursuing a Bachelor of Science in
@@ -11,13 +10,13 @@
     </p>
 
     <p class="text-muted mb-4">
-        I have applied programming, networking, and security tools in coursework and personal projects. I’m actively
+        I have applied programming, networking, and security tools in coursework and personal projects. I'm actively
         learning web application security, penetration testing techniques, and cloud security best practices to prepare
         for real-world cybersecurity challenges.
     </p>
 
     <!-- What I Do Section -->
-    <h3 class="h6 mb-3 fw-bold text-uppercase text-muted">What I Do</h3>
+    <h3 class="h6 mb-3 fw-bold text-uppercase text-muted" style="letter-spacing: 0.1em; font-size: 0.7rem;">What I Do</h3>
     <div class="row g-3 mb-4">
         <!-- Will add this back in the future
         <div class="col-md-4">
@@ -31,7 +30,7 @@
         </div>
         -->
         <div class="col-md-4">
-            <div class="p-3 border rounded-3 bg-light h-100">
+            <div class="p-3 border rounded-3 bg-light h-100 hover-lift" style="cursor: default;">
                 <i class="fas fa-laptop-code text-success mb-2 fs-4"></i>
                 <h5 class="fw-bold h6">Web Development</h5>
                 <p class="small text-muted mb-0">
@@ -40,7 +39,7 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="p-3 border rounded-3 bg-light h-100">
+            <div class="p-3 border rounded-3 bg-light h-100 hover-lift" style="cursor: default;">
                 <i class="fas fa-pen-nib text-primary mb-2 fs-4"></i>
                 <h5 class="fw-bold h6">UI/UX Design</h5>
                 <p class="small text-muted mb-0">
@@ -50,7 +49,7 @@
         </div>
 
         <div class="col-md-4">
-            <div class="p-3 border rounded-3 bg-light h-100">
+            <div class="p-3 border rounded-3 bg-light h-100 hover-lift" style="cursor: default;">
                 <i class="fas fa-database text-info mb-2 fs-4"></i>
                 <h5 class="fw-bold h6">Database Management</h5>
                 <p class="small text-muted mb-0">
@@ -62,11 +61,11 @@
 
     <!-- My Approach Section -->
     <div class="mb-4">
-        <h3 class="h6 mb-3 fw-bold text-uppercase text-muted">My Approach</h3>
-        <div class="p-4 rounded-3 border bg-light">
+        <h3 class="h6 mb-3 fw-bold text-uppercase text-muted" style="letter-spacing: 0.1em; font-size: 0.7rem;">My Approach</h3>
+        <div class="p-4 rounded-3 border bg-light" style="border-left: 3px solid var(--accent-start) !important;">
             <div class="row align-items-center">
                 <div class="col-md-2 text-center mb-3 mb-md-0">
-                    <i class="fas fa-layer-group text-primary display-4"></i>
+                    <i class="fas fa-layer-group display-4 glow-text"></i>
                 </div>
                 <div class="col-md-10">
                     <p class="fst-italic mb-0 text-muted">
@@ -104,12 +103,12 @@
     -->
     <!-- Currently Learning Section -->
 
-    <h3 class="h6 mb-3 fw-bold text-uppercase text-muted">Currently Learning</h3>
-    <div class="bg-white rounded-3 p-3 border shadow-sm">
+    <h3 class="h6 mb-3 fw-bold text-uppercase text-muted" style="letter-spacing: 0.1em; font-size: 0.7rem;">Currently Learning</h3>
+    <div class="rounded-3 p-3 border" style="background: var(--bg-card);">
         <ul class="list-unstyled mb-0">
-            <li class="d-flex align-items-center mb-3">
-                <div class="bg-primary bg-opacity-10 p-2 rounded me-3 text-primary">
-                    <i class="fas fa-server"></i>
+            <li class="d-flex align-items-center mb-3 p-2 rounded-3" style="transition: background 0.3s ease;">
+                <div class="p-2 rounded me-3" style="background: var(--accent-subtle);">
+                    <i class="fas fa-server" style="color: var(--accent-start);"></i>
                 </div>
                 <div>
                     <strong class="d-block text-dark">Backend Integration</strong>
@@ -117,9 +116,9 @@
                 </div>
             </li>
 
-            <li class="d-flex align-items-center mb-3">
-                <div class="bg-success bg-opacity-10 p-2 rounded me-3 text-success">
-                    <i class="fas fa-mobile-alt"></i>
+            <li class="d-flex align-items-center mb-3 p-2 rounded-3" style="transition: background 0.3s ease;">
+                <div class="p-2 rounded me-3" style="background: rgba(34, 197, 94, 0.08);">
+                    <i class="fas fa-mobile-alt" style="color: #22c55e;"></i>
                 </div>
                 <div>
                     <strong class="d-block text-dark">Responsive Design</strong>
@@ -128,9 +127,9 @@
                 </div>
             </li>
 
-            <li class="d-flex align-items-center">
-                <div class="bg-warning bg-opacity-10 p-2 rounded me-3 text-warning">
-                    <i class="fas fa-lock"></i>
+            <li class="d-flex align-items-center p-2 rounded-3" style="transition: background 0.3s ease;">
+                <div class="p-2 rounded me-3" style="background: rgba(245, 158, 11, 0.08);">
+                    <i class="fas fa-lock" style="color: #f59e0b;"></i>
                 </div>
                 <div>
                     <strong class="d-block text-dark">Secure Coding</strong>
@@ -189,7 +188,7 @@
                 </div>
                 <div class="progress" role="progressbar" aria-label="Python skill" aria-valuenow="78" aria-valuemin="0"
                     aria-valuemax="100">
-                    <div class="progress-bar bg-info" style="width: 20%"></div>
+                    <div class="progress-bar" style="width: 20%"></div>
                 </div>
             </div>
             <!-- Learning 0%-20% -->
@@ -204,7 +203,7 @@
                 </div>
                 <div class="progress" role="progressbar" aria-label="Networking skill" aria-valuenow="70"
                     aria-valuemin="0" aria-valuemax="100">
-                    <div class="progress-bar bg-success" style="width: 40%"></div>
+                    <div class="progress-bar" style="width: 40%"></div>
                 </div>
             </div>
 
@@ -215,7 +214,7 @@
                 </div>
                 <div class="progress" role="progressbar" aria-label="Web security skill" aria-valuenow="56"
                     aria-valuemin="0" aria-valuemax="100">
-                    <div class="progress-bar bg-warning" style="width: 0%"></div>
+                    <div class="progress-bar" style="width: 0%"></div>
                 </div>
             </div>
         </div>

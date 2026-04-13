@@ -4,18 +4,18 @@ function renderPortfolio() {
 
     if (activitiesContainer && projectsContainer) {
 
-        portfolioDetails.activities.forEach(act => {
+        portfolioDetails.activities.forEach((act, index) => {
             const demoStatus = act.link ? '' : 'disabled';
             const gitStatus = act.git ? '' : 'disabled';
 
             activitiesContainer.innerHTML += `
-            <div class="col">
-                <div class="project-card h-100 bg-white rounded-4 overflow-hidden shadow" 
-                    style="transition: all 0.3s ease;">
+            <div class="col animate-in" style="animation-delay: ${index * 0.1}s;">
+                <div class="project-card h-100 rounded-4 overflow-hidden" 
+                    style="transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);">
                     <div class="position-relative overflow-hidden">
                         <img src="${act.image}" class="card-img-top" alt="${act.name}" style="height: 250px; object-fit: cover;">
                         <div class="position-absolute top-0 start-0 p-3">
-                            <span class="badge bg-info text-dark">${act.category}</span>
+                            <span class="badge" style="background: var(--primary-gradient); font-size: 0.7rem; letter-spacing: 0.03em;">${act.category}</span>
                         </div>
                     </div>
                     <div class="card-body p-4 d-flex flex-column">
@@ -34,18 +34,18 @@ function renderPortfolio() {
             </div>`;
         });
 
-        portfolioDetails.projects.forEach(proj => {
+        portfolioDetails.projects.forEach((proj, index) => {
             const demoStatus = proj.link ? '' : 'disabled';
             const gitStatus = proj.git ? '' : 'disabled';
 
             projectsContainer.innerHTML += `
-            <div class="col">
-                <div class="project-card h-100 bg-white rounded-4 overflow-hidden shadow" 
-                    style="transition: all 0.3s ease;">
+            <div class="col animate-in" style="animation-delay: ${index * 0.1}s;">
+                <div class="project-card h-100 rounded-4 overflow-hidden" 
+                    style="transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);">
                     <div class="position-relative overflow-hidden">
                         <img src="${proj.image}" class="card-img-top" alt="${proj.name}" style="height: 250px; object-fit: cover;">
                         <div class="position-absolute top-0 start-0 p-3">
-                            <span class="badge bg-info text-dark">${proj.category}</span>
+                            <span class="badge" style="background: var(--primary-gradient); font-size: 0.7rem; letter-spacing: 0.03em;">${proj.category}</span>
                         </div>
                     </div>
                     <div class="card-body p-4 d-flex flex-column">
