@@ -72,6 +72,11 @@ body {
     letter-spacing: 0.01em;
 }
 
+/* Ensure Font Awesome Solid icons render correctly in Safari */
+.fas, .fa-solid {
+    font-weight: 900 !important;
+}
+
 /* Subtle animated background mesh */
 body::before {
     content: '';
@@ -122,8 +127,14 @@ p {
 .glow-text {
     background: var(--primary-gradient);
     -webkit-background-clip: text;
+    outline: none; /* Prevents some Safari rendering artifacts */
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    /* Safari Fixes */
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-box-decoration-break: clone;
+    isolation: isolate;
 }
 
 .custom-text {
