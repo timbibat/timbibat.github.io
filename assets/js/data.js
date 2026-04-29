@@ -41,6 +41,8 @@ const portfolioDetails = {
             git: "https://github.com/Jamexuu/EasyBuy-x-PackIT/tree/main/PackIT"
         }
     ],
+
+    //  Project Section 
     projects: [
         {
             name: "Anime Royale Rumble",
@@ -81,6 +83,14 @@ const portfolioDetails = {
             description: "This website is a collaboration project of EasyBuy and PackIT to provide a seamless package delivery experience through the use of API integration.",
             link: null,
             git: "https://github.com/Jamexuu/EasyBuy-x-PackIT/"
+        },
+        {
+            name: "Law Firm Website",
+            category: "Web Design",
+            image: "assets/img/WD/Screenshot 2026-04-29 160339.png",
+            description: "A website for a law firm. Built with Next.js, React, and TypeScript.",
+            link: "https://law-firm-five-nu.vercel.app/",
+            git: "https://github.com/timbibat/law-firm"
         }
     ]
 };
