@@ -40,13 +40,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const id = document.getElementById('projectId').value;
         const collection = document.querySelector('input[name="pCollection"]:checked').value;
         const fileInput = document.getElementById('pImageFile');
-        const submitBtn = e.target.querySelector('button[type="submit"]');
+        const submitBtn = document.querySelector('#addProjectModal button[type="submit"]');
         let imageUrl = document.getElementById('pImage').value;
 
         // Handle Image Upload if a file is selected
         if (fileInput.files.length > 0) {
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Uploading...';
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Uploading...';
+            }
             
             try {
                 const file = fileInput.files[0];
