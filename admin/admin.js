@@ -77,8 +77,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 progressDiv.classList.add('d-none');
             } catch (error) {
                 alert("Upload failed: " + error.message);
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Save Project';
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Save Project';
+                }
                 return;
             }
         }
@@ -111,8 +113,10 @@ document.addEventListener('DOMContentLoaded', () => {
             projectForm.reset();
             document.getElementById('projectId').value = '';
             document.getElementById('pImage').value = '';
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Save Project';
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Save Project';
+            }
             addProjectModal.hide();
             loadAdminProjects();
         } catch (error) {
@@ -160,12 +164,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         snapshot.forEach(doc => {
             const data = doc.data();
+            
+            // Fix relative paths for images in the admin panel
+            let imageSrc = data.image || '';
+            if (imageSrc.startsWith('assets/')) {
+                imageSrc = '../' + imageSrc;
+            }
+
             const card = `
                 <div class="col">
                     <div class="card h-100 rounded-4 overflow-hidden shadow-sm">
                         <div class="row g-0 h-100">
                             <div class="col-4">
-                                <img src="${data.image}" class="img-fluid h-100 object-fit-cover" style="min-height: 140px;" onerror="this.src='https://via.placeholder.com/150'">
+                                <img src="${imageSrc}" class="img-fluid h-100 object-fit-cover" style="min-height: 140px;" onerror="this.onerror=null; this.src='https://placehold.co/150x150?text=No+Image'">
                             </div>
                             <div class="col-8">
                                 <div class="card-body p-3 d-flex flex-column h-100">
