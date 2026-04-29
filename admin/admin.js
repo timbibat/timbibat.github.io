@@ -126,13 +126,23 @@ document.addEventListener('DOMContentLoaded', () => {
         projectsList.innerHTML = '<div class="col-12 text-center p-5"><div class="spinner-border text-primary"></div></div>';
 
         try {
-            const actSnap = await db.collection('activities').orderBy('createdAt', 'desc').get();
-            const projSnap = await db.collection('projects').orderBy('createdAt', 'desc').get();
+            // Try fetching with ordering first
+            let actSnap, projSnap;
+            try {
+                actSnap = await db.collection('activities').orderBy('createdAt', 'desc').get();
+                projSnap = await db.collection('projects').orderBy('createdAt', 'desc').get();
+            } catch (sortError) {
+                console.warn("Sorting failed, fetching without order:", sortError);
+                actSnap = await db.collection('activities').get();
+                projSnap = await db.collection('projects').get();
+            }
 
             renderAdminList(actSnap, activitiesList, 'activities');
             renderAdminList(projSnap, projectsList, 'projects');
         } catch (error) {
             console.error("Error loading projects:", error);
+            activitiesList.innerHTML = '<div class="col-12 text-center p-5 text-danger">Error loading data. Check console.</div>';
+            projectsList.innerHTML = '<div class="col-12 text-center p-5 text-danger">Error loading data. Check console.</div>';
         }
     }
 
