@@ -91,6 +91,14 @@ const portfolioDetails = {
             description: "A website for a law firm. Built with Next.js, React, and TypeScript.",
             link: "https://law-firm-five-nu.vercel.app/",
             git: "https://github.com/timbibat/law-firm"
+        },
+        {
+            name: "Mira's Store",
+            category: "Mobile App Development",
+            image: "assets/img/WD/Screenshot 2026-05-09 084304.png",
+            description: "A Store Management System for Mira Store. Built with Expo, React Native, and Firebase.",
+            link: "https://mirastore-nine.vercel.app/",
+            git: "https://github.com/timbibat/mirastore"
         }
     ]
 };
