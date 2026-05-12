@@ -160,6 +160,44 @@ p {
     transform: translateY(-4px);
 }
 
+/* Modal Theme-Aware Styles */
+#projectModal .modal-content {
+    background: var(--bg-card-solid);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    box-shadow: var(--shadow-lg);
+}
+
+[data-theme="dark"] #projectModal .modal-content {
+    background: rgba(10, 10, 15, 0.95);
+}
+
+[data-theme="light"] #projectModal .modal-content {
+    background: rgba(255, 255, 255, 0.98);
+}
+
+#projectModal .modal-body {
+    color: var(--text-primary);
+}
+
+#projectModal h2, #projectModal h4 {
+    color: var(--text-primary) !important;
+}
+
+#projectModal .text-muted {
+    color: var(--text-secondary) !important;
+}
+
+/* Close button theme toggle */
+[data-theme="light"] #projectModal .btn-close {
+    filter: contrast(0.1);
+}
+
+[data-theme="dark"] #projectModal .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
 /* ============================================================
    SIDEBAR
    ============================================================ */
@@ -656,6 +694,91 @@ main .bg-white.bg-opacity-95 {
     color: var(--text-secondary) !important;
 }
 
+/* Section Collapse Styles */
+.section-header-toggle {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    transition: opacity 0.3s ease;
+}
+
+.section-header-toggle:hover {
+    opacity: 0.8;
+}
+
+.section-collapsible {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-expanded .section-collapsible {
+    max-height: 5000px; /* Large enough for many cards */
+}
+
+.section-chevron {
+    transition: transform 0.4s ease;
+    color: var(--text-secondary);
+}
+
+.section-expanded .section-chevron {
+    transform: rotate(180deg);
+    color: var(--accent-start);
+}
+
+/* Major Project Highlight */
+.major-project-card {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.major-project-card:hover {
+    border-color: var(--border-hover);
+    background: rgba(99, 102, 241, 0.04);
+}
+
+.major-project-image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+}
+
+.major-project-image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.major-project-card:hover .major-project-image {
+    transform: scale(1.03);
+}
+
+.major-project-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media (max-width: 991.98px) {
+    .major-project-image {
+        height: 250px;
+    }
+}
+
+.major-project-card:hover .fa-arrow-right {
+    transform: translateX(5px);
+}
+
+.transition-transform {
+    transition: transform 0.3s ease;
+}
+
 /* Category badge */
 .project-card .badge.bg-info {
     background: var(--primary-gradient) !important;
@@ -665,6 +788,7 @@ main .bg-white.bg-opacity-95 {
     letter-spacing: 0.03em;
     border: none;
 }
+
 
 /* ============================================================
    CONTACT PAGE
@@ -1077,6 +1201,24 @@ main .bg-white.bg-opacity-95 {
     color: var(--accent-start);
     transform: scale(1.1);
     box-shadow: var(--shadow-glow);
+}
+
+/* Project Carousel Styling */
+.carousel-indicators [button] {
+    background-color: var(--accent-start);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 1.5rem;
+    background-size: 50%;
+}
+
+[data-theme="dark"] .carousel-control-prev-icon,
+[data-theme="dark"] .carousel-control-next-icon {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .theme-toggle-float i {
