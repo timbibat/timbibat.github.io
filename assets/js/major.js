@@ -32,6 +32,6 @@ const portfolioDetails = {
             "Implements AJAX polling for real-time synchronization, ensuring data accuracy without the overhead of heavy persistent connections."
         ],
         link: "https://byahero.free.nf",
-        git: "https://github.com/timbibat/mirastore"
+        git: "https://github.com/ByaHero/ByaHero"
     }
 };

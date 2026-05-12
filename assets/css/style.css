@@ -198,6 +198,32 @@ p {
     filter: invert(1) grayscale(100%) brightness(200%);
 }
 
+#projectModal .btn-close {
+    background-color: var(--accent-subtle);
+    opacity: 0.8;
+    padding: 1.25rem;
+    border-radius: 50%;
+    margin-top: -1rem;
+    margin-right: -1rem;
+    transition: all 0.3s ease;
+    z-index: 1055;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+#projectModal .btn-close:hover {
+    opacity: 1;
+    background-color: var(--accent-glow);
+    transform: rotate(90deg);
+}
+
+@media (max-width: 576px) {
+    #projectModal .btn-close {
+        padding: 1.5rem;
+        margin-top: -0.5rem;
+        margin-right: -0.5rem;
+    }
+}
+
 /* ============================================================
    SIDEBAR
    ============================================================ */
@@ -696,7 +722,6 @@ main .bg-white.bg-opacity-95 {
 
 /* Section Collapse Styles */
 .section-header-toggle {
-    cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -726,6 +751,30 @@ main .bg-white.bg-opacity-95 {
 .section-expanded .section-chevron {
     transform: rotate(180deg);
     color: var(--accent-start);
+}
+
+/* Make entire section card clickable */
+.glass-card[id$="-section"] {
+    cursor: pointer;
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+.glass-card[id$="-section"]:hover {
+    border-color: var(--accent-start);
+    box-shadow: var(--shadow-glow);
+}
+
+.glass-card[id$="-section"] .section-collapsible {
+    cursor: default;
+}
+
+/* Ensure badges don't overlap on mobile */
+@media (max-width: 768px) {
+    .badge {
+        white-space: normal !important;
+        text-align: center;
+    }
 }
 
 /* Major Project Highlight */

@@ -1,9 +1,9 @@
 <div class="glass-card p-4 p-md-5 mb-5 border-primary border-opacity-25" id="major-project-section">
-    <div class="d-flex align-items-center mb-4">
+    <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center mb-4">
         <h2 class="mb-0 fw-bold">
             <span class="glow-text"><i class="fas fa-star me-2"></i></span>Major Project
         </h2>
-        <span class="ms-3 badge rounded-pill bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-3 py-2">Featured</span>
+        <span class="mt-2 mt-sm-0 ms-sm-3 badge rounded-pill bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-3 py-2">Featured</span>
     </div>
     
     <div id="major-project-container">
@@ -11,8 +11,8 @@
     </div>
 </div>
 
-<div class="glass-card p-4 p-md-5 mb-5" id="projects-section">
-    <div class="section-header-toggle" onclick="toggleSection('projects-section')">
+<div class="glass-card p-4 p-md-5 mb-5" id="projects-section" onclick="toggleSection('projects-section')">
+    <div class="section-header-toggle">
         <h2 class="mb-0 fw-bold">
             <span class="glow-text"><i class="fas fa-rocket me-2"></i></span>Projects
         </h2>
@@ -23,15 +23,15 @@
         Here are some of my recent projects that showcase my technical skills and creativity.
     </p>
 
-    <div class="section-collapsible">
+    <div class="section-collapsible" onclick="event.stopPropagation()">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 justify-content-center" id="projects-container">
         </div>
     </div>
 </div>
 
-<div class="glass-card p-4 p-md-5 mb-5" id="activities-section">
+<div class="glass-card p-4 p-md-5 mb-5" id="activities-section" onclick="toggleSection('activities-section')">
 
-    <div class="section-header-toggle" onclick="toggleSection('activities-section')">
+    <div class="section-header-toggle">
         <h2 class="mb-0 fw-bold">
             <span class="glow-text"><i class="fas fa-rocket me-2"></i></span>Activities
         </h2>
@@ -42,7 +42,7 @@
         Here are some of my recent activities that showcase my involvement and contributions.
     </p>
 
-    <div class="section-collapsible">
+    <div class="section-collapsible" onclick="event.stopPropagation()">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 justify-content-center" id="activities-container">
         </div>
     </div>

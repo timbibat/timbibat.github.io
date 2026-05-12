@@ -18,12 +18,12 @@ function renderPortfolio() {
             <div class="major-project-card p-4 animate-in text-center" onclick="showProjectModal()" style="cursor: pointer;">
                 <div class="major-project-image-container shadow-lg mb-4 mx-auto" style="max-width: 320px;">
                     <img src="${majorProj.image}" class="major-project-image" alt="${majorProj.name}" style="height: auto; max-height: 250px; width: 100%; object-fit: contain; padding: 20px;">
-                    <div class="position-absolute top-0 start-0 p-2">
-                        <span class="badge" style="background: var(--primary-gradient); font-size: 0.75rem; letter-spacing: 0.04em;">${majorProj.category}</span>
-                    </div>
                 </div>
                 
                 <div class="major-project-content">
+                    <div class="mb-3">
+                        <span class="badge" style="background: var(--primary-gradient); font-size: 0.75rem; letter-spacing: 0.04em;">${majorProj.category}</span>
+                    </div>
                     <h3 class="h2 fw-bold mb-2">${majorProj.name}</h3>
                     <p class="text-muted mb-3 mx-auto lead" style="font-size: 1rem; max-width: 600px;">${majorProj.description}</p>
                     
@@ -52,13 +52,11 @@ function renderPortfolio() {
             projectsContainer.innerHTML += `
             <div class="col animate-in" style="animation-delay: ${index * 0.1}s;">
                 <div class="project-card h-100 rounded-4 overflow-hidden">
-                    <div class="position-relative overflow-hidden">
-                        <img src="${proj.image}" class="card-img-top" alt="${proj.name}" style="height: 250px; object-fit: cover;">
-                        <div class="position-absolute top-0 start-0 p-3">
+                    <img src="${proj.image}" class="card-img-top" alt="${proj.name}" style="height: 250px; object-fit: cover;">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <div class="mb-3">
                             <span class="badge" style="background: var(--primary-gradient); font-size: 0.7rem; letter-spacing: 0.03em;">${proj.category}</span>
                         </div>
-                    </div>
-                    <div class="card-body p-4 d-flex flex-column">
                         <h5 class="card-title fw-bold text-dark mb-3">${proj.name}</h5>
                         <p class="card-text text-muted mb-4">${proj.description}</p>
                         <div class="mt-auto d-flex gap-2">
@@ -81,13 +79,11 @@ function renderPortfolio() {
             activitiesContainer.innerHTML += `
             <div class="col animate-in" style="animation-delay: ${index * 0.1}s;">
                 <div class="project-card h-100 rounded-4 overflow-hidden">
-                    <div class="position-relative overflow-hidden">
-                        <img src="${act.image}" class="card-img-top" alt="${act.name}" style="height: 250px; object-fit: cover;">
-                        <div class="position-absolute top-0 start-0 p-3">
+                    <img src="${act.image}" class="card-img-top" alt="${act.name}" style="height: 250px; object-fit: cover;">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <div class="mb-3">
                             <span class="badge" style="background: var(--primary-gradient); font-size: 0.7rem; letter-spacing: 0.03em;">${act.category}</span>
                         </div>
-                    </div>
-                    <div class="card-body p-4 d-flex flex-column">
                         <h5 class="card-title fw-bold text-dark mb-3">${act.name}</h5>
                         <p class="card-text text-muted mb-4">${act.description}</p>
                         <div class="mt-auto d-flex gap-2">
@@ -169,9 +165,9 @@ function showProjectModal() {
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="d-flex align-items-center mb-3">
+                    <div class="d-flex flex-column flex-md-row align-items-md-center align-items-start mb-3">
                         <h2 class="display-5 fw-bold mb-0">${majorProj.name}</h2>
-                        <span class="ms-3 badge rounded-pill bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-3 py-2">${majorProj.category}</span>
+                        <span class="mt-2 mt-md-0 ms-md-3 badge rounded-pill bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-3 py-2">${majorProj.category}</span>
                     </div>
                     <p class="lead text-muted mb-5" style="line-height: 1.8;">${majorProj.fullDescription}</p>
                     
