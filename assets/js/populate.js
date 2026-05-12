@@ -190,5 +190,14 @@ function showProjectModal() {
         
         const myModal = new bootstrap.Modal(document.getElementById('projectModal'));
         myModal.show();
+
+        // Initialize carousel for auto-swiping
+        const carouselEl = document.getElementById('projectCarousel');
+        if (carouselEl) {
+            new bootstrap.Carousel(carouselEl, {
+                interval: 3000,
+                ride: 'carousel'
+            });
+        }
     }
 }
