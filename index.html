@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
+
 
 <head>
     <meta charset="utf-8">
@@ -388,17 +389,18 @@
         // ---- Theme toggle ----
         function initTheme() {
             const saved = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const theme = saved || (prefersDark ? 'light' : 'dark'); // default light
+            const theme = saved || 'light';
             document.documentElement.setAttribute('data-theme', theme);
             updateToggleIcons(theme);
         }
 
+
         function toggleTheme() {
             const html = document.documentElement;
             html.classList.add('theme-transitioning');
-            const current = html.getAttribute('data-theme') || 'dark';
+            const current = html.getAttribute('data-theme') || 'light';
             const next = current === 'dark' ? 'light' : 'dark';
+
             html.setAttribute('data-theme', next);
             localStorage.setItem('theme', next);
             updateToggleIcons(next);
