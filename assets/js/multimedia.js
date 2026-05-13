@@ -44,7 +44,7 @@ portfolioDetails.multimedia = [
     {
         name: "Logo",
         category: "Figma",
-        image: "assets/img/Design/logo/logo.png",
+        image: "assets/img/Design/Logo/logo.png",
         description: "Vector design is a method of image creation that uses mathematical equations to create and manipulate images, and is best known for its application in logo design.",
         link: "https://drive.google.com/file/d/1hhsgPv4B5H2RVWX2qEvFsM2d4WW57Ed1/view?usp=sharing",
         git: null,

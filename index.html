@@ -24,6 +24,8 @@
         <i class="fas fa-moon"></i>
     </button>
 
+
+
     <div class="container-fluid">
         <div class="row g-0">
             <!-- Profile Section (Sidebar) -->
@@ -242,8 +244,21 @@
                     </section>
                 </aside>
 
-                <div id="maincontent" class="mt-2">
+                <div class="position-relative">
+                    <!-- Section Loader -->
+                    <div id="pageLoader" class="loader-wrapper">
+                        <div class="loader-container">
+                            <div class="loader-circle"></div>
+                            <div class="loader-circle"></div>
+                            <div class="loader-circle"></div>
+                        </div>
+                        <div class="loader-text">Loading</div>
+                    </div>
+
+                    <div id="maincontent" class="mt-2">
+                    </div>
                 </div>
+
             </main>
         </div>
     </div>
@@ -264,7 +279,12 @@
 
             // Apply saved theme instantly before fade-in
             initTheme();
+            
+            // Hide loader after initial load
+            setTimeout(hideLoader, 800);
+            
             document.body.style.opacity = '1';
+
 
             // Nav link switching
             const navLinks = document.querySelectorAll('.nav-link');
@@ -301,8 +321,12 @@
         function loadPage(content, isInitialLoad = false) { // Add the parameter with a default value
             const maincontent = document.getElementById('maincontent');
 
+            // Show loader
+            showLoader();
+
             // Page exit animation
             maincontent.classList.add('page-exit');
+
 
             setTimeout(() => {
                 fetch(`content/${content}.html`)
@@ -339,10 +363,27 @@
                             }
                         }
                         // -------------------------------
+                        
+                        // Hide loader after content is ready
+                        setTimeout(hideLoader, 600);
                     })
-                    .catch(error => console.error('Error fetching file:', error));
+                    .catch(error => {
+                        console.error('Error fetching file:', error);
+                        hideLoader();
+                    });
             }, 300);
         }
+
+        function showLoader() {
+            const loader = document.getElementById('pageLoader');
+            loader.classList.remove('hide');
+        }
+
+        function hideLoader() {
+            const loader = document.getElementById('pageLoader');
+            loader.classList.add('hide');
+        }
+
 
         // ---- Theme toggle ----
         function initTheme() {
