@@ -255,6 +255,8 @@
     <script src="assets/js/major.js"></script>
     <script src="assets/js/activities.js"></script>
     <script src="assets/js/projects.js"></script>
+    <script src="assets/js/multimedia.js"></script>
+    <script src="assets/js/certificates.js"></script>
     <script src="assets/js/populate.js"></script>
 
     <script>
@@ -320,6 +322,12 @@
                             renderPortfolio();
                         }
 
+                        // Update current year if elements exist
+                        const currentYear = new Date().getFullYear();
+                        maincontent.querySelectorAll('.current-year').forEach(el => {
+                            el.textContent = currentYear;
+                        });
+
                         // --- NEW MOBILE SCROLL LOGIC ---
                         if (window.innerWidth < 992 && !isInitialLoad) {
                             if (content === 'about') {
@@ -340,7 +348,7 @@
         function initTheme() {
             const saved = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const theme = saved || (prefersDark ? 'dark' : 'dark'); // default dark
+            const theme = saved || (prefersDark ? 'light' : 'dark'); // default light
             document.documentElement.setAttribute('data-theme', theme);
             updateToggleIcons(theme);
         }

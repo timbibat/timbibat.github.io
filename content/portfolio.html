@@ -1,49 +1,109 @@
-<div class="glass-card p-4 p-md-5 mb-5 border-primary border-opacity-25" id="major-project-section">
-    <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center mb-4">
-        <h2 class="mb-0 fw-bold">
-            <span class="glow-text"><i class="fas fa-star me-2"></i></span>Major Project
-        </h2>
-        <span class="mt-2 mt-sm-0 ms-sm-3 badge rounded-pill bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-3 py-2">Featured</span>
-    </div>
-    
-    <div id="major-project-container">
-        <!-- Will be populated by JS -->
-    </div>
-</div>
+<div class="glass-card p-4 p-md-5 mb-5 border-primary border-opacity-25">
+    <!-- Tab Navigation -->
+    <div class="portfolio-nav-container mb-4">
+        <ul class="nav nav-tabs border-0" id="portfolioTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active fw-semibold rounded-pill" id="major-tab"
+                    data-bs-toggle="tab" data-bs-target="#major-project-pane" type="button" role="tab"
+                    aria-controls="major-project-pane" aria-selected="true">
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    Major Project
+                </button>
+            </li>
 
-<div class="glass-card p-4 p-md-5 mb-5" id="projects-section" onclick="toggleSection('projects-section')">
-    <div class="section-header-toggle">
-        <h2 class="mb-0 fw-bold">
-            <span class="glow-text"><i class="fas fa-rocket me-2"></i></span>Projects
-        </h2>
-        <i class="fas fa-chevron-down section-chevron"></i>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link fw-semibold rounded-pill" id="projects-tab"
+                    data-bs-toggle="tab" data-bs-target="#projects-pane" type="button" role="tab"
+                    aria-controls="projects-pane" aria-selected="false">
+                    <i class="fas fa-rocket" aria-hidden="true"></i>
+                    Projects
+                </button>
+            </li>
+
+            <li class="nav-item" role="presentation">
+                <button class="nav-link fw-semibold rounded-pill" id="activities-tab"
+                    data-bs-toggle="tab" data-bs-target="#activities-pane" type="button" role="tab"
+                    aria-controls="activities-pane" aria-selected="false">
+                    <i class="fas fa-tasks" aria-hidden="true"></i>
+                    Activities
+                </button>
+            </li>
+
+            <li class="nav-item" role="presentation">
+                <button class="nav-link fw-semibold rounded-pill" id="multimedia-tab"
+                    data-bs-toggle="tab" data-bs-target="#multimedia-pane" type="button" role="tab"
+                    aria-controls="multimedia-pane" aria-selected="false">
+                    <i class="fas fa-film" aria-hidden="true"></i>
+                    Multimedia
+                </button>
+            </li>
+
+            <li class="nav-item" role="presentation">
+                <button class="nav-link fw-semibold rounded-pill" id="certificates-tab"
+                    data-bs-toggle="tab" data-bs-target="#certificates-pane" type="button" role="tab"
+                    aria-controls="certificates-pane" aria-selected="false">
+                    <i class="fas fa-certificate" aria-hidden="true"></i>
+                    Certificates
+                </button>
+            </li>
+        </ul>
     </div>
 
-    <p class="text-muted mt-3 mb-4 lead">
-        Here are some of my recent projects that showcase my technical skills and creativity.
-    </p>
-
-    <div class="section-collapsible" onclick="event.stopPropagation()">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 justify-content-center" id="projects-container">
+    <!-- Tab Content Area -->
+    <div class="tab-content portfolio-tab-content" id="portfolioTabContent">
+        <!-- Major Project Pane -->
+        <div id="major-project-pane" class="tab-pane fade show active" role="tabpanel" aria-labelledby="major-tab">
+            <div id="major-project-container" class="animate-in">
+                <!-- Will be populated by JS -->
+            </div>
         </div>
-    </div>
-</div>
 
-<div class="glass-card p-4 p-md-5 mb-5" id="activities-section" onclick="toggleSection('activities-section')">
+        <!-- Projects Pane -->
+        <div id="projects-pane" class="tab-pane fade" role="tabpanel" aria-labelledby="projects-tab">
+            <div class="text-center mb-5 animate-in">
+                <p class="text-muted lead">
+                    Recent projects showcasing technical skills and creative problem-solving.
+                </p>
+            </div>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 justify-content-center animate-in" id="projects-container">
+                <!-- Will be populated by JS -->
+            </div>
+        </div>
 
-    <div class="section-header-toggle">
-        <h2 class="mb-0 fw-bold">
-            <span class="glow-text"><i class="fas fa-rocket me-2"></i></span>Activities
-        </h2>
-        <i class="fas fa-chevron-down section-chevron"></i>
-    </div>
-    
-    <p class="text-muted mt-3 mb-4 lead">
-        Here are some of my recent activities that showcase my involvement and contributions.
-    </p>
+        <!-- Activities Pane -->
+        <div id="activities-pane" class="tab-pane fade" role="tabpanel" aria-labelledby="activities-tab">
+            <div class="text-center mb-5 animate-in">
+                <p class="text-muted lead">
+                    Activities done for Website Development in compliance to the subject requirements to Sir CJ De Claro.
+                </p>
+            </div>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 justify-content-center animate-in" id="activities-container">
+                <!-- Will be populated by JS -->
+            </div>
+        </div>
 
-    <div class="section-collapsible" onclick="event.stopPropagation()">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 justify-content-center" id="activities-container">
+        <!-- Multimedia Pane -->
+        <div id="multimedia-pane" class="tab-pane fade" role="tabpanel" aria-labelledby="multimedia-tab">
+            <div class="text-center mb-5 animate-in">
+                <p class="text-muted lead">
+                    Visual arts, digital designs, and multimedia projects.
+                </p>
+            </div>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 justify-content-center animate-in" id="multimedia-container">
+                <!-- Will be populated by JS -->
+            </div>
+        </div>
+
+        <!-- Certificates Pane -->
+        <div id="certificates-pane" class="tab-pane fade" role="tabpanel" aria-labelledby="certificates-tab">
+            <div class="text-center mb-5 animate-in">
+                <p class="text-muted lead">
+                    Professional certifications and course completions.
+                </p>
+            </div>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 justify-content-center animate-in" id="certificates-container">
+                <!-- Will be populated by JS -->
+            </div>
         </div>
     </div>
 </div>

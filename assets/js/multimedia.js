@@ -1,0 +1,52 @@
+portfolioDetails.multimedia = [
+    {
+        name: "Disorientation",
+        category: "Photoshop",
+        image: "assets/img/Design/Disorientation/Bibat_After.jpg",
+        description: "A surreal digital artwork created using Adobe Photoshop, exploring themes of confusion and altered perception through layered imagery and effects.",
+        link: "https://drive.google.com/file/d/1oQ4kRh3CfgDrqFRNeKhzmbAdXoOMVh9A/view?usp=sharing",
+        git: null,
+    },
+    {
+        name: "Out of Bounds",
+        category: "Photoshop",
+        image: "assets/img/Design/Out of bounds/Bibat_After.jpg",
+        description: "Out of Bounds is a digital artwork created using Adobe Photoshop, exploring themes of freedom and breaking limitations through imaginative visuals and effects.",
+        link: "https://drive.google.com/file/d/1SSZ37MIzBijxNg9_bb-YyVo_4un-66qw/view",
+        git: null,
+    },
+    {
+        name: "Sketch",
+        category: "Photoshop",
+        image: "assets/img/Design/Sketch/Bibat_After.jpg",
+        description: "Sketch is a digital artwork created using Adobe Photoshop, showcasing the beauty of simplicity and creativity through minimalistic design and artistic expression.",
+        link: "https://drive.google.com/file/d/1toxfsOR8NlrQ6he8vi2wCKQb4TOsFRRi/view?usp=sharing",
+        git: null,
+        badges: ["Photoshop"],
+        badgeColors: ["bg-info text-white"]
+    },
+    {
+        name: "Calling Card",
+        category: "Photoshop",
+        image: "assets/img/Design/Calling card/Bibat_front.jpg",
+        description: "Calling Card is a digital artwork created using Adobe Photoshop, representing the concept of communication and connection through visually engaging design and creative elements.",
+        link: "https://drive.google.com/file/d/1tzVSUPNTI3Vr56oy91bE_8HqPAa1pFRa/view?usp=sharing",
+        git: null,
+    },
+    {
+        name: "Movie Poster (Joker)",
+        category: "Photoshop",
+        image: "assets/img/Design/Movie poster/Bibat_poster.jpg",
+        description: "Movie Poster is a digital artwork created using Adobe Photoshop, showcasing the iconic character and themes of the film through visually striking design and creative elements.",
+        link: "https://drive.google.com/file/d/14LKxQ0cMt9RCpa5K0mfBY7ETN7zuw4Za/view?usp=sharing",
+        git: null,
+    },
+    {
+        name: "Logo",
+        category: "Figma",
+        image: "assets/img/Design/logo/logo.png",
+        description: "Vector design is a method of image creation that uses mathematical equations to create and manipulate images, and is best known for its application in logo design.",
+        link: "https://drive.google.com/file/d/1hhsgPv4B5H2RVWX2qEvFsM2d4WW57Ed1/view?usp=sharing",
+        git: null,
+    },
+];
