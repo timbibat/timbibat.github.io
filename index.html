@@ -5,16 +5,101 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Timothy Bibat — Portfolio</title>
-    <meta name="description"
-        content="Timothy Bibat's professional portfolio — aspiring cybersecurity professional, web developer, and UI/UX designer.">
-    <link href="assets/img/Icon 5.png" rel="icon">
+    
+    <!-- Primary SEO Metadata -->
+    <title>Timothy Bibat — Cybersecurity & Web Development Portfolio</title>
+    <meta name="description" content="Portfolio of Timothy Bibat — Cybersecurity student, web developer, and UI/UX designer. View my projects, skills, and certifications.">
+    <meta name="keywords" content="Timothy Bibat, Cybersecurity, Web Developer, UI/UX Designer, Portfolio, PUP IT Student, Secure Coding, Penetration Testing">
+    <meta name="author" content="Timothy Bibat">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://timbibat.github.io/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Timothy Bibat — Cybersecurity & Web Development Portfolio">
+    <meta property="og:description" content="Portfolio of Timothy Bibat — Cybersecurity student, web developer, and UI/UX designer. View my projects, skills, and certifications.">
+    <meta property="og:image" content="https://timbibat.github.io/assets/img/Timothy.jpg">
+    <meta property="og:url" content="https://timbibat.github.io/">
+    <meta property="og:site_name" content="Timothy Bibat Portfolio">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Timothy Bibat — Cybersecurity & Web Development Portfolio">
+    <meta name="twitter:description" content="Cybersecurity focused student, web developer, and UI/UX designer. Explore my project accomplishments and security focus.">
+    <meta name="twitter:image" content="https://timbibat.github.io/assets/img/Timothy.jpg">
+
+    <!-- Favicons -->
+    <link href="assets/img/Icon 5.png" rel="icon" type="image/png">
+    <link href="assets/img/Icon 5.png" rel="apple-touch-icon">
+
+    <!-- Stylesheets & Fonts -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- JSON-LD Structured Data for Search Engines -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://timbibat.github.io/#person",
+          "name": "Timothy Bibat",
+          "jobTitle": "Aspiring Cybersecurity Professional & Web Developer",
+          "url": "https://timbibat.github.io/",
+          "image": "https://timbibat.github.io/assets/img/Timothy.jpg",
+          "description": "Timothy Bibat is an aspiring cybersecurity professional, web developer, and UI/UX designer currently studying Information Technology at PUP.",
+          "alumnusOf": {
+            "@type": "EducationalOrganization",
+            "name": "Polytechnic University of the Philippines",
+            "url": "https://www.pup.edu.ph/"
+          },
+          "sameAs": [
+            "https://github.com/timbibat",
+            "https://www.linkedin.com/in/timothy-bibat-5ab419182",
+            "https://www.facebook.com/chimochip",
+            "https://www.instagram.com/chimoshii_p"
+          ],
+          "knowsAbout": [
+            "Cybersecurity",
+            "Information Technology",
+            "Web Development",
+            "UI/UX Design",
+            "Secure Coding",
+            "Penetration Testing",
+            "React",
+            "Next.js",
+            "Python",
+            "Bootstrap"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://timbibat.github.io/#website",
+          "url": "https://timbibat.github.io/",
+          "name": "Timothy Bibat — Portfolio",
+          "description": "Timothy Bibat's professional portfolio — aspiring cybersecurity professional, web developer, and UI/UX designer.",
+          "publisher": {
+            "@id": "https://timbibat.github.io/#person"
+          }
+        },
+        {
+          "@type": "ProfilePage",
+          "@id": "https://timbibat.github.io/#profilepage",
+          "url": "https://timbibat.github.io/",
+          "name": "Timothy Bibat's Professional Profile",
+          "about": {
+            "@id": "https://timbibat.github.io/#person"
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#sidebarNav" data-bs-smooth-scroll="true" data-bs-offset="150"
@@ -47,26 +132,22 @@
 
                 <nav id="sidebarNav" class="nav nav-pills flex-column w-100 mt-4" aria-label="Primary">
                     <a class="nav-link bg-primary text-white rounded-pill text-decoration-none fw-semibold mb-2 align-items-center"
-                        href="javascript:void(0)" style="transition: all 0.3s ease;"
-                        onclick="loadPage('about'); return false;">
+                        href="#about" style="transition: all 0.3s ease;">
                         <i class="fas fa-user me-2"></i>About Me
                     </a>
 
                     <a class="nav-link text-muted rounded-pill text-decoration-none fw-semibold mb-2 align-items-center"
-                        href="javascript:void(0)" style="transition: all 0.3s ease;"
-                        onclick="loadPage('tech-stack'); return false;">
+                        href="#tech-stack" style="transition: all 0.3s ease;">
                         <i class="fas fa-cogs me-2"></i>Tech-Stack
                     </a>
 
                     <a class="nav-link text-muted rounded-pill text-decoration-none fw-semibold mb-2 align-items-center"
-                        href="javascript:void(0)" style="transition: all 0.3s ease;"
-                        onclick="loadPage('portfolio'); return false;">
+                        href="#portfolio" style="transition: all 0.3s ease;">
                         <i class="fas fa-folder me-2"></i>Portfolio
                     </a>
 
                     <a class="nav-link text-muted rounded-pill text-decoration-none fw-semibold mb-2 align-items-center"
-                        href="javascript:void(0)" style="transition: all 0.3s ease;"
-                        onclick="loadPage('contact'); return false;">
+                        href="#contact" style="transition: all 0.3s ease;">
                         <i class="fas fa-envelope me-2"></i>Contact
                     </a>
                 </nav>
@@ -127,26 +208,22 @@
                                 <div class="navbar-glass rounded-4 my-3 p-2 d-flex align-items-center gap-2">
                                     <nav class="nav nav-fill flex-grow-1" id="navbar">
                                         <a class="nav-link bg-primary text-white rounded-pill text-decoration-none fw-semibold"
-                                            href="javascript:void(0)" style="transition: all 0.3s ease;"
-                                            onclick="loadPage('about'); return false;">
+                                            href="#about" style="transition: all 0.3s ease;">
                                             <i class="fas fa-user me-2"></i>About Me
                                         </a>
 
                                         <a class="nav-link text-muted rounded-pill text-decoration-none fw-semibold"
-                                            href="javascript:void(0)" style="transition: all 0.3s ease;"
-                                            onclick="loadPage('tech-stack'); return false;">
+                                            href="#tech-stack" style="transition: all 0.3s ease;">
                                             <i class="fas fa-cogs me-2"></i>Tech-Stack
                                         </a>
 
                                         <a class="nav-link text-muted rounded-pill text-decoration-none fw-semibold"
-                                            href="javascript:void(0)" style="transition: all 0.3s ease;"
-                                            onclick="loadPage('portfolio'); return false;">
+                                            href="#portfolio" style="transition: all 0.3s ease;">
                                             <i class="fas fa-folder me-2"></i>Portfolio
                                         </a>
 
                                         <a class="nav-link text-muted rounded-pill text-decoration-none fw-semibold"
-                                            href="javascript:void(0)" style="transition: all 0.3s ease;"
-                                            onclick="loadPage('contact'); return false;">
+                                            href="#contact" style="transition: all 0.3s ease;">
                                             <i class="fas fa-envelope me-2"></i>Contact
                                         </a>
                                     </nav>
@@ -276,8 +353,9 @@
     <script src="assets/js/populate.js"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        window.hasLoadedOnce = false;
 
+        document.addEventListener('DOMContentLoaded', function () {
             // Apply saved theme instantly before fade-in
             initTheme();
             
@@ -285,20 +363,6 @@
             setTimeout(hideLoader, 800);
             
             document.body.style.opacity = '1';
-
-
-            // Nav link switching
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function (e) {
-                    navLinks.forEach(nav => {
-                        nav.classList.remove('bg-primary', 'text-white');
-                        nav.classList.add('text-muted');
-                    });
-                    this.classList.remove('text-muted');
-                    this.classList.add('bg-primary', 'text-white');
-                });
-            });
 
             // Animated stat counters
             document.querySelectorAll('[data-count]').forEach(el => {
@@ -316,8 +380,82 @@
                 }, 50);
             });
 
-            loadPage('about', true);
+            // Initialize Routing
+            handleRouting();
+            window.addEventListener('hashchange', handleRouting);
         });
+
+        function handleRouting() {
+            // Get current hash, remove '#' and trim
+            let hash = window.location.hash.slice(1) || 'about';
+            
+            // Map hashes to valid content pages
+            const routes = {
+                'about': { 
+                    title: 'Timothy Bibat — About Me | Cybersecurity & Web Development', 
+                    desc: 'Timothy Bibat\'s professional portfolio — aspiring cybersecurity professional, web developer, and UI/UX designer. Learn more about my approach, skills, and background.' 
+                },
+                'tech-stack': { 
+                    title: 'Timothy Bibat — Tech-Stack | Languages, Tools & Security', 
+                    desc: 'Browse Timothy Bibat\'s technical stack including programming languages like Python, C++, JavaScript, frameworks like Next.js, and cybersecurity tools like Kali Linux.' 
+                },
+                'portfolio': { 
+                    title: 'Timothy Bibat — Portfolio & Projects | Software Engineering', 
+                    desc: 'Explore Timothy Bibat\'s web development, game design, API integrations, and mobile app projects including Capstone project ByaHero.' 
+                },
+                'contact': { 
+                    title: 'Timothy Bibat — Contact & Connect | Opportunities', 
+                    desc: 'Get in touch with Timothy Bibat for opportunities in Web Development and Security. Send a direct message or connect via LinkedIn.' 
+                }
+            };
+
+            // If the hash is not valid, fallback to 'about'
+            if (!routes[hash]) {
+                hash = 'about';
+            }
+
+            const isInitialLoad = !window.hasLoadedOnce;
+            window.hasLoadedOnce = true;
+
+            // Load the corresponding page content
+            loadPage(hash, isInitialLoad);
+
+            // Update title and meta description dynamically
+            document.title = routes[hash].title;
+            const descMeta = document.querySelector('meta[name="description"]');
+            if (descMeta) {
+                descMeta.setAttribute('content', routes[hash].desc);
+            }
+            
+            // Update Open Graph and Twitter metadata dynamically for browser/client sharing completeness
+            const ogTitle = document.querySelector('meta[property="og:title"]');
+            if (ogTitle) ogTitle.setAttribute('content', routes[hash].title);
+            const ogDesc = document.querySelector('meta[property="og:description"]');
+            if (ogDesc) ogDesc.setAttribute('content', routes[hash].desc);
+            const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+            if (twitterTitle) twitterTitle.setAttribute('content', routes[hash].title);
+            const twitterDesc = document.querySelector('meta[name="twitter:description"]');
+            if (twitterDesc) twitterDesc.setAttribute('content', routes[hash].desc);
+
+            // Update canonical link to point to this hash-route
+            const canonicalLink = document.querySelector('link[rel="canonical"]');
+            if (canonicalLink) {
+                canonicalLink.setAttribute('href', `https://timbibat.github.io/#${hash}`);
+            }
+
+            // Sync active navigation link highlight
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === `#${hash}`) {
+                    link.classList.remove('text-muted');
+                    link.classList.add('bg-primary', 'text-white');
+                } else {
+                    link.classList.remove('bg-primary', 'text-white');
+                    link.classList.add('text-muted');
+                }
+            });
+        }
 
         function loadPage(content, isInitialLoad = false) { // Add the parameter with a default value
             const maincontent = document.getElementById('maincontent');

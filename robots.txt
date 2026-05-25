@@ -1,0 +1,8 @@
+# www.robotstxt.org/
+
+# Allow all robots to crawl the website
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://timbibat.github.io/sitemap.xml
