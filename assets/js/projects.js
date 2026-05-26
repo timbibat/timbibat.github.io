@@ -78,5 +78,13 @@ portfolioDetails.projects = [
         description: "PokeQuest is a website for a fan based project for Pokemon. It features the latest Pokemon with their detailed information Built with Next.js using API Integration.",
         link: "https://pokequest-self.vercel.app/",
         git: "https://github.com/timbibat/pokequest",
+    },
+    {
+        name: "Anilogue",
+        category: "Web Development",
+        image: "assets/img/WD/Screenshot 2026-05-26 231539.png",
+        description: "Anilogue is an anime & manga tracking web application inspired by MyAnimeList. It is a platform where users can track their anime and manga progress, discover new titles, and interact with other anime fans. It is built with React, PHP, MySQL and uses API Integration from MyAnimeList API for anime and manga data.",
+        link: "https://anilogue.free.nf/",
+        git: "https://github.com/timbibat/Anilogue",
     }
 ];
