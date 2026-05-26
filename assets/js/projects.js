@@ -62,5 +62,21 @@ portfolioDetails.projects = [
         description: "SnapEat is a application that can scan a food to determine it's nutrition facts and determine if it's healthy or not. It is powered by AI using Python and Flask",
         link: "https://snapeat-henna.vercel.app/",
         git: "https://github.com/timbibat/snapeat",
+    },
+    {
+        name: "Philippine Information Portal & Travel Guide",
+        category: "Web Development",
+        image: "assets/img/WD/Screenshot 2026-05-26 122633.png",
+        description: "Philippine Information Portal & Travel Guide is a website that provides information about the Philippines and its tourist destinations with AI chatbot and information built with Next.js.",
+        link: "https://philippine-info.vercel.app/",
+        git: "https://github.com/timbibat/Philippines-Information-Portal-Travel-Guide",
+    },
+    {
+        name: "PokeQuest",
+        category: "Web Development",
+        image: "assets/img/WD/Screenshot 2026-05-26 143000.png",
+        description: "PokeQuest is a website for a fan based project for Pokemon. It features the latest Pokemon with their detailed information Built with Next.js using API Integration.",
+        link: "https://pokequest-self.vercel.app/",
+        git: "https://github.com/timbibat/pokequest",
     }
 ];
