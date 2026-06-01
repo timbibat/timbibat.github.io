@@ -25,15 +25,17 @@ const portfolioDetails = {
             "Created Notification feature to notify users about their friends sos notification.",
             "Implemented real-time seat availability tracking system and status indicator logic.",
             "Configured Firebase Cloud Functions for automated SOS push notifications and alerts.",
-            "Deploy it into a mobile app using Capacitorjs and make the location tracking, seat availability, push notification features work even the phone is closed",
+            "Deploy it into a mobile app using Capacitorjs and make the location tracking, seat availability, push notification features work even the phone is closed.",
             "Made the media session API for a conductor to control available seats when phone is locked.",
             "Created analytics for the system and make a report for the admin.",
-            "Implemented the google account login",
+            "Implemented the google account login.",
             "Implemented mail api for sending confirmations to the users.",
-            "Fix the bugs that i found and fix the performance of the app",
+            "Fix the bugs that i found and fix the performance of the app.",
             "Implemented forgot password feature using mail api.",
             "Implements AJAX polling for real-time synchronization, ensuring data accuracy without the overhead of heavy persistent connections.",
-            "Optimize the database queries and implement caching to improve the performance of the app"
+            "Optimize the database queries and implement caching to improve the performance of the app.",
+            "Improve the user guide and add more details to the user guide.",
+            "Improve the UI/UX in the webview to make it more user friendly."
         ],
         link: "https://byahero.free.nf",
         git: "https://github.com/ByaHero/ByaHero"
