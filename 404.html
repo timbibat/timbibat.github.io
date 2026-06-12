@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script type="text/javascript">
+        // Standard single-page app router redirect for GitHub Pages compatibility.
+        // It converts a direct URL path (e.g. /somepage) into a hash route (e.g. /#somepage)
+        // so index.html's routing engine can load the correct section or display the 404 page.
+        var segment = window.location.pathname.split('/').pop();
+        window.location.replace('/' + (segment ? '#' + segment : ''));
+    </script>
+</head>
+<body>
+    <p>Redirecting, please wait...</p>
+</body>
+</html>

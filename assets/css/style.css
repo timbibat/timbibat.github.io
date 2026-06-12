@@ -357,14 +357,7 @@ aside.col-xl-2::after {
     text-align: center;
 }
 
-/* Sidebar stats */
-.stat-number {
-    background: var(--primary-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: 800;
-}
+
 
 /* Sidebar social links */
 aside .text-dark,
@@ -546,13 +539,7 @@ aside.d-lg-none hr {
     opacity: 0.2;
 }
 
-/* Mobile stats */
-aside.d-lg-none .stat-number {
-    background: var(--primary-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
+
 
 /* ============================================================
    CONTENT AREA — GENERAL CARDS
@@ -608,36 +595,6 @@ main .bg-white.bg-opacity-95 {
     transform: translateY(-2px);
 }
 
-#maincontent .bg-light i.text-success,
-#maincontent .bg-light i.text-primary,
-#maincontent .bg-light i.text-info {
-    background: var(--primary-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-#maincontent .bg-light h5 {
-    color: var(--text-primary);
-}
-
-/* Currently learning items */
-#maincontent .bg-white.rounded-3 {
-    background: var(--bg-card) !important;
-    border-color: var(--border-subtle) !important;
-}
-
-#maincontent .bg-primary.bg-opacity-10,
-#maincontent .bg-success.bg-opacity-10,
-#maincontent .bg-warning.bg-opacity-10 {
-    background: var(--accent-subtle) !important;
-}
-
-#maincontent .bg-primary.bg-opacity-10 i,
-#maincontent .bg-success.bg-opacity-10 i,
-#maincontent .bg-warning.bg-opacity-10 i {
-    color: var(--accent-start) !important;
-}
 
 /* Progress bars */
 .progress {
@@ -688,51 +645,6 @@ main .bg-white.bg-opacity-95 {
 
 #maincontent .h6.mb-2 {
     color: var(--text-primary);
-}
-
-/* ============================================================
-   TECH-STACK PAGE
-   ============================================================ */
-
-/* Category containers */
-#tech-stack .rounded-3[style*="background: linear-gradient"] {
-    background: rgba(255, 255, 255, 0.02) !important;
-    border: 1px solid var(--border-subtle);
-    transition: all 0.35s ease;
-}
-
-#tech-stack .rounded-3[style*="background: linear-gradient"]:hover {
-    border-color: var(--border-hover);
-}
-
-/* Category headings */
-#tech-stack h5.text-primary,
-#tech-stack h5.text-info,
-#tech-stack h5.text-danger {
-    background: var(--primary-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-/* Tech icon tiles */
-#tech-stack .bg-white.rounded.shadow-sm {
-    background: rgba(255, 255, 255, 0.04) !important;
-    border-color: var(--border-subtle) !important;
-    transition: all 0.3s ease;
-    cursor: default;
-}
-
-#tech-stack .bg-white.rounded.shadow-sm:hover {
-    background: var(--accent-subtle) !important;
-    border-color: var(--border-hover) !important;
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px var(--accent-glow);
-}
-
-#tech-stack .bg-white.rounded.shadow-sm .text-muted {
-    color: var(--text-secondary) !important;
-    font-size: 0.8rem;
 }
 
 /* ============================================================
@@ -1031,15 +943,7 @@ main .bg-white.bg-opacity-95 {
     }
 }
 
-/* Contact form */
-.hero-gradient .bg-white {
-    background: var(--bg-card-solid) !important;
-    border: 1px solid var(--glass-border);
-}
 
-.hero-gradient .bg-white h5 {
-    color: var(--text-primary) !important;
-}
 
 .hero-gradient .form-control {
     background: rgba(255, 255, 255, 0.05) !important;
@@ -1062,22 +966,6 @@ main .bg-white.bg-opacity-95 {
     color: var(--text-secondary) !important;
 }
 
-.hero-gradient .btn-success {
-    background: var(--primary-gradient);
-    border: none;
-    transition: all 0.35s ease;
-}
-
-.hero-gradient .btn-success:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px var(--accent-glow);
-}
-
-/* Contact info icons */
-.hero-gradient .bg-white.bg-opacity-25 {
-    background: rgba(255, 255, 255, 0.12) !important;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-}
 
 /* Footer */
 .text-center.text-muted.small {
@@ -1191,9 +1079,14 @@ main .bg-white.bg-opacity-95 {
 }
 
 @media (max-width: 575.98px) {
+    #navbar {
+        flex-wrap: nowrap !important;
+    }
+
     #navbar .nav-link {
-        font-size: 0.72rem;
-        padding: 6px 8px;
+        font-size: 0.65rem;
+        padding: 6px 4px;
+        white-space: nowrap;
     }
 
     #navbar .nav-link i {
@@ -1445,7 +1338,7 @@ main .bg-white.bg-opacity-95 {
 }
 
 /* Project Carousel Styling */
-.carousel-indicators [button] {
+.carousel-indicators button {
     background-color: var(--accent-start);
 }
 
