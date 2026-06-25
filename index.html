@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 
 
 <head>
@@ -487,7 +487,7 @@
         // ---- Theme toggle ----
         function initTheme() {
             const saved = localStorage.getItem('theme');
-            const theme = saved || 'light';
+            const theme = saved || 'dark';
             document.documentElement.setAttribute('data-theme', theme);
             updateToggleIcons(theme);
         }
