@@ -1,0 +1,155 @@
+/* ============================================================
+   BASE AND TYPOGRAPHY
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-primary);
+    background-attachment: fixed;
+    min-height: 100vh;
+    color: var(--text-primary);
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: 0.01em;
+}
+
+/* Ensure Font Awesome Solid icons render correctly in Safari */
+.fas,
+.fa-solid {
+    font-weight: 900 !important;
+}
+
+/* Subtle animated background mesh */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 800px 600px at 15% 20%, var(--glow-color-1) 0%, transparent 75%),
+        radial-gradient(ellipse 700px 500px at 85% 70%, var(--glow-color-2) 0%, transparent 75%),
+        radial-gradient(ellipse 600px 450px at 50% 50%, var(--glow-color-3) 0%, transparent 75%);
+    pointer-events: none;
+    z-index: 0;
+    animation: meshFloat 20s ease-in-out infinite alternate;
+}
+
+@keyframes meshFloat {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(-15px, 10px) scale(1.02);
+    }
+
+    100% {
+        transform: translate(10px, -8px) scale(0.98);
+    }
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    letter-spacing: -0.02em;
+    font-weight: 700;
+}
+
+.text-muted {
+    color: var(--text-secondary) !important;
+}
+
+.text-dark {
+    color: var(--text-primary) !important;
+}
+
+p {
+    line-height: 1.7;
+}
+
+.lead {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-weight: 400;
+}
+
+.glow-text {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    outline: none;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-box-decoration-break: clone;
+    isolation: isolate;
+}
+
+.custom-text {
+    font-size: 12px;
+}
+
+/* ============================================================
+   SCROLLBAR — premium style
+   ============================================================ */
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Selection color */
+::selection {
+    background: rgba(99, 102, 241, 0.3);
+    color: #fff;
+}
+
+/* ============================================================
+   LIGHT THEME OVERRIDES
+   ============================================================ */
+
+[data-theme="light"] body {
+    background: var(--bg-gradient);
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] ::selection {
+    background: rgba(99, 102, 241, 0.2);
+    color: #1a1a2e;
+}

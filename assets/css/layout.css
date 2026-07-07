@@ -1,0 +1,258 @@
+/* ============================================================
+   LAYOUT: SIDEBAR, TOPBAR, AND MOBILE WRAPPERS
+   ============================================================ */
+
+/* Sidebar */
+aside.col-lg-3,
+aside.col-xl-2 {
+    background: var(--bg-sidebar) !important;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border-right: 1px solid var(--border-subtle) !important;
+    border-color: var(--border-subtle) !important;
+    position: relative;
+    z-index: 10;
+}
+
+/* Accent glow line along right edge */
+aside.col-lg-3::after,
+aside.col-xl-2::after {
+    content: '';
+    position: absolute;
+    top: 15%;
+    right: 0;
+    width: 1px;
+    height: 70%;
+    background: var(--primary-gradient);
+    opacity: 0.4;
+}
+
+/* Profile image ring */
+.profile-ring {
+    background: var(--primary-gradient) !important;
+    position: relative;
+    animation: floatProfile 6s ease-in-out infinite;
+}
+
+@keyframes floatProfile {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+.profile-ring::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: var(--primary-gradient);
+    opacity: 0.2;
+    filter: blur(10px);
+    z-index: -1;
+    animation: ringGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes ringGlow {
+    from {
+        opacity: 0.15;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0.35;
+        transform: scale(1.05);
+    }
+}
+
+/* Sidebar nav links */
+#sidebarNav .nav-link {
+    color: var(--text-secondary) !important;
+    border-radius: var(--radius-md) !important;
+    padding: 10px 16px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+#sidebarNav .nav-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%) scaleY(0);
+    width: 3px;
+    height: 60%;
+    border-radius: 0 3px 3px 0;
+    background: var(--primary-gradient);
+    transition: transform 0.3s ease;
+}
+
+#sidebarNav .nav-link:hover {
+    color: var(--text-primary) !important;
+    background: var(--accent-subtle) !important;
+}
+
+#sidebarNav .nav-link.bg-primary {
+    background: var(--accent-subtle) !important;
+    color: var(--text-primary) !important;
+    box-shadow: none;
+}
+
+#sidebarNav .nav-link.bg-primary::before {
+    transform: translateY(-50%) scaleY(1);
+}
+
+/* Make nav icons have a subtle bg */
+#sidebarNav .nav-link i {
+    width: 20px;
+    text-align: center;
+}
+
+/* Sidebar social links */
+aside .text-dark,
+aside a.text-dark {
+    color: var(--text-secondary) !important;
+    transition: all 0.3s ease;
+}
+
+aside a.text-dark:hover {
+    color: var(--accent-start) !important;
+    transform: translateY(-2px);
+}
+
+aside .border-top {
+    border-color: var(--border-subtle) !important;
+}
+
+/* ============================================================
+   MOBILE TOPBAR / NAVBAR GLASS
+   ============================================================ */
+
+.navbar-glass {
+    background: rgba(14, 14, 20, 0.85) !important;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid var(--border-subtle) !important;
+    box-shadow: var(--shadow-md);
+}
+
+/* Mobile nav links */
+#navbar .nav-link {
+    color: var(--text-secondary) !important;
+    border-radius: var(--radius-md) !important;
+    font-size: 0.82rem;
+    padding: 8px 12px;
+    transition: all 0.3s ease;
+}
+
+#navbar .nav-link.bg-primary {
+    background: var(--accent-subtle) !important;
+    color: var(--text-primary) !important;
+    box-shadow: inset 0 -2px 0 var(--accent-start);
+}
+
+#navbar .nav-link:hover {
+    color: var(--text-primary) !important;
+}
+
+/* ============================================================
+   MOBILE PROFILE SECTION
+   ============================================================ */
+
+aside.d-lg-none .bg-white {
+    background: var(--bg-card) !important;
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border) !important;
+}
+
+aside.d-lg-none h1,
+aside.d-lg-none .display-5 {
+    color: var(--text-primary) !important;
+}
+
+aside.d-lg-none .h5,
+aside.d-lg-none p.text-muted {
+    color: var(--text-secondary) !important;
+}
+
+aside.d-lg-none .social-link {
+    color: var(--text-secondary) !important;
+    transition: all 0.3s ease;
+}
+
+aside.d-lg-none .social-link:hover {
+    color: var(--accent-start) !important;
+    transform: translateY(-2px);
+}
+
+aside.d-lg-none hr {
+    background: linear-gradient(90deg, transparent, var(--accent-start), transparent) !important;
+    opacity: 0.2;
+}
+
+/* ============================================================
+   RESPONSIVE TWEAKS
+   ============================================================ */
+
+@media (max-width: 991.98px) {
+    body::before {
+        opacity: 0.5;
+    }
+
+    .navbar-glass {
+        border-radius: var(--radius-lg) !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    #navbar {
+        flex-wrap: nowrap !important;
+    }
+
+    #navbar .nav-link {
+        font-size: 0.65rem;
+        padding: 6px 4px;
+        white-space: nowrap;
+    }
+
+    #navbar .nav-link i {
+        display: none;
+    }
+}
+
+/* ============================================================
+   LIGHT THEME LAYOUT OVERRIDES
+   ============================================================ */
+
+[data-theme="light"] aside.col-lg-3,
+[data-theme="light"] aside.col-xl-2 {
+    background: var(--bg-sidebar) !important;
+    border-right-color: var(--border-subtle) !important;
+}
+
+[data-theme="light"] aside.col-lg-3::after,
+[data-theme="light"] aside.col-xl-2::after {
+    opacity: 0.25;
+}
+
+[data-theme="light"] aside .text-dark,
+[data-theme="light"] aside a.text-dark {
+    color: var(--text-secondary) !important;
+}
+
+[data-theme="light"] aside a.text-dark:hover {
+    color: var(--accent-start) !important;
+}
+
+[data-theme="light"] .profile-ring img {
+    border-color: #fff !important;
+}
+
+[data-theme="light"] .navbar-glass {
+    background: rgba(255, 255, 255, 0.88) !important;
+    border-color: var(--border-subtle) !important;
+}

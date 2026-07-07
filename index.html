@@ -451,17 +451,21 @@
                             el.textContent = currentYear;
                         });
 
-                        // --- NEW MOBILE SCROLL LOGIC ---
-                        if (window.innerWidth < 992 && !isInitialLoad) {
-                            if (content === 'about') {
-                                // If "About Me" is clicked, scroll to the very top (Profile Section)
-                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                        // Scroll behavior on page change
+                        if (!isInitialLoad) {
+                            if (window.innerWidth < 992) {
+                                if (content === 'about') {
+                                    // On mobile, scroll to the very top (Profile Section) for "About Me"
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                } else {
+                                    // On mobile, scroll to the top of the content card for other sections
+                                    maincontent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                }
                             } else {
-                                // For Tech-Stack, Portfolio, and Contact, scroll to the main content
-                                maincontent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                // On desktop, scroll to the top of the window
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
                             }
                         }
-                        // -------------------------------
 
                         // Hide loader after content is ready
                         setTimeout(hideLoader, 600);
