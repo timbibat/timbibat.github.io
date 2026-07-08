@@ -86,5 +86,13 @@ portfolioDetails.projects = [
         description: "Anilogue is an anime & manga tracking web application inspired by MyAnimeList. It is a platform where users can track their anime and manga progress, discover new titles, and interact with other anime fans. It is built with React, PHP, MySQL and uses API Integration from MyAnimeList API for anime and manga data.",
         link: "https://anilogue.free.nf/",
         git: "https://github.com/timbibat/Anilogue",
+    },
+    {
+        name: "Trend Website",
+        category: "Web Development",
+        image: "assets/img/WD/Screenshot 2026-07-08 192349.png",
+        description: "Trend Website is a website that provides information about the latest trends in the world. It is a platform where users can track the latest trends in the world and interact with other users. It is built with Python, HTML and TailwindCSS.",
+        link: "https://timbibat.github.io/trend/",
+        git: "https://github.com/timbibat/trend",
     }
 ];
