@@ -52,7 +52,7 @@ window.renderPortfolio = async function() {
                     const snap = await getDocs(collection(db, col));
                     window.portfolioDetails[col] = snap.docs
                         .map(doc => doc.data())
-                        .sort((a, b) => (a.order || Number.MAX_SAFE_INTEGER) - (b.order || Number.MAX_SAFE_INTEGER));
+                        .sort((a, b) => (a.order ?? Number.MAX_SAFE_INTEGER) - (b.order ?? Number.MAX_SAFE_INTEGER));
                 }
                 
                 isDataLoaded = true;
