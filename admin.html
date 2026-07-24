@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfolio Admin Dashboard</title>
+    <link href="assets/img/Icon 5.png" rel="icon" type="image/png">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <div class="container py-5">
+        
+        <!-- Login Section -->
+        <div id="login-section" class="row justify-content-center mt-5">
+            <div class="col-md-6 col-lg-5">
+                <div class="glass-card p-5 rounded-4 border-primary border-opacity-25">
+                    <h3 class="fw-bold mb-4 text-center">Admin Login</h3>
+                    <form id="login-form">
+                        <div class="mb-3">
+                            <label class="form-label text-muted">Email address</label>
+                            <input type="email" class="form-control bg-dark text-white border-secondary" id="login-email" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label text-muted">Password</label>
+                            <input type="password" class="form-control bg-dark text-white border-secondary" id="login-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 fw-bold rounded-pill">Login</button>
+                        <div id="login-error" class="text-danger mt-3 text-center d-none"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div id="dashboard-section" class="d-none">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="fw-bold"><span class="glow-text">Portfolio Admin</span></h2>
+                <button id="logout-btn" class="btn btn-outline-danger rounded-pill">Logout</button>
+            </div>
+
+            <div class="glass-card p-4 rounded-4 border-primary border-opacity-25">
+                <ul class="nav nav-tabs border-0 mb-4" id="adminTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active fw-semibold rounded-pill" data-bs-toggle="tab" data-bs-target="#major" type="button" role="tab">Major Project</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link fw-semibold rounded-pill" data-bs-toggle="tab" data-bs-target="#projects" type="button" role="tab">Projects</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link fw-semibold rounded-pill" data-bs-toggle="tab" data-bs-target="#activities" type="button" role="tab">Activities</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link fw-semibold rounded-pill" data-bs-toggle="tab" data-bs-target="#multimedia" type="button" role="tab">Multimedia</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link fw-semibold rounded-pill" data-bs-toggle="tab" data-bs-target="#certificates" type="button" role="tab">Certificates</button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="adminTabContent">
+                    <!-- Dynamic Content Area (handled by JS) -->
+                    <div id="admin-content-area"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Modal -->
+    <div class="modal fade" id="itemModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass-card border-0">
+                <div class="modal-header border-secondary border-opacity-25">
+                    <h5 class="modal-title fw-bold" id="itemModalLabel">Add Item</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="item-form">
+                        <input type="hidden" id="item-collection">
+                        <input type="hidden" id="item-id">
+                        <input type="hidden" id="existing-image">
+                        
+                        <div class="mb-3">
+                            <label class="form-label text-muted">Title / Name</label>
+                            <input type="text" class="form-control bg-dark text-white border-secondary" id="item-name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">Category</label>
+                            <input type="text" class="form-control bg-dark text-white border-secondary" id="item-category" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">Description</label>
+                            <textarea class="form-control bg-dark text-white border-secondary" id="item-description" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3 d-none" id="current-image-container">
+                            <label class="form-label text-muted d-block text-start">Current Main Image</label>
+                            <img id="current-image-preview" src="" class="img-thumbnail bg-dark border-secondary" style="max-height: 150px; object-fit: contain;">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">Upload New Main Image</label>
+                            <div id="drop-zone" class="border border-secondary rounded-3 p-4 text-center bg-dark" style="border-style: dashed !important; border-width: 2px !important; cursor: pointer; transition: all 0.3s ease;">
+                                <i class="fas fa-cloud-upload-alt fa-2x mb-2 text-secondary" id="drop-icon"></i>
+                                <p class="mb-1 text-muted" id="drop-text">Drag & Drop new image here</p>
+                                <small class="text-secondary">or click to browse</small>
+                                <input type="file" class="d-none" id="item-image" accept="image/*">
+                            </div>
+                            <div id="file-preview" class="mt-2 text-info small fw-bold d-none"></div>
+                            <small class="text-muted mt-1 d-block" id="image-help">Leave empty to keep current image.</small>
+                        </div>
+                        
+                        <div class="mb-3 d-none p-3 border border-secondary rounded-3 bg-dark" id="major-images-container">
+                            <label class="form-label text-white fw-bold mb-3"><i class="fas fa-images me-2 text-primary"></i>Slide Images (Major Project)</label>
+                            <div id="slide-images-preview" class="d-flex flex-wrap gap-2 mb-3"></div>
+                            <div class="input-group input-group-sm">
+                                <input type="file" class="form-control bg-dark text-white border-secondary" id="item-slide-images" accept="image/*" multiple>
+                            </div>
+                            <small class="text-muted mt-1 d-block">Select multiple files to append new slides.</small>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">Full Description (Used in Modal)</label>
+                            <textarea class="form-control bg-dark text-white border-secondary" id="item-full-description" rows="4"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">Key Contributions (One per line)</label>
+                            <textarea class="form-control bg-dark text-white border-secondary" id="item-contributions" rows="4" placeholder="Lead Frontend Developer...&#10;Optimized SEO...&#10;Created features..."></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">Live Demo Link (Optional)</label>
+                            <input type="url" class="form-control bg-dark text-white border-secondary" id="item-link">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">GitHub Link (Optional)</label>
+                            <input type="url" class="form-control bg-dark text-white border-secondary" id="item-git">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-100 fw-bold rounded-pill mt-3" id="save-btn">Save Item</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap & Firebase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <!-- SortableJS for drag-and-drop sorting -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script type="module" src="assets/js/admin.js"></script>
+</body>
+</html>

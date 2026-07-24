@@ -1,4 +1,30 @@
-function renderPortfolio() {
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, getDocs, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyB8HS55P_6EMvYMPDiVR9oRT8KbgYrAfYg",
+    authDomain: "portfolio-28018.firebaseapp.com",
+    projectId: "portfolio-28018",
+    storageBucket: "portfolio-28018.firebasestorage.app",
+    messagingSenderId: "45925777575",
+    appId: "1:45925777575:web:54062ce2b211d47cd99b82",
+    measurementId: "G-8FES10Q3WZ"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Global portfolio Details cache to avoid refetching on every tab switch
+window.portfolioDetails = {
+    majorProject: null,
+    projects: [],
+    activities: [],
+    multimedia: [],
+    certificates: []
+};
+let isDataLoaded = false;
+
+window.renderPortfolio = async function() {
     const majorProjectContainer = document.getElementById("major-project-container");
     const activitiesContainer = document.getElementById("activities-container");
     const projectsContainer = document.getElementById("projects-container");
@@ -6,12 +32,40 @@ function renderPortfolio() {
     const certificatesContainer = document.getElementById("certificates-container");
 
     if (activitiesContainer && projectsContainer && multimediaContainer && certificatesContainer) {
-        if (majorProjectContainer) majorProjectContainer.innerHTML = '';
+        // Show loading state
+        if (majorProjectContainer) majorProjectContainer.innerHTML = '<div class="text-center my-5"><div class="spinner-border text-primary" role="status"></div></div>';
         activitiesContainer.innerHTML = '';
         projectsContainer.innerHTML = '';
         multimediaContainer.innerHTML = '';
         certificatesContainer.innerHTML = '';
         
+        // Fetch data if not already loaded
+        if (!isDataLoaded) {
+            try {
+                // Fetch Major Project
+                const majorSnap = await getDoc(doc(db, 'majorProject', 'main'));
+                if (majorSnap.exists()) window.portfolioDetails.majorProject = majorSnap.data();
+
+                // Fetch other collections
+                const collections = ['projects', 'activities', 'multimedia', 'certificates'];
+                for (const col of collections) {
+                    const snap = await getDocs(collection(db, col));
+                    window.portfolioDetails[col] = snap.docs
+                        .map(doc => doc.data())
+                        .sort((a, b) => (a.order || Number.MAX_SAFE_INTEGER) - (b.order || Number.MAX_SAFE_INTEGER));
+                }
+                
+                isDataLoaded = true;
+            } catch (error) {
+                console.error("Error fetching portfolio data from Firebase:", error);
+                if (majorProjectContainer) majorProjectContainer.innerHTML = `<div class="alert alert-danger">Failed to load data. Please try again later.</div>`;
+                return;
+            }
+        }
+
+        // Clear loading state
+        if (majorProjectContainer) majorProjectContainer.innerHTML = '';
+
         // Helper function to render a project card
         const createProjectCard = (proj, index) => {
             const demoStatus = proj.link ? '' : 'disabled';
@@ -51,8 +105,8 @@ function renderPortfolio() {
             </div>`;
         };
         
-        // Render Major Project from data.js
-        const majorProj = portfolioDetails.majorProject;
+        // Render Major Project
+        const majorProj = window.portfolioDetails.majorProject;
         if (majorProjectContainer && majorProj) {
             const demoStatus = majorProj.link ? '' : 'disabled';
             const gitStatus = majorProj.git ? '' : 'disabled';
@@ -97,43 +151,44 @@ function renderPortfolio() {
             </div>`;
         }
 
-        // Filter out major project from projects list safely
-        const projectsToRender = (majorProj && portfolioDetails.projects) 
-            ? portfolioDetails.projects.filter(p => p.name !== majorProj.name) 
-            : (portfolioDetails.projects || []);
+        // Render Projects
+        const projectsToRender = (majorProj && window.portfolioDetails.projects) 
+            ? window.portfolioDetails.projects.filter(p => p.name !== majorProj.name) 
+            : (window.portfolioDetails.projects || []);
 
         projectsToRender.forEach((proj, index) => {
             projectsContainer.innerHTML += createProjectCard(proj, index);
         });
 
-        if (portfolioDetails.activities) {
-            portfolioDetails.activities.forEach((act, index) => {
+        // Render Activities
+        if (window.portfolioDetails.activities) {
+            window.portfolioDetails.activities.forEach((act, index) => {
                 activitiesContainer.innerHTML += createProjectCard(act, index);
             });
         }
 
-        if (portfolioDetails.multimedia) {
-            portfolioDetails.multimedia.forEach((multi, index) => {
+        // Render Multimedia
+        if (window.portfolioDetails.multimedia) {
+            window.portfolioDetails.multimedia.forEach((multi, index) => {
                 multimediaContainer.innerHTML += createProjectCard(multi, index);
             });
         }
 
-        if (portfolioDetails.certificates) {
-            portfolioDetails.certificates.forEach((cert, index) => {
+        // Render Certificates
+        if (window.portfolioDetails.certificates) {
+            window.portfolioDetails.certificates.forEach((cert, index) => {
                 certificatesContainer.innerHTML += createProjectCard(cert, index);
             });
         }
     }
 }
 
-// Tab functionality handled by Bootstrap 5 native data-bs attributes in portfolio.html
-
-function showProjectModal() {
-    const majorProj = portfolioDetails.majorProject;
+window.showProjectModal = function() {
+    const majorProj = window.portfolioDetails.majorProject;
     const modalContent = document.getElementById('modal-content-area');
     
     if (modalContent && majorProj) {
-        let contributionsHTML = majorProj.contributions.map(c => 
+        let contributionsHTML = (majorProj.contributions || []).map(c => 
             `<li class="mb-3 d-flex align-items-start">
                 <i class="fas fa-check-circle text-primary mt-1 me-3"></i>
                 <span>${c}</span>
@@ -188,12 +243,13 @@ function showProjectModal() {
                         <h2 class="display-5 fw-bold mb-0">${majorProj.name}</h2>
                         <span class="mt-2 mt-md-0 ms-md-3 badge rounded-pill bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-3 py-2">${majorProj.category}</span>
                     </div>
-                    <p class="lead text-muted mb-5" style="line-height: 1.8;">${majorProj.fullDescription}</p>
+                    <p class="lead text-muted mb-5" style="line-height: 1.8;">${majorProj.fullDescription || majorProj.description || ''}</p>
                     
+                    ${contributionsHTML ? `
                     <h4 class="fw-bold mb-4">Key Contributions</h4>
                     <ul class="list-unstyled mb-5">
                         ${contributionsHTML}
-                    </ul>
+                    </ul>` : ''}
                     
                     <div class="d-flex gap-3">
                         <a href="${majorProj.link}" class="btn btn-gradient text-white px-4 py-2 fw-semibold ${majorProj.link ? '' : 'disabled'}" target="_blank">
@@ -210,7 +266,6 @@ function showProjectModal() {
         const myModal = new bootstrap.Modal(document.getElementById('projectModal'));
         myModal.show();
 
-        // Initialize carousel for auto-swiping
         const carouselEl = document.getElementById('projectCarousel');
         if (carouselEl) {
             new bootstrap.Carousel(carouselEl, {
