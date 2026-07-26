@@ -112,6 +112,41 @@ main .bg-white.bg-opacity-95 {
     transform: scale(1.08);
 }
 
+/* Image Loading Spinner & Transitions */
+.img-loading-wrapper {
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.02);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+[data-theme="light"] .img-loading-wrapper {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.img-loading-wrapper .img-spinner {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.img-lazy-load {
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out, transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.img-lazy-load.loaded {
+    opacity: 1;
+}
+
+.img-lazy-load.loaded ~ .img-spinner,
+.img-lazy-load.loaded + .img-spinner {
+    opacity: 0;
+    visibility: hidden;
+}
+
 .project-card .card-title {
     color: var(--text-primary) !important;
 }

@@ -66,6 +66,16 @@ window.renderPortfolio = async function() {
         // Clear loading state
         if (majorProjectContainer) majorProjectContainer.innerHTML = '';
 
+        // Helper function to check if images are already cached/loaded
+        const checkLoadedImages = (container) => {
+            if (!container) return;
+            container.querySelectorAll('img.img-lazy-load').forEach(img => {
+                if (img.complete && img.naturalWidth !== 0) {
+                    img.classList.add('loaded');
+                }
+            });
+        };
+
         // Helper function to render a project card
         const createProjectCard = (proj, index) => {
             const demoStatus = proj.link ? '' : 'disabled';
@@ -85,7 +95,14 @@ window.renderPortfolio = async function() {
             return `
             <div class="col animate-in" style="animation-delay: ${index * 0.1}s;">
                 <div class="project-card h-100 rounded-4 overflow-hidden">
-                    <img src="${proj.image}" class="card-img-top" alt="${proj.name}" style="height: 250px; object-fit: cover;">
+                    <div class="img-loading-wrapper position-relative overflow-hidden" style="height: 250px;">
+                        <img src="${proj.image}" class="card-img-top img-lazy-load" alt="${proj.name}" style="height: 250px; object-fit: cover;" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded')">
+                        <div class="img-spinner position-absolute top-50 start-50 translate-middle">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="card-body p-4 d-flex flex-column">
                         <div class="mb-3 d-flex flex-wrap gap-1">
                             ${badgesHTML}
@@ -115,8 +132,13 @@ window.renderPortfolio = async function() {
             <div class="major-project-article animate-in" onclick="showProjectModal()" style="cursor: pointer;">
                 <div class="row align-items-center g-4 g-lg-5">
                     <div class="col-lg-5">
-                        <div class="major-project-image-wrapper p-4 rounded-4 shadow-lg">
-                            <img src="${majorProj.image}" class="img-fluid" alt="${majorProj.name}">
+                        <div class="major-project-image-wrapper p-4 rounded-4 shadow-lg img-loading-wrapper position-relative" style="min-height: 250px;">
+                            <img src="${majorProj.image}" class="img-fluid img-lazy-load" alt="${majorProj.name}" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded')">
+                            <div class="img-spinner position-absolute top-50 start-50 translate-middle">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-7">
@@ -180,6 +202,9 @@ window.renderPortfolio = async function() {
                 certificatesContainer.innerHTML += createProjectCard(cert, index);
             });
         }
+
+        // Check already loaded / cached images
+        checkLoadedImages(document.getElementById("portfolioTabContent"));
     }
 }
 
@@ -203,7 +228,14 @@ window.showProjectModal = function() {
             majorProj.images.forEach((img, idx) => {
                 carouselItems += `
                     <div class="carousel-item ${idx === 0 ? 'active' : ''}">
-                        <img src="${img}" class="d-block w-100 rounded-4 shadow-sm" style="height: 400px; object-fit: contain; background: rgba(0,0,0,0.03);" alt="${majorProj.name} - image ${idx + 1}">
+                        <div class="img-loading-wrapper position-relative rounded-4 overflow-hidden" style="height: 400px;">
+                            <img src="${img}" class="d-block w-100 rounded-4 shadow-sm img-lazy-load" style="height: 400px; object-fit: contain; background: rgba(0,0,0,0.03);" alt="${majorProj.name} - image ${idx + 1}" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded')">
+                            <div class="img-spinner position-absolute top-50 start-50 translate-middle">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 `;
                 carouselIndicators += `
@@ -213,7 +245,14 @@ window.showProjectModal = function() {
         } else {
             carouselItems = `
                 <div class="carousel-item active">
-                    <img src="${majorProj.image}" class="d-block w-100 rounded-4 shadow-sm" style="height: 400px; object-fit: contain; background: rgba(0,0,0,0.03);" alt="${majorProj.name}">
+                    <div class="img-loading-wrapper position-relative rounded-4 overflow-hidden" style="height: 400px;">
+                        <img src="${majorProj.image}" class="d-block w-100 rounded-4 shadow-sm img-lazy-load" style="height: 400px; object-fit: contain; background: rgba(0,0,0,0.03);" alt="${majorProj.name}" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded')">
+                        <div class="img-spinner position-absolute top-50 start-50 translate-middle">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             `;
         }
@@ -263,6 +302,13 @@ window.showProjectModal = function() {
             </div>
         `;
         
+        // Check already loaded / cached images in modal
+        modalContent.querySelectorAll('img.img-lazy-load').forEach(img => {
+            if (img.complete && img.naturalWidth !== 0) {
+                img.classList.add('loaded');
+            }
+        });
+
         const myModal = new bootstrap.Modal(document.getElementById('projectModal'));
         myModal.show();
 
