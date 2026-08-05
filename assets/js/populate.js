@@ -69,11 +69,19 @@ window.renderPortfolio = async function() {
         // Helper function to check if images are already cached/loaded
         const checkLoadedImages = (container) => {
             if (!container) return;
-            container.querySelectorAll('img.img-lazy-load').forEach(img => {
+            const images = container.querySelectorAll('img.img-lazy-load');
+            images.forEach(img => {
                 if (img.complete && img.naturalWidth !== 0) {
                     img.classList.add('loaded');
+                } else {
+                    img.addEventListener('load', () => img.classList.add('loaded'), { once: true });
+                    img.addEventListener('error', () => img.classList.add('loaded'), { once: true });
                 }
             });
+            // Fallback timeout for WebKit/Safari cached images where load event might not fire
+            setTimeout(() => {
+                images.forEach(img => img.classList.add('loaded'));
+            }, 300);
         };
 
         // Helper function to render a project card
@@ -178,29 +186,37 @@ window.renderPortfolio = async function() {
             ? window.portfolioDetails.projects.filter(p => p.name !== majorProj.name) 
             : (window.portfolioDetails.projects || []);
 
+        let projectsHTML = '';
         projectsToRender.forEach((proj, index) => {
-            projectsContainer.innerHTML += createProjectCard(proj, index);
+            projectsHTML += createProjectCard(proj, index);
         });
+        projectsContainer.innerHTML = projectsHTML;
 
         // Render Activities
         if (window.portfolioDetails.activities) {
+            let activitiesHTML = '';
             window.portfolioDetails.activities.forEach((act, index) => {
-                activitiesContainer.innerHTML += createProjectCard(act, index);
+                activitiesHTML += createProjectCard(act, index);
             });
+            activitiesContainer.innerHTML = activitiesHTML;
         }
 
         // Render Multimedia
         if (window.portfolioDetails.multimedia) {
+            let multimediaHTML = '';
             window.portfolioDetails.multimedia.forEach((multi, index) => {
-                multimediaContainer.innerHTML += createProjectCard(multi, index);
+                multimediaHTML += createProjectCard(multi, index);
             });
+            multimediaContainer.innerHTML = multimediaHTML;
         }
 
         // Render Certificates
         if (window.portfolioDetails.certificates) {
+            let certsHTML = '';
             window.portfolioDetails.certificates.forEach((cert, index) => {
-                certificatesContainer.innerHTML += createProjectCard(cert, index);
+                certsHTML += createProjectCard(cert, index);
             });
+            certificatesContainer.innerHTML = certsHTML;
         }
 
         // Check already loaded / cached images
@@ -320,4 +336,12 @@ window.showProjectModal = function() {
             });
         }
     }
+}
+
+// Notify system that module is ready
+window.dispatchEvent(new CustomEvent('portfolioModuleReady'));
+
+// If portfolio content container is already in the DOM (e.g. injected before module load completed), trigger render
+if (document.getElementById("projects-container")) {
+    window.renderPortfolio();
 }
