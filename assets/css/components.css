@@ -139,15 +139,19 @@
     from {
         box-shadow: 0 0 8px rgba(34, 197, 94, 0.1);
     }
+
     to {
         box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
     }
 }
 
 @keyframes pulse-dot {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 1;
     }
+
     50% {
         opacity: 0.3;
     }
@@ -282,8 +286,13 @@ html.theme-transitioning *::after {
 }
 
 @keyframes loader-spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .loader-text {
@@ -303,6 +312,7 @@ html.theme-transitioning *::after {
         width: 60px;
         height: 60px;
     }
+
     .loader-text {
         top: calc(45vh + 50px);
         font-size: 0.65rem;
@@ -310,10 +320,13 @@ html.theme-transitioning *::after {
 }
 
 @keyframes loader-pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 0.4;
         transform: scale(0.98);
     }
+
     50% {
         opacity: 1;
         transform: scale(1);
