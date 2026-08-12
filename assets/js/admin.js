@@ -80,12 +80,12 @@ async function loadData(collectionName) {
     let html = `
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h4 class="fw-bold mb-0 text-capitalize">${collectionName === 'majorProject' ? 'Major Project' : collectionName}</h4>
-            ${collectionName !== 'majorProject' ? `
-                <div>
+            <div>
+                ${collectionName !== 'majorProject' ? `
                     <button class="btn btn-warning btn-sm rounded-pill px-3 fw-bold me-2" onclick="saveOrder('${collectionName}')" id="save-order-btn" disabled><i class="fas fa-save me-2"></i>Save Order</button>
-                    <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold" onclick="openModal('${collectionName}')"><i class="fas fa-plus me-2"></i>Add New</button>
-                </div>
-            ` : ''}
+                ` : ''}
+                <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold" onclick="openModal('${collectionName}')"><i class="fas fa-plus me-2"></i>${collectionName === 'majorProject' ? 'Add Major Project' : 'Add New'}</button>
+            </div>
         </div>
         <div class="table-responsive">
             <table class="table table-dark table-hover align-middle" id="sortable-table">
@@ -109,8 +109,10 @@ async function loadData(collectionName) {
             
             if (docSnap.exists()) {
                 const data = docSnap.data();
+                window.currentMajorData = { ...data, id: docSnap.id };
                 html += generateTableRow(docSnap.id, data, collectionName, true);
             } else {
+                window.currentMajorData = null;
                 html += `<tr><td colspan="4" class="text-center py-4">No major project configured yet. <button class="btn btn-sm btn-outline-primary ms-2" onclick="openModal('majorProject')">Add Now</button></td></tr>`;
             }
         } else {
@@ -196,7 +198,7 @@ window.openModal = (collectionName) => {
         document.getElementById('major-images-container').classList.add('d-none');
     }
 
-    document.getElementById('itemModalLabel').textContent = 'Add New Item';
+    document.getElementById('itemModalLabel').textContent = collectionName === 'majorProject' ? 'Add Major Project' : 'Add New Item';
     itemModal.show();
 };
 
@@ -246,7 +248,7 @@ window.editItem = (encodedData, collectionName) => {
         document.getElementById('major-images-container').classList.add('d-none');
     }
     
-    document.getElementById('itemModalLabel').textContent = 'Edit Item';
+    document.getElementById('itemModalLabel').textContent = collectionName === 'majorProject' ? 'Edit Major Project' : 'Edit Item';
     itemModal.show();
 };
 
@@ -441,10 +443,15 @@ itemForm.addEventListener('submit', async (e) => {
         }
 
         if (collectionName === 'majorProject') {
-            if (newSlideUrls.length > 0) {
-                itemData.images = arrayUnion(...newSlideUrls);
+            if (id) {
+                if (newSlideUrls.length > 0) {
+                    itemData.images = arrayUnion(...newSlideUrls);
+                }
+                await setDoc(doc(db, 'majorProject', 'main'), itemData, { merge: true });
+            } else {
+                itemData.images = newSlideUrls;
+                await setDoc(doc(db, 'majorProject', 'main'), itemData);
             }
-            await setDoc(doc(db, 'majorProject', 'main'), itemData, { merge: true });
         } else {
             if (id) {
                 // Update
