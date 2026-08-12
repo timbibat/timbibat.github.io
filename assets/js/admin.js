@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { getFirestore, collection, getDocs, addDoc, doc, setDoc, deleteDoc, arrayUnion, arrayRemove } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, collection, getDocs, getDoc, addDoc, doc, setDoc, deleteDoc, arrayUnion, arrayRemove } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
 const firebaseConfig = {
@@ -79,11 +79,9 @@ async function loadData(collectionName) {
     
     let html = `
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h4 class="fw-bold mb-0 text-capitalize">${collectionName === 'majorProject' ? 'Major Project' : collectionName}</h4>
+            <h4 class="fw-bold mb-0 text-capitalize">${collectionName === 'majorProject' ? 'Major Projects' : collectionName}</h4>
             <div>
-                ${collectionName !== 'majorProject' ? `
-                    <button class="btn btn-warning btn-sm rounded-pill px-3 fw-bold me-2" onclick="saveOrder('${collectionName}')" id="save-order-btn" disabled><i class="fas fa-save me-2"></i>Save Order</button>
-                ` : ''}
+                <button class="btn btn-warning btn-sm rounded-pill px-3 fw-bold me-2" onclick="saveOrder('${collectionName}')" id="save-order-btn" disabled><i class="fas fa-save me-2"></i>Save Order</button>
                 <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold" onclick="openModal('${collectionName}')"><i class="fas fa-plus me-2"></i>${collectionName === 'majorProject' ? 'Add Major Project' : 'Add New'}</button>
             </div>
         </div>
@@ -91,7 +89,7 @@ async function loadData(collectionName) {
             <table class="table table-dark table-hover align-middle" id="sortable-table">
                 <thead>
                     <tr>
-                        <th style="width: 40px;" class="${collectionName === 'majorProject' ? 'd-none' : ''}"></th>
+                        <th style="width: 40px;"></th>
                         <th style="width: 100px;">Image</th>
                         <th>Name</th>
                         <th>Category</th>
@@ -102,50 +100,33 @@ async function loadData(collectionName) {
     `;
 
     try {
-        if (collectionName === 'majorProject') {
-            // Major Project is a single document
-            const docRef = doc(db, 'majorProject', 'main');
-            const docSnap = await (await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js")).getDoc(docRef);
-            
-            if (docSnap.exists()) {
-                const data = docSnap.data();
-                window.currentMajorData = { ...data, id: docSnap.id };
-                html += generateTableRow(docSnap.id, data, collectionName, true);
-            } else {
-                window.currentMajorData = null;
-                html += `<tr><td colspan="4" class="text-center py-4">No major project configured yet. <button class="btn btn-sm btn-outline-primary ms-2" onclick="openModal('majorProject')">Add Now</button></td></tr>`;
-            }
+        const querySnapshot = await getDocs(collection(db, collectionName));
+        if (querySnapshot.empty) {
+            html += `<tr><td colspan="5" class="text-center py-4">No items found.</td></tr>`;
         } else {
-            const querySnapshot = await getDocs(collection(db, collectionName));
-            if (querySnapshot.empty) {
-                html += `<tr><td colspan="4" class="text-center py-4">No items found.</td></tr>`;
-            } else {
-                const docsArray = [];
-                querySnapshot.forEach((docSnap) => docsArray.push({ id: docSnap.id, data: docSnap.data() }));
-                docsArray.sort((a, b) => (a.data.order ?? Number.MAX_SAFE_INTEGER) - (b.data.order ?? Number.MAX_SAFE_INTEGER));
-                
-                docsArray.forEach((docObj) => {
-                    html += generateTableRow(docObj.id, docObj.data, collectionName, false);
-                });
-            }
+            const docsArray = [];
+            querySnapshot.forEach((docSnap) => docsArray.push({ id: docSnap.id, data: docSnap.data() }));
+            docsArray.sort((a, b) => (a.data.order ?? Number.MAX_SAFE_INTEGER) - (b.data.order ?? Number.MAX_SAFE_INTEGER));
+            
+            docsArray.forEach((docObj) => {
+                html += generateTableRow(docObj.id, docObj.data, collectionName);
+            });
         }
         
         html += `</tbody></table></div>`;
         adminContentArea.innerHTML = html;
         
         // Initialize Sortable
-        if (collectionName !== 'majorProject') {
-            const tbody = document.querySelector('#sortable-table tbody');
-            if (tbody) {
-                new Sortable(tbody, {
-                    handle: '.drag-handle',
-                    animation: 150,
-                    onUpdate: function (evt) {
-                        const btn = document.getElementById('save-order-btn');
-                        if (btn) btn.disabled = false;
-                    }
-                });
-            }
+        const tbody = document.querySelector('#sortable-table tbody');
+        if (tbody) {
+            new Sortable(tbody, {
+                handle: '.drag-handle',
+                animation: 150,
+                onUpdate: function (evt) {
+                    const btn = document.getElementById('save-order-btn');
+                    if (btn) btn.disabled = false;
+                }
+            });
         }
         
     } catch (error) {
@@ -154,13 +135,13 @@ async function loadData(collectionName) {
     }
 }
 
-function generateTableRow(id, data, collectionName, isMajor) {
+function generateTableRow(id, data, collectionName) {
     // encodeURIComponent does not encode single quotes, which breaks the onclick attribute. 
     // We must manually replace them with %27.
     const encodedData = encodeURIComponent(JSON.stringify({...data, id})).replace(/'/g, "%27");
     return `
         <tr data-id="${id}">
-            <td style="width: 40px;" class="${isMajor ? 'd-none' : ''}">
+            <td style="width: 40px;">
                 <i class="fas fa-grip-lines text-muted drag-handle" style="cursor: grab;"></i>
             </td>
             <td><img src="${data.image}" alt="${data.name}" class="rounded" style="width: 60px; height: 40px; object-fit: cover;"></td>
@@ -168,7 +149,7 @@ function generateTableRow(id, data, collectionName, isMajor) {
             <td><span class="badge bg-secondary">${data.category}</span></td>
             <td class="text-end">
                 <button class="btn btn-sm btn-outline-light me-2" onclick="editItem('${encodedData}', '${collectionName}')"><i class="fas fa-edit"></i> Edit</button>
-                ${!isMajor ? `<button class="btn btn-sm btn-outline-danger" onclick="deleteItem('${id}', '${collectionName}', '${data.image}')"><i class="fas fa-trash"></i></button>` : ''}
+                <button class="btn btn-sm btn-outline-danger" onclick="deleteItem('${id}', '${collectionName}', '${data.image}')"><i class="fas fa-trash"></i> Delete</button>
             </td>
         </tr>
     `;
@@ -274,10 +255,15 @@ window.removeSlideImage = async (encodedImgUrl, btnElement) => {
     if (!confirm('Are you sure you want to permanently delete this slide picture?')) return;
     
     const imgUrl = decodeURIComponent(encodedImgUrl);
+    const id = document.getElementById('item-id').value;
+    if (!id) {
+        btnElement.parentElement.remove();
+        return;
+    }
     btnElement.disabled = true;
     
     try {
-        await setDoc(doc(db, 'majorProject', 'main'), {
+        await setDoc(doc(db, 'majorProject', id), {
             images: arrayRemove(imgUrl)
         }, { merge: true });
         
@@ -443,24 +429,20 @@ itemForm.addEventListener('submit', async (e) => {
         }
 
         if (collectionName === 'majorProject') {
-            if (id) {
-                if (newSlideUrls.length > 0) {
-                    itemData.images = arrayUnion(...newSlideUrls);
-                }
-                await setDoc(doc(db, 'majorProject', 'main'), itemData, { merge: true });
-            } else {
-                itemData.images = newSlideUrls;
-                await setDoc(doc(db, 'majorProject', 'main'), itemData);
+            if (newSlideUrls.length > 0) {
+                itemData.images = id ? arrayUnion(...newSlideUrls) : newSlideUrls;
+            } else if (!id && imageUrl) {
+                itemData.images = [imageUrl];
             }
+        }
+
+        if (id) {
+            // Update
+            await setDoc(doc(db, collectionName, id), itemData, { merge: true });
         } else {
-            if (id) {
-                // Update
-                await setDoc(doc(db, collectionName, id), itemData, { merge: true });
-            } else {
-                // Create
-                itemData.order = Date.now(); // Place new items at the end
-                await addDoc(collection(db, collectionName), itemData);
-            }
+            // Create
+            itemData.order = Date.now(); // Place new items at the end
+            await addDoc(collection(db, collectionName), itemData);
         }
 
         itemModal.hide();

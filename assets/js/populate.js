@@ -42,16 +42,12 @@ window.renderPortfolio = async function() {
         // Fetch data if not already loaded
         if (!isDataLoaded) {
             try {
-                // Fetch Major Project
-                const majorSnap = await getDoc(doc(db, 'majorProject', 'main'));
-                if (majorSnap.exists()) window.portfolioDetails.majorProject = majorSnap.data();
-
-                // Fetch other collections
-                const collections = ['projects', 'activities', 'multimedia', 'certificates'];
+                // Fetch all collections
+                const collections = ['majorProject', 'projects', 'activities', 'multimedia', 'certificates'];
                 for (const col of collections) {
                     const snap = await getDocs(collection(db, col));
                     window.portfolioDetails[col] = snap.docs
-                        .map(doc => doc.data())
+                        .map(doc => ({ ...doc.data(), id: doc.id }))
                         .sort((a, b) => (a.order ?? Number.MAX_SAFE_INTEGER) - (b.order ?? Number.MAX_SAFE_INTEGER));
                 }
                 
@@ -130,67 +126,74 @@ window.renderPortfolio = async function() {
             </div>`;
         };
         
-        // Render Major Project
-        const majorProj = window.portfolioDetails.majorProject;
-        if (majorProjectContainer && majorProj) {
-            const demoStatus = majorProj.link ? '' : 'disabled';
-            const gitStatus = majorProj.git ? '' : 'disabled';
+        // Render Major Projects
+        const majorProjects = window.portfolioDetails.majorProject || [];
+        if (majorProjectContainer) {
+            if (majorProjects.length === 0) {
+                majorProjectContainer.innerHTML = `<div class="text-center text-muted py-5">No major projects configured yet.</div>`;
+            } else {
+                let majorHTML = '';
+                majorProjects.forEach((majorProj, idx) => {
+                    const demoStatus = majorProj.link ? '' : 'disabled';
+                    const gitStatus = majorProj.git ? '' : 'disabled';
+                    const projIdStr = majorProj.id || majorProj.name;
 
-            majorProjectContainer.innerHTML = `
-            <div class="major-project-article animate-in" onclick="showProjectModal()" style="cursor: pointer;">
-                <div class="row align-items-center g-4 g-lg-5">
-                    <div class="col-lg-5">
-                        <div class="major-project-image-wrapper p-4 rounded-4 shadow-lg img-loading-wrapper position-relative" style="min-height: 250px;">
-                            <img src="${majorProj.image}" class="img-fluid img-lazy-load" alt="${majorProj.name}" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded')">
-                            <div class="img-spinner position-absolute top-50 start-50 translate-middle">
-                                <div class="spinner-border text-primary" role="status">
-                                    <span class="visually-hidden">Loading...</span>
+                    majorHTML += `
+                    <div class="major-project-article animate-in ${idx > 0 ? 'mt-5 pt-5 border-top border-secondary border-opacity-25' : ''}" onclick="showProjectModal('${projIdStr}')" style="cursor: pointer;">
+                        <div class="row align-items-center g-4 g-lg-5">
+                            <div class="col-lg-5">
+                                <div class="major-project-image-wrapper p-4 rounded-4 shadow-lg img-loading-wrapper position-relative" style="min-height: 250px;">
+                                    <img src="${majorProj.image}" class="img-fluid img-lazy-load" alt="${majorProj.name}" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded')">
+                                    <div class="img-spinner position-absolute top-50 start-50 translate-middle">
+                                        <div class="spinner-border text-primary" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="major-project-details text-start">
+                                    <div class="mb-3">
+                                        <span class="badge" style="background: var(--primary-gradient); font-size: 0.8rem; padding: 8px 16px; border-radius: 50px;">
+                                            ${majorProj.category}
+                                        </span>
+                                    </div>
+                                    <h2 class="display-5 fw-bold mb-3 glow-text">${majorProj.name}</h2>
+                                    <p class="text-muted lead mb-4" style="line-height: 1.8;">
+                                        ${majorProj.description}
+                                    </p>
+                                    
+                                    <div class="d-flex flex-wrap gap-3 mb-4">
+                                        <a href="${majorProj.link}" class="btn btn-gradient text-white px-4 py-2 fw-semibold ${demoStatus}" target="_blank" onclick="event.stopPropagation()">
+                                            <i class="fas fa-external-link-alt me-2"></i>Live Demo
+                                        </a>
+                                        <a href="${majorProj.git}" class="btn btn-outline-primary px-4 py-2 fw-semibold ${gitStatus}" target="_blank" onclick="event.stopPropagation()">
+                                            <i class="fab fa-github me-2"></i>GitHub
+                                        </a>
+                                    </div>
+                                    
+                                    <div class="read-more-trigger">
+                                        <span class="text-primary fw-bold" style="font-size: 0.95rem; cursor: pointer;">
+                                            See More Details <i class="fas fa-arrow-right ms-2"></i>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-7">
-                        <div class="major-project-details text-start">
-                            <div class="mb-3">
-                                <span class="badge" style="background: var(--primary-gradient); font-size: 0.8rem; padding: 8px 16px; border-radius: 50px;">
-                                    ${majorProj.category}
-                                </span>
-                            </div>
-                            <h2 class="display-5 fw-bold mb-3 glow-text">${majorProj.name}</h2>
-                            <p class="text-muted lead mb-4" style="line-height: 1.8;">
-                                ${majorProj.description}
-                            </p>
-                            
-                            <div class="d-flex flex-wrap gap-3 mb-4">
-                                <a href="${majorProj.link}" class="btn btn-gradient text-white px-4 py-2 fw-semibold ${demoStatus}" target="_blank" onclick="event.stopPropagation()">
-                                    <i class="fas fa-external-link-alt me-2"></i>Live Demo
-                                </a>
-                                <a href="${majorProj.git}" class="btn btn-outline-primary px-4 py-2 fw-semibold ${gitStatus}" target="_blank" onclick="event.stopPropagation()">
-                                    <i class="fab fa-github me-2"></i>GitHub
-                                </a>
-                            </div>
-                            
-                            <div class="read-more-trigger">
-                                <span class="text-primary fw-bold" style="font-size: 0.95rem; cursor: pointer;">
-                                    See More Details <i class="fas fa-arrow-right ms-2"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>`;
+                    </div>`;
+                });
+                majorProjectContainer.innerHTML = majorHTML;
+            }
         }
 
         // Render Projects
-        const projectsToRender = (majorProj && window.portfolioDetails.projects) 
-            ? window.portfolioDetails.projects.filter(p => p.name !== majorProj.name) 
-            : (window.portfolioDetails.projects || []);
-
-        let projectsHTML = '';
-        projectsToRender.forEach((proj, index) => {
-            projectsHTML += createProjectCard(proj, index);
-        });
-        projectsContainer.innerHTML = projectsHTML;
+        if (window.portfolioDetails.projects) {
+            let projectsHTML = '';
+            window.portfolioDetails.projects.forEach((proj, index) => {
+                projectsHTML += createProjectCard(proj, index);
+            });
+            projectsContainer.innerHTML = projectsHTML;
+        }
 
         // Render Activities
         if (window.portfolioDetails.activities) {
@@ -224,8 +227,16 @@ window.renderPortfolio = async function() {
     }
 }
 
-window.showProjectModal = function() {
-    const majorProj = window.portfolioDetails.majorProject;
+window.showProjectModal = function(projIdentifier) {
+    const majorProjects = window.portfolioDetails.majorProject || [];
+    let majorProj = null;
+
+    if (projIdentifier) {
+        majorProj = majorProjects.find(p => p.id === projIdentifier || p.name === projIdentifier);
+    }
+    if (!majorProj && majorProjects.length > 0) {
+        majorProj = majorProjects[0];
+    }
     const modalContent = document.getElementById('modal-content-area');
     
     if (modalContent && majorProj) {
