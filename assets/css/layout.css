@@ -228,24 +228,9 @@ aside.d-lg-none hr {
    LIGHT THEME LAYOUT OVERRIDES
    ============================================================ */
 
-[data-theme="light"] aside.col-lg-3,
-[data-theme="light"] aside.col-xl-2 {
-    background: var(--bg-sidebar) !important;
-    border-right-color: var(--border-subtle) !important;
-}
-
 [data-theme="light"] aside.col-lg-3::after,
 [data-theme="light"] aside.col-xl-2::after {
     opacity: 0.25;
-}
-
-[data-theme="light"] aside .text-dark,
-[data-theme="light"] aside a.text-dark {
-    color: var(--text-secondary) !important;
-}
-
-[data-theme="light"] aside a.text-dark:hover {
-    color: var(--accent-start) !important;
 }
 
 [data-theme="light"] .profile-ring img {
@@ -254,5 +239,4 @@ aside.d-lg-none hr {
 
 [data-theme="light"] .navbar-glass {
     background: rgba(255, 255, 255, 0.88) !important;
-    border-color: var(--border-subtle) !important;
 }

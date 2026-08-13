@@ -138,44 +138,101 @@ window.renderPortfolio = async function() {
                     const gitStatus = majorProj.git ? '' : 'disabled';
                     const projIdStr = majorProj.id || majorProj.name;
 
+                    // Dynamically read tech stack badges from Firebase Firestore (badges or tags array)
+                    let techStackArray = [];
+                    if (majorProj.badges && Array.isArray(majorProj.badges) && majorProj.badges.length > 0) {
+                        techStackArray = majorProj.badges;
+                    } else if (majorProj.tags && Array.isArray(majorProj.tags) && majorProj.tags.length > 0) {
+                        techStackArray = majorProj.tags;
+                    }
+
+                    let techPillsHTML = '';
+                    if (techStackArray.length > 0) {
+                        techPillsHTML = `
+                        <div class="d-flex flex-wrap gap-2 mb-4">
+                            ${techStackArray.map(t => `<span class="tech-pill"><i class="fas fa-code me-1" style="font-size: 0.7rem;"></i>${t}</span>`).join('')}
+                        </div>`;
+                    }
+
+                    // Dynamically read key highlights from Firebase Firestore (highlights or contributions array)
+                    let highlightsArray = [];
+                    if (majorProj.highlights && Array.isArray(majorProj.highlights) && majorProj.highlights.length > 0) {
+                        highlightsArray = majorProj.highlights;
+                    } else if (majorProj.contributions && Array.isArray(majorProj.contributions) && majorProj.contributions.length > 0) {
+                        highlightsArray = majorProj.contributions.slice(0, 3);
+                    }
+
+                    let highlightsHTML = '';
+                    if (highlightsArray.length > 0) {
+                        highlightsHTML = `
+                        <div class="d-flex flex-wrap gap-2 mb-4">
+                            ${highlightsArray.map(h => `<div class="feature-highlight-item"><i class="fas fa-check-circle"></i><span>${h}</span></div>`).join('')}
+                        </div>`;
+                    }
+
                     majorHTML += `
-                    <div class="major-project-article animate-in ${idx > 0 ? 'mt-5 pt-5 border-top border-secondary border-opacity-25' : ''}" onclick="showProjectModal('${projIdStr}')" style="cursor: pointer;">
+                    <div class="major-project-article animate-in ${idx > 0 ? 'mt-5' : ''}" onclick="showProjectModal('${projIdStr}')" style="cursor: pointer;">
                         <div class="row align-items-center g-4 g-lg-5">
                             <div class="col-lg-5">
-                                <div class="major-project-image-wrapper p-4 rounded-4 shadow-lg img-loading-wrapper position-relative" style="min-height: 250px;">
-                                    <img src="${majorProj.image}" class="img-fluid img-lazy-load" alt="${majorProj.name}" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded')">
-                                    <div class="img-spinner position-absolute top-50 start-50 translate-middle">
-                                        <div class="spinner-border text-primary" role="status">
-                                            <span class="visually-hidden">Loading...</span>
+                                <div class="project-window-frame">
+                                    <div class="window-header-bar">
+                                        <div class="window-dots">
+                                            <span class="window-dot dot-red"></span>
+                                            <span class="window-dot dot-yellow"></span>
+                                            <span class="window-dot dot-green"></span>
+                                        </div>
+                                        <div class="window-title-badge">
+                                            <i class="fas fa-star text-warning"></i> Major Project
+                                        </div>
+                                    </div>
+                                    <div class="window-body-container img-loading-wrapper">
+                                        <img src="${majorProj.image}" class="img-fluid img-lazy-load" alt="${majorProj.name}" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded')">
+                                        <div class="img-spinner position-absolute top-50 start-50 translate-middle">
+                                            <div class="spinner-border text-primary" role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-7">
                                 <div class="major-project-details text-start">
-                                    <div class="mb-3">
-                                        <span class="badge" style="background: var(--primary-gradient); font-size: 0.8rem; padding: 8px 16px; border-radius: 50px;">
+                                    <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+                                        <span class="badge" style="background: var(--primary-gradient); font-size: 0.78rem; padding: 6px 14px; border-radius: 50px;">
                                             ${majorProj.category}
                                         </span>
+                                        <span class="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25" style="font-size: 0.75rem; padding: 5px 12px; border-radius: 50px;">
+                                            <i class="fas fa-award me-1"></i> Featured Highlight
+                                        </span>
                                     </div>
-                                    <h2 class="display-5 fw-bold mb-3 glow-text">${majorProj.name}</h2>
-                                    <p class="text-muted lead mb-4" style="line-height: 1.8;">
+                                    
+                                    <h2 class="display-6 fw-bold mb-3 glow-text">${majorProj.name}</h2>
+                                    
+                                    <p class="text-muted lead mb-4" style="line-height: 1.7; font-size: 1.05rem;">
                                         ${majorProj.description}
                                     </p>
                                     
-                                    <div class="d-flex flex-wrap gap-3 mb-4">
-                                        <a href="${majorProj.link}" class="btn btn-gradient text-white px-4 py-2 fw-semibold ${demoStatus}" target="_blank" onclick="event.stopPropagation()">
-                                            <i class="fas fa-external-link-alt me-2"></i>Live Demo
-                                        </a>
-                                        <a href="${majorProj.git}" class="btn btn-outline-primary px-4 py-2 fw-semibold ${gitStatus}" target="_blank" onclick="event.stopPropagation()">
-                                            <i class="fab fa-github me-2"></i>GitHub
-                                        </a>
-                                    </div>
+                                    <!-- Tech Stack Pills -->
+                                    ${techPillsHTML}
                                     
-                                    <div class="read-more-trigger">
-                                        <span class="text-primary fw-bold" style="font-size: 0.95rem; cursor: pointer;">
-                                            See More Details <i class="fas fa-arrow-right ms-2"></i>
-                                        </span>
+                                    <!-- Highlights Grid -->
+                                    ${highlightsHTML}
+                                    
+                                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 pt-2">
+                                        <div class="d-flex flex-wrap gap-2">
+                                            <a href="${majorProj.link}" class="btn btn-gradient text-white px-4 py-2 fw-semibold ${demoStatus}" target="_blank" onclick="event.stopPropagation()">
+                                                <i class="fas fa-external-link-alt me-2"></i>Live Demo
+                                            </a>
+                                            <a href="${majorProj.git}" class="btn btn-outline-primary px-4 py-2 fw-semibold ${gitStatus}" target="_blank" onclick="event.stopPropagation()">
+                                                <i class="fab fa-github me-2"></i>GitHub
+                                            </a>
+                                        </div>
+                                        
+                                        <div class="read-more-trigger">
+                                            <span class="text-primary fw-bold" style="font-size: 0.95rem; cursor: pointer;">
+                                                View Case Study <i class="fas fa-arrow-right ms-1"></i>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

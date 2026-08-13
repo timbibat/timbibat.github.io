@@ -94,6 +94,11 @@
                             <input type="text" class="form-control bg-dark text-white border-secondary" id="item-category" required>
                         </div>
                         <div class="mb-3">
+                            <label class="form-label text-muted">Tech Stack Badges / Tags (Comma-separated)</label>
+                            <input type="text" class="form-control bg-dark text-white border-secondary" id="item-badges" placeholder="PHP, JavaScript, Firebase, Bootstrap 5">
+                            <small class="text-muted" style="font-size: 0.75rem;">Separate multiple badges with commas (e.g. PHP, JavaScript, Firebase).</small>
+                        </div>
+                        <div class="mb-3">
                             <label class="form-label text-muted">Description</label>
                             <textarea class="form-control bg-dark text-white border-secondary" id="item-description" rows="3" required></textarea>
                         </div>
@@ -149,6 +154,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <!-- SortableJS for drag-and-drop sorting -->
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-    <script type="module" src="assets/js/admin.js"></script>
+    <script type="module" src="assets/js/admin.js?v=2"></script>
 </body>
 </html>

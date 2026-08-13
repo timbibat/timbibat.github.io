@@ -2,12 +2,6 @@
    BASE AND TYPOGRAPHY
    ============================================================ */
 
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
 html {
     scroll-behavior: smooth;
 }
@@ -45,29 +39,16 @@ body::before {
 }
 
 @keyframes meshFloat {
-    0% {
-        transform: translate(0, 0) scale(1);
-    }
-
-    50% {
-        transform: translate(-15px, 10px) scale(1.02);
-    }
-
-    100% {
-        transform: translate(10px, -8px) scale(0.98);
-    }
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-15px, 10px) scale(1.02); }
+    100% { transform: translate(10px, -8px) scale(0.98); }
 }
 
 /* ============================================================
    TYPOGRAPHY
    ============================================================ */
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
     letter-spacing: -0.02em;
     font-weight: 700;
 }
@@ -100,10 +81,6 @@ p {
     vertical-align: middle;
     -webkit-box-decoration-break: clone;
     isolation: isolate;
-}
-
-.custom-text {
-    font-size: 12px;
 }
 
 /* ============================================================

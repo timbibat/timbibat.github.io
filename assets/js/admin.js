@@ -161,6 +161,7 @@ window.openModal = (collectionName) => {
     document.getElementById('item-collection').value = collectionName;
     document.getElementById('item-id').value = '';
     document.getElementById('existing-image').value = '';
+    document.getElementById('item-badges').value = '';
     document.getElementById('item-full-description').value = '';
     document.getElementById('item-contributions').value = '';
     
@@ -189,6 +190,7 @@ window.editItem = (encodedData, collectionName) => {
     document.getElementById('item-id').value = data.id;
     document.getElementById('item-name').value = data.name || '';
     document.getElementById('item-category').value = data.category || '';
+    document.getElementById('item-badges').value = data.badges && data.badges.length > 0 ? data.badges.join(', ') : (data.tags && data.tags.length > 0 ? data.tags.join(', ') : '');
     document.getElementById('item-description').value = data.description || '';
     document.getElementById('item-link').value = data.link || '';
     document.getElementById('item-git').value = data.git || '';
@@ -403,9 +405,13 @@ itemForm.addEventListener('submit', async (e) => {
         const contributionsText = document.getElementById('item-contributions').value;
         const contributionsArray = contributionsText.split('\n').map(c => c.trim()).filter(c => c.length > 0);
 
+        const badgesText = document.getElementById('item-badges').value || '';
+        const badgesArray = badgesText.split(',').map(b => b.trim()).filter(b => b.length > 0);
+
         const itemData = {
             name: document.getElementById('item-name').value,
             category: document.getElementById('item-category').value,
+            badges: badgesArray.length > 0 ? badgesArray : null,
             description: document.getElementById('item-description').value,
             fullDescription: document.getElementById('item-full-description').value || null,
             contributions: contributionsArray.length > 0 ? contributionsArray : null,
