@@ -20,7 +20,8 @@
 
 /* Modals */
 #projectModal .modal-content,
-#mediaModal .modal-content {
+#mediaModal .modal-content,
+#certificateModal .modal-content {
     background: var(--bg-card-solid);
     border: 1px solid var(--glass-border);
     backdrop-filter: blur(var(--glass-blur));
@@ -29,24 +30,29 @@
 }
 
 #projectModal .modal-body,
-#mediaModal .modal-body {
+#mediaModal .modal-body,
+#certificateModal .modal-body {
     color: var(--text-primary);
 }
 
 #projectModal h2,
 #projectModal h4,
 #mediaModal h2,
-#mediaModal h4 {
+#mediaModal h4,
+#certificateModal h2,
+#certificateModal h4 {
     color: var(--text-primary) !important;
 }
 
 #projectModal .text-muted,
-#mediaModal .text-muted {
+#mediaModal .text-muted,
+#certificateModal .text-muted {
     color: var(--text-secondary) !important;
 }
 
 #projectModal .btn-close,
-#mediaModal .btn-close {
+#mediaModal .btn-close,
+#certificateModal .btn-close {
     background-color: var(--accent-subtle);
     opacity: 0.8;
     padding: 1.25rem;
@@ -59,7 +65,8 @@
 }
 
 #projectModal .btn-close:hover,
-#mediaModal .btn-close:hover {
+#mediaModal .btn-close:hover,
+#certificateModal .btn-close:hover {
     opacity: 1;
     background-color: var(--accent-glow);
     transform: rotate(90deg);
@@ -67,7 +74,8 @@
 
 @media (max-width: 576px) {
     #projectModal .btn-close,
-    #mediaModal .btn-close {
+    #mediaModal .btn-close,
+    #certificateModal .btn-close {
         padding: 1.5rem;
         margin-top: -0.5rem;
         margin-right: -0.5rem;
@@ -414,17 +422,20 @@ html.theme-transitioning *::after {
 }
 
 [data-theme="light"] #projectModal .modal-content,
-[data-theme="light"] #mediaModal .modal-content {
+[data-theme="light"] #mediaModal .modal-content,
+[data-theme="light"] #certificateModal .modal-content {
     background: rgba(255, 255, 255, 0.98);
 }
 
 [data-theme="light"] #projectModal .btn-close,
-[data-theme="light"] #mediaModal .btn-close {
+[data-theme="light"] #mediaModal .btn-close,
+[data-theme="light"] #certificateModal .btn-close {
     filter: contrast(0.1);
 }
 
 [data-theme="dark"] #projectModal .btn-close,
-[data-theme="dark"] #mediaModal .btn-close {
+[data-theme="dark"] #mediaModal .btn-close,
+[data-theme="dark"] #certificateModal .btn-close {
     filter: invert(1) grayscale(100%) brightness(200%);
 }
 

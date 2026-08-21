@@ -167,6 +167,52 @@ window.renderPortfolio = async function() {
                 </div>
             </div>`;
         };
+
+        // Helper function to render a certificate card
+        const createCertificateCard = (cert, index) => {
+            const certIdStr = cert.id || cert.name;
+            
+            // Handle multiple badges if present, otherwise use category
+            let badgesHTML = '';
+            if (cert.badges && cert.badges.length > 0) {
+                badgesHTML = cert.badges.map((b, i) => {
+                    const colorClass = (cert.badgeColors && cert.badgeColors[i]) || 'bg-primary';
+                    return `<span class="badge ${colorClass}" style="font-size: 0.7rem; letter-spacing: 0.03em; margin-right: 4px;">${b}</span>`;
+                }).join('');
+            } else {
+                badgesHTML = `<span class="badge" style="background: var(--primary-gradient); font-size: 0.7rem; letter-spacing: 0.03em;"><i class="fas fa-certificate me-1"></i>${cert.category}</span>`;
+            }
+
+            return `
+            <div class="col animate-in" style="animation-delay: ${index * 0.1}s;">
+                <div class="project-card h-100 rounded-4 overflow-hidden d-flex flex-column">
+                    <div class="img-loading-wrapper position-relative overflow-hidden" style="height: 230px; cursor: pointer;" onclick="showCertificateModal('${certIdStr}')">
+                        <img src="${cert.image}" class="card-img-top img-lazy-load" alt="${cert.name}" style="height: 230px; object-fit: contain; padding: 12px; background: rgba(0,0,0,0.02);" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded')">
+                        <div class="img-spinner position-absolute top-50 start-50 translate-middle">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-4 d-flex flex-column flex-grow-1">
+                        <div class="mb-3 d-flex flex-wrap gap-1">
+                            ${badgesHTML}
+                        </div>
+                        <h5 class="card-title fw-bold text-dark mb-3">${cert.name}</h5>
+                        <p class="card-text text-muted mb-4">${cert.description}</p>
+                        <div class="mt-auto d-flex gap-2">
+                            <button type="button" class="btn btn-gradient text-white btn-sm fw-semibold flex-grow-1" onclick="showCertificateModal('${certIdStr}')">
+                                <i class="fas fa-eye me-1"></i>View Credential
+                            </button>
+                            ${cert.link ? `
+                            <a href="${cert.link}" target="_blank" class="btn btn-outline-primary btn-sm fw-semibold" title="Verify Credential Online">
+                                <i class="fas fa-check-circle me-1"></i>Verify
+                            </a>` : ''}
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+        };
         
         // Render Major Projects
         const majorProjects = window.portfolioDetails.majorProject || [];
@@ -318,11 +364,15 @@ window.renderPortfolio = async function() {
 
         // Render Certificates
         if (window.portfolioDetails.certificates) {
-            let certsHTML = '';
-            window.portfolioDetails.certificates.forEach((cert, index) => {
-                certsHTML += createProjectCard(cert, index);
-            });
-            certificatesContainer.innerHTML = certsHTML;
+            if (window.portfolioDetails.certificates.length === 0) {
+                certificatesContainer.innerHTML = `<div class="col-12 text-center text-muted py-5">No certificates added yet.</div>`;
+            } else {
+                let certsHTML = '';
+                window.portfolioDetails.certificates.forEach((cert, index) => {
+                    certsHTML += createCertificateCard(cert, index);
+                });
+                certificatesContainer.innerHTML = certsHTML;
+            }
         }
 
         // Check already loaded / cached images
@@ -499,7 +549,13 @@ window.showMediaModal = function(mediaIdentifier) {
                         ${item.fullDescription || item.description || ''}
                     </p>
                     
-                    <div class="d-flex justify-content-end pt-2">
+                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 pt-2">
+                        <div class="d-flex flex-wrap gap-2">
+                            ${item.link ? `
+                            <a href="${item.link}" target="_blank" class="btn btn-gradient text-white btn-sm px-4 py-2 fw-semibold">
+                                <i class="fas fa-external-link-alt me-2"></i>External Link
+                            </a>` : ''}
+                        </div>
                         <button type="button" class="btn btn-secondary btn-sm px-4 py-2 rounded-pill" data-bs-dismiss="modal">
                             Close
                         </button>
@@ -515,6 +571,79 @@ window.showMediaModal = function(mediaIdentifier) {
         });
 
         const myModal = new bootstrap.Modal(document.getElementById('mediaModal'));
+        myModal.show();
+    }
+};
+
+window.showCertificateModal = function(certIdentifier) {
+    const certsList = window.portfolioDetails.certificates || [];
+    let item = null;
+
+    if (certIdentifier) {
+        item = certsList.find(p => p.id === certIdentifier || p.name === certIdentifier);
+    }
+    if (!item && certsList.length > 0) {
+        item = certsList[0];
+    }
+    const modalContent = document.getElementById('certificate-modal-content-area');
+    
+    if (modalContent && item) {
+        let badgesHTML = '';
+        if (item.badges && item.badges.length > 0) {
+            badgesHTML = item.badges.map((b, i) => {
+                const colorClass = (item.badgeColors && item.badgeColors[i]) || 'bg-primary';
+                return `<span class="badge ${colorClass}" style="font-size: 0.75rem; letter-spacing: 0.03em; margin-right: 4px;">${b}</span>`;
+            }).join('');
+        }
+
+        modalContent.innerHTML = `
+            <div class="row g-4">
+                <div class="col-12">
+                    <div class="img-loading-wrapper position-relative rounded-4 overflow-hidden text-center p-3" style="max-height: 520px; background: rgba(0,0,0,0.03);">
+                        <img src="${item.image}" class="img-fluid rounded-4 shadow-sm img-lazy-load" style="max-height: 480px; width: 100%; object-fit: contain;" alt="${item.name}" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded')">
+                        <div class="img-spinner position-absolute top-50 start-50 translate-middle">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+                        <span class="badge" style="background: var(--primary-gradient); font-size: 0.78rem; padding: 6px 14px; border-radius: 50px;">
+                            <i class="fas fa-certificate me-1"></i>${item.category}
+                        </span>
+                        ${badgesHTML}
+                    </div>
+                    
+                    <h2 class="display-6 fw-bold mb-3 glow-text">${item.name}</h2>
+                    
+                    <p class="text-muted lead mb-4" style="line-height: 1.8; font-size: 1.05rem;">
+                        ${item.fullDescription || item.description || ''}
+                    </p>
+                    
+                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 pt-2">
+                        <div class="d-flex flex-wrap gap-2">
+                            ${item.link ? `
+                            <a href="${item.link}" target="_blank" class="btn btn-gradient text-white btn-sm px-4 py-2 fw-semibold">
+                                <i class="fas fa-external-link-alt me-2"></i>Verify Credential
+                            </a>` : ''}
+                        </div>
+                        <button type="button" class="btn btn-secondary btn-sm px-4 py-2 rounded-pill" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        modalContent.querySelectorAll('img.img-lazy-load').forEach(img => {
+            if (img.complete && img.naturalWidth !== 0) {
+                img.classList.add('loaded');
+            }
+        });
+
+        const myModal = new bootstrap.Modal(document.getElementById('certificateModal'));
         myModal.show();
     }
 };
