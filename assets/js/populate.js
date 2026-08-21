@@ -125,6 +125,48 @@ window.renderPortfolio = async function() {
                 </div>
             </div>`;
         };
+
+        // Helper function to render a multimedia card
+        const createMultimediaCard = (multi, index) => {
+            const multiIdStr = multi.id || multi.name;
+            
+            // Handle multiple badges if present, otherwise use category
+            let badgesHTML = '';
+            if (multi.badges && multi.badges.length > 0) {
+                badgesHTML = multi.badges.map((b, i) => {
+                    const colorClass = (multi.badgeColors && multi.badgeColors[i]) || 'bg-primary';
+                    return `<span class="badge ${colorClass}" style="font-size: 0.7rem; letter-spacing: 0.03em; margin-right: 4px;">${b}</span>`;
+                }).join('');
+            } else {
+                badgesHTML = `<span class="badge" style="background: var(--primary-gradient); font-size: 0.7rem; letter-spacing: 0.03em;">${multi.category}</span>`;
+            }
+
+            return `
+            <div class="col animate-in" style="animation-delay: ${index * 0.1}s;">
+                <div class="project-card h-100 rounded-4 overflow-hidden d-flex flex-column">
+                    <div class="img-loading-wrapper position-relative overflow-hidden" style="height: 250px; cursor: pointer;" onclick="showMediaModal('${multiIdStr}')">
+                        <img src="${multi.image}" class="card-img-top img-lazy-load" alt="${multi.name}" style="height: 250px; object-fit: cover;" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded')">
+                        <div class="img-spinner position-absolute top-50 start-50 translate-middle">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-4 d-flex flex-column flex-grow-1">
+                        <div class="mb-3 d-flex flex-wrap gap-1">
+                            ${badgesHTML}
+                        </div>
+                        <h5 class="card-title fw-bold text-dark mb-3">${multi.name}</h5>
+                        <p class="card-text text-muted mb-4">${multi.description}</p>
+                        <div class="mt-auto d-flex gap-2">
+                            <button type="button" class="btn btn-gradient text-white btn-sm fw-semibold w-100" onclick="showMediaModal('${multiIdStr}')">
+                                <i class="fas fa-eye me-1"></i>Preview
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+        };
         
         // Render Major Projects
         const majorProjects = window.portfolioDetails.majorProject || [];
@@ -263,11 +305,15 @@ window.renderPortfolio = async function() {
 
         // Render Multimedia
         if (window.portfolioDetails.multimedia) {
-            let multimediaHTML = '';
-            window.portfolioDetails.multimedia.forEach((multi, index) => {
-                multimediaHTML += createProjectCard(multi, index);
-            });
-            multimediaContainer.innerHTML = multimediaHTML;
+            if (window.portfolioDetails.multimedia.length === 0) {
+                multimediaContainer.innerHTML = `<div class="col-12 text-center text-muted py-5">No multimedia projects available yet.</div>`;
+            } else {
+                let multimediaHTML = '';
+                window.portfolioDetails.multimedia.forEach((multi, index) => {
+                    multimediaHTML += createMultimediaCard(multi, index);
+                });
+                multimediaContainer.innerHTML = multimediaHTML;
+            }
         }
 
         // Render Certificates
@@ -405,6 +451,73 @@ window.showProjectModal = function(projIdentifier) {
         }
     }
 }
+
+window.showMediaModal = function(mediaIdentifier) {
+    const multimediaList = window.portfolioDetails.multimedia || [];
+    let item = null;
+
+    if (mediaIdentifier) {
+        item = multimediaList.find(p => p.id === mediaIdentifier || p.name === mediaIdentifier);
+    }
+    if (!item && multimediaList.length > 0) {
+        item = multimediaList[0];
+    }
+    const modalContent = document.getElementById('media-modal-content-area');
+    
+    if (modalContent && item) {
+        let badgesHTML = '';
+        if (item.badges && item.badges.length > 0) {
+            badgesHTML = item.badges.map((b, i) => {
+                const colorClass = (item.badgeColors && item.badgeColors[i]) || 'bg-primary';
+                return `<span class="badge ${colorClass}" style="font-size: 0.75rem; letter-spacing: 0.03em; margin-right: 4px;">${b}</span>`;
+            }).join('');
+        }
+
+        modalContent.innerHTML = `
+            <div class="row g-4">
+                <div class="col-12">
+                    <div class="img-loading-wrapper position-relative rounded-4 overflow-hidden text-center" style="max-height: 500px;">
+                        <img src="${item.image}" class="img-fluid rounded-4 shadow-sm img-lazy-load" style="max-height: 500px; width: 100%; object-fit: contain;" alt="${item.name}" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded')">
+                        <div class="img-spinner position-absolute top-50 start-50 translate-middle">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+                        <span class="badge" style="background: var(--primary-gradient); font-size: 0.78rem; padding: 6px 14px; border-radius: 50px;">
+                            ${item.category}
+                        </span>
+                        ${badgesHTML}
+                    </div>
+                    
+                    <h2 class="display-6 fw-bold mb-3 glow-text">${item.name}</h2>
+                    
+                    <p class="text-muted lead mb-4" style="line-height: 1.8; font-size: 1.05rem;">
+                        ${item.fullDescription || item.description || ''}
+                    </p>
+                    
+                    <div class="d-flex justify-content-end pt-2">
+                        <button type="button" class="btn btn-secondary btn-sm px-4 py-2 rounded-pill" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        modalContent.querySelectorAll('img.img-lazy-load').forEach(img => {
+            if (img.complete && img.naturalWidth !== 0) {
+                img.classList.add('loaded');
+            }
+        });
+
+        const myModal = new bootstrap.Modal(document.getElementById('mediaModal'));
+        myModal.show();
+    }
+};
 
 // Notify system that module is ready
 window.dispatchEvent(new CustomEvent('portfolioModuleReady'));

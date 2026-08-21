@@ -452,49 +452,6 @@ main .bg-white.bg-opacity-95 {
     border: none;
 }
 
-/* Contact Page Specific */
-.hero-gradient {
-    background: var(--primary-gradient) !important;
-    position: relative;
-    overflow: hidden;
-}
-
-.hero-gradient::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(circle 300px at 20% 40%, rgba(255, 255, 255, 0.08) 0%, transparent 100%),
-        radial-gradient(circle 200px at 80% 60%, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
-    animation: contactMesh 10s ease-in-out infinite alternate;
-}
-
-@keyframes contactMesh {
-    0% { opacity: 0.5; }
-    100% { opacity: 1; }
-}
-
-.hero-gradient .form-control {
-    background: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid var(--border-subtle) !important;
-    color: var(--text-primary) !important;
-    transition: all 0.3s ease;
-}
-
-.hero-gradient .form-control::placeholder {
-    color: var(--text-tertiary);
-}
-
-.hero-gradient .form-control:focus {
-    border-color: var(--accent-start) !important;
-    box-shadow: 0 0 0 3px var(--accent-glow);
-    background: rgba(99, 102, 241, 0.05) !important;
-}
-
-.hero-gradient .form-label {
-    color: var(--text-secondary) !important;
-}
-
 .text-center.text-muted.small {
     color: var(--text-tertiary) !important;
 }
@@ -546,10 +503,4 @@ main .bg-white.bg-opacity-95 {
 [data-theme="light"] .project-card {
     background: #fff !important;
     border-color: var(--glass-border);
-}
-
-[data-theme="light"] .hero-gradient .form-control {
-    background: rgba(255, 255, 255, 0.1) !important;
-    border-color: rgba(255, 255, 255, 0.2) !important;
-    color: #fff !important;
 }

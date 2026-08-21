@@ -1,98 +1,153 @@
-<div class="hero-gradient text-white p-4 p-md-5 mb-5 rounded-4 shadow position-relative overflow-hidden" id="contact">
+<div class="glass-card p-4 p-md-5 mb-5 border-primary border-opacity-25" id="contact">
 
-    <div class="position-absolute top-0 end-0 w-100 h-100"
-        style="background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%); animation: pulse 4s ease-in-out infinite;">
+    <!-- Section Header -->
+    <div class="mb-4">
+        <h2 class="mb-3 fw-bold">
+            <span class="glow-text"><i class="fas fa-envelope-open-text me-2"></i></span>Get in Touch
+        </h2>
+        <p class="lead text-muted mb-3" style="font-size: 1.05rem; line-height: 1.6;">
+            I'm currently available for full-time opportunities, freelance projects, and collaborations in <strong>Cybersecurity</strong> and <strong>Web Development</strong>. Have a question or an opportunity? Reach out directly or send a message below.
+        </p>
+
+        <!-- Highlight Badges -->
+        <div class="d-flex flex-wrap gap-2 my-3">
+            <span class="badge bg-secondary-subtle text-secondary border rounded-pill px-3 py-2">
+                <i class="fas fa-map-marker-alt text-danger me-1"></i> Calamba, Laguna, PH
+            </span>
+            <span class="badge bg-secondary-subtle text-secondary border rounded-pill px-3 py-2">
+                <i class="fas fa-bolt text-warning me-1"></i> Quick Response
+            </span>
+            <span class="badge bg-secondary-subtle text-secondary border rounded-pill px-3 py-2">
+                <i class="fas fa-shield-alt text-primary me-1"></i> Secure Communication
+            </span>
+        </div>
     </div>
 
-    <div class="position-relative z-1">
-        <div class="row align-items-center g-5">
+    <hr class="my-4" style="border-color: var(--glass-border); opacity: 0.6;">
 
-            <div class="col-lg-6">
-                <h2 class="display-6 fw-bold mb-3 text-white">
-                    <i class="fas fa-paper-plane me-3"></i>Let's Connect
-                </h2>
+    <!-- Contact Grid -->
+    <div class="row g-4 align-items-stretch">
 
-                <p class="lead mb-4 text-white" style="opacity: 0.9;">
-                    I'm currently looking for new opportunities in Web Development and Security.
-                    Have a project in mind? Fill out the form or send me a direct email.
-                </p>
-
-                <div class="d-flex flex-column gap-3 mb-4">
-                    <div class="d-flex align-items-center">
-                        <div class="p-3 rounded-circle me-3 text-white"
-                            style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.15);">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <small class="text-white opacity-75 text-uppercase fw-bold"
-                                style="letter-spacing: 0.08em; font-size: 0.65rem;">Email Me</small>
-                            <div class="fs-6 fw-bold text-white">timothybibat654@gmail.com</div>
-                        </div>
+        <!-- Left Column: Contact Channels & Info Cards -->
+        <div class="col-12 col-lg-5 d-flex flex-column gap-3">
+            
+            <!-- Email Card -->
+            <div class="p-4 border rounded-4 bg-light hover-lift d-flex flex-column justify-content-between h-100">
+                <div class="d-flex align-items-start mb-3">
+                    <div class="rounded-3 p-3 d-inline-flex align-items-center justify-content-center me-3 glow-box" 
+                         style="width: 48px; height: 48px; background: rgba(99, 102, 241, 0.12); color: var(--accent-start);">
+                        <i class="fas fa-envelope fs-5"></i>
                     </div>
-
-                    <div class="d-flex align-items-center">
-                        <div class="p-3 rounded-circle me-3 text-white"
-                            style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.15);">
-                            <i class="fab fa-linkedin-in"></i>
-                        </div>
-                        <div>
-                            <small class="text-white opacity-75 text-uppercase fw-bold"
-                                style="letter-spacing: 0.08em; font-size: 0.65rem;">LinkedIn</small>
-                            <div>
-                                <a href="https://www.linkedin.com/in/timothy-bibat-5ab419182"
-                                    class="text-decoration-none text-white fw-bold" style="transition: opacity 0.3s;">
-                                    Connect with me
-                                </a>
-                            </div>
-                        </div>
+                    <div>
+                        <div class="small text-muted fw-bold text-uppercase" style="letter-spacing: 0.08em; font-size: 0.7rem;">EMAIL ME</div>
+                        <div class="text-dark fw-bold text-break" style="font-size: 0.95rem;">timothybibat654@gmail.com</div>
                     </div>
                 </div>
+                <a href="mailto:timothybibat654@gmail.com" class="btn btn-outline-primary btn-sm rounded-pill w-100 fw-semibold">
+                    <i class="fas fa-paper-plane me-1"></i> Send Direct Email
+                </a>
             </div>
 
-            <div class="col-lg-6">
-                <div class="p-4 rounded-4 shadow-lg"
-                    style="background: var(--bg-card-solid); border: 1px solid var(--glass-border);">
-                    <h5 class="text-dark fw-bold mb-3">Send a Message</h5>
+            <!-- LinkedIn Card -->
+            <div class="p-4 border rounded-4 bg-light hover-lift d-flex flex-column justify-content-between h-100">
+                <div class="d-flex align-items-start mb-3">
+                    <div class="rounded-3 p-3 d-inline-flex align-items-center justify-content-center me-3 glow-box" 
+                         style="width: 48px; height: 48px; background: rgba(14, 165, 233, 0.12); color: #0ea5e9;">
+                        <i class="fab fa-linkedin-in fs-5"></i>
+                    </div>
+                    <div>
+                        <div class="small text-muted fw-bold text-uppercase" style="letter-spacing: 0.08em; font-size: 0.7rem;">LINKEDIN</div>
+                        <div class="text-dark fw-bold" style="font-size: 0.95rem;">Timothy Bibat</div>
+                        <small class="text-muted" style="font-size: 0.75rem;">Let's connect professionally</small>
+                    </div>
+                </div>
+                <a href="https://www.linkedin.com/in/timothy-bibat-5ab419182" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-sm rounded-pill w-100 fw-semibold">
+                    <i class="fab fa-linkedin me-1"></i> Connect on LinkedIn
+                </a>
+            </div>
 
-                    <form action="https://formspree.io/f/xnnkpwnv" method="POST">
+            <!-- Location & Availability Card -->
+            <div class="p-4 border rounded-4 bg-light hover-lift d-flex flex-column justify-content-center gap-3">
+                <div class="d-flex align-items-center">
+                    <div class="rounded-3 p-2 d-inline-flex align-items-center justify-content-center me-3" 
+                         style="width: 40px; height: 40px; background: rgba(239, 68, 68, 0.12); color: #ef4444;">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <div class="small text-muted fw-bold text-uppercase" style="letter-spacing: 0.05em; font-size: 0.68rem;">LOCATION</div>
+                        <div class="text-dark fw-semibold" style="font-size: 0.9rem;">Calamba, Laguna, Philippines</div>
+                    </div>
+                </div>
 
-                        <div class="mb-3">
-                            <label for="name" class="form-label small fw-bold"
-                                style="color: var(--text-secondary); letter-spacing: 0.05em; font-size: 0.7rem;">YOUR
-                                NAME</label>
-                            <input type="text" name="name" class="form-control py-2" id="name" placeholder="John Doe"
-                                required
-                                style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle); color: var(--text-primary);">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="email" class="form-label small fw-bold"
-                                style="color: var(--text-secondary); letter-spacing: 0.05em; font-size: 0.7rem;">EMAIL
-                                ADDRESS</label>
-                            <input type="email" name="email" class="form-control py-2" id="email"
-                                placeholder="name@example.com" required
-                                style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle); color: var(--text-primary);">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="message" class="form-label small fw-bold"
-                                style="color: var(--text-secondary); letter-spacing: 0.05em; font-size: 0.7rem;">MESSAGE</label>
-                            <textarea name="message" class="form-control py-2" id="message" rows="4"
-                                placeholder="Hi Timothy, I'd like to discuss..." required
-                                style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle); color: var(--text-primary);"></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn-gradient w-100 fw-bold py-2 text-white">
-                            Send Message <i class="fas fa-arrow-right ms-2"></i>
-                        </button>
-                    </form>
+                <div class="d-flex align-items-center justify-content-between pt-3 border-top">
+                    <div>
+                        <div class="small text-muted fw-bold text-uppercase" style="letter-spacing: 0.05em; font-size: 0.68rem;">WORK STATUS</div>
+                        <div class="text-dark fw-semibold" style="font-size: 0.88rem;">Open for Opportunities</div>
+                    </div>
+                    <span class="availability-badge badge px-3 py-2">
+                        <i class="fas fa-circle me-1" style="font-size: 7px;"></i> Available
+                    </span>
                 </div>
             </div>
 
         </div>
+
+        <!-- Right Column: Message Form -->
+        <div class="col-12 col-lg-7">
+            <div class="p-4 p-md-5 border rounded-4 bg-light h-100 d-flex flex-column shadow-sm">
+                <div class="mb-4">
+                    <h3 class="h5 fw-bold text-dark mb-1">
+                        <i class="fas fa-paper-plane text-primary me-2"></i>Send a Message
+                    </h3>
+                    <p class="small text-muted mb-0">
+                        Fill in the details below and I'll get back to you as soon as possible.
+                    </p>
+                </div>
+
+                <form action="https://formspree.io/f/xnnkpwnv" method="POST" class="d-flex flex-column flex-grow-1">
+
+                    <div class="mb-3">
+                        <label for="contact-name" class="form-label small fw-bold text-muted" style="letter-spacing: 0.05em; font-size: 0.72rem;">YOUR NAME</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            <input type="text" name="name" class="form-control" id="contact-name" placeholder="John Doe" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="contact-email" class="form-label small fw-bold text-muted" style="letter-spacing: 0.05em; font-size: 0.72rem;">EMAIL ADDRESS</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                            <input type="email" name="email" class="form-control" id="contact-email" placeholder="name@example.com" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="contact-subject" class="form-label small fw-bold text-muted" style="letter-spacing: 0.05em; font-size: 0.72rem;">SUBJECT (OPTIONAL)</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-tag"></i></span>
+                            <input type="text" name="subject" class="form-control" id="contact-subject" placeholder="Project Inquiry / Job Opportunity">
+                        </div>
+                    </div>
+
+                    <div class="mb-4 flex-grow-1 d-flex flex-column">
+                        <label for="contact-message" class="form-label small fw-bold text-muted" style="letter-spacing: 0.05em; font-size: 0.72rem;">MESSAGE</label>
+                        <div class="input-group flex-grow-1">
+                            <span class="input-group-text align-self-stretch d-flex align-items-start pt-3"><i class="fas fa-comment-dots"></i></span>
+                            <textarea name="message" class="form-control" id="contact-message" rows="4" placeholder="Hello Timothy, I'd like to discuss..." required></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-gradient w-100 py-3 fw-bold text-white shadow-sm mt-auto">
+                        Send Message <i class="fas fa-arrow-right ms-2"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
     </div>
 </div>
 
 <footer class="text-center small pb-4" style="color: var(--text-tertiary);">
-    <p class="mb-0">&copy; <span class="current-year"></span> Timothy Bibat</p>
+    <p class="mb-0">&copy; <span class="current-year"></span> Timothy Bibat. All rights reserved.</p>
 </footer>

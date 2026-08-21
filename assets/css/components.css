@@ -19,7 +19,8 @@
 }
 
 /* Modals */
-#projectModal .modal-content {
+#projectModal .modal-content,
+#mediaModal .modal-content {
     background: var(--bg-card-solid);
     border: 1px solid var(--glass-border);
     backdrop-filter: blur(var(--glass-blur));
@@ -27,20 +28,25 @@
     box-shadow: var(--shadow-lg);
 }
 
-#projectModal .modal-body {
+#projectModal .modal-body,
+#mediaModal .modal-body {
     color: var(--text-primary);
 }
 
 #projectModal h2,
-#projectModal h4 {
+#projectModal h4,
+#mediaModal h2,
+#mediaModal h4 {
     color: var(--text-primary) !important;
 }
 
-#projectModal .text-muted {
+#projectModal .text-muted,
+#mediaModal .text-muted {
     color: var(--text-secondary) !important;
 }
 
-#projectModal .btn-close {
+#projectModal .btn-close,
+#mediaModal .btn-close {
     background-color: var(--accent-subtle);
     opacity: 0.8;
     padding: 1.25rem;
@@ -52,14 +58,16 @@
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
-#projectModal .btn-close:hover {
+#projectModal .btn-close:hover,
+#mediaModal .btn-close:hover {
     opacity: 1;
     background-color: var(--accent-glow);
     transform: rotate(90deg);
 }
 
 @media (max-width: 576px) {
-    #projectModal .btn-close {
+    #projectModal .btn-close,
+    #mediaModal .btn-close {
         padding: 1.5rem;
         margin-top: -0.5rem;
         margin-right: -0.5rem;
@@ -346,30 +354,77 @@ html.theme-transitioning *::after {
 .bg-light { background: rgba(255, 255, 255, 0.03) !important; }
 .border-white { border-color: rgba(255, 255, 255, 0.15) !important; }
 
-.form-control.bg-light {
-    background: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid var(--border-subtle);
-    color: var(--text-primary);
+.form-control {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid var(--border-subtle) !important;
+    color: var(--text-primary) !important;
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
 }
 
-.form-control.bg-light:focus {
-    border-color: var(--accent-start);
-    box-shadow: 0 0 0 3px var(--accent-glow);
+.form-control:focus {
+    border-color: var(--accent-start) !important;
+    box-shadow: 0 0 0 3px var(--accent-glow) !important;
+    background: rgba(99, 102, 241, 0.05) !important;
+    color: var(--text-primary) !important;
+}
+
+.form-control::placeholder {
+    color: var(--text-tertiary) !important;
+}
+
+.input-group .input-group-text {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid var(--border-subtle) !important;
+    color: var(--text-secondary) !important;
+    border-radius: var(--radius-md) 0 0 var(--radius-md);
+    transition: all 0.3s ease;
+}
+
+.input-group > .form-control {
+    border-radius: 0 var(--radius-md) var(--radius-md) 0 !important;
+}
+
+.input-group:focus-within .input-group-text {
+    border-color: var(--accent-start) !important;
+    color: var(--accent-start) !important;
+    background: rgba(99, 102, 241, 0.06) !important;
 }
 
 /* ============================================================
    LIGHT THEME OVERRIDES FOR COMPONENTS
    ============================================================ */
 
-[data-theme="light"] #projectModal .modal-content {
+[data-theme="light"] .form-control {
+    background: #ffffff !important;
+    border-color: rgba(0, 0, 0, 0.12) !important;
+    color: #1a1a2e !important;
+}
+
+[data-theme="light"] .input-group .input-group-text {
+    background: #f8fafc !important;
+    border-color: rgba(0, 0, 0, 0.12) !important;
+    color: #64748b !important;
+}
+
+[data-theme="light"] .form-control:focus {
+    border-color: var(--accent-start) !important;
+    background: #ffffff !important;
+    box-shadow: 0 0 0 3px var(--accent-glow) !important;
+}
+
+[data-theme="light"] #projectModal .modal-content,
+[data-theme="light"] #mediaModal .modal-content {
     background: rgba(255, 255, 255, 0.98);
 }
 
-[data-theme="light"] #projectModal .btn-close {
+[data-theme="light"] #projectModal .btn-close,
+[data-theme="light"] #mediaModal .btn-close {
     filter: contrast(0.1);
 }
 
-[data-theme="dark"] #projectModal .btn-close {
+[data-theme="dark"] #projectModal .btn-close,
+[data-theme="dark"] #mediaModal .btn-close {
     filter: invert(1) grayscale(100%) brightness(200%);
 }
 
