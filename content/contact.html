@@ -104,7 +104,10 @@
                     </p>
                 </div>
 
-                <form action="https://formspree.io/f/xnnkpwnv" method="POST" class="d-flex flex-column flex-grow-1">
+                <!-- Inline Status Alert Container -->
+                <div id="contact-status" class="contact-status-container mb-3" style="display: none;" role="alert"></div>
+
+                <form id="contact-form" action="https://formspree.io/f/xnnkpwnv" method="POST" class="d-flex flex-column flex-grow-1">
 
                     <div class="mb-3">
                         <label for="contact-name" class="form-label small fw-bold text-muted" style="letter-spacing: 0.05em; font-size: 0.72rem;">YOUR NAME</label>
@@ -138,8 +141,12 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-gradient w-100 py-3 fw-bold text-white shadow-sm mt-auto">
-                        Send Message <i class="fas fa-arrow-right ms-2"></i>
+                    <button type="submit" id="contact-submit-btn" class="btn btn-gradient w-100 py-3 fw-bold text-white shadow-sm mt-auto d-flex align-items-center justify-content-center">
+                        <span class="btn-text">Send Message <i class="fas fa-arrow-right ms-2"></i></span>
+                        <span class="btn-loading d-none">
+                            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                            Sending...
+                        </span>
                     </button>
                 </form>
             </div>

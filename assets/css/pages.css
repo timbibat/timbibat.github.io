@@ -504,3 +504,40 @@ main .bg-white.bg-opacity-95 {
     background: #fff !important;
     border-color: var(--glass-border);
 }
+
+/* Bootstrap Alert Theme Overrides */
+#maincontent .alert {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid transparent;
+}
+
+#maincontent .alert.alert-success {
+    background: rgba(34, 197, 94, 0.12) !important;
+    border-color: rgba(34, 197, 94, 0.25) !important;
+    color: #4ade80 !important;
+}
+
+#maincontent .alert.alert-danger {
+    background: rgba(239, 68, 68, 0.12) !important;
+    border-color: rgba(239, 68, 68, 0.25) !important;
+    color: #f87171 !important;
+}
+
+[data-theme="light"] #maincontent .alert.alert-success {
+    background: #ecfdf5 !important;
+    border-color: #a7f3d0 !important;
+    color: #065f46 !important;
+}
+
+[data-theme="light"] #maincontent .alert.alert-danger {
+    background: #fef2f2 !important;
+    border-color: #fecaca !important;
+    color: #991b1b !important;
+}
+
+[data-theme="dark"] #maincontent .alert .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+
