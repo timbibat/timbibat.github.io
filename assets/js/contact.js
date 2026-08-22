@@ -1,10 +1,151 @@
+let toastTimeout = null;
+
 /**
- * Contact Form Module
- * Handles AJAX submission to Formspree without page redirection.
+ * Copies text to clipboard with modern API and reliable fallback
  */
+export async function copyToClipboard(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+        try {
+            await navigator.clipboard.writeText(text);
+            return true;
+        } catch (_) {
+            return fallbackCopy(text);
+        }
+    }
+    return fallbackCopy(text);
+}
+
+function fallbackCopy(text) {
+    try {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-9999px';
+        textArea.style.top = '-9999px';
+        textArea.setAttribute('readonly', '');
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        const success = document.execCommand('copy');
+        document.body.removeChild(textArea);
+        return success;
+    } catch (err) {
+        console.error('Fallback copy failed:', err);
+        return false;
+    }
+}
+
+/**
+ * Displays transient floating toast notification using Bootstrap 5 Toast
+ */
+export function showCopyToast(message = 'Copied to clipboard!', subtext = '') {
+    let container = document.getElementById('copy-toast-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'copy-toast-container';
+        container.className = 'toast-container position-fixed bottom-0 start-50 translate-middle-x p-3';
+        container.style.zIndex = '1090';
+        document.body.appendChild(container);
+    }
+
+    let toastEl = document.getElementById('copyToast');
+    if (!toastEl) {
+        toastEl = document.createElement('div');
+        toastEl.id = 'copyToast';
+        toastEl.className = 'toast align-items-center border-0 shadow-lg';
+        toastEl.setAttribute('role', 'alert');
+        toastEl.setAttribute('aria-live', 'assertive');
+        toastEl.setAttribute('aria-atomic', 'true');
+        container.appendChild(toastEl);
+    }
+
+    toastEl.innerHTML = `
+        <div class="d-flex align-items-center p-2">
+            <div class="toast-body d-flex align-items-center gap-2 flex-grow-1 py-1">
+                <div class="rounded-circle bg-success text-white d-inline-flex align-items-center justify-content-center flex-shrink-0" style="width: 28px; height: 28px; font-size: 0.75rem;">
+                    <i class="fas fa-check"></i>
+                </div>
+                <div>
+                    <div class="fw-bold small text-dark-emphasis">${message}</div>
+                    ${subtext ? `<div class="text-secondary small" style="font-size: 0.75rem;">${subtext}</div>` : ''}
+                </div>
+            </div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    `;
+
+    if (window.bootstrap && window.bootstrap.Toast) {
+        const bsToast = window.bootstrap.Toast.getOrCreateInstance(toastEl, { delay: 2500 });
+        bsToast.show();
+    } else {
+        toastEl.classList.add('show');
+        if (toastTimeout) clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+            toastEl.classList.remove('show');
+        }, 2500);
+    }
+}
+
+/**
+ * Delegated click handler for any copy button or element with data-copy
+ */
+export async function handleCopyClick(event) {
+    const btn = event.target.closest('[data-copy]');
+    if (!btn) return;
+
+    event.preventDefault();
+    const textToCopy = btn.getAttribute('data-copy') || 'timothybibat654@gmail.com';
+
+    const success = await copyToClipboard(textToCopy);
+    if (!success) return;
+
+    // Visual feedback on all matching copy buttons currently rendered in the DOM
+    const allMatchingBtns = document.querySelectorAll(`[data-copy="${textToCopy}"]`);
+    
+    allMatchingBtns.forEach(el => {
+        const icon = el.querySelector('.copy-icon') || el.querySelector('i');
+        const textSpan = el.querySelector('.copy-text') || el.querySelector('.copy-label');
+        
+        el.classList.add('copied');
+
+        if (icon && !el._origIconClass) {
+            el._origIconClass = icon.className;
+        }
+        if (textSpan && !el._origText) {
+            el._origText = textSpan.textContent;
+        }
+
+        if (icon) {
+            icon.className = 'fas fa-check copy-icon';
+        }
+        if (textSpan) {
+            textSpan.textContent = 'Copied!';
+        }
+
+        setTimeout(() => {
+            el.classList.remove('copied');
+            if (icon && el._origIconClass) {
+                icon.className = el._origIconClass;
+                delete el._origIconClass;
+            }
+            if (textSpan && el._origText) {
+                textSpan.textContent = el._origText;
+                delete el._origText;
+            }
+        }, 2500);
+    });
+
+    // Show transient toast
+    showCopyToast('Copied to clipboard!', textToCopy);
+}
+
+export function initCopyHandler() {
+    document.addEventListener('click', handleCopyClick);
+}
 
 export function initContactForm() {
     document.addEventListener('submit', handleContactSubmit);
+    initCopyHandler();
 }
 
 export async function handleContactSubmit(event) {

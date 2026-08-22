@@ -32,20 +32,34 @@
         <div class="col-12 col-lg-5 d-flex flex-column gap-3">
             
             <!-- Email Card -->
-            <div class="p-4 border rounded-4 bg-light hover-lift d-flex flex-column justify-content-between h-100">
+            <div class="p-4 border rounded-4 bg-light hover-lift d-flex flex-column justify-content-between h-100 position-relative email-card">
                 <div class="d-flex align-items-start mb-3">
-                    <div class="rounded-3 p-3 d-inline-flex align-items-center justify-content-center me-3 glow-box" 
+                    <div class="rounded-3 p-3 d-inline-flex align-items-center justify-content-center me-3 glow-box flex-shrink-0" 
                          style="width: 48px; height: 48px; background: rgba(99, 102, 241, 0.12); color: var(--accent-start);">
                         <i class="fas fa-envelope fs-5"></i>
                     </div>
-                    <div>
-                        <div class="small text-muted fw-bold text-uppercase" style="letter-spacing: 0.08em; font-size: 0.7rem;">EMAIL ME</div>
-                        <div class="text-dark fw-bold text-break" style="font-size: 0.95rem;">timothybibat654@gmail.com</div>
+                    <div class="flex-grow-1 min-w-0">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="small text-muted fw-bold text-uppercase" style="letter-spacing: 0.08em; font-size: 0.7rem;">EMAIL ME</div>
+                        </div>
+                        <div class="d-flex align-items-center flex-wrap gap-2 mt-1">
+                            <span class="text-dark fw-bold text-break email-address" style="font-size: 0.92rem;">timothybibat654@gmail.com</span>
+                        </div>
                     </div>
                 </div>
-                <a href="mailto:timothybibat654@gmail.com" class="btn btn-outline-primary btn-sm rounded-pill w-100 fw-semibold">
-                    <i class="fas fa-paper-plane me-1"></i> Send Direct Email
-                </a>
+                <div class="d-flex gap-2 mt-auto">
+                    <a href="mailto:timothybibat654@gmail.com" class="btn btn-outline-primary btn-sm rounded-pill flex-grow-1 fw-semibold d-inline-flex align-items-center justify-content-center">
+                        <i class="fas fa-paper-plane me-1"></i> Send Direct Email
+                    </a>
+                    <button type="button" 
+                            class="btn btn-primary btn-sm rounded-pill px-3 fw-semibold d-inline-flex align-items-center justify-content-center"
+                            data-copy="timothybibat654@gmail.com"
+                            aria-label="Copy email address"
+                            title="Copy email to clipboard">
+                        <i class="fas fa-copy me-1 copy-icon"></i>
+                        <span class="copy-text">Copy</span>
+                    </button>
+                </div>
             </div>
 
             <!-- LinkedIn Card -->
