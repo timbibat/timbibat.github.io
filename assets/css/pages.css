@@ -540,4 +540,101 @@ main .bg-white.bg-opacity-95 {
     filter: invert(1) grayscale(100%) brightness(200%);
 }
 
+/* ============================================================
+   BOOTSTRAP TIMELINE ENHANCEMENTS
+   ============================================================ */
 
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 16px;
+    bottom: 16px;
+    left: 17px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent-start) 0%, var(--accent-end) 50%, rgba(99, 102, 241, 0.15) 100%);
+    border-radius: 4px;
+    box-shadow: 0 0 10px var(--accent-glow);
+    z-index: 1;
+}
+
+@media (min-width: 576px) {
+    .timeline::before {
+        left: 21px;
+    }
+}
+
+.timeline-node {
+    position: absolute;
+    top: 0;
+    left: -1.75rem;
+    width: 36px;
+    height: 36px;
+    background: var(--bg-card-solid);
+    border: 2px solid var(--accent-start);
+    color: var(--accent-start);
+    font-size: 0.85rem;
+    box-shadow: 0 0 14px var(--accent-glow);
+    z-index: 2;
+    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@media (min-width: 576px) {
+    .timeline-node {
+        left: -2.25rem;
+        width: 42px;
+        height: 42px;
+        font-size: 0.95rem;
+    }
+}
+
+.timeline-node.node-education {
+    border-color: #0ea5e9;
+    color: #0ea5e9;
+    box-shadow: 0 0 14px rgba(14, 165, 233, 0.35);
+}
+
+.timeline-item:hover .timeline-node {
+    transform: scale(1.15);
+    background: var(--primary-gradient);
+    border-color: transparent;
+    color: #ffffff;
+    box-shadow: 0 0 22px var(--accent-glow);
+}
+
+.timeline-item:hover .timeline-node.node-education {
+    background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
+    border-color: transparent;
+    color: #ffffff;
+    box-shadow: 0 0 22px rgba(14, 165, 233, 0.5);
+}
+
+/* Timeline Custom Bullet List */
+.timeline-list li {
+    position: relative;
+    padding-left: 1.25rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.timeline-list li:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-start);
+    box-shadow: 0 0 6px var(--accent-glow);
+}
+
+.timeline-item:has(.node-education) .timeline-list li::before {
+    background: #0ea5e9;
+    box-shadow: 0 0 6px rgba(14, 165, 233, 0.6);
+}
