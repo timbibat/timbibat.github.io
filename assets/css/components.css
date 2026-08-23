@@ -72,6 +72,14 @@
     transform: rotate(90deg);
 }
 
+#projectModal .btn-close:focus:not(:focus-visible):not(:hover),
+#mediaModal .btn-close:focus:not(:focus-visible):not(:hover),
+#certificateModal .btn-close:focus:not(:focus-visible):not(:hover) {
+    outline: none;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    opacity: 0.8;
+}
+
 @media (max-width: 576px) {
     #projectModal .btn-close,
     #mediaModal .btn-close,
@@ -222,22 +230,58 @@ html.theme-transitioning *::after {
         box-shadow 0.3s ease !important;
 }
 
-/* Project Carousel */
+/* Project Carousel - Bootstrap Integration */
+.carousel-inner .img-lazy-load {
+    z-index: 0;
+}
+
+.carousel-control-prev,
+.carousel-control-next,
+.carousel-indicators button {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
 .carousel-indicators button {
     background-color: var(--accent-start);
+}
+
+.carousel-indicators button:focus:not(:focus-visible):not(:hover),
+.carousel-indicators [data-bs-target]:focus:not(:focus-visible):not(:hover) {
+    outline: none;
+    box-shadow: none;
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
-    padding: 1.5rem;
+    padding: 1.25rem;
     background-size: 50%;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 0.9;
+}
+
+.carousel-control-prev:focus:not(:focus-visible):not(:hover),
+.carousel-control-next:focus:not(:focus-visible):not(:hover) {
+    opacity: 0.5;
+    outline: none;
+    box-shadow: none;
 }
 
 [data-theme="dark"] .carousel-control-prev-icon,
 [data-theme="dark"] .carousel-control-next-icon {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 576px) {
+    #projectCarousel .img-loading-wrapper,
+    #projectCarousel .img-loading-wrapper img {
+        height: 250px !important;
+    }
 }
 
 /* ============================================================

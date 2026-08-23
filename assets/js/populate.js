@@ -460,51 +460,56 @@ window.showProjectModal = function(projIdentifier) {
             </li>`
         ).join('');
 
+        // Prepare image list from images array or fallback to main image
+        let imagesList = [];
+        if (majorProj.images && Array.isArray(majorProj.images) && majorProj.images.length > 0) {
+            imagesList = majorProj.images.filter(img => img && typeof img === 'string' && img.trim() !== '');
+        }
+        if (imagesList.length === 0 && majorProj.image) {
+            imagesList = [majorProj.image];
+        }
+
+        const hasMultiple = imagesList.length > 1;
+
         // Prepare Carousel HTML
         let carouselItems = "";
         let carouselIndicators = "";
         
-        if (majorProj.images && majorProj.images.length > 0) {
-            majorProj.images.forEach((img, idx) => {
-                carouselItems += `
-                    <div class="carousel-item ${idx === 0 ? 'active' : ''}">
-                        <div class="img-loading-wrapper position-relative rounded-4 overflow-hidden" style="height: 400px;">
-                            <img src="${img}" class="d-block w-100 rounded-4 shadow-sm img-lazy-load" style="height: 400px; object-fit: contain; background: rgba(0,0,0,0.03);" alt="${majorProj.name} - image ${idx + 1}" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded')">
-                        </div>
-                    </div>
-                `;
-                carouselIndicators += `
-                    <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="${idx}" class="${idx === 0 ? 'active' : ''}" aria-current="${idx === 0 ? 'true' : 'false'}" aria-label="Slide ${idx + 1}"></button>
-                `;
-            });
-        } else {
-            carouselItems = `
-                <div class="carousel-item active">
+        imagesList.forEach((img, idx) => {
+            carouselItems += `
+                <div class="carousel-item ${idx === 0 ? 'active' : ''}">
                     <div class="img-loading-wrapper position-relative rounded-4 overflow-hidden" style="height: 400px;">
-                        <img src="${majorProj.image}" class="d-block w-100 rounded-4 shadow-sm img-lazy-load" style="height: 400px; object-fit: contain; background: rgba(0,0,0,0.03);" alt="${majorProj.name}" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded')">
+                        <img src="${img}" class="d-block w-100 rounded-4 shadow-sm img-lazy-load" style="height: 400px; object-fit: contain; background: rgba(0,0,0,0.03);" alt="${majorProj.name} - image ${idx + 1}" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded')">
                     </div>
                 </div>
             `;
-        }
+            if (hasMultiple) {
+                carouselIndicators += `
+                    <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="${idx}" class="${idx === 0 ? 'active' : ''}" aria-current="${idx === 0 ? 'true' : 'false'}" aria-label="Slide ${idx + 1}"></button>
+                `;
+            }
+        });
 
         modalContent.innerHTML = `
             <div class="row g-4">
                 <div class="col-12 mb-4">
-                    <div id="projectCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div id="projectCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
+                        ${hasMultiple ? `
                         <div class="carousel-indicators">
                             ${carouselIndicators}
-                        </div>
+                        </div>` : ''}
                         <div class="carousel-inner">
                             ${carouselItems}
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel" data-bs-slide="prev">
+                        ${hasMultiple ? `
+                        <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel" data-bs-slide="prev" aria-label="Previous">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel" data-bs-slide="next">
+                        <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel" data-bs-slide="next" aria-label="Next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
-                        </button>
+                        </button>` : ''}
                     </div>
                 </div>
                 <div class="col-12">
@@ -539,18 +544,24 @@ window.showProjectModal = function(projIdentifier) {
             }
         });
 
-        const myModal = new bootstrap.Modal(document.getElementById('projectModal'));
-        myModal.show();
+        const modalEl = document.getElementById('projectModal');
+        if (modalEl) {
+            const myModal = bootstrap.Modal.getOrCreateInstance(modalEl);
+            myModal.show();
+        }
 
         const carouselEl = document.getElementById('projectCarousel');
-        if (carouselEl) {
-            new bootstrap.Carousel(carouselEl, {
-                interval: 3000,
-                ride: 'carousel'
+        if (carouselEl && hasMultiple) {
+            const carouselInstance = bootstrap.Carousel.getOrCreateInstance(carouselEl, {
+                interval: 3500,
+                ride: 'carousel',
+                wrap: true,
+                touch: true
             });
+            carouselInstance.cycle();
         }
     }
-}
+};
 
 window.showMediaModal = function(mediaIdentifier) {
     const multimediaList = window.portfolioDetails.multimedia || [];
@@ -615,8 +626,11 @@ window.showMediaModal = function(mediaIdentifier) {
             }
         });
 
-        const myModal = new bootstrap.Modal(document.getElementById('mediaModal'));
-        myModal.show();
+        const modalEl = document.getElementById('mediaModal');
+        if (modalEl) {
+            const myModal = bootstrap.Modal.getOrCreateInstance(modalEl);
+            myModal.show();
+        }
     }
 };
 
@@ -683,8 +697,11 @@ window.showCertificateModal = function(certIdentifier) {
             }
         });
 
-        const myModal = new bootstrap.Modal(document.getElementById('certificateModal'));
-        myModal.show();
+        const modalEl = document.getElementById('certificateModal');
+        if (modalEl) {
+            const myModal = bootstrap.Modal.getOrCreateInstance(modalEl);
+            myModal.show();
+        }
     }
 };
 
