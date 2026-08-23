@@ -51,6 +51,11 @@
     --radius-md: 12px;
     --radius-lg: 20px;
     --radius-xl: 28px;
+
+    /* Skeleton Loader */
+    --skeleton-base: rgba(255, 255, 255, 0.05);
+    --skeleton-shine: rgba(255, 255, 255, 0.12);
+    --skeleton-border: rgba(255, 255, 255, 0.06);
 }
 
 [data-theme="light"] {
@@ -83,4 +88,9 @@
     --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.08);
     --shadow-lg: 0 16px 50px rgba(0, 0, 0, 0.1);
     --shadow-glow: 0 0 25px rgba(99, 102, 241, 0.12);
+
+    /* Skeleton Loader */
+    --skeleton-base: rgba(0, 0, 0, 0.06);
+    --skeleton-shine: rgba(0, 0, 0, 0.12);
+    --skeleton-border: rgba(0, 0, 0, 0.06);
 }

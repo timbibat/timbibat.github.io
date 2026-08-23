@@ -24,6 +24,76 @@ window.portfolioDetails = {
 };
 let isDataLoaded = false;
 
+// Skeleton templates for data fetching states
+function getMajorProjectSkeleton() {
+    return `
+    <div class="major-project-article animate-in">
+        <div class="row align-items-center g-4 g-lg-5">
+            <div class="col-lg-5">
+                <div class="project-window-frame">
+                    <div class="window-header-bar">
+                        <div class="window-dots">
+                            <span class="window-dot dot-red"></span>
+                            <span class="window-dot dot-yellow"></span>
+                            <span class="window-dot dot-green"></span>
+                        </div>
+                        <div class="skeleton-box skeleton-pill-sm" style="width: 90px; height: 18px;"></div>
+                    </div>
+                    <div class="window-body-container skeleton-box skeleton-img-box w-100" style="height: 260px;"></div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="major-project-details text-start">
+                    <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+                        <div class="skeleton-box skeleton-pill" style="width: 100px; height: 26px;"></div>
+                        <div class="skeleton-box skeleton-pill" style="width: 130px; height: 26px;"></div>
+                    </div>
+                    
+                    <div class="skeleton-box skeleton-title mb-3" style="width: 65%; height: 32px;"></div>
+                    
+                    <div class="skeleton-box skeleton-line w-100 mb-2"></div>
+                    <div class="skeleton-box skeleton-line w-100 mb-2"></div>
+                    <div class="skeleton-box skeleton-line w-75 mb-4"></div>
+                    
+                    <div class="d-flex flex-wrap gap-2 mb-4">
+                        <div class="skeleton-box skeleton-pill-sm" style="width: 75px;"></div>
+                        <div class="skeleton-box skeleton-pill-sm" style="width: 85px;"></div>
+                        <div class="skeleton-box skeleton-pill-sm" style="width: 70px;"></div>
+                        <div class="skeleton-box skeleton-pill-sm" style="width: 90px;"></div>
+                    </div>
+                    
+                    <div class="d-flex flex-wrap gap-2 pt-2">
+                        <div class="skeleton-box skeleton-btn" style="width: 120px; height: 38px;"></div>
+                        <div class="skeleton-box skeleton-btn" style="width: 100px; height: 38px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>`;
+}
+
+function getCardSkeletons(count = 3) {
+    return Array.from({ length: count }, (_, i) => `
+    <div class="col animate-in" style="animation-delay: ${i * 0.08}s;">
+        <div class="project-card h-100 rounded-4 overflow-hidden d-flex flex-column">
+            <div class="skeleton-box skeleton-img-box w-100" style="height: 250px;"></div>
+            <div class="card-body p-4 d-flex flex-column flex-grow-1">
+                <div class="mb-3 d-flex flex-wrap gap-1">
+                    <div class="skeleton-box skeleton-pill-sm" style="width: 70px;"></div>
+                    <div class="skeleton-box skeleton-pill-sm" style="width: 55px;"></div>
+                </div>
+                <div class="skeleton-box skeleton-line mb-3" style="width: 75%; height: 20px;"></div>
+                <div class="skeleton-box skeleton-line w-100 mb-2"></div>
+                <div class="skeleton-box skeleton-line w-60 mb-4"></div>
+                <div class="mt-auto d-flex gap-2">
+                    <div class="skeleton-box skeleton-btn" style="width: 100px; height: 32px;"></div>
+                    <div class="skeleton-box skeleton-btn" style="width: 80px; height: 32px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>`).join('');
+}
+
 window.renderPortfolio = async function() {
     const majorProjectContainer = document.getElementById("major-project-container");
     const activitiesContainer = document.getElementById("activities-container");
@@ -32,24 +102,23 @@ window.renderPortfolio = async function() {
     const certificatesContainer = document.getElementById("certificates-container");
 
     if (activitiesContainer && projectsContainer && multimediaContainer && certificatesContainer) {
-        // Show loading state
-        if (majorProjectContainer) majorProjectContainer.innerHTML = '<div class="text-center my-5"><div class="spinner-border text-primary" role="status"></div></div>';
-        activitiesContainer.innerHTML = '';
-        projectsContainer.innerHTML = '';
-        multimediaContainer.innerHTML = '';
-        certificatesContainer.innerHTML = '';
-        
-        // Fetch data if not already loaded
+        // Show skeleton loading state while fetching data
         if (!isDataLoaded) {
+            if (majorProjectContainer) majorProjectContainer.innerHTML = getMajorProjectSkeleton();
+            activitiesContainer.innerHTML = getCardSkeletons(3);
+            projectsContainer.innerHTML = getCardSkeletons(3);
+            multimediaContainer.innerHTML = getCardSkeletons(3);
+            certificatesContainer.innerHTML = getCardSkeletons(3);
+            
             try {
-                // Fetch all collections
+                // Fetch all collections in parallel for maximum speed
                 const collections = ['majorProject', 'projects', 'activities', 'multimedia', 'certificates'];
-                for (const col of collections) {
+                await Promise.all(collections.map(async (col) => {
                     const snap = await getDocs(collection(db, col));
                     window.portfolioDetails[col] = snap.docs
                         .map(doc => ({ ...doc.data(), id: doc.id }))
                         .sort((a, b) => (a.order ?? Number.MAX_SAFE_INTEGER) - (b.order ?? Number.MAX_SAFE_INTEGER));
-                }
+                }));
                 
                 isDataLoaded = true;
             } catch (error) {
@@ -101,11 +170,6 @@ window.renderPortfolio = async function() {
                 <div class="project-card h-100 rounded-4 overflow-hidden">
                     <div class="img-loading-wrapper position-relative overflow-hidden" style="height: 250px;">
                         <img src="${proj.image}" class="card-img-top img-lazy-load" alt="${proj.name}" style="height: 250px; object-fit: cover;" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded')">
-                        <div class="img-spinner position-absolute top-50 start-50 translate-middle">
-                            <div class="spinner-border text-primary" role="status">
-                                <span class="visually-hidden">Loading...</span>
-                            </div>
-                        </div>
                     </div>
                     <div class="card-body p-4 d-flex flex-column">
                         <div class="mb-3 d-flex flex-wrap gap-1">
@@ -146,11 +210,6 @@ window.renderPortfolio = async function() {
                 <div class="project-card h-100 rounded-4 overflow-hidden d-flex flex-column">
                     <div class="img-loading-wrapper position-relative overflow-hidden" style="height: 250px; cursor: pointer;" onclick="showMediaModal('${multiIdStr}')">
                         <img src="${multi.image}" class="card-img-top img-lazy-load" alt="${multi.name}" style="height: 250px; object-fit: cover;" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded')">
-                        <div class="img-spinner position-absolute top-50 start-50 translate-middle">
-                            <div class="spinner-border text-primary" role="status">
-                                <span class="visually-hidden">Loading...</span>
-                            </div>
-                        </div>
                     </div>
                     <div class="card-body p-4 d-flex flex-column flex-grow-1">
                         <div class="mb-3 d-flex flex-wrap gap-1">
@@ -188,11 +247,6 @@ window.renderPortfolio = async function() {
                 <div class="project-card h-100 rounded-4 overflow-hidden d-flex flex-column">
                     <div class="img-loading-wrapper position-relative overflow-hidden" style="height: 230px; cursor: pointer;" onclick="showCertificateModal('${certIdStr}')">
                         <img src="${cert.image}" class="card-img-top img-lazy-load" alt="${cert.name}" style="height: 230px; object-fit: contain; padding: 12px; background: rgba(0,0,0,0.02);" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded')">
-                        <div class="img-spinner position-absolute top-50 start-50 translate-middle">
-                            <div class="spinner-border text-primary" role="status">
-                                <span class="visually-hidden">Loading...</span>
-                            </div>
-                        </div>
                     </div>
                     <div class="card-body p-4 d-flex flex-column flex-grow-1">
                         <div class="mb-3 d-flex flex-wrap gap-1">
@@ -275,11 +329,6 @@ window.renderPortfolio = async function() {
                                     </div>
                                     <div class="window-body-container img-loading-wrapper">
                                         <img src="${majorProj.image}" class="img-fluid img-lazy-load" alt="${majorProj.name}" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded')">
-                                        <div class="img-spinner position-absolute top-50 start-50 translate-middle">
-                                            <div class="spinner-border text-primary" role="status">
-                                                <span class="visually-hidden">Loading...</span>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -375,6 +424,17 @@ window.renderPortfolio = async function() {
             }
         }
 
+        // Update tab counter badges
+        const setBadge = (id, count) => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = count;
+        };
+        setBadge('major-count', window.portfolioDetails.majorProject?.length || 1);
+        setBadge('projects-count', window.portfolioDetails.projects?.length || 0);
+        setBadge('activities-count', window.portfolioDetails.activities?.length || 0);
+        setBadge('multimedia-count', window.portfolioDetails.multimedia?.length || 0);
+        setBadge('certificates-count', window.portfolioDetails.certificates?.length || 0);
+
         // Check already loaded / cached images
         checkLoadedImages(document.getElementById("portfolioTabContent"));
     }
@@ -410,11 +470,6 @@ window.showProjectModal = function(projIdentifier) {
                     <div class="carousel-item ${idx === 0 ? 'active' : ''}">
                         <div class="img-loading-wrapper position-relative rounded-4 overflow-hidden" style="height: 400px;">
                             <img src="${img}" class="d-block w-100 rounded-4 shadow-sm img-lazy-load" style="height: 400px; object-fit: contain; background: rgba(0,0,0,0.03);" alt="${majorProj.name} - image ${idx + 1}" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded')">
-                            <div class="img-spinner position-absolute top-50 start-50 translate-middle">
-                                <div class="spinner-border text-primary" role="status">
-                                    <span class="visually-hidden">Loading...</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 `;
@@ -427,11 +482,6 @@ window.showProjectModal = function(projIdentifier) {
                 <div class="carousel-item active">
                     <div class="img-loading-wrapper position-relative rounded-4 overflow-hidden" style="height: 400px;">
                         <img src="${majorProj.image}" class="d-block w-100 rounded-4 shadow-sm img-lazy-load" style="height: 400px; object-fit: contain; background: rgba(0,0,0,0.03);" alt="${majorProj.name}" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded')">
-                        <div class="img-spinner position-absolute top-50 start-50 translate-middle">
-                            <div class="spinner-border text-primary" role="status">
-                                <span class="visually-hidden">Loading...</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             `;
@@ -528,11 +578,6 @@ window.showMediaModal = function(mediaIdentifier) {
                 <div class="col-12">
                     <div class="img-loading-wrapper position-relative rounded-4 overflow-hidden text-center" style="max-height: 500px;">
                         <img src="${item.image}" class="img-fluid rounded-4 shadow-sm img-lazy-load" style="max-height: 500px; width: 100%; object-fit: contain;" alt="${item.name}" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded')">
-                        <div class="img-spinner position-absolute top-50 start-50 translate-middle">
-                            <div class="spinner-border text-primary" role="status">
-                                <span class="visually-hidden">Loading...</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="col-12">
@@ -601,11 +646,6 @@ window.showCertificateModal = function(certIdentifier) {
                 <div class="col-12">
                     <div class="img-loading-wrapper position-relative rounded-4 overflow-hidden text-center p-3" style="max-height: 520px; background: rgba(0,0,0,0.03);">
                         <img src="${item.image}" class="img-fluid rounded-4 shadow-sm img-lazy-load" style="max-height: 480px; width: 100%; object-fit: contain;" alt="${item.name}" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded')">
-                        <div class="img-spinner position-absolute top-50 start-50 translate-middle">
-                            <div class="spinner-border text-primary" role="status">
-                                <span class="visually-hidden">Loading...</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="col-12">

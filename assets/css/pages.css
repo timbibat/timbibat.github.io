@@ -182,28 +182,34 @@ main .bg-white.bg-opacity-95 {
     transform: scale(1.08);
 }
 
-/* Image Loading Spinner & Transitions */
+/* Image Skeleton Loading & Transitions */
 .img-loading-wrapper {
     position: relative;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.02);
+    background-color: var(--skeleton-base);
+    background-image: linear-gradient(
+        90deg,
+        var(--skeleton-base) 0%,
+        var(--skeleton-shine) 50%,
+        var(--skeleton-base) 100%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.6s ease-in-out infinite;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-[data-theme="light"] .img-loading-wrapper {
-    background: rgba(0, 0, 0, 0.03);
-}
-
-.img-loading-wrapper .img-spinner {
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    z-index: 1;
-    pointer-events: none;
+.img-loading-wrapper.loaded,
+.img-loading-wrapper:has(.img-lazy-load.loaded) {
+    animation: none;
+    background-image: none;
 }
 
 .img-lazy-load {
     opacity: 0;
+    position: relative;
+    z-index: 2;
     transition: opacity 0.4s ease-in-out, transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -276,32 +282,43 @@ main .bg-white.bg-opacity-95 {
     transition: all 0.3s ease;
     font-size: 0.85rem;
     white-space: nowrap;
-    padding: 10px 4px;
+    padding: 10px 14px;
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 4px;
+    gap: 6px;
     height: 100%;
     border-radius: var(--radius-md) !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991.98px) {
     .portfolio-nav-container .nav-tabs .nav-link {
-        font-size: 0.65rem;
+        font-size: 0.78rem;
+        padding: 8px 8px;
+        gap: 4px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .portfolio-nav-container .nav-tabs .nav-link {
+        font-size: 0.68rem;
         padding: 8px 2px;
+        flex-direction: column;
+        gap: 3px;
     }
     .portfolio-nav-container .nav-tabs .nav-link i {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
         margin: 0 !important;
     }
 }
 
 @media (max-width: 400px) {
     .portfolio-nav-container .nav-tabs .nav-link {
-        font-size: 0.65rem;
+        font-size: 0.62rem;
         letter-spacing: -0.02em;
+        padding: 6px 1px;
     }
 }
 
@@ -541,19 +558,24 @@ main .bg-white.bg-opacity-95 {
 }
 
 /* ============================================================
-   BOOTSTRAP TIMELINE ENHANCEMENTS
+/* ============================================================
+   TIMELINE ENHANCEMENTS (CV & EXPERIENCE)
    ============================================================ */
+
+.timeline {
+    position: relative;
+}
 
 .timeline::before {
     content: '';
     position: absolute;
-    top: 16px;
-    bottom: 16px;
+    top: 24px;
+    bottom: 24px;
     left: 17px;
-    width: 2px;
-    background: linear-gradient(180deg, var(--accent-start) 0%, var(--accent-end) 50%, rgba(99, 102, 241, 0.15) 100%);
-    border-radius: 4px;
-    box-shadow: 0 0 10px var(--accent-glow);
+    width: 3px;
+    background: linear-gradient(180deg, #6366f1 0%, #0ea5e9 45%, #10b981 100%);
+    border-radius: 6px;
+    box-shadow: 0 0 12px rgba(99, 102, 241, 0.45);
     z-index: 1;
 }
 
@@ -567,13 +589,13 @@ main .bg-white.bg-opacity-95 {
     position: absolute;
     top: 0;
     left: -1.75rem;
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     background: var(--bg-card-solid);
     border: 2px solid var(--accent-start);
     color: var(--accent-start);
     font-size: 0.85rem;
-    box-shadow: 0 0 14px var(--accent-glow);
+    box-shadow: 0 0 16px var(--accent-glow);
     z-index: 2;
     transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -581,8 +603,8 @@ main .bg-white.bg-opacity-95 {
 @media (min-width: 576px) {
     .timeline-node {
         left: -2.25rem;
-        width: 42px;
-        height: 42px;
+        width: 44px;
+        height: 44px;
         font-size: 0.95rem;
     }
 }
@@ -590,32 +612,64 @@ main .bg-white.bg-opacity-95 {
 .timeline-node.node-education {
     border-color: #0ea5e9;
     color: #0ea5e9;
-    box-shadow: 0 0 14px rgba(14, 165, 233, 0.35);
+    box-shadow: 0 0 16px rgba(14, 165, 233, 0.4);
+}
+
+.timeline-node.timeline-node-active {
+    animation: timelinePulse 2.5s infinite;
+}
+
+@keyframes timelinePulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7), 0 0 16px var(--accent-glow);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(99, 102, 241, 0), 0 0 20px var(--accent-glow);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0), 0 0 16px var(--accent-glow);
+    }
+}
+
+.timeline-node.node-education.timeline-node-active {
+    animation: timelinePulseEdu 2.5s infinite;
+}
+
+@keyframes timelinePulseEdu {
+    0% {
+        box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.7), 0 0 16px rgba(14, 165, 233, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(14, 165, 233, 0), 0 0 20px rgba(14, 165, 233, 0.6);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(14, 165, 233, 0), 0 0 16px rgba(14, 165, 233, 0.4);
+    }
 }
 
 .timeline-item:hover .timeline-node {
-    transform: scale(1.15);
+    transform: scale(1.15) rotate(5deg);
     background: var(--primary-gradient);
     border-color: transparent;
     color: #ffffff;
-    box-shadow: 0 0 22px var(--accent-glow);
+    box-shadow: 0 0 24px var(--accent-glow);
 }
 
 .timeline-item:hover .timeline-node.node-education {
     background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
     border-color: transparent;
     color: #ffffff;
-    box-shadow: 0 0 22px rgba(14, 165, 233, 0.5);
+    box-shadow: 0 0 24px rgba(14, 165, 233, 0.6);
 }
 
 /* Timeline Custom Bullet List */
 .timeline-list li {
     position: relative;
-    padding-left: 1.25rem;
-    margin-bottom: 0.5rem;
+    padding-left: 1.35rem;
+    margin-bottom: 0.55rem;
     font-size: 0.88rem;
     color: var(--text-secondary);
-    line-height: 1.6;
+    line-height: 1.65;
 }
 
 .timeline-list li:last-child {
@@ -638,3 +692,125 @@ main .bg-white.bg-opacity-95 {
     background: #0ea5e9;
     box-shadow: 0 0 6px rgba(14, 165, 233, 0.6);
 }
+
+/* ============================================================
+   TECH-STACK FILTER CHIPS & SEARCH (BOOTSTRAP INTEGRATION)
+   ============================================================ */
+
+/* Bootstrap Button Variant for Filter Chips */
+.tech-filter-btn {
+    border-color: var(--border-subtle) !important;
+    background-color: rgba(255, 255, 255, 0.04) !important;
+    color: var(--text-secondary) !important;
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 0.35rem 0.85rem;
+    transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.tech-filter-btn:hover {
+    background-color: rgba(99, 102, 241, 0.08) !important;
+    border-color: var(--border-hover) !important;
+    color: var(--text-primary) !important;
+    transform: translateY(-1px);
+}
+
+.tech-filter-btn.active {
+    background: var(--primary-gradient) !important;
+    border-color: transparent !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px var(--accent-glow);
+}
+
+.tech-filter-btn .filter-count {
+    font-size: 0.72rem;
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    color: inherit !important;
+}
+
+/* Bootstrap Form-Control for Tech Search */
+.tech-search-input {
+    background-color: rgba(255, 255, 255, 0.04) !important;
+    border-color: var(--border-subtle) !important;
+    color: var(--text-primary) !important;
+    font-size: 0.88rem;
+    transition: all 0.25s ease;
+}
+
+.tech-search-input:focus {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    border-color: var(--accent-start) !important;
+    box-shadow: 0 0 0 0.25rem rgba(99, 102, 241, 0.2) !important;
+    color: var(--text-primary) !important;
+}
+
+.tech-search-input::placeholder {
+    color: var(--text-tertiary) !important;
+}
+
+/* Light Theme Overrides for Bootstrap Components */
+[data-theme="light"] .tech-filter-btn {
+    background-color: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+    color: #475569 !important;
+}
+
+[data-theme="light"] .tech-filter-btn.active {
+    background: var(--primary-gradient) !important;
+    color: #ffffff !important;
+}
+
+[data-theme="light"] .tech-filter-btn .filter-count {
+    background-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] .tech-filter-btn.active .filter-count {
+    background-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+[data-theme="light"] .tech-search-input {
+    background-color: #ffffff !important;
+    border-color: #cbd5e1 !important;
+    color: #1e293b !important;
+}
+
+[data-theme="light"] .tech-search-input:focus {
+    background-color: #ffffff !important;
+    border-color: var(--accent-start) !important;
+    box-shadow: 0 0 0 0.25rem rgba(99, 102, 241, 0.15) !important;
+}
+
+/* ============================================================
+   PORTFOLIO TAB COUNTER BADGES (BOOTSTRAP INTEGRATION)
+   ============================================================ */
+
+.portfolio-nav-container .nav-link .tab-count {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.25em 0.6em;
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    color: var(--text-secondary) !important;
+    border: 1px solid var(--border-subtle);
+    transition: all 0.25s ease;
+    vertical-align: middle;
+}
+
+.portfolio-nav-container .nav-link.active .tab-count {
+    background: var(--primary-gradient) !important;
+    border-color: transparent !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 10px var(--accent-glow);
+}
+
+[data-theme="light"] .portfolio-nav-container .nav-link .tab-count {
+    background-color: #e2e8f0 !important;
+    border-color: #cbd5e1 !important;
+    color: #475569 !important;
+}
+
+[data-theme="light"] .portfolio-nav-container .nav-link.active .tab-count {
+    background: var(--primary-gradient) !important;
+    color: #ffffff !important;
+}
+

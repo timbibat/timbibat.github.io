@@ -1,11 +1,57 @@
 <div class="glass-card p-4 p-md-5 mb-5" id="tech-stack">
-    <h2 class="mb-5 fw-bold">
-        <span class="glow-text"><i class="fas fa-code me-2"></i></span>Tech-Stack
-    </h2>
+    <!-- Header -->
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3 mb-4">
+        <div>
+            <h2 class="mb-1 fw-bold">
+                <span class="glow-text"><i class="fas fa-code me-2"></i></span>Tech-Stack
+            </h2>
+            <p class="text-muted small mb-0">Languages, security tools, frameworks, and workflows</p>
+        </div>
+        
+        <!-- Search Input -->
+        <div class="position-relative w-100" style="max-width: 320px;">
+            <i class="fas fa-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted" style="font-size: 0.85rem; pointer-events: none;"></i>
+            <input type="text" id="techSearchInput" class="form-control form-control-sm rounded-pill ps-5 pe-4 py-2 border shadow-none tech-search-input" placeholder="Quick search (e.g. Python, Figma, React)..." aria-label="Search tech stack">
+            <button type="button" id="techSearchClear" class="btn btn-sm btn-link text-muted position-absolute top-50 end-0 translate-middle-y me-1 p-1 text-decoration-none d-none" aria-label="Clear search">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
 
-    <div class="row g-4">
+    <!-- Quick Filter Chips -->
+    <div class="d-flex flex-wrap gap-2 mb-5 pb-2" id="techFilterChips">
+        <button type="button" class="btn btn-sm rounded-pill tech-filter-btn active" data-filter="all">
+            <i class="fas fa-th-large"></i> All <span class="badge rounded-pill filter-count ms-1">18</span>
+        </button>
+        <button type="button" class="btn btn-sm rounded-pill tech-filter-btn" data-filter="programming">
+            <i class="fas fa-laptop-code"></i> Languages & Frameworks <span class="badge rounded-pill filter-count ms-1">9</span>
+        </button>
+        <button type="button" class="btn btn-sm rounded-pill tech-filter-btn" data-filter="tools">
+            <i class="fas fa-tools"></i> Tools & Databases <span class="badge rounded-pill filter-count ms-1">5</span>
+        </button>
+        <button type="button" class="btn btn-sm rounded-pill tech-filter-btn" data-filter="design">
+            <i class="fas fa-palette"></i> Design & Media <span class="badge rounded-pill filter-count ms-1">3</span>
+        </button>
+        <button type="button" class="btn btn-sm rounded-pill tech-filter-btn" data-filter="security">
+            <i class="fas fa-shield-alt"></i> Cyber Security <span class="badge rounded-pill filter-count ms-1">1</span>
+        </button>
+    </div>
+
+    <!-- Empty State for Search -->
+    <div id="techEmptyState" class="text-center py-5 d-none">
+        <div class="rounded-circle p-3 d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px; background: rgba(99, 102, 241, 0.1); color: var(--accent-start);">
+            <i class="fas fa-search fs-4"></i>
+        </div>
+        <h5 class="fw-bold text-dark mb-1">No matching technologies found</h5>
+        <p class="text-muted small mb-3">Try adjusting your search terms or selecting a different filter category.</p>
+        <button type="button" id="resetTechFilterBtn" class="btn btn-sm btn-outline-primary rounded-pill px-3">
+            <i class="fas fa-undo me-1"></i> Reset Filters
+        </button>
+    </div>
+
+    <div class="row g-4" id="techStackGrid">
         <!-- Programming & Frameworks -->
-        <div class="col-md-6 col-sm-12 mb-4">
+        <div class="col-md-6 col-sm-12 mb-4 tech-category-col" data-category="programming">
             <div class="h-100 p-4 rounded-3 border d-flex flex-column"
                 style="background: rgba(99, 102, 241, 0.04);">
                 <h5 class="mb-4 fw-semibold glow-text">
@@ -14,13 +60,13 @@
 
                 <div class="row row-cols-1 g-3">
                     <!-- Python -->
-                    <div class="col">
+                    <div class="col tech-item" data-name="python" data-category="programming">
                         <div class="bg-white border rounded-4 p-3 hover-lift shadow-sm"
                             role="img" aria-label="Python" style="cursor: default;">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <div class="d-flex align-items-center gap-3">
                                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
-                                        alt="Python logo" width="32" height="32">
+                                        alt="Python logo" width="32" height="32" loading="lazy" decoding="async">
                                     <div class="fw-semibold text-dark">Python</div>
                                 </div>
                                 <div class="text-muted fw-semibold" style="font-size: 0.9rem;">60%</div>
@@ -33,13 +79,13 @@
                     </div>
 
                     <!-- HTML / CSS -->
-                    <div class="col">
+                    <div class="col tech-item" data-name="html css web frontend" data-category="programming">
                         <div class="bg-white border rounded-4 p-3 hover-lift shadow-sm"
                             role="img" aria-label="HTML and CSS" style="cursor: default;">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <div class="d-flex align-items-center gap-3">
                                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
-                                        alt="HTML5 logo" width="32" height="32">
+                                        alt="HTML5 logo" width="32" height="32" loading="lazy" decoding="async">
                                     <div class="fw-semibold text-dark">HTML / CSS</div>
                                 </div>
                                 <div class="text-muted fw-semibold" style="font-size: 0.9rem;">85%</div>
@@ -52,13 +98,13 @@
                     </div>
 
                     <!-- C++ -->
-                    <div class="col">
+                    <div class="col tech-item" data-name="c++ cpp programming" data-category="programming">
                         <div class="bg-white border rounded-4 p-3 hover-lift shadow-sm"
                             role="img" aria-label="C++" style="cursor: default;">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <div class="d-flex align-items-center gap-3">
                                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg"
-                                        alt="C++ logo" width="32" height="32">
+                                        alt="C++ logo" width="32" height="32" loading="lazy" decoding="async">
                                     <div class="fw-semibold text-dark">C++</div>
                                 </div>
                                 <div class="text-muted fw-semibold" style="font-size: 0.9rem;">55%</div>
@@ -71,13 +117,13 @@
                     </div>
 
                     <!-- Bootstrap -->
-                    <div class="col">
+                    <div class="col tech-item" data-name="bootstrap css framework" data-category="programming">
                         <div class="bg-white border rounded-4 p-3 hover-lift shadow-sm"
                             role="img" aria-label="Bootstrap" style="cursor: default;">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <div class="d-flex align-items-center gap-3">
                                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg"
-                                        alt="Bootstrap logo" width="32" height="32">
+                                        alt="Bootstrap logo" width="32" height="32" loading="lazy" decoding="async">
                                     <div class="fw-semibold text-dark">Bootstrap</div>
                                 </div>
                                 <div class="text-muted fw-semibold" style="font-size: 0.9rem;">80%</div>
@@ -90,13 +136,13 @@
                     </div>
 
                     <!-- JavaScript -->
-                    <div class="col">
+                    <div class="col tech-item" data-name="javascript js es6 frontend" data-category="programming">
                         <div class="bg-white border rounded-4 p-3 hover-lift shadow-sm"
                             role="img" aria-label="JavaScript" style="cursor: default;">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <div class="d-flex align-items-center gap-3">
                                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-                                        alt="JavaScript logo" width="32" height="32">
+                                        alt="JavaScript logo" width="32" height="32" loading="lazy" decoding="async">
                                     <div class="fw-semibold text-dark">JavaScript</div>
                                 </div>
                                 <div class="text-muted fw-semibold" style="font-size: 0.9rem;">75%</div>
@@ -109,13 +155,13 @@
                     </div>
 
                     <!-- PHP -->
-                    <div class="col">
+                    <div class="col tech-item" data-name="php backend server" data-category="programming">
                         <div class="bg-white border rounded-4 p-3 hover-lift shadow-sm"
                             role="img" aria-label="PHP" style="cursor: default;">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <div class="d-flex align-items-center gap-3">
                                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg"
-                                        alt="PHP logo" width="32" height="32">
+                                        alt="PHP logo" width="32" height="32" loading="lazy" decoding="async">
                                     <div class="fw-semibold text-dark">PHP</div>
                                 </div>
                                 <div class="text-muted fw-semibold" style="font-size: 0.9rem;">60%</div>
@@ -128,13 +174,13 @@
                     </div>
 
                     <!-- Tailwind -->
-                    <div class="col">
+                    <div class="col tech-item" data-name="tailwind tailwindcss css" data-category="programming">
                         <div class="bg-white border rounded-4 p-3 hover-lift shadow-sm"
                             role="img" aria-label="Tailwind CSS" style="cursor: default;">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <div class="d-flex align-items-center gap-3">
                                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
-                                        alt="Tailwind CSS logo" width="32" height="32">
+                                        alt="Tailwind CSS logo" width="32" height="32" loading="lazy" decoding="async">
                                     <div class="fw-semibold text-dark">Tailwind</div>
                                 </div>
                                 <div class="text-muted fw-semibold" style="font-size: 0.9rem;">70%</div>
@@ -147,13 +193,13 @@
                     </div>
 
                     <!-- React -->
-                    <div class="col">
+                    <div class="col tech-item" data-name="react reactjs frontend framework" data-category="programming">
                         <div class="bg-white border rounded-4 p-3 hover-lift shadow-sm"
                             role="img" aria-label="React" style="cursor: default;">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <div class="d-flex align-items-center gap-3">
                                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
-                                        alt="React logo" width="32" height="32">
+                                        alt="React logo" width="32" height="32" loading="lazy" decoding="async">
                                     <div class="fw-semibold text-dark">React</div>
                                 </div>
                                 <div class="text-muted fw-semibold" style="font-size: 0.9rem;">70%</div>
@@ -166,13 +212,13 @@
                     </div>
 
                     <!-- Next.js -->
-                    <div class="col">
+                    <div class="col tech-item" data-name="nextjs next react framework fullstack" data-category="programming">
                         <div class="bg-white border rounded-4 p-3 hover-lift shadow-sm"
                             role="img" aria-label="Next.js" style="cursor: default;">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <div class="d-flex align-items-center gap-3">
                                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg"
-                                        alt="Next.js logo" width="32" height="32">
+                                        alt="Next.js logo" width="32" height="32" loading="lazy" decoding="async">
                                     <div class="fw-semibold text-dark">Next.js</div>
                                 </div>
                                 <div class="text-muted fw-semibold" style="font-size: 0.9rem;">65%</div>
@@ -188,7 +234,7 @@
         </div>
 
         <!-- Tools & Databases -->
-        <div class="col-md-6 col-sm-12 mb-4">
+        <div class="col-md-6 col-sm-12 mb-4 tech-category-col" data-category="tools">
             <div class="h-100 p-4 rounded-3 border d-flex flex-column"
                 style="background: rgba(99, 102, 241, 0.04);">
                 <h5 class="mb-4 fw-semibold glow-text">
@@ -197,13 +243,13 @@
 
                 <div class="row row-cols-1 g-3">
                     <!-- Git / GitHub -->
-                    <div class="col">
+                    <div class="col tech-item" data-name="git github version control" data-category="tools">
                         <div class="bg-white border rounded-4 p-3 hover-lift shadow-sm"
                             role="img" aria-label="Git and GitHub" style="cursor: default;">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <div class="d-flex align-items-center gap-3">
                                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
-                                        alt="GitHub logo" width="32" height="32">
+                                        alt="GitHub logo" width="32" height="32" loading="lazy" decoding="async">
                                     <div class="fw-semibold text-dark">Git / GitHub</div>
                                 </div>
                                 <div class="text-muted fw-semibold" style="font-size: 0.9rem;">80%</div>
@@ -216,13 +262,13 @@
                     </div>
 
                     <!-- VS Code -->
-                    <div class="col">
+                    <div class="col tech-item" data-name="vscode visual studio code ide editor" data-category="tools">
                         <div class="bg-white border rounded-4 p-3 hover-lift shadow-sm"
                             role="img" aria-label="Visual Studio Code" style="cursor: default;">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <div class="d-flex align-items-center gap-3">
                                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg"
-                                        alt="VS Code logo" width="32" height="32">
+                                        alt="VS Code logo" width="32" height="32" loading="lazy" decoding="async">
                                     <div class="fw-semibold text-dark">VS Code</div>
                                 </div>
                                 <div class="text-muted fw-semibold" style="font-size: 0.9rem;">90%</div>
@@ -235,13 +281,13 @@
                     </div>
 
                     <!-- MySQL -->
-                    <div class="col">
+                    <div class="col tech-item" data-name="mysql sql database rdbms" data-category="tools">
                         <div class="bg-white border rounded-4 p-3 hover-lift shadow-sm"
                             role="img" aria-label="MySQL" style="cursor: default;">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <div class="d-flex align-items-center gap-3">
                                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg"
-                                        alt="MySQL logo" width="32" height="32">
+                                        alt="MySQL logo" width="32" height="32" loading="lazy" decoding="async">
                                     <div class="fw-semibold text-dark">MySQL</div>
                                 </div>
                                 <div class="text-muted fw-semibold" style="font-size: 0.9rem;">65%</div>
@@ -254,13 +300,13 @@
                     </div>
 
                     <!-- Visual Studio -->
-                    <div class="col">
+                    <div class="col tech-item" data-name="visual studio vs ide c++" data-category="tools">
                         <div class="bg-white border rounded-4 p-3 hover-lift shadow-sm"
                             role="img" aria-label="Visual Studio" style="cursor: default;">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <div class="d-flex align-items-center gap-3">
                                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/visualstudio/visualstudio-original.svg"
-                                        alt="Visual Studio logo" width="32" height="32">
+                                        alt="Visual Studio logo" width="32" height="32" loading="lazy" decoding="async">
                                     <div class="fw-semibold text-dark">Visual Studio</div>
                                 </div>
                                 <div class="text-muted fw-semibold" style="font-size: 0.9rem;">75%</div>
@@ -273,13 +319,13 @@
                     </div>
 
                     <!-- Firebase -->
-                    <div class="col">
+                    <div class="col tech-item" data-name="firebase firestore nosql cloud auth storage backend" data-category="tools">
                         <div class="bg-white border rounded-4 p-3 hover-lift shadow-sm"
                             role="img" aria-label="Firebase" style="cursor: default;">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <div class="d-flex align-items-center gap-3">
                                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg"
-                                        alt="Firebase logo" width="32" height="32">
+                                        alt="Firebase logo" width="32" height="32" loading="lazy" decoding="async">
                                     <div class="fw-semibold text-dark">Firebase</div>
                                 </div>
                                 <div class="text-muted fw-semibold" style="font-size: 0.9rem;">60%</div>
@@ -295,7 +341,7 @@
         </div>
 
         <!-- Design & Media -->
-        <div class="col-md-6 col-sm-12 mb-4">
+        <div class="col-md-6 col-sm-12 mb-4 tech-category-col" data-category="design">
             <div class="h-100 p-4 rounded-3 border d-flex flex-column"
                 style="background: rgba(99, 102, 241, 0.04);">
                 <h5 class="mb-4 fw-semibold glow-text">
@@ -304,13 +350,13 @@
 
                 <div class="row row-cols-1 g-3">
                     <!-- Photoshop -->
-                    <div class="col">
+                    <div class="col tech-item" data-name="photoshop adobe ps design graphics" data-category="design">
                         <div class="bg-white border rounded-4 p-3 hover-lift shadow-sm"
                             role="img" aria-label="Photoshop" style="cursor: default;">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <div class="d-flex align-items-center gap-3">
                                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-original.svg"
-                                        alt="Photoshop logo" width="32" height="32">
+                                        alt="Photoshop logo" width="32" height="32" loading="lazy" decoding="async">
                                     <div class="fw-semibold text-dark">Photoshop</div>
                                 </div>
                                 <div class="text-muted fw-semibold" style="font-size: 0.9rem;">70%</div>
@@ -323,13 +369,13 @@
                     </div>
 
                     <!-- Figma -->
-                    <div class="col">
+                    <div class="col tech-item" data-name="figma ui ux design prototype wireframe" data-category="design">
                         <div class="bg-white border rounded-4 p-3 hover-lift shadow-sm"
                             role="img" aria-label="Figma" style="cursor: default;">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <div class="d-flex align-items-center gap-3">
                                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
-                                        alt="Figma logo" width="32" height="32">
+                                        alt="Figma logo" width="32" height="32" loading="lazy" decoding="async">
                                     <div class="fw-semibold text-dark">Figma</div>
                                 </div>
                                 <div class="text-muted fw-semibold" style="font-size: 0.9rem;">75%</div>
@@ -342,13 +388,13 @@
                     </div>
 
                     <!-- Canva -->
-                    <div class="col">
+                    <div class="col tech-item" data-name="canva graphics design layout" data-category="design">
                         <div class="bg-white border rounded-4 p-3 hover-lift shadow-sm"
                             role="img" aria-label="Canva" style="cursor: default;">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <div class="d-flex align-items-center gap-3">
                                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/canva/canva-original.svg"
-                                        alt="Canva logo" width="32" height="32">
+                                        alt="Canva logo" width="32" height="32" loading="lazy" decoding="async">
                                     <div class="fw-semibold text-dark">Canva</div>
                                 </div>
                                 <div class="text-muted fw-semibold" style="font-size: 0.9rem;">85%</div>
@@ -364,7 +410,7 @@
         </div>
 
         <!-- Cyber Security -->
-        <div class="col-md-6 col-sm-12 mb-4">
+        <div class="col-md-6 col-sm-12 mb-4 tech-category-col" data-category="security">
             <div class="h-100 p-4 rounded-3 border d-flex flex-column"
                 style="background: rgba(99, 102, 241, 0.04);">
                 <h5 class="mb-4 fw-semibold glow-text">
@@ -373,13 +419,13 @@
 
                 <div class="row row-cols-1 g-3">
                     <!-- Kali Linux -->
-                    <div class="col">
+                    <div class="col tech-item" data-name="kali linux security penetration testing ethical hacking ctf" data-category="security">
                         <div class="bg-white border rounded-4 p-3 hover-lift shadow-sm"
                             role="img" aria-label="Kali Linux" style="cursor: default;">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <div class="d-flex align-items-center gap-3">
                                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kalilinux/kalilinux-original.svg"
-                                        alt="Kali Linux logo" width="32" height="32">
+                                        alt="Kali Linux logo" width="32" height="32" loading="lazy" decoding="async">
                                     <div class="fw-semibold text-dark">Kali Linux</div>
                                 </div>
                                 <div class="text-muted fw-semibold" style="font-size: 0.9rem;">65%</div>

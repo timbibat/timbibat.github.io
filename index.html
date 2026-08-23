@@ -38,6 +38,13 @@
     <link href="assets/img/Icon 5.png" rel="icon" type="image/png">
     <link href="assets/img/Icon 5.png" rel="apple-touch-icon">
 
+    <!-- Resource Preconnects & Performance Preloads -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preload" as="image" href="assets/img/Timothy.jpg" type="image/jpeg">
+
     <!-- Stylesheets & Fonts -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -137,8 +144,9 @@
                 class="col-12 col-lg-3 col-xl-2 border-end d-none d-lg-flex flex-column align-items-center justify-content-center p-3 position-sticky top-0 vh-100 overflow-auto">
                 <div class="text-center">
                     <div class="rounded-circle p-2 shadow-sm d-inline-block profile-ring">
-                        <img src="assets/img/Timothy.jpg" alt="Timothy Bibat"
+                        <img src="assets/img/Timothy.jpg" alt="Timothy Bibat" width="120" height="120"
                             class="rounded-circle img-fluid border border-3 border-white"
+                            fetchpriority="high" decoding="async"
                             style="width:120px; height:120px; object-fit:cover;">
                     </div>
                     <h2 class="h5 fw-bold mt-3 mb-0 text-dark">Timothy Bibat</h2>
@@ -249,8 +257,9 @@
                                         <div class="position-relative d-inline-block">
                                             <div class="rounded-circle p-2 shadow-lg d-flex align-items-center justify-content-center profile-ring"
                                                 style="width:140px; height:140px;">
-                                                <img src="assets/img/Timothy.jpg" alt="Timothy Bibat"
+                                                <img src="assets/img/Timothy.jpg" alt="Timothy Bibat" width="130" height="130"
                                                     class="rounded-circle img-fluid border border-3 border-white"
+                                                    loading="lazy" decoding="async"
                                                     style="width:130px; height:130px; object-fit:cover;">
                                             </div>
                                         </div>
@@ -302,17 +311,75 @@
                 </aside>
 
                 <div class="position-relative">
-                    <!-- Section Loader -->
-                    <div id="pageLoader" class="loader-wrapper">
-                        <div class="loader-container">
-                            <div class="loader-circle"></div>
-                            <div class="loader-circle"></div>
-                            <div class="loader-circle"></div>
+                    <!-- Section Skeleton Loader -->
+                    <div id="pageLoader" class="loader-wrapper" aria-hidden="true">
+                        <div class="glass-card p-4 p-md-5 mb-5 w-100 skeleton-wrapper">
+                            <!-- Header Skeleton -->
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="skeleton-box skeleton-icon me-3"></div>
+                                <div class="skeleton-box skeleton-title"></div>
+                            </div>
+                            
+                            <!-- Lead Lines -->
+                            <div class="skeleton-box skeleton-line w-100 mb-2"></div>
+                            <div class="skeleton-box skeleton-line w-75 mb-4"></div>
+                            
+                            <!-- Badges / Pills -->
+                            <div class="d-flex flex-wrap gap-2 mb-4">
+                                <div class="skeleton-box skeleton-pill" style="width: 140px;"></div>
+                                <div class="skeleton-box skeleton-pill" style="width: 160px;"></div>
+                                <div class="skeleton-box skeleton-pill" style="width: 130px;"></div>
+                                <div class="skeleton-box skeleton-pill" style="width: 150px;"></div>
+                            </div>
+                            
+                            <div class="skeleton-box skeleton-divider mb-4"></div>
+                            
+                            <!-- Subheading Skeleton -->
+                            <div class="skeleton-box skeleton-subtitle mb-3" style="width: 120px;"></div>
+                            
+                            <!-- Card Grid Skeleton -->
+                            <div class="row g-3">
+                                <div class="col-12 col-md-4">
+                                    <div class="skeleton-card-inner p-4 rounded-3 h-100">
+                                        <div class="skeleton-box skeleton-icon-sm mb-3"></div>
+                                        <div class="skeleton-box skeleton-line w-50 mb-2"></div>
+                                        <div class="skeleton-box skeleton-line w-100 mb-2"></div>
+                                        <div class="skeleton-box skeleton-line w-75 mb-3"></div>
+                                        <div class="d-flex gap-1 mt-auto">
+                                            <div class="skeleton-box skeleton-pill-sm" style="width: 70px;"></div>
+                                            <div class="skeleton-box skeleton-pill-sm" style="width: 60px;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <div class="skeleton-card-inner p-4 rounded-3 h-100">
+                                        <div class="skeleton-box skeleton-icon-sm mb-3"></div>
+                                        <div class="skeleton-box skeleton-line w-50 mb-2"></div>
+                                        <div class="skeleton-box skeleton-line w-100 mb-2"></div>
+                                        <div class="skeleton-box skeleton-line w-75 mb-3"></div>
+                                        <div class="d-flex gap-1 mt-auto">
+                                            <div class="skeleton-box skeleton-pill-sm" style="width: 70px;"></div>
+                                            <div class="skeleton-box skeleton-pill-sm" style="width: 60px;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4 d-none d-md-block">
+                                    <div class="skeleton-card-inner p-4 rounded-3 h-100">
+                                        <div class="skeleton-box skeleton-icon-sm mb-3"></div>
+                                        <div class="skeleton-box skeleton-line w-50 mb-2"></div>
+                                        <div class="skeleton-box skeleton-line w-100 mb-2"></div>
+                                        <div class="skeleton-box skeleton-line w-75 mb-3"></div>
+                                        <div class="d-flex gap-1 mt-auto">
+                                            <div class="skeleton-box skeleton-pill-sm" style="width: 70px;"></div>
+                                            <div class="skeleton-box skeleton-pill-sm" style="width: 60px;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="loader-text">Loading</div>
                     </div>
 
-                    <div id="maincontent" class="mt-2">
+                    <div id="maincontent" class="mt-2 d-none">
                     </div>
                 </div>
 

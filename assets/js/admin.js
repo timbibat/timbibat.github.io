@@ -75,7 +75,39 @@ document.querySelectorAll('button[data-bs-toggle="tab"]').forEach(tab => {
 
 // Load Data
 async function loadData(collectionName) {
-    adminContentArea.innerHTML = '<div class="text-center my-5"><div class="spinner-border text-primary" role="status"></div></div>';
+    adminContentArea.innerHTML = `
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="skeleton-box skeleton-title" style="width: 160px; height: 26px;"></div>
+            <div class="skeleton-box skeleton-btn" style="width: 100px; height: 32px;"></div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-dark align-middle">
+                <thead>
+                    <tr>
+                        <th style="width: 40px;"><div class="skeleton-box skeleton-line w-50"></div></th>
+                        <th style="width: 100px;"><div class="skeleton-box skeleton-line w-75"></div></th>
+                        <th><div class="skeleton-box skeleton-line w-50"></div></th>
+                        <th><div class="skeleton-box skeleton-line w-50"></div></th>
+                        <th class="text-end"><div class="skeleton-box skeleton-line w-50 ms-auto"></div></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${Array.from({ length: 4 }).map(() => `
+                        <tr>
+                            <td><div class="skeleton-box" style="width: 20px; height: 20px;"></div></td>
+                            <td><div class="skeleton-box rounded-3" style="width: 60px; height: 45px;"></div></td>
+                            <td>
+                                <div class="skeleton-box skeleton-line mb-1" style="width: 60%; height: 16px;"></div>
+                                <div class="skeleton-box skeleton-line" style="width: 40%; height: 12px;"></div>
+                            </td>
+                            <td><div class="skeleton-box skeleton-pill-sm" style="width: 80px;"></div></td>
+                            <td class="text-end"><div class="skeleton-box skeleton-btn ms-auto" style="width: 70px; height: 28px;"></div></td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        </div>
+    `;
     
     let html = `
         <div class="d-flex justify-content-between align-items-center mb-4">
