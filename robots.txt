@@ -5,4 +5,4 @@ User-agent: *
 Allow: /
 
 # Sitemap Location
-Sitemap: https://timbibat.github.io/sitemap.xml
+Sitemap: https://timbibat.me/sitemap.xml

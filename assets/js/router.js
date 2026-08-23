@@ -146,7 +146,7 @@ export function handleRouting() {
     // Update canonical link to point to this hash-route
     const canonicalLink = document.querySelector('link[rel="canonical"]');
     if (canonicalLink) {
-        canonicalLink.setAttribute('href', `https://timbibat.github.io/#${hash}`);
+        canonicalLink.setAttribute('href', `https://timbibat.me/#${hash}`);
     }
 
     // Sync active navigation link highlight and accessibility attribute
