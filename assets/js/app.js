@@ -11,9 +11,9 @@ function bootstrap() {
     // Apply saved theme instantly before fade-in
     initTheme();
 
-    // Hide initial page loader
-    setTimeout(hideLoader, 800);
+    // Reveal page and initialize router immediately
     document.body.style.opacity = '1';
+    hideLoader();
 
     // Initialize SPA Hash Router
     initRouter();

@@ -52,8 +52,14 @@ export async function fetchFragment(content) {
  * Background prefetch all remaining page fragments during idle browser time
  */
 export function prefetchFragments() {
+    // Respect mobile data saver mode and avoid aggressive prefetching on slow networks
+    const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if (conn && (conn.saveData || conn.effectiveType === 'slow-2g' || conn.effectiveType === '2g')) {
+        return;
+    }
+
     const routeKeys = Object.keys(routes).filter(k => k !== '404');
-    const scheduleIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 800));
+    const scheduleIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 1500));
 
     scheduleIdle(() => {
         routeKeys.forEach(route => {

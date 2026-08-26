@@ -28,26 +28,54 @@ const adminContentArea = document.getElementById('admin-content-area');
 const itemModal = new bootstrap.Modal(document.getElementById('itemModal'));
 const itemForm = document.getElementById('item-form');
 const saveBtn = document.getElementById('save-btn');
+const searchInput = document.getElementById('adminSearchInput');
 
 let currentCollection = 'majorProject'; // default tab
+let currentDocsCache = [];
+
+// Populate Footer Year
+const yearEl = document.getElementById('admin-year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+// Password Toggle Button
+const togglePasswordBtn = document.getElementById('togglePasswordBtn');
+const passwordInput = document.getElementById('login-password');
+const togglePasswordIcon = document.getElementById('togglePasswordIcon');
+
+if (togglePasswordBtn && passwordInput && togglePasswordIcon) {
+    togglePasswordBtn.addEventListener('click', () => {
+        const isPassword = passwordInput.type === 'password';
+        passwordInput.type = isPassword ? 'text' : 'password';
+        togglePasswordIcon.classList.toggle('fa-eye', !isPassword);
+        togglePasswordIcon.classList.toggle('fa-eye-slash', isPassword);
+    });
+}
 
 // Auth State Observer
 onAuthStateChanged(auth, (user) => {
     if (user) {
         loginSection.classList.add('d-none');
         dashboardSection.classList.remove('d-none');
+        logoutBtn.classList.remove('d-none');
         loadData(currentCollection);
     } else {
         loginSection.classList.remove('d-none');
         dashboardSection.classList.add('d-none');
+        logoutBtn.classList.add('d-none');
     }
 });
 
-// Login
+// Login Submission
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-password').value;
+    const submitBtn = document.getElementById('login-submit-btn');
+
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Authenticating...';
+    }
     
     signInWithEmailAndPassword(auth, email, password)
         .then(() => {
@@ -56,6 +84,12 @@ loginForm.addEventListener('submit', (e) => {
         .catch((error) => {
             loginError.textContent = error.message;
             loginError.classList.remove('d-none');
+        })
+        .finally(() => {
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-sign-in-alt me-2"></i>Sign In';
+            }
         });
 });
 
@@ -69,9 +103,32 @@ document.querySelectorAll('button[data-bs-toggle="tab"]').forEach(tab => {
     tab.addEventListener('shown.bs.tab', (event) => {
         const target = event.target.getAttribute('data-bs-target').substring(1);
         currentCollection = target === 'major' ? 'majorProject' : target;
+        
+        // Reset tab styles
+        document.querySelectorAll('#adminTabs .nav-link').forEach(btn => {
+            if (btn === event.target) {
+                btn.classList.remove('text-secondary');
+            } else {
+                btn.classList.add('text-secondary');
+            }
+        });
+
+        if (searchInput) searchInput.value = '';
         loadData(currentCollection);
     });
 });
+
+// Live Search Filter
+if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        const rows = document.querySelectorAll('#sortable-table tbody tr');
+        rows.forEach(row => {
+            const text = row.textContent.toLowerCase();
+            row.style.display = text.includes(query) ? '' : 'none';
+        });
+    });
+}
 
 // Load Data
 async function loadData(collectionName) {
@@ -80,12 +137,12 @@ async function loadData(collectionName) {
             <div class="skeleton-box skeleton-title" style="width: 160px; height: 26px;"></div>
             <div class="skeleton-box skeleton-btn" style="width: 100px; height: 32px;"></div>
         </div>
-        <div class="table-responsive">
-            <table class="table table-dark align-middle">
+        <div class="table-responsive rounded-3 border border-secondary border-opacity-25">
+            <table class="table table-dark align-middle mb-0">
                 <thead>
-                    <tr>
+                    <tr class="text-secondary small">
                         <th style="width: 40px;"><div class="skeleton-box skeleton-line w-50"></div></th>
-                        <th style="width: 100px;"><div class="skeleton-box skeleton-line w-75"></div></th>
+                        <th style="width: 90px;"><div class="skeleton-box skeleton-line w-75"></div></th>
                         <th><div class="skeleton-box skeleton-line w-50"></div></th>
                         <th><div class="skeleton-box skeleton-line w-50"></div></th>
                         <th class="text-end"><div class="skeleton-box skeleton-line w-50 ms-auto"></div></th>
@@ -109,37 +166,68 @@ async function loadData(collectionName) {
         </div>
     `;
     
-    let html = `
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h4 class="fw-bold mb-0 text-capitalize">${collectionName === 'majorProject' ? 'Major Projects' : collectionName}</h4>
-            <div>
-                <button class="btn btn-warning btn-sm rounded-pill px-3 fw-bold me-2" onclick="saveOrder('${collectionName}')" id="save-order-btn" disabled><i class="fas fa-save me-2"></i>Save Order</button>
-                <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold" onclick="openModal('${collectionName}')"><i class="fas fa-plus me-2"></i>${collectionName === 'majorProject' ? 'Add Major Project' : 'Add New'}</button>
-            </div>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-dark table-hover align-middle" id="sortable-table">
-                <thead>
-                    <tr>
-                        <th style="width: 40px;"></th>
-                        <th style="width: 100px;">Image</th>
-                        <th>Name</th>
-                        <th>Category</th>
-                        <th class="text-end">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-    `;
+    const displayTitles = {
+        majorProject: 'Major Projects',
+        projects: 'General Projects',
+        activities: 'Subject Activities',
+        multimedia: 'Multimedia & Designs',
+        certificates: 'Credentials & Certificates'
+    };
+
+    const currentTitle = displayTitles[collectionName] || collectionName;
 
     try {
         const querySnapshot = await getDocs(collection(db, collectionName));
-        if (querySnapshot.empty) {
-            html += `<tr><td colspan="5" class="text-center py-4">No items found.</td></tr>`;
+        const docsArray = [];
+        querySnapshot.forEach((docSnap) => docsArray.push({ id: docSnap.id, data: docSnap.data() }));
+        docsArray.sort((a, b) => (a.data.order ?? Number.MAX_SAFE_INTEGER) - (b.data.order ?? Number.MAX_SAFE_INTEGER));
+        currentDocsCache = docsArray;
+
+        let html = `
+            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3 mb-4 pb-2 border-bottom border-secondary border-opacity-25">
+                <div class="d-flex align-items-center gap-2">
+                    <h4 class="fw-bold mb-0 text-white">${currentTitle}</h4>
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3">${docsArray.length} items</span>
+                </div>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-sm btn-outline-warning rounded-pill px-3 fw-semibold" onclick="saveOrder('${collectionName}')" id="save-order-btn" disabled>
+                        <i class="fas fa-save me-1"></i> Save Order
+                    </button>
+                    <button class="btn btn-sm btn-gradient text-white rounded-pill px-3 fw-semibold shadow-sm" onclick="openModal('${collectionName}')">
+                        <i class="fas fa-plus me-1"></i> Add New
+                    </button>
+                </div>
+            </div>
+            <div class="table-responsive rounded-4 border border-secondary border-opacity-25">
+                <table class="table table-dark table-hover align-middle mb-0" id="sortable-table">
+                    <thead class="table-dark text-secondary small text-uppercase" style="letter-spacing: 0.05em; font-size: 0.72rem;">
+                        <tr>
+                            <th style="width: 40px;" class="ps-3"></th>
+                            <th style="width: 90px;">Thumbnail</th>
+                            <th>Name & Details</th>
+                            <th>Category</th>
+                            <th class="text-end pe-3">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        `;
+
+        if (docsArray.length === 0) {
+            html += `
+                <tr>
+                    <td colspan="5" class="text-center py-5 text-muted">
+                        <div class="rounded-circle p-3 d-inline-flex align-items-center justify-content-center mb-2 bg-dark border border-secondary border-opacity-50">
+                            <i class="fas fa-folder-open fs-4 text-secondary"></i>
+                        </div>
+                        <div class="fw-semibold text-white">No items found in this section</div>
+                        <small class="text-muted d-block mb-3">Click "Add New" above to create your first entry.</small>
+                        <button class="btn btn-sm btn-outline-primary rounded-pill px-4" onclick="openModal('${collectionName}')">
+                            <i class="fas fa-plus me-1"></i> Create Item
+                        </button>
+                    </td>
+                </tr>
+            `;
         } else {
-            const docsArray = [];
-            querySnapshot.forEach((docSnap) => docsArray.push({ id: docSnap.id, data: docSnap.data() }));
-            docsArray.sort((a, b) => (a.data.order ?? Number.MAX_SAFE_INTEGER) - (b.data.order ?? Number.MAX_SAFE_INTEGER));
-            
             docsArray.forEach((docObj) => {
                 html += generateTableRow(docObj.id, docObj.data, collectionName);
             });
@@ -148,15 +236,20 @@ async function loadData(collectionName) {
         html += `</tbody></table></div>`;
         adminContentArea.innerHTML = html;
         
-        // Initialize Sortable
+        // Initialize SortableJS
         const tbody = document.querySelector('#sortable-table tbody');
-        if (tbody) {
+        if (tbody && docsArray.length > 1) {
             new Sortable(tbody, {
                 handle: '.drag-handle',
                 animation: 150,
-                onUpdate: function (evt) {
+                ghostClass: 'bg-primary',
+                onUpdate: function () {
                     const btn = document.getElementById('save-order-btn');
-                    if (btn) btn.disabled = false;
+                    if (btn) {
+                        btn.disabled = false;
+                        btn.classList.remove('btn-outline-warning');
+                        btn.classList.add('btn-warning', 'text-dark');
+                    }
                 }
             });
         }
@@ -168,28 +261,64 @@ async function loadData(collectionName) {
 }
 
 function generateTableRow(id, data, collectionName) {
-    // encodeURIComponent does not encode single quotes, which breaks the onclick attribute. 
-    // We must manually replace them with %27.
     const encodedData = encodeURIComponent(JSON.stringify({...data, id})).replace(/'/g, "%27");
+    
+    // Tech badges preview
+    let badgesHTML = '';
+    const badgeList = data.badges || data.tags || [];
+    if (badgeList.length > 0) {
+        badgesHTML = badgeList.slice(0, 3).map(b => `<span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle rounded-pill me-1" style="font-size: 0.65rem;">${b}</span>`).join('');
+        if (badgeList.length > 3) {
+            badgesHTML += `<span class="badge bg-dark text-muted border border-secondary border-opacity-50 rounded-pill" style="font-size: 0.65rem;">+${badgeList.length - 3}</span>`;
+        }
+    }
+
     return `
         <tr data-id="${id}">
-            <td style="width: 40px;">
-                <i class="fas fa-grip-lines text-muted drag-handle" style="cursor: grab;"></i>
+            <td style="width: 40px;" class="ps-3">
+                <i class="fas fa-grip-lines text-secondary drag-handle" style="cursor: grab;" title="Drag to reorder"></i>
             </td>
-            <td><img src="${data.image}" alt="${data.name}" class="rounded" style="width: 60px; height: 40px; object-fit: cover;"></td>
-            <td class="fw-semibold">${data.name}</td>
-            <td><span class="badge bg-secondary">${data.category}</span></td>
-            <td class="text-end">
-                <button class="btn btn-sm btn-outline-light me-2" onclick="editItem('${encodedData}', '${collectionName}')"><i class="fas fa-edit"></i> Edit</button>
-                <button class="btn btn-sm btn-outline-danger" onclick="deleteItem('${id}', '${collectionName}', '${data.image}')"><i class="fas fa-trash"></i> Delete</button>
+            <td>
+                <img src="${data.image || 'assets/img/Timothy.jpg'}" alt="${data.name}" class="rounded-3 border border-secondary border-opacity-50" style="width: 65px; height: 48px; object-fit: cover;">
+            </td>
+            <td>
+                <div class="fw-bold text-white mb-1">${data.name}</div>
+                <div class="small text-muted text-truncate mb-1" style="max-width: 320px;">${data.description || 'No description provided.'}</div>
+                <div>${badgesHTML}</div>
+            </td>
+            <td>
+                <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 rounded-pill px-3 py-1">${data.category || 'General'}</span>
+            </td>
+            <td class="text-end pe-3">
+                <div class="btn-group btn-group-sm">
+                    <button class="btn btn-outline-light rounded-pill px-3 me-1" onclick="editItem('${encodedData}', '${collectionName}')" title="Edit Item">
+                        <i class="fas fa-edit me-1"></i> Edit
+                    </button>
+                    <button class="btn btn-outline-danger rounded-pill px-3" onclick="deleteItem('${id}', '${collectionName}', '${data.image || ''}')" title="Delete Item">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
             </td>
         </tr>
     `;
 }
 
+// Modal Save Trigger from footer button
+if (saveBtn) {
+    saveBtn.addEventListener('click', () => {
+        if (itemForm) {
+            if (itemForm.checkValidity()) {
+                itemForm.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+            } else {
+                itemForm.reportValidity();
+            }
+        }
+    });
+}
+
 // Global functions for inline HTML event handlers
 window.openModal = (collectionName) => {
-    document.getElementById('item-form').reset();
+    itemForm.reset();
     document.getElementById('item-collection').value = collectionName;
     document.getElementById('item-id').value = '';
     document.getElementById('existing-image').value = '';
@@ -248,14 +377,15 @@ window.editItem = (encodedData, collectionName) => {
         if (data.images && data.images.length > 0) {
             data.images.forEach(img => {
                 const safeImg = encodeURIComponent(img).replace(/'/g, "%27");
-                slidePreview.innerHTML += `<div class="position-relative" style="width: 70px; height: 50px; margin-right: 8px;">
-                    <img src="${img}" class="img-thumbnail bg-dark w-100 h-100 p-1 border-secondary" style="object-fit: cover;">
-                    <button type="button" class="btn btn-danger btn-sm position-absolute top-0 end-0 p-0 shadow" 
-                        style="width: 18px; height: 18px; line-height: 1; transform: translate(50%, -50%); border-radius: 50%;" 
-                        onclick="removeSlideImage('${safeImg}', this)">
-                        <i class="fas fa-times" style="font-size: 10px;"></i>
-                    </button>
-                </div>`;
+                slidePreview.innerHTML += `
+                    <div class="position-relative" style="width: 75px; height: 55px; margin-right: 8px;">
+                        <img src="${img}" class="rounded-3 w-100 h-100 border border-secondary border-opacity-50" style="object-fit: cover;">
+                        <button type="button" class="btn btn-danger btn-sm position-absolute top-0 end-0 p-0 shadow" 
+                            style="width: 20px; height: 20px; line-height: 1; transform: translate(35%, -35%); border-radius: 50%; font-size: 10px;" 
+                            onclick="removeSlideImage('${safeImg}', this)" title="Remove slide">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>`;
             });
         }
         document.getElementById('item-slide-images').value = '';
@@ -268,7 +398,7 @@ window.editItem = (encodedData, collectionName) => {
 };
 
 window.deleteItem = async (id, collectionName, imageUrl) => {
-    if (confirm('Are you sure you want to delete this item?')) {
+    if (confirm('Are you sure you want to delete this item? This action cannot be undone.')) {
         try {
             await deleteDoc(doc(db, collectionName, id));
             // Try deleting image if it's stored in Firebase Storage
@@ -322,7 +452,7 @@ window.saveOrder = async (collectionName) => {
     if (!btn) return;
     
     btn.disabled = true;
-    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Saving...';
+    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> Saving...';
     
     try {
         const rows = document.querySelectorAll('#sortable-table tbody tr');
@@ -337,12 +467,12 @@ window.saveOrder = async (collectionName) => {
         }
         
         await Promise.all(promises);
-        alert('Order saved successfully!');
+        alert('Order updated successfully!');
         loadData(collectionName);
     } catch (error) {
         alert('Error saving order: ' + error.message);
         btn.disabled = false;
-        btn.innerHTML = '<i class="fas fa-save me-2"></i>Save Order';
+        btn.innerHTML = '<i class="fas fa-save me-1"></i> Save Order';
     }
 };
 
@@ -351,67 +481,70 @@ const dropZone = document.getElementById('drop-zone');
 const fileInput = document.getElementById('item-image');
 const filePreview = document.getElementById('file-preview');
 
-dropZone.addEventListener('click', () => fileInput.click());
+if (dropZone && fileInput) {
+    dropZone.addEventListener('click', () => fileInput.click());
 
-['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-    dropZone.addEventListener(eventName, preventDefaults, false);
-});
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+        }, false);
+    });
 
-function preventDefaults(e) {
-    e.preventDefault();
-    e.stopPropagation();
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropZone.addEventListener(eventName, () => {
+            dropZone.classList.add('border-primary');
+            dropZone.classList.remove('border-secondary');
+            const icon = document.getElementById('drop-icon');
+            if (icon) {
+                icon.classList.add('text-primary');
+                icon.classList.remove('text-secondary');
+            }
+        }, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, () => {
+            dropZone.classList.remove('border-primary');
+            dropZone.classList.add('border-secondary');
+            const icon = document.getElementById('drop-icon');
+            if (icon) {
+                icon.classList.remove('text-primary');
+                icon.classList.add('text-secondary');
+            }
+        }, false);
+    });
+
+    dropZone.addEventListener('drop', (e) => {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        if (files && files.length > 0) {
+            fileInput.files = files;
+            updateFilePreview(files[0]);
+        }
+    }, false);
+
+    fileInput.addEventListener('change', function() {
+        if (this.files && this.files.length > 0) {
+            updateFilePreview(this.files[0]);
+        }
+    });
 }
-
-['dragenter', 'dragover'].forEach(eventName => {
-    dropZone.addEventListener(eventName, highlight, false);
-});
-
-['dragleave', 'drop'].forEach(eventName => {
-    dropZone.addEventListener(eventName, unhighlight, false);
-});
-
-function highlight(e) {
-    dropZone.classList.add('border-primary');
-    dropZone.classList.remove('border-secondary');
-    document.getElementById('drop-icon').classList.add('text-primary');
-    document.getElementById('drop-icon').classList.remove('text-secondary');
-}
-
-function unhighlight(e) {
-    dropZone.classList.remove('border-primary');
-    dropZone.classList.add('border-secondary');
-    document.getElementById('drop-icon').classList.remove('text-primary');
-    document.getElementById('drop-icon').classList.add('text-secondary');
-}
-
-dropZone.addEventListener('drop', handleDrop, false);
-
-function handleDrop(e) {
-    const dt = e.dataTransfer;
-    const files = dt.files;
-    
-    if (files && files.length > 0) {
-        fileInput.files = files;
-        updateFilePreview(files[0]);
-    }
-}
-
-fileInput.addEventListener('change', function() {
-    if (this.files && this.files.length > 0) {
-        updateFilePreview(this.files[0]);
-    }
-});
 
 function updateFilePreview(file) {
-    filePreview.textContent = `Selected File: ${file.name}`;
-    filePreview.classList.remove('d-none');
+    if (filePreview) {
+        filePreview.innerHTML = `<i class="fas fa-file-image me-1"></i> Selected: ${file.name}`;
+        filePreview.classList.remove('d-none');
+    }
 }
 
 // Handle Form Submit (Add / Edit)
 itemForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    saveBtn.disabled = true;
-    saveBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Saving...';
+    if (saveBtn) {
+        saveBtn.disabled = true;
+        saveBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Uploading & Saving...';
+    }
 
     const collectionName = document.getElementById('item-collection').value;
     const id = document.getElementById('item-id').value;
@@ -426,11 +559,12 @@ itemForm.addEventListener('submit', async (e) => {
             imageUrl = await getDownloadURL(snapshot.ref);
         }
         
-        // If no image and it's a new item, we require an image
         if (!imageUrl && !id) {
             alert('Please upload an image for new items.');
-            saveBtn.disabled = false;
-            saveBtn.innerHTML = 'Save Item';
+            if (saveBtn) {
+                saveBtn.disabled = false;
+                saveBtn.innerHTML = '<i class="fas fa-save me-1"></i> Save Item';
+            }
             return;
         }
 
@@ -475,11 +609,11 @@ itemForm.addEventListener('submit', async (e) => {
         }
 
         if (id) {
-            // Update
+            // Update document
             await setDoc(doc(db, collectionName, id), itemData, { merge: true });
         } else {
-            // Create
-            itemData.order = Date.now(); // Place new items at the end
+            // Create document
+            itemData.order = Date.now();
             await addDoc(collection(db, collectionName), itemData);
         }
 
@@ -488,7 +622,9 @@ itemForm.addEventListener('submit', async (e) => {
     } catch (error) {
         alert('Error saving item: ' + error.message);
     } finally {
-        saveBtn.disabled = false;
-        saveBtn.innerHTML = 'Save Item';
+        if (saveBtn) {
+            saveBtn.disabled = false;
+            saveBtn.innerHTML = '<i class="fas fa-save me-1"></i> Save Item';
+        }
     }
 });
