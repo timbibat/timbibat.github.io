@@ -149,10 +149,10 @@ export function handleRouting() {
     const twitterDesc = document.querySelector('meta[name="twitter:description"]');
     if (twitterDesc) twitterDesc.setAttribute('content', routes[hash].desc);
 
-    // Update canonical link to point to this hash-route
+    // Ensure canonical link points to root canonical URL without hash fragments (RFC & Search Engine Standard)
     const canonicalLink = document.querySelector('link[rel="canonical"]');
     if (canonicalLink) {
-        canonicalLink.setAttribute('href', `https://timbibat.me/#${hash}`);
+        canonicalLink.setAttribute('href', 'https://timbibat.me/');
     }
 
     // Sync active navigation link highlight and accessibility attribute

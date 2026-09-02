@@ -7,6 +7,7 @@ export function initTheme() {
     const saved = localStorage.getItem('theme');
     const theme = saved || 'dark';
     document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.setAttribute('data-bs-theme', theme);
     updateToggleIcons(theme);
 }
 
@@ -17,6 +18,7 @@ export function toggleTheme() {
     const next = current === 'dark' ? 'light' : 'dark';
 
     html.setAttribute('data-theme', next);
+    html.setAttribute('data-bs-theme', next);
     localStorage.setItem('theme', next);
     updateToggleIcons(next);
     setTimeout(() => html.classList.remove('theme-transitioning'), 450);

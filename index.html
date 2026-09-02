@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="dark" data-bs-theme="dark">
 
 
 <head>
@@ -13,12 +13,16 @@
     <meta name="keywords"
         content="Timothy Bibat, Cybersecurity, Web Developer, UI/UX Designer, Portfolio, PUP IT Student, Secure Coding, Penetration Testing, Calamba Laguna, Philippines Web Developer">
     <meta name="author" content="Timothy Bibat">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <link rel="canonical" href="https://timbibat.me/">
+    <link rel="alternate" type="text/markdown" href="https://timbibat.me/llms.txt" title="LLMs.txt Technical Profile">
     <meta name="google-site-verification" content="gxXucCrxxw5y6qzpUmVAvugtRk87ZwBNYWxHkWmpxWE">
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="profile">
+    <meta property="profile:first_name" content="Timothy">
+    <meta property="profile:last_name" content="Bibat">
+    <meta property="profile:username" content="timbibat">
     <meta property="og:title" content="Timothy Bibat — Cybersecurity & Web Development Portfolio | Calamba, Laguna">
     <meta property="og:description"
         content="Portfolio of Timothy Bibat — Cybersecurity student, web developer, and UI/UX designer based in Calamba, Laguna, Philippines. View my projects, skills, and certifications.">
@@ -53,7 +57,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <!-- JSON-LD Structured Data for Search Engines -->
+    <!-- JSON-LD Structured Data for Search & Answer Engines (AEO) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -62,10 +66,18 @@
           "@type": "Person",
           "@id": "https://timbibat.me/#person",
           "name": "Timothy Bibat",
-          "jobTitle": "Aspiring Cybersecurity Professional & Web Developer",
+          "alternateName": ["timbibat", "Timothy"],
+          "jobTitle": "Aspiring Cybersecurity Professional & Full Stack Web Developer",
           "url": "https://timbibat.me/",
           "image": "https://timbibat.me/assets/img/Timothy.jpg",
-          "description": "Timothy Bibat is an aspiring cybersecurity professional, web developer, and UI/UX designer based in Calamba, Laguna, Philippines, currently studying Information Technology at PUP.",
+          "email": "mailto:timothybibat654@gmail.com",
+          "telephone": "+639075194974",
+          "gender": "https://schema.org/Male",
+          "nationality": {
+            "@type": "Country",
+            "name": "Philippines"
+          },
+          "description": "Timothy Bibat is an aspiring cybersecurity professional, full stack web developer, and UI/UX designer based in Calamba, Laguna, Philippines, currently pursuing a Bachelor of Science in Information Technology at PUP.",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Calamba",
@@ -81,6 +93,32 @@
             "name": "Polytechnic University of the Philippines",
             "url": "https://www.pup.edu.ph/"
           },
+          "hasCredential": [
+            {
+              "@type": "EducationalOccupationalCredential",
+              "name": "Bachelor of Science in Information Technology (4th Year Candidate)",
+              "credentialCategory": "degree",
+              "recognizedBy": {
+                "@type": "EducationalOrganization",
+                "name": "Polytechnic University of the Philippines"
+              }
+            },
+            {
+              "@type": "EducationalOccupationalCredential",
+              "name": "Data Science Essentials with Python",
+              "credentialCategory": "certificate"
+            },
+            {
+              "@type": "EducationalOccupationalCredential",
+              "name": "EduCTF Computer Society Competition Recognition",
+              "credentialCategory": "award"
+            },
+            {
+              "@type": "EducationalOccupationalCredential",
+              "name": "Introduction to Cybersecurity",
+              "credentialCategory": "certificate"
+            }
+          ],
           "sameAs": [
             "https://github.com/timbibat",
             "https://www.linkedin.com/in/timothy-bibat-5ab419182",
@@ -89,16 +127,56 @@
           ],
           "knowsAbout": [
             "Cybersecurity",
-            "Information Technology",
-            "Web Development",
-            "UI/UX Design",
-            "Secure Coding",
             "Penetration Testing",
+            "Network Security",
+            "OWASP Top 10 Mitigation",
+            "Wireshark",
+            "Kali Linux",
+            "Secure Coding",
+            "Web Development",
+            "Full Stack Development",
+            "JavaScript",
+            "Python",
+            "Flask",
+            "CapacitorJS",
             "React",
             "Next.js",
-            "Python",
-            "Bootstrap"
+            "Bootstrap",
+            "MySQL",
+            "PostgreSQL",
+            "SQLite",
+            "Google Firebase",
+            "Figma",
+            "UI/UX Design"
           ]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://timbibat.me/#byahero",
+          "name": "ByaHero",
+          "applicationCategory": "TravelApplication, UtilitiesApplication",
+          "operatingSystem": "Android, Web Browser",
+          "description": "Cross-platform mobile and web commuter tracking system featuring real-time geolocation, vehicle seat availability tracking, push notifications, and AJAX synchronization.",
+          "author": {
+            "@id": "https://timbibat.me/#person"
+          },
+          "creator": {
+            "@id": "https://timbibat.me/#person"
+          }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://timbibat.me/#snapeat",
+          "name": "SnapEat",
+          "applicationCategory": "HealthApplication, LifestyleApplication",
+          "operatingSystem": "Web Browser",
+          "description": "AI-powered nutrition scanner that processes meal photos and labels using Google Cloud Vision OCR and Google Gemini API for automatic macro and calorie calculation.",
+          "author": {
+            "@id": "https://timbibat.me/#person"
+          },
+          "creator": {
+            "@id": "https://timbibat.me/#person"
+          }
         },
         {
           "@type": "WebSite",
@@ -121,6 +199,52 @@
           "about": {
             "@id": "https://timbibat.me/#person"
           }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://timbibat.me/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Who is Timothy Bibat?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Timothy Bibat is an aspiring cybersecurity professional, full-stack web developer, and UI/UX designer based in Calamba, Laguna, Philippines. He is currently in his 4th year pursuing a Bachelor of Science in Information Technology at Polytechnic University of the Philippines (PUP)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What technical skills and stack does Timothy Bibat specialize in?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Timothy specializes in web application security, penetration testing, network traffic analysis with Wireshark, secure coding, and full-stack software development. His primary technologies include JavaScript, Python (Flask), React, Next.js, Bootstrap 5, CapacitorJS, MySQL, SQLite, PostgreSQL, and Figma for UI/UX prototyping."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What key projects has Timothy Bibat developed?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "His featured projects include ByaHero (a real-time public transit tracking application with CapacitorJS, background geolocation, and live seat occupancy) and SnapEat (an AI-powered food nutrition scanner using Google Cloud Vision and Gemini API with Python Flask)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What academic honors and certifications does Timothy Bibat hold?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Timothy is a consistent President's Lister and Dean's Lister at PUP, earned special recognition in the EduCTF Computer Society Cybersecurity Competition, and holds certificates in Data Science Essentials with Python and Introduction to Cybersecurity."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How can you contact or hire Timothy Bibat?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "You can contact Timothy via email at timothybibat654@gmail.com, connect with him on LinkedIn at https://www.linkedin.com/in/timothy-bibat-5ab419182, or view his code repositories on GitHub at https://github.com/timbibat."
+              }
+            }
+          ]
         }
       ]
     }
@@ -381,6 +505,49 @@
 
                     <div id="maincontent" class="mt-2 d-none">
                     </div>
+
+                    <!-- Semantic Crawlable Fallback for AI Answer Engines & Non-JS Clients -->
+                    <noscript>
+                        <div class="glass-card p-4 p-md-5 mb-5 border-primary border-opacity-25" style="display: block;">
+                            <h1 class="h3 fw-bold mb-3">Timothy Bibat — Cybersecurity & Web Development Portfolio</h1>
+                            <p class="lead mb-4">
+                                I am <strong>Timothy Bibat</strong>, an aspiring cybersecurity professional, full-stack web developer, and UI/UX designer based in <strong>Calamba, Laguna, Philippines</strong>. Currently a 4th-year student pursuing a <strong>Bachelor of Science in Information Technology</strong> at the <strong>Polytechnic University of the Philippines (PUP)</strong>.
+                            </p>
+
+                            <h2 class="h5 fw-bold mt-4 mb-2">Core Competencies & Expertise</h2>
+                            <ul>
+                                <li><strong>Cybersecurity:</strong> Web application security, OWASP Top 10 vulnerability mitigation (SQLi, XSS, CSRF), penetration testing workflows, Capture The Flag (CTF) challenges, network packet analysis with Wireshark, security testing with Kali Linux, and defensive secure coding.</li>
+                                <li><strong>Web & Software Development:</strong> JavaScript (ES6+), Python, C++, PHP, HTML5, CSS3, Bootstrap 5, React, Next.js, Flask, CapacitorJS, MySQL, SQLite, PostgreSQL, and Google Firebase.</li>
+                                <li><strong>UI/UX Design:</strong> Interactive prototyping and wireframing in Figma, design system creation, and visual asset preparation in Adobe Photoshop.</li>
+                            </ul>
+
+                            <h2 class="h5 fw-bold mt-4 mb-2">Featured Projects</h2>
+                            <ul>
+                                <li><strong>ByaHero (Public Transportation Tracking System):</strong> Real-time commuter and vehicle tracking mobile and web application featuring live seat availability, background geolocation tracking, push notifications, and resilient AJAX synchronization built with CapacitorJS and JavaScript.</li>
+                                <li><strong>SnapEat (AI-Powered Nutrition Scanner):</strong> Dietary assistant application that analyzes food photos and nutrition labels using Google Cloud Vision OCR and the Google Gemini API with a Python Flask backend and dual SQLite/PostgreSQL support.</li>
+                            </ul>
+
+                            <h2 class="h5 fw-bold mt-4 mb-2">Academic Background & Certifications</h2>
+                            <ul>
+                                <li><strong>Polytechnic University of the Philippines (PUP):</strong> Bachelor of Science in Information Technology (4th Year) — Consistent President’s Lister and Dean’s Lister.</li>
+                                <li><strong>EduCTF Cybersecurity Competition:</strong> Special Recognition Award for exploit analysis and defensive challenges.</li>
+                                <li><strong>Data Science Essentials with Python:</strong> Verified certificate in data analysis and Python programming (2025).</li>
+                                <li><strong>Introduction to Cybersecurity:</strong> Verified certificate in network defense fundamentals and security architecture (2026).</li>
+                            </ul>
+
+                            <h2 class="h5 fw-bold mt-4 mb-2">Contact & Verified Profiles</h2>
+                            <p>
+                                <strong>Email:</strong> <a href="mailto:timothybibat654@gmail.com">timothybibat654@gmail.com</a><br>
+                                <strong>Phone:</strong> +63 907-519-4974<br>
+                                <strong>Location:</strong> Calamba, Laguna, Philippines<br>
+                                <strong>GitHub:</strong> <a href="https://github.com/timbibat" target="_blank" rel="noopener noreferrer">https://github.com/timbibat</a><br>
+                                <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/timothy-bibat-5ab419182" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/timothy-bibat-5ab419182</a>
+                            </p>
+                            <p class="small text-muted mt-3">
+                                Machine-readable AI Dossiers: <a href="https://timbibat.me/llms.txt">llms.txt</a> | <a href="https://timbibat.me/llms-full.txt">llms-full.txt</a>
+                            </p>
+                        </div>
+                    </noscript>
                 </div>
 
             </main>

@@ -1,0 +1,71 @@
+# Timothy Bibat — Technical Profile & Portfolio
+
+> Aspiring Cybersecurity Professional, Full-Stack Web Developer, and UI/UX Designer based in Calamba, Laguna, Philippines. Currently pursuing a Bachelor of Science in Information Technology (4th year) at the Polytechnic University of the Philippines (PUP).
+
+## Summary
+
+Timothy Bibat is a technology enthusiast and developer specializing in web application development, UI/UX prototyping, and cybersecurity operations (penetration testing, secure coding, and network vulnerability assessment). He holds a strong academic track record as a consistent President's Lister and Dean's Lister, with recognition in university-level Capture The Flag (CTF) cybersecurity competitions.
+
+## Quick Facts
+
+- **Name:** Timothy Bibat
+- **Primary Roles:** Aspiring Cybersecurity Professional, Full-Stack Web Developer, UI/UX Designer
+- **Location:** Calamba, Laguna, Philippines
+- **Education:** Bachelor of Science in Information Technology (BS IT, 4th Year), Polytechnic University of the Philippines (PUP)
+- **Academic Honors:** President's Lister, Dean's Lister, EduCTF Cybersecurity Competition Awardee
+- **Email:** timothybibat654@gmail.com
+- **Phone:** +63 907-519-4974
+- **Website:** https://timbibat.me/
+- **GitHub:** https://github.com/timbibat
+- **LinkedIn:** https://www.linkedin.com/in/timothy-bibat-5ab419182
+
+## Core Competencies
+
+### Cybersecurity & Defense
+- Web application security and OWASP Top 10 mitigation
+- Hands-on penetration testing and CTF problem solving (TryHackMe, HackTheBox)
+- Network traffic analysis with Wireshark
+- Security auditing in Kali Linux environments
+- Secure coding practices (input validation, SQL injection prevention, XSS mitigation)
+
+### Software & Web Development
+- **Languages:** JavaScript (ES6+), Python, C++, PHP, HTML5, CSS3
+- **Frameworks & Libraries:** React, Next.js, Flask, Bootstrap 5, CapacitorJS
+- **Databases:** MySQL, SQLite, PostgreSQL, Google Firebase Firestore
+- **Tooling & APIs:** Git, GitHub, REST APIs, Google Cloud Vision AI, Google Gemini API, Postman, XAMPP
+
+### UI/UX Design & Prototyping
+- Wireframing and interactive prototyping in Figma
+- Design systems, component libraries, and responsive web design
+- Graphic design and asset preparation in Adobe Photoshop
+
+## Featured Projects
+
+### 1. ByaHero — Public Transportation Tracking System
+- **Description:** A cross-platform mobile and responsive web application designed for real-time commuter and vehicle tracking.
+- **Key Features:** Live seat availability, persistent background geolocation tracking, push notifications, and resilient AJAX synchronization.
+- **Technologies:** CapacitorJS, JavaScript, HTML5/CSS3, Figma, REST/AJAX.
+- **Role:** Full-Stack Developer & UI/UX Designer.
+
+### 2. SnapEat — AI-Powered Food & Nutrition Scanner
+- **Description:** An intelligent dietary assistant that analyzes food imagery and labels to calculate nutritional values.
+- **Key Features:** OCR text recognition, image-based multi-modal food classification, and dual-database support for SQLite and PostgreSQL.
+- **Technologies:** Python, Flask, Google Cloud Vision AI, Google Gemini API, SQLite, PostgreSQL.
+- **Role:** Full-Stack & Backend AI Integrator.
+
+## Verified Certifications
+
+- **Data Science Essentials with Python** (2025) — Data analysis, Python data structures, and analytics essentials.
+- **EduCTF Computer Society Competition** (2026) — Exploitation analysis, cryptography, and defensive capture-the-flag exercises.
+- **Introduction to Cybersecurity** (2026) — Threat vectors, network security defense, and core cybersecurity principles.
+
+## Contact & Links
+
+- **Portfolio Website:** [https://timbibat.me/](https://timbibat.me/)
+- **GitHub:** [https://github.com/timbibat](https://github.com/timbibat)
+- **LinkedIn:** [https://www.linkedin.com/in/timothy-bibat-5ab419182](https://www.linkedin.com/in/timothy-bibat-5ab419182)
+- **Email:** [timothybibat654@gmail.com](mailto:timothybibat654@gmail.com)
+
+## Optional & Deep Ingestion
+
+- Comprehensive resume, project architecture breakdowns, and Q&A reference: [llms-full.txt](https://timbibat.me/llms-full.txt)

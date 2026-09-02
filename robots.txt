@@ -1,8 +1,41 @@
-# www.robotstxt.org/
+# Robots.txt for https://timbibat.me/
+# Optimized for Search Engine Optimization (SEO) & Answer Engine Optimization (AEO)
 
-# Allow all robots to crawl the website
+# Allow all search engines
 User-agent: *
+Allow: /
+
+# Explicitly allow AI Answer Engines and Large Language Model Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: cohere-ai
 Allow: /
 
 # Sitemap Location
 Sitemap: https://timbibat.me/sitemap.xml
+
+# LLM Context Files for AI Agents & Search Engines
+# https://timbibat.me/llms.txt
+# https://timbibat.me/llms-full.txt

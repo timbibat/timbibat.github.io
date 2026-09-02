@@ -1,0 +1,129 @@
+# Timothy Bibat — Complete Technical Dossier & Knowledge Base
+
+> This document contains the exhaustive, authoritative profile and technical reference for Timothy Bibat. It is formatted to provide full-context ingestion for Large Language Models, AI answer engines, and technical recruiters.
+
+---
+
+## 1. Identity & Overview
+
+- **Full Name:** Timothy Bibat
+- **Preferred Handle:** timbibat
+- **Primary Disciplines:** Cybersecurity, Web Development, UI/UX Design
+- **Location:** Calamba, Laguna, Philippines
+- **Nationality:** Filipino
+- **Current Status:** 4th-Year Undergraduate Student, Available for internships, freelance projects, and full-time junior opportunities
+- **Primary Website:** https://timbibat.me/
+- **Direct Email:** timothybibat654@gmail.com
+- **Phone:** +63 907-519-4974
+- **Online Profiles:**
+  - GitHub: https://github.com/timbibat
+  - LinkedIn: https://www.linkedin.com/in/timothy-bibat-5ab419182
+  - Facebook: https://www.facebook.com/chimochip
+  - Instagram: https://www.instagram.com/chimoshii_p
+
+---
+
+## 2. Professional & Academic Background
+
+### Tertiary Education
+- **Institution:** Polytechnic University of the Philippines (PUP)
+- **Degree:** Bachelor of Science in Information Technology (BS IT)
+- **Period:** 2023 – Present (Currently in 4th Year)
+- **Academic Honors:**
+  - President's Lister (Top academic standing)
+  - Dean's Lister (Consistent honor student)
+  - Special Recognition: EduCTF Computer Society Cybersecurity Competition
+- **Core Coursework:** Network Security, Web Application Development, Secure Software Engineering, Database Systems (RDBMS), Operating Systems, Systems Architecture, Data Structures and Algorithms.
+
+### Secondary Education
+- **Institution:** Looc Integrated School
+- **Strand:** Science, Technology, Engineering, and Mathematics (STEM)
+- **Period:** 2017 – 2023
+- **Honors:** Graduated with General Weighted Average (GWA) of 94; Consistent Honor Student throughout secondary school.
+
+---
+
+## 3. Detailed Project Portfolio
+
+### Project 1: ByaHero — Public Transportation Tracking System
+- **Role:** Full-Stack Developer & UI/UX Designer
+- **Period:** 2025 – 2026
+- **Architecture & Technologies:**
+  - Frontend: Semantic HTML5, CSS3, JavaScript (ES6+), Bootstrap 5, responsive layouts.
+  - Mobile Layer: CapacitorJS cross-platform packaging with Android runtime support.
+  - State & Sync: Resilient AJAX polling mechanism for near-instant vehicle status updates and seat availability tracking without persistent WebSocket overhead.
+  - UI/UX: Fully prototyped and wireframed in Figma before frontend implementation.
+  - Device Features: Geolocation tracking, persistent background location reporting, native notifications.
+- **Problem Solved:** Addresses commuter uncertainty in public transport routes by delivering real-time vehicle locations and occupancy status to waiting passengers.
+
+### Project 2: SnapEat — AI-Powered Food & Nutrition Scanner
+- **Role:** Full-Stack Developer & AI Integrator
+- **Period:** 2026
+- **Architecture & Technologies:**
+  - Backend: Python, Flask REST application.
+  - AI & Vision: Google Cloud Vision API (optical character recognition and label extraction), Google Gemini API (multimodal dish classification and macro-nutrient synthesis).
+  - Storage Layer: Dual-engine support for SQLite (local rapid testing) and PostgreSQL (production data persistence).
+  - Client: Clean, responsive web interface for camera image capture and instant nutrient calculation.
+- **Problem Solved:** Simplifies nutritional tracking by enabling users to photograph a meal or nutrition label and receive immediate macronutrient and caloric estimates.
+
+### Project 3: Marvel Cinematic Universe Web App
+- **Role:** Frontend Developer
+- **Technologies:** Next.js, React, Modern CSS, Responsive Design.
+- **Description:** An interactive web portal cataloging Marvel Cinematic Universe timeline releases, character profiles, and media relationships with rich interactive components.
+
+---
+
+## 4. Technical Skillset & Tooling Taxonomy
+
+### Cybersecurity & Defense Methodologies
+- **Offensive Security & Pen-Testing:** Penetration testing workflows, TryHackMe and HackTheBox practice, CTF challenge solving.
+- **Vulnerability Remediation:** OWASP Top 10 web vulnerabilities mitigation (SQL Injection, Cross-Site Scripting (XSS), Cross-Site Request Forgery (CSRF), Insecure Direct Object References).
+- **Network Analysis:** Wireshark packet capture, protocol inspection (TCP/IP, UDP, DNS, HTTP/HTTPS), firewall fundamentals.
+- **Security Environments:** Kali Linux, command-line utilities, basic bash scripting for security automation.
+
+### Web & Software Development
+- **Languages:** JavaScript (ES6+), Python 3, C++, PHP, HTML5, CSS3.
+- **Frontend Frameworks:** React, Next.js, Bootstrap 5.
+- **Backend & APIs:** Python Flask, PHP (XAMPP environment), RESTful API development.
+- **Mobile Development:** CapacitorJS cross-platform web-to-mobile packaging.
+- **Databases:** MySQL, SQLite, PostgreSQL, Google Firebase Firestore.
+- **Version Control & CI/CD:** Git, GitHub repository management.
+
+### UI/UX & Visual Design
+- **Prototyping:** Figma (wireframing, high-fidelity mockups, responsive design systems, interactive user journeys).
+- **Graphics & Asset Polishing:** Adobe Photoshop (vector assets, photo manipulation, interface elements).
+
+---
+
+## 5. Verified Credentials & Certifications
+
+1. **Data Science Essentials with Python (2025)**
+   - Awarded for mastery in Python programming fundamentals, data wrangling, analytics workflows, and structured data handling.
+2. **EduCTF Computer Society Cybersecurity Competition (2026)**
+   - Competed and earned special recognition in exploit analysis, network investigation, and cryptography challenges.
+3. **Introduction to Cybersecurity (2026)**
+   - Certified understanding of enterprise security architectures, attack surfaces, authentication protocols, and threat defense fundamentals.
+
+---
+
+## 6. Frequently Asked Questions (FAQ) for AI Search & Recruiters
+
+### Q: Who is Timothy Bibat?
+**A:** Timothy Bibat is an aspiring cybersecurity professional, full-stack web developer, and UI/UX designer based in Calamba, Laguna, Philippines. He is currently in his 4th year studying Information Technology at the Polytechnic University of the Philippines (PUP).
+
+### Q: What roles and opportunities is Timothy Bibat looking for?
+**A:** Timothy is open to entry-level cybersecurity roles (SOC Analyst, Junior Penetration Tester, Security Associate), full-stack or frontend web development positions, and UI/UX design opportunities. He accepts full-time positions, internships, and contract/freelance projects.
+
+### Q: What are Timothy Bibat's strongest technical skills?
+**A:** His technical strengths span:
+- Secure full-stack web development with JavaScript, Python, Bootstrap, React, Flask, and MySQL.
+- Defensive and offensive cybersecurity concepts including OWASP mitigation, network packet inspection with Wireshark, and CTF security challenges.
+- User-centric UI/UX design with Figma and responsive CSS.
+
+### Q: What are Timothy Bibat's notable projects?
+**A:** His notable projects include:
+- **ByaHero:** A real-time commuter transit tracking mobile and web application featuring live vehicle seats, background geolocation, and CapacitorJS integration.
+- **SnapEat:** An AI-driven food nutrition scanner integrating Google Cloud Vision and Gemini API with a Python Flask backend.
+
+### Q: How can I contact or hire Timothy Bibat?
+**A:** You can reach Timothy via email at **timothybibat654@gmail.com**, connect on LinkedIn at **https://www.linkedin.com/in/timothy-bibat-5ab419182**, or explore his work on GitHub at **https://github.com/timbibat**.
