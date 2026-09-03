@@ -55,7 +55,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css?v=22">
+    <link rel="stylesheet" href="assets/css/style.css?v=31">
 
     <!-- JSON-LD Structured Data for Search & Answer Engines (AEO) -->
     <script type="application/ld+json">
@@ -255,12 +255,15 @@
     style="opacity: 0; transition: opacity .6s ease;">
 
     <!-- Floating theme toggle (Desktop: Top-Right) -->
-    <button class="theme-toggle-float d-none d-lg-flex align-items-center justify-content-center rounded-circle p-0" id="themeToggleFloat" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle theme">
+    <button class="theme-toggle-float d-none d-lg-flex align-items-center justify-content-center rounded-circle p-0"
+        id="themeToggleFloat" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle theme">
         <i class="fas fa-moon"></i>
     </button>
 
     <!-- Floating Back to Top button -->
-    <button type="button" class="btn btn-primary rounded-circle shadow-lg position-fixed bottom-0 end-0 m-3 m-md-4 fade d-flex align-items-center justify-content-center p-0 back-to-top-btn" id="backToTopBtn" aria-label="Back to top" title="Back to top">
+    <button type="button"
+        class="btn btn-primary rounded-circle shadow-lg position-fixed bottom-0 end-0 m-3 m-md-4 fade d-flex align-items-center justify-content-center p-0 back-to-top-btn"
+        id="backToTopBtn" aria-label="Back to top" title="Back to top">
         <i class="fas fa-chevron-up"></i>
     </button>
 
@@ -274,9 +277,8 @@
                 <div class="text-center">
                     <div class="rounded-circle p-2 shadow-sm d-inline-block profile-ring">
                         <img src="assets/img/Timothy.jpg" alt="Timothy Bibat" width="120" height="120"
-                            class="rounded-circle img-fluid border border-3 border-white"
-                            fetchpriority="high" decoding="async"
-                            style="width:120px; height:120px; object-fit:cover;">
+                            class="rounded-circle img-fluid border border-3 border-white" fetchpriority="high"
+                            decoding="async" style="width:120px; height:120px; object-fit:cover;">
                     </div>
                     <h2 class="h5 fw-bold mt-3 mb-0 text-dark">Timothy Bibat</h2>
                     <p class="small text-muted mb-2">Aspiring Cybersecurity Professional</p>
@@ -315,133 +317,124 @@
                 <div class="w-100 pt-3 border-top">
                     <div class="d-flex justify-content-center gap-3">
                         <a href="https://github.com/timbibat" target="_blank" rel="noopener noreferrer"
-                            class="text-dark text-decoration-none d-inline-flex align-items-center justify-content-center rounded-circle" aria-label="GitHub">
+                            class="text-dark text-decoration-none d-inline-flex align-items-center justify-content-center rounded-circle"
+                            aria-label="GitHub">
                             <i class="fab fa-github fa-lg"></i>
                         </a>
                         <a href="https://www.facebook.com/chimochip" target="_blank" rel="noopener noreferrer"
-                            class="text-dark text-decoration-none d-inline-flex align-items-center justify-content-center rounded-circle" aria-label="Facebook">
+                            class="text-dark text-decoration-none d-inline-flex align-items-center justify-content-center rounded-circle"
+                            aria-label="Facebook">
                             <i class="fab fa-facebook fa-lg"></i>
                         </a>
                         <a href="https://www.instagram.com/chimoshii_p" target="_blank" rel="noopener noreferrer"
-                            class="text-dark text-decoration-none d-inline-flex align-items-center justify-content-center rounded-circle" aria-label="Instagram">
+                            class="text-dark text-decoration-none d-inline-flex align-items-center justify-content-center rounded-circle"
+                            aria-label="Instagram">
                             <i class="fab fa-instagram fa-lg"></i>
                         </a>
                         <a href="https://www.linkedin.com/in/timothy-bibat-5ab419182" target="_blank"
-                            rel="noopener noreferrer" class="text-dark text-decoration-none d-inline-flex align-items-center justify-content-center rounded-circle" aria-label="LinkedIn">
+                            rel="noopener noreferrer"
+                            class="text-dark text-decoration-none d-inline-flex align-items-center justify-content-center rounded-circle"
+                            aria-label="LinkedIn">
                             <i class="fab fa-linkedin fa-lg"></i>
                         </a>
                     </div>
                 </div>
             </aside>
 
-            <main class="col-12 col-lg-9 col-xl-10 offset-lg-3 offset-xl-2 p-xl-4 p-lg-4">
-                <!-- Topbar -->
-                <div class="navbar-glass d-lg-none d-sm-flex align-items-center gap-2 p-2 rounded-4"
-    style="position: fixed; bottom: 12px; left: 12px; right: 12px; max-width: 480px; margin: 0 auto; z-index: 1020;">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="rounded-4 d-flex align-items-center gap-2">
-                                    <nav class="nav nav-fill flex-grow-1" id="navbar">
-                                        <a class="nav-link bg-primary text-white rounded-pill text-decoration-none fw-semibold"
-                                            href="#about" style="transition: all 0.3s ease;">
-                                            <i class="fas fa-user me-2"></i>About
-                                        </a>
+            <main class="col-12 col-lg-9 col-xl-10 offset-lg-3 offset-xl-2 p-md-4 p-lg-4">
+                <!-- Bottom bar -->
+                <div class="navbar-glass d-flex d-lg-none align-items-center justify-content-between gap-1 p-2 rounded-pill"
+                    style="position: fixed; bottom: 12px; left: 12px; right: 12px; max-width: 480px; margin: 0 auto; z-index: 1020;">
+                    <nav class="nav nav-pills nav-fill flex-nowrap flex-grow-1 align-items-center" id="navbar">
+                        <a class="nav-link bg-primary rounded-pill text-decoration-none fw-semibold" href="#about"
+                            style="transition: all 0.25s ease;">
+                            <i class="fas fa-user"></i><span>About</span>
+                        </a>
 
-                                        <a class="nav-link text-muted rounded-pill text-decoration-none fw-semibold"
-                                            href="#tech-stack" style="transition: all 0.3s ease;">
-                                            <i class="fas fa-cogs me-2"></i>Tech
-                                        </a>
+                        <a class="nav-link text-muted rounded-pill text-decoration-none fw-semibold" href="#tech-stack"
+                            style="transition: all 0.25s ease;">
+                            <i class="fas fa-cogs"></i><span>Tech</span>
+                        </a>
 
-                                        <a class="nav-link text-muted rounded-pill text-decoration-none fw-semibold"
-                                            href="#portfolio" style="transition: all 0.3s ease;">
-                                            <i class="fas fa-folder me-2"></i>Portfolio
-                                        </a>
+                        <a class="nav-link text-muted rounded-pill text-decoration-none fw-semibold" href="#portfolio"
+                            style="transition: all 0.25s ease;">
+                            <i class="fas fa-folder"></i><span>Portfolio</span>
+                        </a>
 
-                                        <a class="nav-link text-muted rounded-pill text-decoration-none fw-semibold"
-                                            href="#cv" style="transition: all 0.3s ease;">
-                                            <i class="fas fa-file-alt me-2"></i>CV
-                                        </a>
+                        <a class="nav-link text-muted rounded-pill text-decoration-none fw-semibold" href="#cv"
+                            style="transition: all 0.25s ease;">
+                            <i class="fas fa-file-alt"></i><span>CV</span>
+                        </a>
 
-                                        <a class="nav-link text-muted rounded-pill text-decoration-none fw-semibold"
-                                            href="#contact" style="transition: all 0.3s ease;">
-                                            <i class="fas fa-envelope me-2"></i>Contact
-                                        </a>
-                                    </nav>
-                                    <div class="vr bg-secondary opacity-25 my-1" style="height: 24px;"></div>
-                                    <button class="theme-toggle-btn btn btn-sm rounded-circle d-flex align-items-center justify-content-center p-0 flex-shrink-0"
-                                        id="themeToggleMobile" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle theme">
-                                        <i class="fas fa-moon"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <a class="nav-link text-muted rounded-pill text-decoration-none fw-semibold" href="#contact"
+                            style="transition: all 0.25s ease;">
+                            <i class="fas fa-envelope"></i><span>Contact</span>
+                        </a>
+                    </nav>
+                    <div class="vr bg-secondary opacity-25 my-1 mx-1" style="height: 22px;"></div>
+                    <button
+                        class="theme-toggle-btn btn btn-sm rounded-circle d-flex align-items-center justify-content-center p-0 flex-shrink-0"
+                        id="themeToggleMobile" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle theme"
+                        style="width: 36px; height: 36px;">
+                        <i class="fas fa-moon"></i>
+                    </button>
                 </div>
                 <!-- Profile Section (Mobile) -->
-                <aside class="d-lg-none d-sm-block mt-4 mb-4">
-                    <section class="position-relative pb-4">
-                        <div class="col-12 col-lg-10">
-                            <div class="glass-card p-4 p-md-5 position-relative overflow-hidden">
-                                <div class="row align-items-center">
-                                    <!-- Profile Image -->
-                                    <div
-                                        class="col-12 col-md-auto text-center text-md-center text-lg-start mb-4 mb-md-0">
-                                        <div class="position-relative d-inline-block">
-                                            <div class="rounded-circle p-2 shadow-lg d-flex align-items-center justify-content-center profile-ring"
-                                                style="width:140px; height:140px;">
-                                                <img src="assets/img/Timothy.jpg" alt="Timothy Bibat" width="130" height="130"
-                                                    class="rounded-circle img-fluid border border-3 border-white"
-                                                    loading="lazy" decoding="async"
-                                                    style="width:130px; height:130px; object-fit:cover;">
-                                            </div>
-                                        </div>
+                <aside class="d-block d-lg-none mt-4 mb-4">
+                    <section class="position-relative">
+                        <div class="glass-card p-4 p-sm-5 text-center position-relative overflow-hidden">
+                            <!-- Profile Image -->
+                            <div class="d-flex justify-content-center mb-3">
+                                <div class="position-relative d-inline-block">
+                                    <div class="rounded-circle p-2 shadow-lg d-flex align-items-center justify-content-center profile-ring"
+                                        style="width:130px; height:130px;">
+                                        <img src="assets/img/Timothy.jpg" alt="Timothy Bibat" width="120" height="120"
+                                            class="rounded-circle img-fluid border border-3 border-white" loading="lazy"
+                                            decoding="async" style="width:120px; height:120px; object-fit:cover;">
                                     </div>
+                                </div>
+                            </div>
 
-                                    <!-- Profile Info -->
-                                    <div class="col-12 col-md text-center text-md-center text-lg-start mb-4 mb-md-0">
-                                        <h1 class="display-5 fw-bold mb-2">Timothy Bibat</h1>
-                                        <p class="h5 text-secondary mb-3">Aspiring Cybersecurity Professional - Student</p>
-                                        <div
-                                            class="d-flex flex-column flex-sm-row gap-2 justify-content-center justify-content-md-start mb-3">
-                                            <span class="availability-badge badge px-3 py-2 text-nowrap">
-                                                <i class="fas fa-circle me-2" style="font-size: 8px;"></i>Available for
-                                                opportunities
-                                            </span>
-                                        </div>
-
-                                        <!-- Social Media Links -->
-                                        <div class="d-flex gap-3 justify-content-center justify-content-md-start">
-                                            <a href="https://github.com/timbibat" target="_blank"
-                                                rel="noopener noreferrer"
-                                                class="link-secondary text-decoration-none d-inline-flex align-items-center justify-content-center rounded-circle"
-                                                aria-label="GitHub">
-                                                <i class="fab fa-github fa-lg"></i>
-                                            </a>
-                                            <a href="https://www.facebook.com/chimochip" target="_blank"
-                                                rel="noopener noreferrer"
-                                                class="link-secondary text-decoration-none d-inline-flex align-items-center justify-content-center rounded-circle"
-                                                aria-label="Facebook">
-                                                <i class="fab fa-facebook fa-lg"></i>
-                                            </a>
-                                            <a href="https://www.instagram.com/chimoshii_p" target="_blank"
-                                                rel="noopener noreferrer"
-                                                class="link-secondary text-decoration-none d-inline-flex align-items-center justify-content-center rounded-circle"
-                                                aria-label="Instagram">
-                                                <i class="fab fa-instagram fa-lg"></i>
-                                            </a>
-                                            <a href="https://www.linkedin.com/in/timothy-bibat-5ab419182"
-                                                target="_blank" rel="noopener noreferrer"
-                                                class="link-secondary text-decoration-none d-inline-flex align-items-center justify-content-center rounded-circle"
-                                                aria-label="LinkedIn">
-                                                <i class="fab fa-linkedin fa-lg"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-
+                            <!-- Profile Info -->
+                            <div class="d-flex flex-column align-items-center">
+                                <h1 class="h2 fw-bold mb-1 text-center">Timothy Bibat</h1>
+                                <p class="text-secondary small mb-3 text-center">Aspiring Cybersecurity Professional -
+                                    Student</p>
+                                <div class="d-flex justify-content-center mb-3">
+                                    <span class="availability-badge badge px-3 py-2 text-nowrap">
+                                        <i class="fas fa-circle me-2" style="font-size: 8px;"></i>Available for
+                                        opportunities
+                                    </span>
                                 </div>
 
+                                <!-- Social Media Links -->
+                                <div class="d-flex gap-3 justify-content-center">
+                                    <a href="https://github.com/timbibat" target="_blank" rel="noopener noreferrer"
+                                        class="link-secondary text-decoration-none d-inline-flex align-items-center justify-content-center rounded-circle"
+                                        aria-label="GitHub">
+                                        <i class="fab fa-github fa-lg"></i>
+                                    </a>
+                                    <a href="https://www.facebook.com/chimochip" target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="link-secondary text-decoration-none d-inline-flex align-items-center justify-content-center rounded-circle"
+                                        aria-label="Facebook">
+                                        <i class="fab fa-facebook fa-lg"></i>
+                                    </a>
+                                    <a href="https://www.instagram.com/chimoshii_p" target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="link-secondary text-decoration-none d-inline-flex align-items-center justify-content-center rounded-circle"
+                                        aria-label="Instagram">
+                                        <i class="fab fa-instagram fa-lg"></i>
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/timothy-bibat-5ab419182" target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="link-secondary text-decoration-none d-inline-flex align-items-center justify-content-center rounded-circle"
+                                        aria-label="LinkedIn">
+                                        <i class="fab fa-linkedin fa-lg"></i>
+                                    </a>
+                                </div>
                             </div>
+
                         </div>
                     </section>
                 </aside>
@@ -455,11 +448,11 @@
                                 <div class="skeleton-box skeleton-icon me-3"></div>
                                 <div class="skeleton-box skeleton-title"></div>
                             </div>
-                            
+
                             <!-- Lead Lines -->
                             <div class="skeleton-box skeleton-line w-100 mb-2"></div>
                             <div class="skeleton-box skeleton-line w-75 mb-4"></div>
-                            
+
                             <!-- Badges / Pills -->
                             <div class="d-flex flex-wrap gap-2 mb-4">
                                 <div class="skeleton-box skeleton-pill" style="width: 140px;"></div>
@@ -467,15 +460,15 @@
                                 <div class="skeleton-box skeleton-pill" style="width: 130px;"></div>
                                 <div class="skeleton-box skeleton-pill" style="width: 150px;"></div>
                             </div>
-                            
+
                             <div class="skeleton-box skeleton-divider mb-4"></div>
-                            
+
                             <!-- Subheading Skeleton -->
                             <div class="skeleton-box skeleton-subtitle mb-3" style="width: 120px;"></div>
-                            
+
                             <!-- Card Grid Skeleton -->
                             <div class="row g-3">
-                                <div class="col-12 col-md-4">
+                                <div class="col-12 col-md-6 col-xl-4">
                                     <div class="skeleton-card-inner p-4 rounded-3 h-100">
                                         <div class="skeleton-box skeleton-icon-sm mb-3"></div>
                                         <div class="skeleton-box skeleton-line w-50 mb-2"></div>
@@ -487,7 +480,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-4">
+                                <div class="col-12 col-md-6 col-xl-4">
                                     <div class="skeleton-card-inner p-4 rounded-3 h-100">
                                         <div class="skeleton-box skeleton-icon-sm mb-3"></div>
                                         <div class="skeleton-box skeleton-line w-50 mb-2"></div>
@@ -499,7 +492,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-4 d-none d-md-block">
+                                <div class="col-12 col-md-6 col-xl-4 d-none d-xl-block">
                                     <div class="skeleton-card-inner p-4 rounded-3 h-100">
                                         <div class="skeleton-box skeleton-icon-sm mb-3"></div>
                                         <div class="skeleton-box skeleton-line w-50 mb-2"></div>
@@ -520,43 +513,70 @@
 
                     <!-- Semantic Crawlable Fallback for AI Answer Engines & Non-JS Clients -->
                     <noscript>
-                        <div class="glass-card p-4 p-md-5 mb-5 border-primary border-opacity-25" style="display: block;">
+                        <div class="glass-card p-4 p-md-5 mb-5 border-primary border-opacity-25"
+                            style="display: block;">
                             <h1 class="h3 fw-bold mb-3">Timothy Bibat — Cybersecurity & Web Development Portfolio</h1>
                             <p class="lead mb-4">
-                                I am <strong>Timothy Bibat</strong>, an aspiring cybersecurity professional, full-stack web developer, and UI/UX designer based in <strong>Calamba, Laguna, Philippines</strong>. Currently a 4th-year student pursuing a <strong>Bachelor of Science in Information Technology</strong> at the <strong>Polytechnic University of the Philippines (PUP)</strong>.
+                                I am <strong>Timothy Bibat</strong>, an aspiring cybersecurity professional, full-stack
+                                web developer, and UI/UX designer based in <strong>Calamba, Laguna,
+                                    Philippines</strong>. Currently a 4th-year student pursuing a <strong>Bachelor of
+                                    Science in Information Technology</strong> at the <strong>Polytechnic University of
+                                    the Philippines (PUP)</strong>.
                             </p>
 
                             <h2 class="h5 fw-bold mt-4 mb-2">Core Competencies & Expertise</h2>
                             <ul>
-                                <li><strong>Cybersecurity:</strong> Web application security, OWASP Top 10 vulnerability mitigation (SQLi, XSS, CSRF), penetration testing workflows, Capture The Flag (CTF) challenges, network packet analysis with Wireshark, security testing with Kali Linux, and defensive secure coding.</li>
-                                <li><strong>Web & Software Development:</strong> JavaScript (ES6+), Python, C++, PHP, HTML5, CSS3, Bootstrap 5, React, Next.js, Flask, CapacitorJS, MySQL, SQLite, PostgreSQL, and Google Firebase.</li>
-                                <li><strong>UI/UX Design:</strong> Interactive prototyping and wireframing in Figma, design system creation, and visual asset preparation in Adobe Photoshop.</li>
+                                <li><strong>Cybersecurity:</strong> Web application security, OWASP Top 10 vulnerability
+                                    mitigation (SQLi, XSS, CSRF), penetration testing workflows, Capture The Flag (CTF)
+                                    challenges, network packet analysis with Wireshark, security testing with Kali
+                                    Linux, and defensive secure coding.</li>
+                                <li><strong>Web & Software Development:</strong> JavaScript (ES6+), Python, C++, PHP,
+                                    HTML5, CSS3, Bootstrap 5, React, Next.js, Flask, CapacitorJS, MySQL, SQLite,
+                                    PostgreSQL, and Google Firebase.</li>
+                                <li><strong>UI/UX Design:</strong> Interactive prototyping and wireframing in Figma,
+                                    design system creation, and visual asset preparation in Adobe Photoshop.</li>
                             </ul>
 
                             <h2 class="h5 fw-bold mt-4 mb-2">Featured Projects</h2>
                             <ul>
-                                <li><strong>ByaHero (Public Transportation Tracking System):</strong> Real-time commuter and vehicle tracking mobile and web application featuring live seat availability, background geolocation tracking, push notifications, and resilient AJAX synchronization built with CapacitorJS and JavaScript.</li>
-                                <li><strong>SnapEat (AI-Powered Nutrition Scanner):</strong> Dietary assistant application that analyzes food photos and nutrition labels using Google Cloud Vision OCR and the Google Gemini API with a Python Flask backend and dual SQLite/PostgreSQL support.</li>
+                                <li><strong>ByaHero (Public Transportation Tracking System):</strong> Real-time commuter
+                                    and vehicle tracking mobile and web application featuring live seat availability,
+                                    background geolocation tracking, push notifications, and resilient AJAX
+                                    synchronization built with CapacitorJS and JavaScript.</li>
+                                <li><strong>SnapEat (AI-Powered Nutrition Scanner):</strong> Dietary assistant
+                                    application that analyzes food photos and nutrition labels using Google Cloud Vision
+                                    OCR and the Google Gemini API with a Python Flask backend and dual SQLite/PostgreSQL
+                                    support.</li>
                             </ul>
 
                             <h2 class="h5 fw-bold mt-4 mb-2">Academic Background & Certifications</h2>
                             <ul>
-                                <li><strong>Polytechnic University of the Philippines (PUP):</strong> Bachelor of Science in Information Technology (4th Year) — Consistent President’s Lister and Dean’s Lister.</li>
-                                <li><strong>EduCTF Cybersecurity Competition:</strong> Special Recognition Award for exploit analysis and defensive challenges.</li>
-                                <li><strong>Data Science Essentials with Python:</strong> Verified certificate in data analysis and Python programming (2025).</li>
-                                <li><strong>Introduction to Cybersecurity:</strong> Verified certificate in network defense fundamentals and security architecture (2026).</li>
+                                <li><strong>Polytechnic University of the Philippines (PUP):</strong> Bachelor of
+                                    Science in Information Technology (4th Year) — Consistent President’s Lister and
+                                    Dean’s Lister.</li>
+                                <li><strong>EduCTF Cybersecurity Competition:</strong> Special Recognition Award for
+                                    exploit analysis and defensive challenges.</li>
+                                <li><strong>Data Science Essentials with Python:</strong> Verified certificate in data
+                                    analysis and Python programming (2025).</li>
+                                <li><strong>Introduction to Cybersecurity:</strong> Verified certificate in network
+                                    defense fundamentals and security architecture (2026).</li>
                             </ul>
 
                             <h2 class="h5 fw-bold mt-4 mb-2">Contact & Verified Profiles</h2>
                             <p>
-                                <strong>Email:</strong> <a href="mailto:timothybibat654@gmail.com">timothybibat654@gmail.com</a><br>
+                                <strong>Email:</strong> <a
+                                    href="mailto:timothybibat654@gmail.com">timothybibat654@gmail.com</a><br>
                                 <strong>Phone:</strong> +63 907-519-4974<br>
                                 <strong>Location:</strong> Calamba, Laguna, Philippines<br>
-                                <strong>GitHub:</strong> <a href="https://github.com/timbibat" target="_blank" rel="noopener noreferrer">https://github.com/timbibat</a><br>
-                                <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/timothy-bibat-5ab419182" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/timothy-bibat-5ab419182</a>
+                                <strong>GitHub:</strong> <a href="https://github.com/timbibat" target="_blank"
+                                    rel="noopener noreferrer">https://github.com/timbibat</a><br>
+                                <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/timothy-bibat-5ab419182"
+                                    target="_blank"
+                                    rel="noopener noreferrer">https://www.linkedin.com/in/timothy-bibat-5ab419182</a>
                             </p>
                             <p class="small text-muted mt-3">
-                                Machine-readable AI Dossiers: <a href="https://timbibat.me/llms.txt">llms.txt</a> | <a href="https://timbibat.me/llms-full.txt">llms-full.txt</a>
+                                Machine-readable AI Dossiers: <a href="https://timbibat.me/llms.txt">llms.txt</a> | <a
+                                    href="https://timbibat.me/llms-full.txt">llms-full.txt</a>
                             </p>
                         </div>
                     </noscript>

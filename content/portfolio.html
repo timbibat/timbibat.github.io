@@ -3,50 +3,61 @@
         <span class="glow-text"><i class="fas fa-folder me-2"></i></span>Portfolio
     </h2>
     <!-- Tab Navigation -->
-    <div class="portfolio-nav-container sticky-top mb-5">
-        <ul class="nav nav-tabs border-0" id="portfolioTabs" role="tablist">
+    <div class="portfolio-nav-container sticky-top mb-4 mb-md-5">
+        <ul class="nav nav-pills nav-justified border-0 flex-nowrap w-100 py-1" id="portfolioTabs" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active fw-semibold rounded-pill" id="major-tab" data-bs-toggle="tab"
+                <button class="nav-link active fw-semibold rounded-pill text-nowrap" id="major-tab" data-bs-toggle="tab"
                     data-bs-target="#major-project-pane" type="button" role="tab" aria-controls="major-project-pane"
                     aria-selected="true">
                     <i class="fas fa-star" aria-hidden="true"></i>
-                    Major Project <span class="badge rounded-pill tab-count ms-1 d-none d-md-inline-block" id="major-count">1</span>
+                    <span>Major<span class="d-none d-lg-inline"> Project</span></span>
+                    <span class="badge rounded-pill tab-count ms-1 d-none d-xl-inline-block" id="major-count">1</span>
                 </button>
             </li>
 
             <li class="nav-item" role="presentation">
-                <button class="nav-link fw-semibold rounded-pill" id="projects-tab" data-bs-toggle="tab"
+                <button class="nav-link fw-semibold rounded-pill text-nowrap" id="projects-tab" data-bs-toggle="tab"
                     data-bs-target="#projects-pane" type="button" role="tab" aria-controls="projects-pane"
                     aria-selected="false">
                     <i class="fas fa-rocket" aria-hidden="true"></i>
-                    Projects <span class="badge rounded-pill tab-count ms-1 d-none d-md-inline-block" id="projects-count">0</span>
+                    <span>Projects</span>
+                    <span class="badge rounded-pill tab-count ms-1 d-none d-xl-inline-block"
+                        id="projects-count">0</span>
                 </button>
             </li>
 
             <li class="nav-item" role="presentation">
-                <button class="nav-link fw-semibold rounded-pill" id="activities-tab" data-bs-toggle="tab"
+                <button class="nav-link fw-semibold rounded-pill text-nowrap" id="activities-tab" data-bs-toggle="tab"
                     data-bs-target="#activities-pane" type="button" role="tab" aria-controls="activities-pane"
                     aria-selected="false">
                     <i class="fas fa-tasks" aria-hidden="true"></i>
-                    Activities <span class="badge rounded-pill tab-count ms-1 d-none d-md-inline-block" id="activities-count">0</span>
+                    <span>Activities</span>
+                    <span class="badge rounded-pill tab-count ms-1 d-none d-xl-inline-block"
+                        id="activities-count">0</span>
                 </button>
             </li>
 
             <li class="nav-item" role="presentation">
-                <button class="nav-link fw-semibold rounded-pill" id="multimedia-tab" data-bs-toggle="tab"
+                <button class="nav-link fw-semibold rounded-pill text-nowrap" id="multimedia-tab" data-bs-toggle="tab"
                     data-bs-target="#multimedia-pane" type="button" role="tab" aria-controls="multimedia-pane"
                     aria-selected="false">
                     <i class="fas fa-film" aria-hidden="true"></i>
-                    Multimedia <span class="badge rounded-pill tab-count ms-1 d-none d-md-inline-block" id="multimedia-count">0</span>
+                    <span><span class="d-inline d-lg-none">Media</span><span
+                            class="d-none d-lg-inline">Multimedia</span></span>
+                    <span class="badge rounded-pill tab-count ms-1 d-none d-xl-inline-block"
+                        id="multimedia-count">0</span>
                 </button>
             </li>
 
             <li class="nav-item" role="presentation">
-                <button class="nav-link fw-semibold rounded-pill" id="certificates-tab" data-bs-toggle="tab"
+                <button class="nav-link fw-semibold rounded-pill text-nowrap" id="certificates-tab" data-bs-toggle="tab"
                     data-bs-target="#certificates-pane" type="button" role="tab" aria-controls="certificates-pane"
                     aria-selected="false">
                     <i class="fas fa-certificate" aria-hidden="true"></i>
-                    Certificates <span class="badge rounded-pill tab-count ms-1 d-none d-md-inline-block" id="certificates-count">0</span>
+                    <span><span class="d-inline d-lg-none">Certs</span><span
+                            class="d-none d-lg-inline">Certificates</span></span>
+                    <span class="badge rounded-pill tab-count ms-1 d-none d-xl-inline-block"
+                        id="certificates-count">0</span>
                 </button>
             </li>
         </ul>
@@ -68,7 +79,7 @@
                     Recent projects showcasing technical skills and creative problem-solving.
                 </p>
             </div>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 justify-content-center animate-in"
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-2 row-cols-xl-3 g-4 justify-content-center animate-in"
                 id="projects-container">
                 <!-- Will be populated by JS -->
             </div>
@@ -78,10 +89,11 @@
         <div id="activities-pane" class="tab-pane fade" role="tabpanel" aria-labelledby="activities-tab">
             <div class="text-center mb-5 animate-in">
                 <p class="text-muted lead">
-                    Activities done for Website Development in compliance to the subject requirements for COMP 016 - Web Development.
+                    Activities done for Website Development in compliance to the subject requirements for COMP 016 - Web
+                    Development.
                 </p>
             </div>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 justify-content-center animate-in"
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-2 row-cols-xl-3 g-4 justify-content-center animate-in"
                 id="activities-container">
                 <!-- Will be populated by JS -->
             </div>
@@ -94,7 +106,7 @@
                     Visual arts, digital designs, and multimedia projects.
                 </p>
             </div>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 justify-content-center animate-in"
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-2 row-cols-xl-3 g-4 justify-content-center animate-in"
                 id="multimedia-container">
                 <!-- Will be populated by JS -->
             </div>
@@ -107,7 +119,7 @@
                     Professional certifications and course completions.
                 </p>
             </div>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 justify-content-center animate-in"
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-2 row-cols-xl-3 g-4 justify-content-center animate-in"
                 id="certificates-container">
                 <!-- Will be populated by JS -->
             </div>
