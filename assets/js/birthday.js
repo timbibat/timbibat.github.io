@@ -171,8 +171,8 @@ function mountCountdownTimer() {
     banner.innerHTML = `
         <div class="bday-countdown-title">
             <span>⏳</span>
-            <span class="bday-full-text">Birthday Countdown</span>
-            <span class="bday-sparkle-text">(PHT UTC+8)</span>
+            <span class="bday-full-text">Birthday in</span>
+            <span class="bday-sparkle-text">(PHT)</span>
         </div>
         <div class="bday-countdown-clock">
             <div class="bday-countdown-unit"><span class="bday-countdown-num" id="cdDays">00</span><span class="bday-countdown-label">d</span></div>
@@ -185,7 +185,7 @@ function mountCountdownTimer() {
         </div>
         <div class="d-flex align-items-center gap-1">
             <a href="#contact" class="bday-btn bday-btn-primary" id="cdEarlyWishBtn" title="Send an early birthday wish!">
-                🎂 Early Wish
+                🎂 <span class="d-none d-sm-inline">Early </span>Wish
             </a>
             <button type="button" class="bday-btn-close" id="cdCloseBtn" aria-label="Minimize countdown" title="Minimize">
                 <i class="fas fa-times"></i>
@@ -205,6 +205,7 @@ function mountCountdownTimer() {
 
     document.body.appendChild(banner);
     document.body.appendChild(minPill);
+    document.body.classList.add('has-bday-banner');
 
     // Mount countdown badges in sidebar and mobile profile
     mountCountdownBadges();
@@ -214,11 +215,13 @@ function mountCountdownTimer() {
     closeBtn.addEventListener('click', () => {
         banner.style.display = 'none';
         minPill.style.display = 'inline-flex';
+        document.body.classList.remove('has-bday-banner');
     });
 
     minPill.addEventListener('click', () => {
         minPill.style.display = 'none';
         banner.style.display = 'flex';
+        document.body.classList.add('has-bday-banner');
     });
 
     const earlyWishBtn = banner.querySelector('#cdEarlyWishBtn');
@@ -266,11 +269,25 @@ function mountCountdownTimer() {
         if (elMins) elMins.textContent = pad(minutes);
         if (elSecs) elSecs.textContent = pad(seconds);
 
-        const shortTime = days > 0 ? `${days}d ${hours}h` : `${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
+        let shortTime;
+        if (days > 0) {
+            shortTime = `${days}d ${hours}h`;
+        } else if (hours > 0) {
+            shortTime = `${hours}h ${pad(minutes)}m`;
+        } else {
+            shortTime = `${minutes}m ${pad(seconds)}s`;
+        }
         if (elMinTime) elMinTime.textContent = shortTime;
 
-        // Update badge labels
-        const badgeText = days > 0 ? `${days}d ${pad(hours)}h ${pad(minutes)}m` : `${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
+        // Update badge labels with compact formatting
+        let badgeText;
+        if (days > 0) {
+            badgeText = `${days}d ${hours}h ${pad(minutes)}m`;
+        } else if (hours > 0) {
+            badgeText = `${hours}h ${pad(minutes)}m ${pad(seconds)}s`;
+        } else {
+            badgeText = `${minutes}m ${pad(seconds)}s`;
+        }
         const badgeTimeDesktop = document.getElementById('cdBadgeTimeDesktop');
         const badgeTimeMobile = document.getElementById('cdBadgeTimeMobile');
         if (badgeTimeDesktop) badgeTimeDesktop.textContent = badgeText;
@@ -294,12 +311,14 @@ function mountCountdownBadges() {
 
     const mobileAvailability = document.querySelector('aside.d-lg-none .availability-badge');
     if (mobileAvailability && !document.getElementById('cdBadgeMobile')) {
+        const parent = mobileAvailability.parentNode;
+        parent.classList.add('flex-wrap', 'gap-2');
         const badge = document.createElement('span');
         badge.id = 'cdBadgeMobile';
         badge.className = 'bday-countdown-badge badge px-3 py-2 text-nowrap rounded-pill d-inline-flex align-items-center gap-1 mb-2';
         badge.innerHTML = '<i class="fas fa-hourglass-half me-1"></i> Bday in <span id="cdBadgeTimeMobile">--</span>';
         badge.title = 'Countdown to Timothy’s Birthday on Sept 4 (Philippine Time)';
-        mobileAvailability.parentNode.insertBefore(badge, mobileAvailability);
+        parent.insertBefore(badge, mobileAvailability);
     }
 }
 
@@ -316,6 +335,9 @@ function cleanupCountdown() {
     if (badgeDesktop) badgeDesktop.remove();
     const badgeMobile = document.getElementById('cdBadgeMobile');
     if (badgeMobile) badgeMobile.remove();
+    if (!document.getElementById('bdayBanner')) {
+        document.body.classList.remove('has-bday-banner');
+    }
 }
 
 /**
@@ -419,13 +441,15 @@ function mountBirthdayBadges() {
 
     const mobileAvailability = document.querySelector('aside.d-lg-none .availability-badge');
     if (mobileAvailability && !document.getElementById('bdayBadgeMobile')) {
+        const parent = mobileAvailability.parentNode;
+        parent.classList.add('flex-wrap', 'gap-2');
         const badge = document.createElement('span');
         badge.id = 'bdayBadgeMobile';
         badge.className = 'bday-badge badge px-3 py-2 text-nowrap rounded-pill d-inline-flex align-items-center gap-1 mb-2';
         badge.innerHTML = '<i class="fas fa-cake-candles me-1"></i> Celebrating Birthday Today! 🎉';
         badge.title = 'Click to open birthday celebration!';
         badge.addEventListener('click', openBirthdayModal);
-        mobileAvailability.parentNode.insertBefore(badge, mobileAvailability);
+        parent.insertBefore(badge, mobileAvailability);
     }
 }
 
@@ -440,19 +464,19 @@ function mountCelebrationBanner() {
     banner.className = 'bday-banner-capsule';
     banner.setAttribute('role', 'alert');
     banner.innerHTML = `
-        <div class="bday-banner-text">
+        <div class="bday-banner-text d-flex align-items-center gap-1 text-nowrap">
             <span>🎉</span>
-            <span class="bday-full-text">Today is Timothy's Birthday!</span>
+            <span class="d-none d-md-inline">Today is Timothy's Birthday!</span>
             <span class="bday-sparkle-text">Sept 4 🎂</span>
         </div>
-        <div class="d-flex align-items-center gap-2">
-            <button type="button" class="bday-btn bday-btn-primary" id="bdayConfettiBtn" title="Celebrate with confetti!">
-                <i class="fas fa-sparkles"></i> Pop Confetti
+        <div class="d-flex align-items-center gap-1 gap-sm-2 ms-1">
+            <button type="button" class="btn btn-sm bday-btn bday-btn-primary rounded-pill text-nowrap" id="bdayConfettiBtn" title="Celebrate with confetti!">
+                <i class="fas fa-sparkles"></i> <span class="d-none d-sm-inline">Pop </span>Confetti
             </button>
-            <button type="button" class="bday-btn bday-btn-subtle" id="bdayWishBtn" title="Make a wish & blow out the candle">
-                🎂 Make a Wish
+            <button type="button" class="btn btn-sm bday-btn bday-btn-subtle rounded-pill text-nowrap" id="bdayWishBtn" title="Make a wish & blow out the candle">
+                🎂 <span class="d-none d-sm-inline">Make a </span>Wish
             </button>
-            <button type="button" class="bday-btn-close" id="bdayCloseBtn" aria-label="Minimize celebration banner" title="Minimize">
+            <button type="button" class="btn btn-sm bday-btn-close rounded-circle p-0" id="bdayCloseBtn" aria-label="Minimize celebration banner" title="Minimize">
                 <i class="fas fa-times"></i>
             </button>
         </div>
@@ -471,6 +495,7 @@ function mountCelebrationBanner() {
 
     document.body.appendChild(banner);
     document.body.appendChild(minPill);
+    document.body.classList.add('has-bday-banner');
 
     // Event listeners
     const confettiBtn = banner.querySelector('#bdayConfettiBtn');
@@ -486,11 +511,13 @@ function mountCelebrationBanner() {
     closeBtn.addEventListener('click', () => {
         banner.style.display = 'none';
         minPill.style.display = 'inline-flex';
+        document.body.classList.remove('has-bday-banner');
     });
 
     minPill.addEventListener('click', () => {
         minPill.style.display = 'none';
         banner.style.display = 'flex';
+        document.body.classList.add('has-bday-banner');
     });
 }
 

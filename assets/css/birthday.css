@@ -275,25 +275,6 @@
     box-shadow: 0 6px 24px rgba(245, 158, 11, 0.4);
 }
 
-/* Responsive adjustment for Mobile */
-@media (max-width: 576px) {
-    .bday-banner-capsule {
-        padding: 5px 10px 5px 12px;
-        gap: 8px;
-        top: 10px;
-    }
-    .bday-banner-text {
-        font-size: 0.78rem;
-    }
-    .bday-btn {
-        font-size: 0.72rem;
-        padding: 4px 9px;
-    }
-    .bday-banner-text .bday-full-text {
-        display: none;
-    }
-}
-
 /* ==========================================================================
    Interactive Birthday Cake & Candle Modal
    ========================================================================== */
@@ -519,16 +500,177 @@
     box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
 }
 
-@media (max-width: 576px) {
-    .bday-countdown-capsule {
-        padding: 5px 10px;
-        gap: 6px;
-        top: 10px;
+/* ==========================================================================
+   Portfolio Navigation Sticky Offset
+   Ensures sticky-top .portfolio-nav-container never collides with fixed banner
+   ========================================================================== */
+body.has-bday-banner .portfolio-nav-container {
+    top: 3.8rem !important;
+    transition: top 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    body.has-bday-banner .portfolio-nav-container {
+        top: 3.2rem !important;
     }
+}
+
+@media (max-width: 576px) {
+    body.has-bday-banner .portfolio-nav-container {
+        top: 2.85rem !important;
+    }
+}
+
+/* ==========================================================================
+   Comprehensive Mobile & Tablet Responsiveness
+   ========================================================================== */
+
+/* Tablet & Mobile (<= 768px) */
+@media (max-width: 768px) {
+    .bday-banner-capsule,
+    .bday-countdown-capsule {
+        top: 8px;
+        max-width: calc(100vw - 16px);
+        box-sizing: border-box;
+        padding: 4px 8px 4px 12px;
+        gap: 6px;
+    }
+
+    .bday-countdown-title {
+        font-size: 0.78rem;
+        gap: 4px;
+    }
+
+    /* Hide long timezone text to prevent overflow */
+    .bday-countdown-title .bday-sparkle-text {
+        display: none;
+    }
+
+    .bday-countdown-clock {
+        padding: 2px 6px;
+        gap: 2px;
+    }
+
+    .bday-countdown-num {
+        font-size: 0.82rem;
+        min-width: 15px;
+    }
+
+    .bday-countdown-label {
+        font-size: 0.6rem;
+    }
+
+    .bday-countdown-colon {
+        font-size: 0.72rem;
+        margin: 0;
+    }
+
+    .bday-btn {
+        font-size: 0.72rem;
+        padding: 4px 8px;
+        gap: 4px;
+    }
+
+    .bday-btn-close {
+        width: 22px;
+        height: 22px;
+        font-size: 0.65rem;
+    }
+}
+
+/* Mobile Phones (<= 576px) */
+@media (max-width: 576px) {
+    .bday-banner-capsule,
+    .bday-countdown-capsule {
+        top: 6px;
+        max-width: calc(100vw - 12px);
+        padding: 3px 6px 3px 9px;
+        gap: 5px;
+    }
+
+    /* In compact mobile view, display just the icon to maximize room for clock and button */
     .bday-countdown-title .bday-full-text {
         display: none;
     }
+
+    .bday-banner-text .bday-full-text {
+        display: none;
+    }
+
+    .bday-countdown-clock {
+        padding: 2px 5px;
+        gap: 1.5px;
+    }
+
     .bday-countdown-num {
-        font-size: 0.85rem;
+        font-size: 0.78rem;
+        min-width: 14px;
+    }
+
+    .bday-countdown-label {
+        font-size: 0.56rem;
+    }
+
+    .bday-btn {
+        font-size: 0.7rem;
+        padding: 3px 7px;
+    }
+
+    /* Party Hat scaling for mobile */
+    .bday-party-hat-wrapper {
+        top: -28px;
+        width: 46px;
+        height: 52px;
+    }
+
+    /* Badges in mobile profile section */
+    .bday-countdown-badge,
+    .bday-badge {
+        font-size: 0.72rem !important;
+        padding: 4px 10px !important;
+    }
+
+    /* Minimized Pill on mobile */
+    .bday-minimized-pill {
+        font-size: 0.74rem;
+        padding: 4px 10px;
+        top: 10px;
+        left: 10px;
+        right: auto;
+    }
+
+    /* Modal responsiveness */
+    #birthdayModal .modal-dialog {
+        margin: 10px auto;
+        max-width: calc(100vw - 20px);
+    }
+
+    #birthdayModal .bday-cake-stage {
+        transform: scale(0.88);
+        height: 155px;
+        margin: 0 auto 10px auto;
+    }
+}
+
+/* Extra Small Screens (<= 380px, e.g. iPhone SE / Galaxy Fold) */
+@media (max-width: 380px) {
+    .bday-banner-capsule,
+    .bday-countdown-capsule {
+        padding: 3px 5px 3px 7px;
+        gap: 4px;
+    }
+
+    .bday-countdown-num {
+        font-size: 0.72rem;
+        min-width: 12px;
+    }
+
+    .bday-countdown-label {
+        font-size: 0.52rem;
+    }
+
+    .bday-btn {
+        padding: 2.5px 5px;
+        font-size: 0.65rem;
     }
 }
