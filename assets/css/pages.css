@@ -297,6 +297,9 @@ main .bg-white.bg-opacity-95 {
 }
 
 @media (max-width: 767.98px) {
+    .portfolio-nav-container {
+        top: 0.4rem !important;
+    }
     .portfolio-nav-container .nav-tabs .nav-link {
         font-size: 0.68rem;
         padding: 8px 2px;
