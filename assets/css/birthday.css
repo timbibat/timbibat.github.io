@@ -301,7 +301,8 @@
 
 /* Candle flame interactive states */
 .bday-flame {
-    transform-origin: bottom center;
+    transform-box: fill-box;
+    transform-origin: center bottom;
     animation: bday-flame-flicker 1.4s ease-in-out infinite alternate;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);

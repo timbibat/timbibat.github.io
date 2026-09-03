@@ -303,8 +303,8 @@ function mountCountdownBadges() {
     if (desktopAvailability && !document.getElementById('cdBadgeDesktop')) {
         const badge = document.createElement('span');
         badge.id = 'cdBadgeDesktop';
-        badge.className = 'bday-countdown-badge badge px-3 py-2 text-nowrap rounded-pill d-inline-flex align-items-center gap-1 mb-2';
-        badge.innerHTML = '<i class="fas fa-hourglass-half me-1"></i> Bday in <span id="cdBadgeTimeDesktop">--</span>';
+        badge.className = 'bday-countdown-badge badge text-wrap mw-100 px-3 py-2 lh-sm rounded-pill d-inline-block text-center mb-2';
+        badge.innerHTML = '<span class="d-block"><i class="fas fa-hourglass-half me-1"></i> Bday in</span><span class="d-block" id="cdBadgeTimeDesktop">--</span>';
         badge.title = 'Countdown to Timothy’s Birthday on Sept 4 (Philippine Time)';
         desktopAvailability.parentNode.insertBefore(badge, desktopAvailability);
     }
@@ -315,7 +315,7 @@ function mountCountdownBadges() {
         parent.classList.add('flex-wrap', 'gap-2');
         const badge = document.createElement('span');
         badge.id = 'cdBadgeMobile';
-        badge.className = 'bday-countdown-badge badge px-3 py-2 text-nowrap rounded-pill d-inline-flex align-items-center gap-1 mb-2';
+        badge.className = 'bday-countdown-badge badge text-wrap mw-100 px-3 py-2 lh-sm rounded-pill d-inline-flex align-items-center justify-content-center gap-1 mb-2';
         badge.innerHTML = '<i class="fas fa-hourglass-half me-1"></i> Bday in <span id="cdBadgeTimeMobile">--</span>';
         badge.title = 'Countdown to Timothy’s Birthday on Sept 4 (Philippine Time)';
         parent.insertBefore(badge, mobileAvailability);
@@ -432,10 +432,18 @@ function mountBirthdayBadges() {
     if (desktopAvailability && !document.getElementById('bdayBadgeDesktop')) {
         const badge = document.createElement('span');
         badge.id = 'bdayBadgeDesktop';
-        badge.className = 'bday-badge badge px-3 py-2 text-nowrap rounded-pill d-inline-flex align-items-center gap-1 mb-2';
-        badge.innerHTML = '<i class="fas fa-cake-candles me-1"></i> Celebrating Birthday Today! 🎉';
+        badge.className = 'bday-badge badge text-wrap mw-100 px-3 py-2 lh-sm rounded-pill d-inline-block text-center mb-2';
+        badge.innerHTML = '<span class="d-block"><i class="fas fa-cake-candles me-1"></i> Celebrating Birthday</span><span class="d-block">Today! 🎉</span>';
         badge.title = 'Click to open birthday celebration!';
+        badge.setAttribute('role', 'button');
+        badge.setAttribute('tabindex', '0');
         badge.addEventListener('click', openBirthdayModal);
+        badge.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openBirthdayModal();
+            }
+        });
         desktopAvailability.parentNode.insertBefore(badge, desktopAvailability);
     }
 
@@ -445,10 +453,18 @@ function mountBirthdayBadges() {
         parent.classList.add('flex-wrap', 'gap-2');
         const badge = document.createElement('span');
         badge.id = 'bdayBadgeMobile';
-        badge.className = 'bday-badge badge px-3 py-2 text-nowrap rounded-pill d-inline-flex align-items-center gap-1 mb-2';
+        badge.className = 'bday-badge badge text-wrap mw-100 px-3 py-2 lh-sm rounded-pill d-inline-flex align-items-center justify-content-center gap-1 mb-2';
         badge.innerHTML = '<i class="fas fa-cake-candles me-1"></i> Celebrating Birthday Today! 🎉';
         badge.title = 'Click to open birthday celebration!';
+        badge.setAttribute('role', 'button');
+        badge.setAttribute('tabindex', '0');
         badge.addEventListener('click', openBirthdayModal);
+        badge.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openBirthdayModal();
+            }
+        });
         parent.insertBefore(badge, mobileAvailability);
     }
 }
@@ -604,9 +620,11 @@ function mountBirthdayModal() {
                         <line x1="100" y1="28" x2="100" y2="21" stroke="#334155" stroke-width="1.8" stroke-linecap="round" />
 
                         <!-- Interactive Flickering Flame -->
-                        <g class="bday-flame" id="bdayCandleFlame" transform="translate(100, 18)">
-                            <path d="M 0,-18 C -7,-9 -6,0 0,0 C 6,0 7,-9 0,-18 Z" fill="url(#flameGrad)" />
-                            <ellipse cx="0" cy="-6" rx="2.5" ry="5" fill="#ffffff" opacity="0.9" />
+                        <g transform="translate(100, 20)">
+                            <g class="bday-flame" id="bdayCandleFlame">
+                                <path d="M 0,-18 C -7,-9 -6,0 0,0 C 6,0 7,-9 0,-18 Z" fill="url(#flameGrad)" />
+                                <ellipse cx="0" cy="-6" rx="2.5" ry="5" fill="#ffffff" opacity="0.9" />
+                            </g>
                         </g>
                     </svg>
                 </div>
