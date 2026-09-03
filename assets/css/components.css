@@ -1,32 +1,31 @@
-/* ============================================================
-   SHARED REUSABLE COMPONENTS
-   ============================================================ */
-
-/* Glass Card */
+/* iOS Frosted Glass Card */
 .glass-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    border: 1px solid var(--glass-border);
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
+    border: 1px solid var(--glass-border) !important;
     border-radius: var(--radius-lg);
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: var(--glass-shadow);
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.35s ease, border-color 0.35s ease;
+    position: relative;
 }
 
 .glass-card:hover {
-    border-color: var(--border-hover);
-    box-shadow: var(--shadow-glow);
-    transform: translateY(-4px);
+    border-color: var(--border-hover) !important;
+    box-shadow: var(--glass-shadow-hover);
+    transform: translateY(-3px);
 }
 
-/* Modals */
+/* iOS Frosted Glass Modals */
 #projectModal .modal-content,
 #mediaModal .modal-content,
 #certificateModal .modal-content {
-    background: var(--bg-card-solid);
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    box-shadow: var(--shadow-lg);
+    background: var(--glass-bg) !important;
+    border: 1px solid var(--glass-border) !important;
+    backdrop-filter: blur(20px) saturate(var(--glass-saturation));
+    -webkit-backdrop-filter: blur(20px) saturate(var(--glass-saturation));
+    box-shadow: var(--glass-shadow), 0 32px 72px rgba(0, 0, 0, 0.65);
+    border-radius: var(--radius-xl);
 }
 
 #projectModal .modal-body,
@@ -90,6 +89,81 @@
     }
 }
 
+/* ============================================================
+   LIQUID GLASS (Fluid / Viscous Glass with Dynamic Specular Sheen)
+   ============================================================ */
+
+/* Liquid Prismatic Chromatic Rim Refraction on Hover */
+.liquid-card:hover,
+.project-card:hover,
+.hover-lift:hover,
+.tech-category-col > div:hover,
+.timeline-card:hover,
+.experience-card:hover,
+.email-card:hover {
+    border-color: var(--border-hover) !important;
+    box-shadow:
+        var(--liquid-specular-sharp),
+        var(--liquid-prism-glow),
+        var(--glass-shadow-hover) !important;
+}
+
+/* Liquid Diagonal Caustic Sweep */
+.liquid-sheen {
+    position: relative;
+    overflow: hidden;
+}
+
+.liquid-sheen::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        60deg,
+        transparent 40%,
+        rgba(255, 255, 255, 0.06) 48%,
+        rgba(255, 255, 255, 0.22) 50%,
+        rgba(255, 255, 255, 0.06) 52%,
+        transparent 60%
+    );
+    transform: rotate(25deg) translateY(-100%);
+    pointer-events: none;
+    transition: transform 0.85s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: 3;
+}
+
+.liquid-sheen:hover::after {
+    transform: rotate(25deg) translateY(100%);
+}
+
+/* Liquid Viscous Elastic Bounce for Interactive Controls */
+.btn-gradient,
+.btn-outline-primary,
+.back-to-top-btn,
+.theme-toggle-float,
+.theme-toggle-btn,
+.portfolio-nav-container .nav-tabs .nav-link,
+.tech-filter-btn {
+    transition: transform 0.4s var(--liquid-spring),
+                box-shadow 0.35s ease,
+                border-color 0.3s ease,
+                background 0.35s ease !important;
+}
+
+.btn-gradient:active,
+.btn-outline-primary:active,
+.back-to-top-btn:active,
+.theme-toggle-float:active,
+.theme-toggle-btn:active,
+.portfolio-nav-container .nav-tabs .nav-link:active,
+.tech-filter-btn:active {
+    transform: scale(0.93, 0.90) !important;
+    transition: transform 0.12s ease !important;
+}
+
 /* Buttons */
 .btn-gradient {
     background: var(--primary-gradient);
@@ -144,56 +218,92 @@
     box-shadow: 0 4px 15px var(--accent-glow);
 }
 
-/* Availability Badge */
+/* Availability Badge (Liquid Emerald Pill) */
 .availability-badge {
-    background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(16, 185, 129, 0.1) 100%) !important;
-    color: #4ade80 !important;
-    border: 1px solid rgba(34, 197, 94, 0.2);
+    background: rgba(16, 185, 129, 0.14) !important;
+    color: #34d399 !important;
+    border: 1px solid rgba(52, 211, 153, 0.35) !important;
+    box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.3), 0 0 14px rgba(16, 185, 129, 0.18) !important;
+    border-radius: var(--radius-xl) !important;
     font-size: 0.75rem;
     font-weight: 500;
-    animation: badgeGlow 2.5s ease-in-out infinite alternate;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.availability-badge:hover {
+    box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.45), 0 0 22px rgba(16, 185, 129, 0.4) !important;
+    transform: translateY(-1px);
 }
 
 .availability-badge i {
-    color: #4ade80;
-    animation: pulse-dot 2s ease-in-out infinite;
+    color: #34d399;
 }
 
-@keyframes badgeGlow {
+/* Live Demo Status Indicator Badge */
+.live-status-badge {
+    background: rgba(16, 185, 129, 0.18) !important;
+    color: #34d399 !important;
+    border: 1px solid rgba(52, 211, 153, 0.4) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-size: 0.7rem !important;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 4px 10px !important;
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.25);
+    animation: liveBadgeGlow 2.6s ease-in-out infinite alternate;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.live-status-badge:hover {
+    box-shadow: 0 0 18px rgba(16, 185, 129, 0.55);
+    transform: translateY(-1px);
+}
+
+.live-pulse-dot {
+    width: 7px;
+    height: 7px;
+    background-color: #10b981;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 8px #10b981;
+    animation: liveDotPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes liveBadgeGlow {
     from {
-        box-shadow: 0 0 8px rgba(34, 197, 94, 0.1);
+        box-shadow: 0 0 8px rgba(16, 185, 129, 0.2);
     }
-
     to {
-        box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
+        box-shadow: 0 0 16px rgba(16, 185, 129, 0.45);
     }
 }
 
-@keyframes pulse-dot {
-
-    0%,
+@keyframes liveDotPulse {
+    0% {
+        transform: scale(0.9);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.8);
+    }
+    70% {
+        transform: scale(1.15);
+        box-shadow: 0 0 0 5px rgba(16, 185, 129, 0);
+    }
     100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.3;
+        transform: scale(0.9);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
     }
 }
 
-/* Theme Toggle */
+/* Theme Toggle (Desktop: Top-Right Floating) */
 .theme-toggle-float {
     position: fixed;
-    top: 600px;
-    right: 20px;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    top: 24px;
+    right: 24px;
+    z-index: 1025;
     width: 44px;
     height: 44px;
     border: 1px solid var(--glass-border);
-    border-radius: 50%;
     background: var(--bg-card-solid);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -201,7 +311,6 @@
     cursor: pointer;
     transition: all 0.35s ease;
     font-size: 1.1rem;
-    padding: 0;
     box-shadow: var(--shadow-md);
 }
 
@@ -219,6 +328,103 @@
 .theme-toggle-float:hover i {
     transform: rotate(30deg);
 }
+
+/* Theme Toggle Button (Mobile Navbar Integration) */
+.theme-toggle-btn {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    background: var(--bg-card-solid);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.theme-toggle-btn:hover {
+    color: var(--accent-start);
+    border-color: var(--border-hover);
+    transform: scale(1.08);
+    box-shadow: var(--shadow-glow);
+}
+
+.theme-toggle-btn i {
+    transition: transform 0.4s ease;
+}
+
+.theme-toggle-btn:hover i {
+    transform: rotate(30deg);
+}
+
+/* Floating Back to Top Button (Single Action, Bottom-Right) */
+.back-to-top-btn {
+    width: 46px;
+    height: 46px;
+    z-index: 1025;
+    border: 1px solid var(--glass-border);
+    background: var(--primary-gradient) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 16px rgba(99, 102, 241, 0.4) !important;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(14px) scale(0.88);
+    transition: opacity 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 0.32s ease,
+                box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.back-to-top-btn.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+.back-to-top-btn:hover {
+    transform: translateY(-3px) scale(1.08);
+    box-shadow: 0 6px 22px rgba(99, 102, 241, 0.6) !important;
+    color: #ffffff !important;
+}
+
+.back-to-top-btn:active {
+    transform: translateY(0) scale(0.95);
+}
+
+.back-to-top-btn i {
+    font-size: 1rem;
+    transition: transform 0.25s ease;
+}
+
+.back-to-top-btn:hover i {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 991.98px) {
+    .back-to-top-btn {
+        bottom: 88px !important;
+        right: 16px !important;
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 0.85rem !important;
+    }
+}
+
+/* Suppress floating Back to Top button when modal is open */
+body.modal-open .back-to-top-btn,
+body:has(.modal.show) .back-to-top-btn {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateY(14px) scale(0.88) !important;
+}
+
 
 html.theme-transitioning,
 html.theme-transitioning *,
@@ -406,17 +612,18 @@ html.theme-transitioning *::after {
 .border-white { border-color: rgba(255, 255, 255, 0.15) !important; }
 
 .form-control {
-    background: rgba(255, 255, 255, 0.04) !important;
-    border: 1px solid var(--border-subtle) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid var(--glass-border) !important;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25);
     color: var(--text-primary) !important;
     border-radius: var(--radius-md);
-    transition: all 0.3s ease;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
 }
 
 .form-control:focus {
     border-color: var(--accent-start) !important;
-    box-shadow: 0 0 0 3px var(--accent-glow) !important;
-    background: rgba(99, 102, 241, 0.05) !important;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 0 0 3px var(--accent-glow) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
     color: var(--text-primary) !important;
 }
 
@@ -425,11 +632,11 @@ html.theme-transitioning *::after {
 }
 
 .input-group .input-group-text {
-    background: rgba(255, 255, 255, 0.03) !important;
-    border: 1px solid var(--border-subtle) !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid var(--glass-border) !important;
     color: var(--text-secondary) !important;
     border-radius: var(--radius-md) 0 0 var(--radius-md);
-    transition: all 0.3s ease;
+    transition: color 0.25s ease, border-color 0.25s ease;
 }
 
 .input-group > .form-control {
@@ -492,6 +699,18 @@ html.theme-transitioning *::after {
     color: #16a34a;
 }
 
+[data-theme="light"] .live-status-badge {
+    background: rgba(16, 185, 129, 0.12) !important;
+    color: #059669 !important;
+    border-color: rgba(16, 185, 129, 0.35) !important;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
+}
+
+[data-theme="light"] .live-pulse-dot {
+    background-color: #059669;
+    box-shadow: 0 0 6px #059669;
+}
+
 [data-theme="light"] .bg-light {
     background: rgba(0, 0, 0, 0.02) !important;
 }
@@ -520,19 +739,15 @@ html.theme-transitioning *::after {
     flex-direction: column;
     align-items: stretch;
     width: 100%;
-    background: rgba(14, 14, 22, 0.85);
-    border: 1px solid var(--glass-border);
+    background: var(--glass-card-inner) !important;
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
+    border: 1px solid var(--glass-border) !important;
     border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: var(--shadow-lg), 0 0 20px rgba(99, 102, 241, 0.1);
-    transition: all 0.5s ease;
+    box-shadow: var(--glass-shadow), 0 0 25px rgba(99, 102, 241, 0.15);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
     position: relative;
-}
-
-[data-theme="light"] .project-window-frame {
-    background: #ffffff;
-    border-color: rgba(0, 0, 0, 0.08);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 .window-header-bar {
@@ -540,25 +755,17 @@ html.theme-transitioning *::after {
     align-items: center;
     justify-content: space-between;
     padding: 8px 16px;
-    background: rgba(0, 0, 0, 0.35);
-    border-bottom: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-bottom: 1px solid var(--glass-border) !important;
 }
 
 [data-theme="light"] .window-header-bar {
-    background: rgba(0, 0, 0, 0.04);
-}
-
-.window-dots {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    background: rgba(255, 255, 255, 0.45) !important;
 }
 
 .window-dot {
     width: 10px;
     height: 10px;
-    border-radius: 50%;
-    display: inline-block;
 }
 
 .window-dot.dot-red { background-color: #ff5f56; }
@@ -569,11 +776,7 @@ html.theme-transitioning *::after {
     font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0.05em;
-    text-transform: uppercase;
     color: var(--text-tertiary);
-    display: flex;
-    align-items: center;
-    gap: 5px;
 }
 
 .window-body-container {
@@ -603,16 +806,12 @@ html.theme-transitioning *::after {
 
 /* Tech Stack Pills */
 .tech-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--glass-border);
     color: var(--text-secondary);
     font-size: 0.78rem;
     font-weight: 500;
     padding: 4px 12px;
-    border-radius: 50px;
     transition: all 0.3s ease;
 }
 
@@ -631,16 +830,12 @@ html.theme-transitioning *::after {
 
 /* Feature Highlight Badge / Bullet */
 .feature-highlight-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
     font-size: 0.84rem;
     font-weight: 500;
     color: var(--text-secondary);
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--glass-border);
     padding: 6px 12px;
-    border-radius: var(--radius-md);
     transition: all 0.3s ease;
 }
 

@@ -26,10 +26,10 @@ export function toggleTheme() {
 
 export function updateToggleIcons(theme) {
     const icon = theme === 'dark' ? 'fa-moon' : 'fa-sun';
-    const floatBtn = document.querySelector('#themeToggleFloat i');
-    if (floatBtn) {
-        floatBtn.className = `fas ${icon}`;
-    }
+    const icons = document.querySelectorAll('#themeToggleFloat i, #themeToggleMobile i, .theme-toggle-btn i, .theme-toggle-float i');
+    icons.forEach(el => {
+        el.className = `fas ${icon}`;
+    });
 }
 
 // Expose globally for HTML onclick attributes and external scripts

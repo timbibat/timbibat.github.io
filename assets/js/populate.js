@@ -146,10 +146,10 @@ function getMajorProjectSkeleton() {
             <div class="col-lg-5">
                 <div class="project-window-frame">
                     <div class="window-header-bar">
-                        <div class="window-dots">
-                            <span class="window-dot dot-red"></span>
-                            <span class="window-dot dot-yellow"></span>
-                            <span class="window-dot dot-green"></span>
+                        <div class="window-dots d-flex align-items-center gap-1">
+                            <span class="window-dot rounded-circle d-inline-block dot-red"></span>
+                            <span class="window-dot rounded-circle d-inline-block dot-yellow"></span>
+                            <span class="window-dot rounded-circle d-inline-block dot-green"></span>
                         </div>
                         <div class="skeleton-box skeleton-pill-sm" style="width: 90px; height: 18px;"></div>
                     </div>
@@ -230,9 +230,18 @@ function checkLoadedImages(container) {
 
 // Helper function to render a project card with lazy image loading
 function createProjectCard(proj, index) {
+    const isLive = Boolean(proj.isLive === true || (proj.link && proj.link.trim() !== '' && proj.link !== '#' && proj.isLive !== false) || proj.status === 'live');
     const demoStatus = proj.link ? '' : 'disabled';
     const gitStatus = proj.git ? '' : 'disabled';
     
+    // Live demo status indicator badge in card header
+    const liveBadgeHTML = isLive ? `
+        <div class="position-absolute top-0 end-0 m-3 z-2">
+            <span class="badge rounded-pill live-status-badge d-inline-flex align-items-center" aria-label="Active Deployment: Live">
+                <span class="live-pulse-dot me-1" aria-hidden="true"></span>Live
+            </span>
+        </div>` : '';
+
     // Handle multiple badges if present, otherwise use category
     let badgesHTML = '';
     if (proj.badges && proj.badges.length > 0) {
@@ -246,9 +255,10 @@ function createProjectCard(proj, index) {
 
     return `
     <div class="col animate-in" style="animation-delay: ${(index % BATCH_SIZE) * 0.08}s;">
-        <div class="project-card h-100 rounded-4 overflow-hidden">
+        <div class="project-card h-100 rounded-4 overflow-hidden position-relative">
             <div class="img-loading-wrapper position-relative overflow-hidden" style="height: 250px;">
                 <img src="${proj.image}" loading="lazy" decoding="async" class="card-img-top img-lazy-load" alt="${proj.name}" style="height: 250px; object-fit: cover;" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded')">
+                ${liveBadgeHTML}
             </div>
             <div class="card-body p-4 d-flex flex-column">
                 <div class="mb-3 d-flex flex-wrap gap-1">
@@ -360,6 +370,7 @@ function renderMajorProjectsTab() {
 
     let majorHTML = '';
     majorProjects.forEach((majorProj, idx) => {
+        const isMajorLive = Boolean(majorProj.isLive === true || (majorProj.link && majorProj.link.trim() !== '' && majorProj.link !== '#' && majorProj.isLive !== false) || majorProj.status === 'live');
         const demoStatus = majorProj.link ? '' : 'disabled';
         const gitStatus = majorProj.git ? '' : 'disabled';
         const projIdStr = majorProj.id || majorProj.name;
@@ -375,7 +386,7 @@ function renderMajorProjectsTab() {
         if (techStackArray.length > 0) {
             techPillsHTML = `
             <div class="d-flex flex-wrap gap-2 mb-4">
-                ${techStackArray.map(t => `<span class="tech-pill"><i class="fas fa-code me-1" style="font-size: 0.7rem;"></i>${t}</span>`).join('')}
+                ${techStackArray.map(t => `<span class="tech-pill d-inline-flex align-items-center gap-1 rounded-pill"><i class="fas fa-code me-1" style="font-size: 0.7rem;"></i>${t}</span>`).join('')}
             </div>`;
         }
 
@@ -390,7 +401,7 @@ function renderMajorProjectsTab() {
         if (highlightsArray.length > 0) {
             highlightsHTML = `
             <div class="d-flex flex-wrap gap-2 mb-4">
-                ${highlightsArray.map(h => `<div class="feature-highlight-item"><i class="fas fa-check-circle"></i><span>${h}</span></div>`).join('')}
+                ${highlightsArray.map(h => `<div class="feature-highlight-item d-flex align-items-center gap-2 rounded-3"><i class="fas fa-check-circle"></i><span>${h}</span></div>`).join('')}
             </div>`;
         }
 
@@ -400,13 +411,19 @@ function renderMajorProjectsTab() {
                 <div class="col-lg-5">
                     <div class="project-window-frame">
                         <div class="window-header-bar">
-                            <div class="window-dots">
-                                <span class="window-dot dot-red"></span>
-                                <span class="window-dot dot-yellow"></span>
-                                <span class="window-dot dot-green"></span>
+                            <div class="window-dots d-flex align-items-center gap-1">
+                                <span class="window-dot rounded-circle d-inline-block dot-red"></span>
+                                <span class="window-dot rounded-circle d-inline-block dot-yellow"></span>
+                                <span class="window-dot rounded-circle d-inline-block dot-green"></span>
                             </div>
-                            <div class="window-title-badge">
-                                <i class="fas fa-star text-warning"></i> Major Project
+                            <div class="d-flex align-items-center gap-2">
+                                ${isMajorLive ? `
+                                <span class="badge rounded-pill live-status-badge d-inline-flex align-items-center" aria-label="Active Deployment: Live">
+                                    <span class="live-pulse-dot me-1" aria-hidden="true"></span>Live
+                                </span>` : ''}
+                                <div class="window-title-badge text-uppercase d-flex align-items-center gap-1">
+                                    <i class="fas fa-star text-warning"></i> Major Project
+                                </div>
                             </div>
                         </div>
                         <div class="window-body-container img-loading-wrapper">
@@ -420,6 +437,10 @@ function renderMajorProjectsTab() {
                             <span class="badge" style="background: var(--primary-gradient); font-size: 0.78rem; padding: 6px 14px; border-radius: 50px;">
                                 ${majorProj.category || 'Capstone'}
                             </span>
+                            ${isMajorLive ? `
+                            <span class="badge rounded-pill live-status-badge d-inline-flex align-items-center" aria-label="Active Deployment: Live">
+                                <span class="live-pulse-dot me-1" aria-hidden="true"></span>Live
+                            </span>` : ''}
                             <span class="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25" style="font-size: 0.75rem; padding: 5px 12px; border-radius: 50px;">
                                 <i class="fas fa-award me-1"></i> Featured Highlight
                             </span>
@@ -723,7 +744,13 @@ window.showProjectModal = function(projIdentifier) {
                 <div class="col-12">
                     <div class="d-flex flex-column flex-md-row align-items-md-center align-items-start mb-3">
                         <h2 class="display-5 fw-bold mb-0">${majorProj.name}</h2>
-                        <span class="mt-2 mt-md-0 ms-md-3 badge rounded-pill bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-3 py-2">${majorProj.category || 'Major Project'}</span>
+                        <div class="mt-2 mt-md-0 ms-md-3 d-flex flex-wrap align-items-center gap-2">
+                            <span class="badge rounded-pill bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-3 py-2">${majorProj.category || 'Major Project'}</span>
+                            ${(Boolean(majorProj.isLive === true || (majorProj.link && majorProj.link.trim() !== '' && majorProj.link !== '#' && majorProj.isLive !== false) || majorProj.status === 'live')) ? `
+                            <span class="badge rounded-pill live-status-badge d-inline-flex align-items-center px-3 py-2" aria-label="Active Deployment: Live">
+                                <span class="live-pulse-dot me-1" aria-hidden="true"></span>Live
+                            </span>` : ''}
+                        </div>
                     </div>
                     <p class="lead text-muted mb-5" style="line-height: 1.8;">${majorProj.fullDescription || majorProj.description || ''}</p>
                     

@@ -1,15 +1,12 @@
-/* ============================================================
-   PAGE CONTENT STYLES & ANIMATIONS
-   ============================================================ */
-
-/* Content Area - General Cards */
+/* Content Area - General Cards (High-Performance Frosted Glass) */
 #maincontent .bg-white,
 main .bg-white.bg-opacity-90,
 main .bg-white.bg-opacity-95 {
-    background: var(--bg-card) !important;
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
     border: 1px solid var(--glass-border) !important;
+    box-shadow: var(--glass-shadow) !important;
 }
 
 #maincontent h2 i.text-success {
@@ -25,16 +22,30 @@ main .bg-white.bg-opacity-95 {
     font-size: 0.7rem;
 }
 
-/* About Page & Bootstrap Component Overrides */
-#maincontent .bg-light {
-    background: rgba(255, 255, 255, 0.03) !important;
-    border-color: var(--border-subtle) !important;
-    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+/* About Page & Sub-Cards (Optimized Translucent Surface - Inherits Container Blur) */
+#maincontent .bg-light,
+.tech-item .bg-white,
+.tech-category-col > div,
+.timeline-card,
+.experience-card,
+.email-card {
+    background: var(--glass-card-inner) !important;
+    border: 1px solid var(--glass-border) !important;
+    box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.12), 0 4px 16px rgba(0, 0, 0, 0.18) !important;
+    border-radius: var(--radius-md);
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
-#maincontent .bg-light:hover {
-    background: rgba(99, 102, 241, 0.05) !important;
+#maincontent .bg-light:hover,
+.tech-item .bg-white:hover,
+.tech-category-col > div:hover,
+.timeline-card:hover,
+.experience-card:hover,
+.email-card:hover {
+    background: rgba(99, 102, 241, 0.08) !important;
     border-color: var(--border-hover) !important;
+    box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.25), 0 10px 28px rgba(0, 0, 0, 0.3), 0 0 22px var(--accent-glow) !important;
+    transform: translateY(-4px);
 }
 
 .hover-lift {
@@ -64,8 +75,6 @@ main .bg-white.bg-opacity-95 {
     font-weight: 500;
     letter-spacing: 0.02em;
     padding: 0.35em 0.75em;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     transition: all 0.25s ease;
 }
 
@@ -143,35 +152,22 @@ main .bg-white.bg-opacity-95 {
     100% { transform: translateX(100%); }
 }
 
-#maincontent .text-body {
-    color: var(--text-primary) !important;
-}
-
-#maincontent ul {
-    color: var(--text-secondary);
-}
-
-#maincontent ul strong {
-    color: var(--text-primary);
-}
-
-#maincontent .h6.mb-2 {
-    color: var(--text-primary);
-}
-
-/* Portfolio Page - Project Cards */
+/* Portfolio Page - iOS Frosted Glass Project Cards */
 .project-card {
-    background: var(--bg-card-solid) !important;
-    border: 1px solid var(--glass-border);
+    background: var(--glass-card-inner) !important;
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
+    border: 1px solid var(--glass-border) !important;
     border-radius: var(--radius-lg) !important;
+    box-shadow: var(--glass-shadow) !important;
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px var(--accent-glow);
-    border-color: var(--border-hover);
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: var(--glass-shadow-hover) !important;
+    border-color: var(--border-hover) !important;
 }
 
 .project-card img {
@@ -231,20 +227,17 @@ main .bg-white.bg-opacity-95 {
     color: var(--text-secondary) !important;
 }
 
-/* Portfolio Tabs */
+/* Portfolio Tabs - iOS Frosted Glass Capsule */
 .portfolio-nav-container {
-    position: sticky;
-    top: -1px;
-    z-index: 20;
-    background: var(--bg-card-solid);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
     margin-left: -1.5rem;
     margin-right: -1.5rem;
     padding: 0.85rem 1rem;
     border-radius: var(--radius-lg);
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--glass-border) !important;
+    box-shadow: var(--glass-shadow) !important;
 }
 
 .portfolio-nav-container:first-child {
@@ -262,6 +255,8 @@ main .bg-white.bg-opacity-95 {
         margin-top: -3rem;
     }
 }
+
+
 
 .portfolio-nav-container .nav-tabs {
     flex-wrap: nowrap !important;
@@ -336,13 +331,6 @@ main .bg-white.bg-opacity-95 {
 
 .tab-content.portfolio-tab-content {
     min-height: 400px;
-}
-
-@media (max-width: 768px) {
-    .badge {
-        white-space: normal !important;
-        text-align: center;
-    }
 }
 
 /* Major Project Highlight */
@@ -456,10 +444,6 @@ main .bg-white.bg-opacity-95 {
     }
 }
 
-.transition-transform {
-    transition: transform 0.3s ease;
-}
-
 .project-card .badge.bg-info {
     background: var(--primary-gradient) !important;
     color: #fff !important;
@@ -467,10 +451,6 @@ main .bg-white.bg-opacity-95 {
     font-weight: 600;
     letter-spacing: 0.03em;
     border: none;
-}
-
-.text-center.text-muted.small {
-    color: var(--text-tertiary) !important;
 }
 
 /* Animations */
@@ -510,12 +490,7 @@ main .bg-white.bg-opacity-95 {
     transform: translateY(12px);
 }
 
-/* Page Tweaks & Light Theme overrides */
-@media (max-width: 991.98px) {
-    .portfolio-nav-container {
-        top: 74px !important;
-    }
-}
+/* Light Theme overrides */
 
 [data-theme="light"] .project-card {
     background: #fff !important;
@@ -524,8 +499,6 @@ main .bg-white.bg-opacity-95 {
 
 /* Bootstrap Alert Theme Overrides */
 #maincontent .alert {
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     border: 1px solid transparent;
 }
 
@@ -557,7 +530,6 @@ main .bg-white.bg-opacity-95 {
     filter: invert(1) grayscale(100%) brightness(200%);
 }
 
-/* ============================================================
 /* ============================================================
    TIMELINE ENHANCEMENTS (CV & EXPERIENCE)
    ============================================================ */
@@ -838,6 +810,3 @@ main .bg-white.bg-opacity-95 {
 .load-more-btn:hover .load-more-icon {
     transform: rotate(90deg);
 }
-
-
-

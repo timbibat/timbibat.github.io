@@ -1,18 +1,17 @@
-/* ============================================================
-   BASE AND TYPOGRAPHY
-   ============================================================ */
-
 html {
     scroll-behavior: smooth;
+    overflow-x: clip;
 }
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: var(--bg-primary);
+    background: var(--bg-gradient);
     background-attachment: fixed;
     min-height: 100vh;
+    min-height: 100dvh;
     color: var(--text-primary);
     position: relative;
+    overflow-x: clip;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     letter-spacing: 0.01em;
@@ -24,24 +23,21 @@ body {
     font-weight: 900 !important;
 }
 
-/* Subtle animated background mesh */
+/* High-Performance iOS Chromatic Ambient Mesh (Static GPU-Cached Texture) */
 body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background:
-        radial-gradient(ellipse 800px 600px at 15% 20%, var(--glow-color-1) 0%, transparent 75%),
-        radial-gradient(ellipse 700px 500px at 85% 70%, var(--glow-color-2) 0%, transparent 75%),
-        radial-gradient(ellipse 600px 450px at 50% 50%, var(--glow-color-3) 0%, transparent 75%);
+    width: 100vw;
+    height: 100vh;
+    min-height: 100dvh;
     pointer-events: none;
     z-index: 0;
-    animation: meshFloat 20s ease-in-out infinite alternate;
-}
-
-@keyframes meshFloat {
-    0% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(-15px, 10px) scale(1.02); }
-    100% { transform: translate(10px, -8px) scale(0.98); }
+    background:
+        radial-gradient(ellipse 65vw 55vh at 15% 15%, var(--glow-color-1) 0%, transparent 70%),
+        radial-gradient(ellipse 60vw 50vh at 85% 35%, var(--glow-color-2) 0%, transparent 70%),
+        radial-gradient(ellipse 55vw 50vh at 22% 85%, var(--glow-color-3) 0%, transparent 65%),
+        radial-gradient(ellipse 50vw 45vh at 82% 85%, var(--glow-color-4) 0%, transparent 65%);
 }
 
 /* ============================================================
@@ -129,4 +125,43 @@ p {
 [data-theme="light"] ::selection {
     background: rgba(99, 102, 241, 0.2);
     color: #1a1a2e;
+}
+
+/* ============================================================
+   LOW-END DEVICE & PERFORMANCE OPTIMIZATIONS
+   ============================================================ */
+
+@media (max-width: 991.98px) {
+    :root {
+        --glass-blur: 10px;
+        --glass-saturation: 130%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+/* Prevent double scrollbar and preserve sticky navigation when Bootstrap modal is open */
+html.modal-open,
+html:has(body.modal-open) {
+    overflow: hidden !important;
+}
+
+body.modal-open {
+    overflow: visible !important;
+}
+
+/* Hide floating back-to-top button while modal is open */
+body.modal-open .back-to-top-btn {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateY(14px) scale(0.88) !important;
 }

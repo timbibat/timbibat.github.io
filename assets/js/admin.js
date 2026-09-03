@@ -273,6 +273,9 @@ function generateTableRow(id, data, collectionName) {
         }
     }
 
+    const isLive = Boolean(data.isLive === true || (data.link && data.link.trim() !== '' && data.isLive !== false));
+    const liveBadge = isLive ? `<span class="badge rounded-pill live-status-badge d-inline-flex align-items-center ms-2" style="font-size: 0.62rem; padding: 2px 7px;"><span class="live-pulse-dot me-1" style="width: 5px; height: 5px;"></span>Live</span>` : '';
+
     return `
         <tr data-id="${id}">
             <td style="width: 40px;" class="ps-3">
@@ -282,7 +285,7 @@ function generateTableRow(id, data, collectionName) {
                 <img src="${data.image || 'assets/img/Timothy.jpg'}" alt="${data.name}" class="rounded-3 border border-secondary border-opacity-50" style="width: 65px; height: 48px; object-fit: cover;">
             </td>
             <td>
-                <div class="fw-bold text-white mb-1">${data.name}</div>
+                <div class="fw-bold text-white mb-1 d-flex align-items-center">${data.name} ${liveBadge}</div>
                 <div class="small text-muted text-truncate mb-1" style="max-width: 320px;">${data.description || 'No description provided.'}</div>
                 <div>${badgesHTML}</div>
             </td>
@@ -341,6 +344,9 @@ window.openModal = (collectionName) => {
         document.getElementById('major-images-container').classList.add('d-none');
     }
 
+    const liveInput = document.getElementById('item-islive');
+    if (liveInput) liveInput.checked = true;
+
     document.getElementById('itemModalLabel').textContent = collectionName === 'majorProject' ? 'Add Major Project' : 'Add New Item';
     itemModal.show();
 };
@@ -358,6 +364,9 @@ window.editItem = (encodedData, collectionName) => {
     document.getElementById('existing-image').value = data.image || '';
     document.getElementById('item-full-description').value = data.fullDescription || '';
     document.getElementById('item-contributions').value = data.contributions ? data.contributions.join('\n') : '';
+    
+    const liveInput = document.getElementById('item-islive');
+    if (liveInput) liveInput.checked = data.isLive !== false;
     
     document.getElementById('file-preview').classList.add('d-none');
     document.getElementById('file-preview').textContent = '';
@@ -583,6 +592,7 @@ itemForm.addEventListener('submit', async (e) => {
             contributions: contributionsArray.length > 0 ? contributionsArray : null,
             link: document.getElementById('item-link').value || null,
             git: document.getElementById('item-git').value || null,
+            isLive: document.getElementById('item-islive') ? document.getElementById('item-islive').checked : true,
             image: imageUrl
         };
         

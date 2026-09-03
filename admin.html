@@ -269,6 +269,15 @@
                                     <input type="url" class="form-control bg-dark text-white border-secondary border-opacity-50 shadow-none" id="item-git" placeholder="https://github.com/...">
                                 </div>
                             </div>
+                            <div class="col-12 mt-2">
+                                <div class="form-check form-switch d-inline-flex align-items-center gap-2">
+                                    <input class="form-check-input mt-0" type="checkbox" id="item-islive" checked role="switch">
+                                    <label class="form-check-label text-muted small fw-semibold" for="item-islive">
+                                        <span class="badge rounded-pill live-status-badge d-inline-flex align-items-center px-2 py-0.5 me-1"><span class="live-pulse-dot me-1"></span>Live</span>
+                                        Mark as Active Deployment (Displays glowing Live badge on card)
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -286,6 +295,6 @@
     <!-- Bootstrap 5 & SortableJS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-    <script type="module" src="assets/js/admin.js?v=3"></script>
+    <script type="module" src="assets/js/admin.js?v=4"></script>
 </body>
 </html>

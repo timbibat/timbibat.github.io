@@ -1,17 +1,15 @@
-/* ============================================================
-   LAYOUT: SIDEBAR, TOPBAR, AND MOBILE WRAPPERS
-   ============================================================ */
-
-/* Sidebar */
+/* Desktop Profile Sidebar (iOS Frosted Glassmorphism - Fixed) */
 aside.col-lg-3,
 aside.col-xl-2 {
     background: var(--bg-sidebar) !important;
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-    border-right: 1px solid var(--border-subtle) !important;
-    border-color: var(--border-subtle) !important;
-    position: relative;
-    z-index: 10;
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
+    border-right: 1px solid var(--glass-border) !important;
+    box-shadow:
+        inset -1px 0 0 0 rgba(255, 255, 255, 0.12),
+        inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.2),
+        6px 0 32px rgba(0, 0, 0, 0.32) !important;
+    z-index: 100;
 }
 
 /* Accent glow line along right edge */
@@ -19,62 +17,36 @@ aside.col-lg-3::after,
 aside.col-xl-2::after {
     content: '';
     position: absolute;
-    top: 15%;
+    top: 12%;
     right: 0;
-    width: 1px;
-    height: 70%;
+    width: 1.5px;
+    height: 76%;
     background: var(--primary-gradient);
-    opacity: 0.4;
+    opacity: 0.55;
+    box-shadow: 0 0 12px var(--accent-glow);
 }
 
-/* Profile image ring */
+/* Profile image ring (iOS Glass Bevel & Glow) */
 .profile-ring {
     background: var(--primary-gradient) !important;
     position: relative;
-    animation: floatProfile 6s ease-in-out infinite;
+    box-shadow: 0 0 24px var(--accent-glow), inset 0 2px 2px rgba(255, 255, 255, 0.4) !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
 }
 
-@keyframes floatProfile {
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-6px);
-    }
-}
-
-.profile-ring::after {
-    content: '';
-    position: absolute;
-    inset: -4px;
-    border-radius: 50%;
-    background: var(--primary-gradient);
-    opacity: 0.2;
-    filter: blur(10px);
-    z-index: -1;
-    animation: ringGlow 3s ease-in-out infinite alternate;
-}
-
-@keyframes ringGlow {
-    from {
-        opacity: 0.15;
-        transform: scale(1);
-    }
-    to {
-        opacity: 0.35;
-        transform: scale(1.05);
-    }
-}
-
-/* Sidebar nav links */
+/* Sidebar nav links (iOS Glass Capsule Pills) */
 #sidebarNav .nav-link {
     color: var(--text-secondary) !important;
-    border-radius: var(--radius-md) !important;
-    padding: 10px 16px;
+    border-radius: var(--radius-xl) !important;
+    padding: 11px 18px;
     position: relative;
     overflow: hidden;
-    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--glass-border-subtle) !important;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12), 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+    transition: transform 0.3s var(--liquid-spring), background 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 9px;
+    z-index: 2;
 }
 
 #sidebarNav .nav-link::before {
@@ -91,18 +63,65 @@ aside.col-xl-2::after {
 }
 
 #sidebarNav .nav-link:hover {
-    color: var(--text-primary) !important;
-    background: var(--accent-subtle) !important;
+    color: #ffffff !important;
+    background: rgba(99, 102, 241, 0.18) !important;
+    border-color: rgba(99, 102, 241, 0.45) !important;
+    box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.3), 0 4px 18px rgba(99, 102, 241, 0.28) !important;
+    transform: translateX(4px);
 }
 
-#sidebarNav .nav-link.bg-primary {
-    background: var(--accent-subtle) !important;
+[data-theme="light"] #sidebarNav .nav-link {
     color: var(--text-primary) !important;
-    box-shadow: none;
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.08) !important;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 2px 5px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] #sidebarNav .nav-link i {
+    color: var(--text-secondary);
+}
+
+[data-theme="light"] #sidebarNav .nav-link:hover,
+[data-theme="light"] #sidebarNav .nav-link:focus,
+[data-theme="light"] #sidebarNav .nav-link:focus-visible,
+[data-theme="light"] #sidebarNav .nav-link:active {
+    color: var(--accent-start) !important;
+    background: rgba(99, 102, 241, 0.12) !important;
+    border-color: rgba(99, 102, 241, 0.35) !important;
+    box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.8), 0 4px 12px rgba(99, 102, 241, 0.18) !important;
+}
+
+[data-theme="light"] #sidebarNav .nav-link:hover i,
+[data-theme="light"] #sidebarNav .nav-link:focus i,
+[data-theme="light"] #sidebarNav .nav-link:focus-visible i,
+[data-theme="light"] #sidebarNav .nav-link:active i {
+    color: var(--accent-start) !important;
+}
+
+#sidebarNav .nav-link.bg-primary,
+[data-theme="light"] #sidebarNav .nav-link.bg-primary,
+[data-theme="light"] #sidebarNav .nav-link.bg-primary:hover,
+[data-theme="light"] #sidebarNav .nav-link.bg-primary:focus {
+    background: var(--primary-gradient) !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.35) !important;
+    box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.5), 0 6px 22px var(--accent-glow) !important;
+    transform: translateX(2px);
+}
+
+#sidebarNav .nav-link.bg-primary i,
+[data-theme="light"] #sidebarNav .nav-link.bg-primary i,
+[data-theme="light"] #sidebarNav .nav-link.bg-primary:hover i {
+    color: #ffffff !important;
 }
 
 #sidebarNav .nav-link.bg-primary::before {
     transform: translateY(-50%) scaleY(1);
+}
+
+#sidebarNav .nav-link:active {
+    transform: scale(0.95, 0.92) !important;
+    transition: transform 0.12s ease !important;
 }
 
 /* Make nav icons have a subtle bg */
@@ -111,20 +130,54 @@ aside.col-xl-2::after {
     text-align: center;
 }
 
-/* Sidebar social links */
-aside .text-dark,
-aside a.text-dark {
-    color: var(--text-secondary) !important;
-    transition: all 0.3s ease;
+/* Sidebar Social Media Frosted Glass Icons */
+aside .d-flex.justify-content-center.gap-3 {
+    position: relative;
+    z-index: 2;
 }
 
-aside a.text-dark:hover {
-    color: var(--accent-start) !important;
-    transform: translateY(-2px);
+aside .d-flex.justify-content-center.gap-3 a,
+aside.d-lg-none .d-flex.gap-3 a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border) !important;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.18), var(--shadow-sm);
+    color: var(--text-secondary) !important;
+    text-decoration: none !important;
+    transition: transform 0.35s var(--liquid-spring), background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+
+aside .d-flex.justify-content-center.gap-3 a:hover,
+aside .d-flex.justify-content-center.gap-3 a:focus,
+aside .d-flex.justify-content-center.gap-3 a:active,
+aside.d-lg-none .d-flex.gap-3 a:hover,
+aside.d-lg-none .d-flex.gap-3 a:focus,
+aside.d-lg-none .d-flex.gap-3 a:active {
+    color: #fff !important;
+    text-decoration: none !important;
+    background: var(--primary-gradient) !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
+    transform: translateY(-3px) scale(1.12);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.45), 0 6px 20px var(--accent-glow) !important;
+}
+
+[data-theme="light"] aside .d-flex.justify-content-center.gap-3 a,
+[data-theme="light"] aside.d-lg-none .d-flex.gap-3 a {
+    color: var(--text-secondary) !important;
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] aside .d-flex.justify-content-center.gap-3 a:hover,
+[data-theme="light"] aside.d-lg-none .d-flex.gap-3 a:hover {
+    color: #fff !important;
+    background: var(--primary-gradient) !important;
 }
 
 aside .border-top {
-    border-color: var(--border-subtle) !important;
+    border-color: var(--glass-border) !important;
 }
 
 /* ============================================================
@@ -132,11 +185,12 @@ aside .border-top {
    ============================================================ */
 
 .navbar-glass {
-    background: rgba(14, 14, 20, 0.85) !important;
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border: 1px solid var(--border-subtle) !important;
-    box-shadow: var(--shadow-md);
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
+    border: 1px solid var(--glass-border) !important;
+    box-shadow: var(--glass-shadow);
+    border-radius: var(--radius-xl) !important;
 }
 
 /* Mobile nav links */
@@ -156,42 +210,6 @@ aside .border-top {
 
 #navbar .nav-link:hover {
     color: var(--text-primary) !important;
-}
-
-/* ============================================================
-   MOBILE PROFILE SECTION
-   ============================================================ */
-
-aside.d-lg-none .bg-white {
-    background: var(--bg-card) !important;
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    border: 1px solid var(--glass-border) !important;
-}
-
-aside.d-lg-none h1,
-aside.d-lg-none .display-5 {
-    color: var(--text-primary) !important;
-}
-
-aside.d-lg-none .h5,
-aside.d-lg-none p.text-muted {
-    color: var(--text-secondary) !important;
-}
-
-aside.d-lg-none .social-link {
-    color: var(--text-secondary) !important;
-    transition: all 0.3s ease;
-}
-
-aside.d-lg-none .social-link:hover {
-    color: var(--accent-start) !important;
-    transform: translateY(-2px);
-}
-
-aside.d-lg-none hr {
-    background: linear-gradient(90deg, transparent, var(--accent-start), transparent) !important;
-    opacity: 0.2;
 }
 
 /* ============================================================
@@ -231,12 +249,4 @@ aside.d-lg-none hr {
 [data-theme="light"] aside.col-lg-3::after,
 [data-theme="light"] aside.col-xl-2::after {
     opacity: 0.25;
-}
-
-[data-theme="light"] .profile-ring img {
-    border-color: #fff !important;
-}
-
-[data-theme="light"] .navbar-glass {
-    background: rgba(255, 255, 255, 0.88) !important;
 }

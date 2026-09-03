@@ -41,7 +41,7 @@ export async function fetchFragment(content) {
     if (fragmentCache.has(content)) {
         return fragmentCache.get(content);
     }
-    const response = await fetch(`content/${content}.html`);
+    const response = await fetch(`content/${content}.html?v=4`);
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     const html = await response.text();
     fragmentCache.set(content, html);

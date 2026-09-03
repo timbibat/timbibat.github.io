@@ -55,7 +55,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=22">
 
     <!-- JSON-LD Structured Data for Search & Answer Engines (AEO) -->
     <script type="application/ld+json">
@@ -254,9 +254,14 @@
 <body data-bs-spy="scroll" data-bs-target="#sidebarNav" data-bs-smooth-scroll="true" data-bs-offset="150"
     style="opacity: 0; transition: opacity .6s ease;">
 
-    <!-- Floating theme toggle -->
-    <button class="theme-toggle-float" id="themeToggleFloat" onclick="toggleTheme()" aria-label="Toggle theme">
+    <!-- Floating theme toggle (Desktop: Top-Right) -->
+    <button class="theme-toggle-float d-none d-lg-flex align-items-center justify-content-center rounded-circle p-0" id="themeToggleFloat" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle theme">
         <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Floating Back to Top button -->
+    <button type="button" class="btn btn-primary rounded-circle shadow-lg position-fixed bottom-0 end-0 m-3 m-md-4 fade d-flex align-items-center justify-content-center p-0 back-to-top-btn" id="backToTopBtn" aria-label="Back to top" title="Back to top">
+        <i class="fas fa-chevron-up"></i>
     </button>
 
 
@@ -265,7 +270,7 @@
         <div class="row g-0">
             <!-- Profile Section (Sidebar) -->
             <aside
-                class="col-12 col-lg-3 col-xl-2 border-end d-none d-lg-flex flex-column align-items-center justify-content-center p-3 position-sticky top-0 vh-100 overflow-auto">
+                class="col-12 col-lg-3 col-xl-2 border-end d-none d-lg-flex flex-column align-items-center justify-content-center p-3 position-fixed top-0 start-0 vh-100 overflow-auto">
                 <div class="text-center">
                     <div class="rounded-circle p-2 shadow-sm d-inline-block profile-ring">
                         <img src="assets/img/Timothy.jpg" alt="Timothy Bibat" width="120" height="120"
@@ -310,28 +315,28 @@
                 <div class="w-100 pt-3 border-top">
                     <div class="d-flex justify-content-center gap-3">
                         <a href="https://github.com/timbibat" target="_blank" rel="noopener noreferrer"
-                            class="text-dark" aria-label="GitHub">
+                            class="text-dark text-decoration-none d-inline-flex align-items-center justify-content-center rounded-circle" aria-label="GitHub">
                             <i class="fab fa-github fa-lg"></i>
                         </a>
                         <a href="https://www.facebook.com/chimochip" target="_blank" rel="noopener noreferrer"
-                            class="text-dark" aria-label="Facebook">
+                            class="text-dark text-decoration-none d-inline-flex align-items-center justify-content-center rounded-circle" aria-label="Facebook">
                             <i class="fab fa-facebook fa-lg"></i>
                         </a>
                         <a href="https://www.instagram.com/chimoshii_p" target="_blank" rel="noopener noreferrer"
-                            class="text-dark" aria-label="Instagram">
+                            class="text-dark text-decoration-none d-inline-flex align-items-center justify-content-center rounded-circle" aria-label="Instagram">
                             <i class="fab fa-instagram fa-lg"></i>
                         </a>
                         <a href="https://www.linkedin.com/in/timothy-bibat-5ab419182" target="_blank"
-                            rel="noopener noreferrer" class="text-dark" aria-label="LinkedIn">
+                            rel="noopener noreferrer" class="text-dark text-decoration-none d-inline-flex align-items-center justify-content-center rounded-circle" aria-label="LinkedIn">
                             <i class="fab fa-linkedin fa-lg"></i>
                         </a>
                     </div>
                 </div>
             </aside>
 
-            <main class="col-12 col-lg-9 col-xl-10 p-xl-4 p-lg-4">
+            <main class="col-12 col-lg-9 col-xl-10 offset-lg-3 offset-xl-2 p-xl-4 p-lg-4">
                 <!-- Topbar -->
-                <div class="sticky-top d-lg-none d-sm-block" style="z-index: 1020;">
+                <div class="fixed-bottom d-lg-none d-sm-block" style="z-index: 1020;">
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
@@ -362,18 +367,21 @@
                                             <i class="fas fa-envelope me-2"></i>Contact
                                         </a>
                                     </nav>
+                                    <div class="vr bg-secondary opacity-25 my-1" style="height: 24px;"></div>
+                                    <button class="theme-toggle-btn btn btn-sm rounded-circle d-flex align-items-center justify-content-center p-0 flex-shrink-0"
+                                        id="themeToggleMobile" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle theme">
+                                        <i class="fas fa-moon"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- Profile Section (Mobile) -->
-                <aside class="d-lg-none d-sm-block mb-4">
-                    <section class="text-white position-relative overflow-hidden pb-4">
-
+                <aside class="d-lg-none d-sm-block mt-4 mb-4">
+                    <section class="position-relative overflow-hidden pb-4">
                         <div class="col-12 col-lg-10">
-                            <div class="bg-white bg-opacity-95 p-4 p-md-5 position-relative rounded-4 shadow"
-                                style="backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.06);">
+                            <div class="glass-card p-4 p-md-5 position-relative overflow-hidden">
                                 <div class="row align-items-center">
                                     <!-- Profile Image -->
                                     <div
@@ -391,8 +399,8 @@
 
                                     <!-- Profile Info -->
                                     <div class="col-12 col-md text-center text-md-center text-lg-start mb-4 mb-md-0">
-                                        <h1 class="display-5 fw-bold mb-2 text-dark">Timothy Bibat</h1>
-                                        <p class="h5 text-muted mb-3">Aspiring Cybersecurity Professional - Student</p>
+                                        <h1 class="display-5 fw-bold mb-2">Timothy Bibat</h1>
+                                        <p class="h5 text-secondary mb-3">Aspiring Cybersecurity Professional - Student</p>
                                         <div
                                             class="d-flex flex-column flex-sm-row gap-2 justify-content-center justify-content-md-start mb-3">
                                             <span class="availability-badge badge px-3 py-2 text-nowrap">
@@ -404,30 +412,33 @@
                                         <!-- Social Media Links -->
                                         <div class="d-flex gap-3 justify-content-center justify-content-md-start">
                                             <a href="https://github.com/timbibat" target="_blank"
-                                                rel="noopener noreferrer" class="social-link text-dark" title="GitHub">
+                                                rel="noopener noreferrer"
+                                                class="link-secondary text-decoration-none d-inline-flex align-items-center justify-content-center rounded-circle"
+                                                aria-label="GitHub">
                                                 <i class="fab fa-github fa-lg"></i>
                                             </a>
                                             <a href="https://www.facebook.com/chimochip" target="_blank"
-                                                rel="noopener noreferrer" class="social-link text-dark"
-                                                title="Facebook">
+                                                rel="noopener noreferrer"
+                                                class="link-secondary text-decoration-none d-inline-flex align-items-center justify-content-center rounded-circle"
+                                                aria-label="Facebook">
                                                 <i class="fab fa-facebook fa-lg"></i>
                                             </a>
                                             <a href="https://www.instagram.com/chimoshii_p" target="_blank"
-                                                rel="noopener noreferrer" class="social-link text-dark"
-                                                title="Instagram">
+                                                rel="noopener noreferrer"
+                                                class="link-secondary text-decoration-none d-inline-flex align-items-center justify-content-center rounded-circle"
+                                                aria-label="Instagram">
                                                 <i class="fab fa-instagram fa-lg"></i>
                                             </a>
                                             <a href="https://www.linkedin.com/in/timothy-bibat-5ab419182"
-                                                target="_blank" rel="noopener noreferrer" class="social-link text-dark"
-                                                title="LinkedIn">
+                                                target="_blank" rel="noopener noreferrer"
+                                                class="link-secondary text-decoration-none d-inline-flex align-items-center justify-content-center rounded-circle"
+                                                aria-label="LinkedIn">
                                                 <i class="fab fa-linkedin fa-lg"></i>
                                             </a>
                                         </div>
                                     </div>
 
-
                                 </div>
-
 
                             </div>
                         </div>
@@ -558,8 +569,8 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
 
-    <script type="module" src="assets/js/populate.js?v=7"></script>
-    <script type="module" src="assets/js/app.js"></script>
+    <script type="module" src="assets/js/populate.js?v=11"></script>
+    <script type="module" src="assets/js/app.js?v=12"></script>
 </body>
 
 </html>
