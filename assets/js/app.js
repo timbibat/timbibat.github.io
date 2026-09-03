@@ -6,6 +6,7 @@
 import { initTheme } from './theme.js';
 import { initRouter, hideLoader } from './router.js';
 import { initContactForm } from './contact.js';
+import { initBirthday } from './birthday.js';
 
 function bootstrap() {
     // Apply saved theme instantly before fade-in
@@ -23,6 +24,9 @@ function bootstrap() {
 
     // Initialize Floating Back to Top Button
     initBackToTop();
+
+    // Initialize Automated Birthday Theme UI
+    initBirthday();
 }
 
 /**
