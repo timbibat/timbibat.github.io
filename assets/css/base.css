@@ -27,10 +27,11 @@ body {
 body::before {
     content: '';
     position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    min-height: 100dvh;
+    top: -15vh;
+    left: -5vw;
+    width: 110vw;
+    height: 130vh;
+    min-height: 130dvh;
     pointer-events: none;
     z-index: 0;
     background:

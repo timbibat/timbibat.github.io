@@ -1,4 +1,4 @@
-/* Desktop Profile Sidebar (iOS Frosted Glassmorphism - Fixed) */
+/* Desktop Profile Sidebar*/
 aside.col-lg-3,
 aside.col-xl-2 {
     background: var(--bg-sidebar) !important;
@@ -189,7 +189,6 @@ aside .border-top {
     backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
     -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
     border: 1px solid var(--glass-border) !important;
-    box-shadow: var(--glass-shadow);
     border-radius: var(--radius-xl) !important;
 }
 
