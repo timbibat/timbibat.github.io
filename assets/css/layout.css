@@ -190,7 +190,7 @@ aside .border-top {
     -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
     border: 1px solid var(--glass-border) !important;
     border-radius: 50rem !important;
-    box-shadow: var(--glass-shadow) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.22), inset 0 1px 1px rgba(255, 255, 255, 0.15) !important;
 }
 
 /* Mobile nav links (Capsule pill style) */

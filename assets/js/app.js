@@ -6,7 +6,7 @@
 import { initTheme } from './theme.js';
 import { initRouter, hideLoader } from './router.js';
 import { initContactForm } from './contact.js';
-import { initBirthday } from './birthday.js';
+import { initBirthday } from './birthday.js?v=2';
 
 function bootstrap() {
     // Apply saved theme instantly before fade-in

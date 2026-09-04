@@ -777,17 +777,27 @@ function initConfettiCanvas() {
 
     confettiCanvas = document.createElement('canvas');
     confettiCanvas.id = 'birthdayConfettiCanvas';
+    confettiCanvas.style.display = 'none';
     document.body.appendChild(confettiCanvas);
-
     confettiCtx = confettiCanvas.getContext('2d');
+    let lastInnerWidth = window.innerWidth;
 
     const handleResize = () => {
         if (!confettiCanvas) return;
-        confettiCanvas.width = window.innerWidth;
+        const newWidth = window.innerWidth;
+        // In iOS Safari, vertical scrolling collapses/expands the address bar and fires resize events.
+        // Resizing the canvas during scroll triggers a WebKit layout invalidation that aborts Safari's fullscreen/minimal-UI mode.
+        // Only resize canvas if the horizontal width actually changed (e.g. orientation change or desktop window resize).
+        if (newWidth === lastInnerWidth) return;
+
+        lastInnerWidth = newWidth;
+        confettiCanvas.width = newWidth;
         confettiCanvas.height = window.innerHeight;
     };
 
-    handleResize();
+    confettiCanvas.width = window.innerWidth;
+    confettiCanvas.height = window.innerHeight;
+
     window.addEventListener('resize', handleResize, { passive: true });
 }
 
@@ -811,6 +821,9 @@ function launchWelcomeConfetti() {
  */
 export function fireConfetti(originX, originY, count = 40, options = {}) {
     if (!confettiCanvas || !confettiCtx) return;
+
+    // Reveal canvas only while confetti particles are active
+    confettiCanvas.style.display = 'block';
 
     const colors = ['#f59e0b', '#ec4899', '#8b5cf6', '#06b6d4', '#10b981', '#fbbf24', '#ffffff', '#f43f5e'];
     const shapes = ['rect', 'circle', 'star'];
@@ -902,6 +915,8 @@ function animateConfetti() {
     } else {
         confettiAnimId = null;
         confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+        // Hide canvas to free GPU composition layers and prevent scroll hitching
+        confettiCanvas.style.display = 'none';
     }
 }
 

@@ -5,7 +5,12 @@ html {
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: var(--bg-gradient);
+    background:
+        radial-gradient(ellipse 65vw 55vh at 15% 15%, var(--glow-color-1) 0%, transparent 70%),
+        radial-gradient(ellipse 60vw 50vh at 85% 35%, var(--glow-color-2) 0%, transparent 70%),
+        radial-gradient(ellipse 55vw 50vh at 22% 85%, var(--glow-color-3) 0%, transparent 65%),
+        radial-gradient(ellipse 50vw 45vh at 82% 85%, var(--glow-color-4) 0%, transparent 65%),
+        var(--bg-gradient);
     background-attachment: fixed;
     min-height: 100vh;
     min-height: 100dvh;
@@ -17,6 +22,7 @@ body {
     letter-spacing: 0.01em;
 }
 
+
 /* Ensure Font Awesome Solid icons render correctly in Safari */
 .fas,
 .fa-solid {
@@ -24,7 +30,7 @@ body {
 }
 
 /* High-Performance iOS Chromatic Ambient Mesh (Static GPU-Cached Texture) */
-body::before {
+/* body::before {
     content: '';
     position: fixed;
     top: -15vh;
@@ -39,7 +45,7 @@ body::before {
         radial-gradient(ellipse 60vw 50vh at 85% 35%, var(--glow-color-2) 0%, transparent 70%),
         radial-gradient(ellipse 55vw 50vh at 22% 85%, var(--glow-color-3) 0%, transparent 65%),
         radial-gradient(ellipse 50vw 45vh at 82% 85%, var(--glow-color-4) 0%, transparent 65%);
-}
+} */
 
 /* ============================================================
    TYPOGRAPHY
