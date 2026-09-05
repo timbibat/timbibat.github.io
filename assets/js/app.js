@@ -4,7 +4,7 @@
  */
 
 import { initTheme } from './theme.js';
-import { initRouter, hideLoader } from './router.js';
+import { initRouter, hideLoader } from './router.js?v=12';
 import { initContactForm } from './contact.js';
 import { initBirthday } from './birthday.js?v=2';
 

@@ -1,29 +1,65 @@
-/* Desktop Profile Sidebar*/
-aside.col-lg-3,
-aside.col-xl-2 {
-    background: var(--bg-sidebar) !important;
+/* ============================================================
+   FLOATING DESKTOP ISLAND NAVBAR (Liquid Glass Capsule)
+   ============================================================ */
+.navbar-floating-island {
+    background: var(--glass-bg) !important;
     backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
     -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
-    border-right: 1px solid var(--glass-border) !important;
-    box-shadow:
-        inset -1px 0 0 0 rgba(255, 255, 255, 0.12),
-        inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.2),
-        6px 0 32px rgba(0, 0, 0, 0.32) !important;
-    z-index: 100;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 50rem !important;
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.35), inset 0 1px 1.5px rgba(255, 255, 255, 0.22) !important;
+    transition: all 0.3s ease;
 }
 
-/* Accent glow line along right edge */
-aside.col-lg-3::after,
-aside.col-xl-2::after {
-    content: '';
-    position: absolute;
-    top: 12%;
-    right: 0;
-    width: 1.5px;
-    height: 76%;
-    background: var(--primary-gradient);
-    opacity: 0.55;
-    box-shadow: 0 0 12px var(--accent-glow);
+[data-theme="light"] .navbar-floating-island {
+    background: var(--glass-bg) !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Desktop nav links (iOS Pill Capsules) */
+#desktopNavbar .nav-link {
+    color: var(--text-secondary) !important;
+    border-radius: 50rem !important;
+    font-size: 0.86rem;
+    font-weight: 500;
+    padding: 7px 16px;
+    position: relative;
+    border: 1px solid transparent;
+    transition: all 0.25s var(--liquid-spring);
+    display: inline-flex;
+    align-items: center;
+}
+
+#desktopNavbar .nav-link:hover {
+    color: var(--text-primary) !important;
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--glass-border-subtle);
+    transform: translateY(-1px);
+}
+
+[data-theme="light"] #desktopNavbar .nav-link:hover {
+    color: var(--accent-start) !important;
+    background: rgba(99, 102, 241, 0.08);
+}
+
+#desktopNavbar .nav-link.bg-primary,
+#desktopNavbar .nav-link.bg-primary.text-white {
+    background: var(--primary-gradient) !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    border-color: rgba(255, 255, 255, 0.35) !important;
+    box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.5), 0 4px 18px var(--accent-glow) !important;
+    transform: translateY(-1px);
+}
+
+#desktopNavbar .nav-link.bg-primary i {
+    color: #ffffff !important;
+}
+
+[data-theme="light"] #desktopNavbar .nav-link.bg-primary,
+[data-theme="light"] #desktopNavbar .nav-link.bg-primary.text-white {
+    color: #ffffff !important;
 }
 
 /* Profile image ring (iOS Glass Bevel & Glow) */
@@ -34,124 +70,52 @@ aside.col-xl-2::after {
     border: 2px solid rgba(255, 255, 255, 0.2) !important;
 }
 
-/* Sidebar nav links (iOS Glass Capsule Pills) */
-#sidebarNav .nav-link {
-    color: var(--text-secondary) !important;
-    border-radius: var(--radius-xl) !important;
-    padding: 11px 18px;
-    position: relative;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid var(--glass-border-subtle) !important;
-    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12), 0 2px 6px rgba(0, 0, 0, 0.15) !important;
-    transition: transform 0.3s var(--liquid-spring), background 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    margin-bottom: 9px;
-    z-index: 2;
+/* Pulsing Radar Indicator Dot */
+.radar-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #22c55e;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    animation: radarPulse 2s infinite ease-in-out;
 }
 
-#sidebarNav .nav-link::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%) scaleY(0);
-    width: 3px;
-    height: 60%;
-    border-radius: 0 3px 3px 0;
-    background: var(--primary-gradient);
-    transition: transform 0.3s ease;
+@keyframes radarPulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 7px rgba(34, 197, 94, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+    }
 }
 
-#sidebarNav .nav-link:hover {
-    color: #ffffff !important;
-    background: rgba(99, 102, 241, 0.18) !important;
-    border-color: rgba(99, 102, 241, 0.45) !important;
-    box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.3), 0 4px 18px rgba(99, 102, 241, 0.28) !important;
-    transform: translateX(4px);
-}
-
-[data-theme="light"] #sidebarNav .nav-link {
-    color: var(--text-primary) !important;
-    background: rgba(0, 0, 0, 0.03);
-    border-color: rgba(0, 0, 0, 0.08) !important;
-    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 2px 5px rgba(0, 0, 0, 0.04) !important;
-}
-
-[data-theme="light"] #sidebarNav .nav-link i {
-    color: var(--text-secondary);
-}
-
-[data-theme="light"] #sidebarNav .nav-link:hover,
-[data-theme="light"] #sidebarNav .nav-link:focus,
-[data-theme="light"] #sidebarNav .nav-link:focus-visible,
-[data-theme="light"] #sidebarNav .nav-link:active {
-    color: var(--accent-start) !important;
-    background: rgba(99, 102, 241, 0.12) !important;
-    border-color: rgba(99, 102, 241, 0.35) !important;
-    box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.8), 0 4px 12px rgba(99, 102, 241, 0.18) !important;
-}
-
-[data-theme="light"] #sidebarNav .nav-link:hover i,
-[data-theme="light"] #sidebarNav .nav-link:focus i,
-[data-theme="light"] #sidebarNav .nav-link:focus-visible i,
-[data-theme="light"] #sidebarNav .nav-link:active i {
-    color: var(--accent-start) !important;
-}
-
-#sidebarNav .nav-link.bg-primary,
-[data-theme="light"] #sidebarNav .nav-link.bg-primary,
-[data-theme="light"] #sidebarNav .nav-link.bg-primary:hover,
-[data-theme="light"] #sidebarNav .nav-link.bg-primary:focus {
-    background: var(--primary-gradient) !important;
-    color: #ffffff !important;
-    border-color: rgba(255, 255, 255, 0.35) !important;
-    box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.5), 0 6px 22px var(--accent-glow) !important;
-    transform: translateX(2px);
-}
-
-#sidebarNav .nav-link.bg-primary i,
-[data-theme="light"] #sidebarNav .nav-link.bg-primary i,
-[data-theme="light"] #sidebarNav .nav-link.bg-primary:hover i {
-    color: #ffffff !important;
-}
-
-#sidebarNav .nav-link.bg-primary::before {
-    transform: translateY(-50%) scaleY(1);
-}
-
-#sidebarNav .nav-link:active {
-    transform: scale(0.95, 0.92) !important;
-    transition: transform 0.12s ease !important;
-}
-
-/* Make nav icons have a subtle bg */
-#sidebarNav .nav-link i {
-    width: 20px;
-    text-align: center;
-}
-
-/* Sidebar Social Media Frosted Glass Icons */
-aside .d-flex.justify-content-center.gap-3 {
-    position: relative;
-    z-index: 2;
-}
-
-aside .d-flex.justify-content-center.gap-3 a,
+/* Frosted Glass Social Icons */
+.social-icon-btn,
 aside.d-lg-none .d-flex.gap-3 a {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
     border-radius: 50% !important;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--glass-border) !important;
     box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.18), var(--shadow-sm);
     color: var(--text-secondary) !important;
     text-decoration: none !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     transition: transform 0.35s var(--liquid-spring), background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
 }
 
-aside .d-flex.justify-content-center.gap-3 a:hover,
-aside .d-flex.justify-content-center.gap-3 a:focus,
-aside .d-flex.justify-content-center.gap-3 a:active,
+.social-icon-btn:hover,
+.social-icon-btn:focus,
+.social-icon-btn:active,
 aside.d-lg-none .d-flex.gap-3 a:hover,
 aside.d-lg-none .d-flex.gap-3 a:focus,
 aside.d-lg-none .d-flex.gap-3 a:active {
@@ -159,25 +123,21 @@ aside.d-lg-none .d-flex.gap-3 a:active {
     text-decoration: none !important;
     background: var(--primary-gradient) !important;
     border-color: rgba(255, 255, 255, 0.4) !important;
-    transform: translateY(-3px) scale(1.12);
+    transform: translateY(-3px) scale(1.1);
     box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.45), 0 6px 20px var(--accent-glow) !important;
 }
 
-[data-theme="light"] aside .d-flex.justify-content-center.gap-3 a,
+[data-theme="light"] .social-icon-btn,
 [data-theme="light"] aside.d-lg-none .d-flex.gap-3 a {
     color: var(--text-secondary) !important;
     background: rgba(0, 0, 0, 0.04);
     border-color: rgba(0, 0, 0, 0.08) !important;
 }
 
-[data-theme="light"] aside .d-flex.justify-content-center.gap-3 a:hover,
+[data-theme="light"] .social-icon-btn:hover,
 [data-theme="light"] aside.d-lg-none .d-flex.gap-3 a:hover {
     color: #fff !important;
     background: var(--primary-gradient) !important;
-}
-
-aside .border-top {
-    border-color: var(--glass-border) !important;
 }
 
 /* ============================================================

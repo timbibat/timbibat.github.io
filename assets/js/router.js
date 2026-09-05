@@ -41,7 +41,7 @@ export async function fetchFragment(content) {
     if (fragmentCache.has(content)) {
         return fragmentCache.get(content);
     }
-    const response = await fetch(`content/${content}.html?v=8`);
+    const response = await fetch(`content/${content}.html?v=12`);
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     const html = await response.text();
     fragmentCache.set(content, html);
@@ -155,8 +155,8 @@ export function handleRouting() {
         canonicalLink.setAttribute('href', 'https://timbibat.me/');
     }
 
-    // Sync active navigation link highlight and accessibility attribute
-    const navLinks = document.querySelectorAll('.nav-link');
+    // Sync active navigation link highlight and accessibility attribute across desktop and mobile navbars
+    const navLinks = document.querySelectorAll('#desktopNavbar .nav-link, #navbar .nav-link');
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
         if (href === `#${hash}`) {

@@ -1,399 +1,512 @@
-<div class="glass-card p-4 p-md-5 mb-5" id="about">
+<div id="about" class="mb-5 animate-in">
 
-    <h2 class="mb-3 fw-bold">
-        <span class="glow-text"><i class="fas fa-user-circle me-2"></i></span>About Me
-    </h2>
+    <!-- ========================================================
+         ROW 1: IDENTITY TELEMETRY & HERO SPOTLIGHT
+         Desktop: Profile Card (col-lg-4, left) -> Hero Pitch (col-lg-8, right)
+         Mobile: Profile Card (top) -> Hero Pitch (bottom)
+         ======================================================== -->
+    <div class="row g-3 g-md-4 mb-3 mb-md-4">
 
-    <!-- Bio Paragraphs -->
-    <p class="lead mb-3 text-dark" style="font-size: 1.05rem; line-height: 1.6;">
-        I am <strong>Timothy Bibat</strong>, an aspiring cybersecurity professional based in <strong>Calamba, Laguna,
-            Philippines</strong>, currently pursuing a <strong>Bachelor of Science in Information Technology (4th
-            year)</strong> at Polytechnic University of the Philippines. I focus on secure development practices,
-        network fundamentals, and hands-on security exercises.
-    </p>
-
-    <p class="text-muted mb-3" style="font-size: 0.95rem; line-height: 1.6;">
-        I have applied programming, networking, and security tools in coursework and personal projects. I'm actively
-        learning web application security, penetration testing techniques, and cloud security best practices to prepare
-        for real-world cybersecurity challenges.
-    </p>
-
-    <!-- Highlight Badges Row -->
-    <div class="d-flex flex-wrap gap-2 my-3">
-        <span class="badge bg-secondary-subtle text-secondary border rounded-pill px-3 py-2">
-            <i class="fas fa-map-marker-alt text-danger me-1"></i> Calamba, Laguna, PH
-        </span>
-        <span class="badge bg-secondary-subtle text-secondary border rounded-pill px-3 py-2">
-            <i class="fas fa-graduation-cap text-primary me-1"></i> PUP BS IT (4th Year)
-        </span>
-        <span class="badge bg-secondary-subtle text-secondary border rounded-pill px-3 py-2">
-            <i class="fas fa-user-shield text-primary me-1"></i> Security & Pentesting
-        </span>
-        <span class="badge bg-secondary-subtle text-secondary border rounded-pill px-3 py-2">
-            <i class="fas fa-code text-primary me-1"></i> Web & UI/UX Development
-        </span>
-    </div>
-
-    <hr class="my-4" style="border-color: var(--glass-border); opacity: 0.6;">
-
-    <!-- What I Do Section -->
-    <h3 class="h6 mb-3 fw-bold text-uppercase text-muted" style="letter-spacing: 0.1em; font-size: 0.72rem;">
-        <i class="fas fa-cubes me-1 glow-text"></i> What I Do
-    </h3>
-
-    <div class="row g-3 mb-4">
-        <!-- Web Development Card -->
-        <div class="col-12 col-md-6 col-xl-4">
-            <div class="p-4 border rounded-3 bg-light h-100 d-flex flex-column hover-lift">
-                <div class="rounded-3 p-3 d-inline-flex align-items-center justify-content-center mb-3 glow-box"
-                    style="width: 48px; height: 48px; background: rgba(99, 102, 241, 0.12); color: var(--accent-start);">
-                    <i class="fas fa-laptop-code fs-5"></i>
-                </div>
-                <h4 class="h6 fw-bold text-dark mb-2">Web Development</h4>
-                <p class="small text-muted mb-3 flex-grow-1" style="line-height: 1.5;">
-                    Building responsive and functional websites using JavaScript, HTML5, and Bootstrap frameworks.
-                </p>
-                <div class="d-flex flex-wrap gap-1 mt-auto">
-                    <span class="badge bg-secondary-subtle text-secondary border rounded-pill"><i
-                            class="fab fa-js text-warning me-1"></i> JavaScript</span>
-                    <span class="badge bg-secondary-subtle text-secondary border rounded-pill"><i
-                            class="fab fa-html5 text-danger me-1"></i> HTML5</span>
-                    <span class="badge bg-secondary-subtle text-secondary border rounded-pill"><i
-                            class="fab fa-bootstrap text-primary me-1"></i> Bootstrap</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- UI/UX Design Card -->
-        <div class="col-12 col-md-6 col-xl-4">
-            <div class="p-4 border rounded-3 bg-light h-100 d-flex flex-column hover-lift">
-                <div class="rounded-3 p-3 d-inline-flex align-items-center justify-content-center mb-3 glow-box"
-                    style="width: 48px; height: 48px; background: rgba(99, 102, 241, 0.12); color: var(--accent-start);">
-                    <i class="fas fa-pen-nib fs-5"></i>
-                </div>
-                <h4 class="h6 fw-bold text-dark mb-2">UI/UX Design</h4>
-                <p class="small text-muted mb-3 flex-grow-1" style="line-height: 1.5;">
-                    Creating intuitive prototypes in Figma and polishing visual assets in Photoshop.
-                </p>
-                <div class="d-flex flex-wrap gap-1 mt-auto">
-                    <span class="badge bg-secondary-subtle text-secondary border rounded-pill"><i
-                            class="fab fa-figma text-danger me-1"></i> Figma</span>
-                    <span class="badge bg-secondary-subtle text-secondary border rounded-pill"><i
-                            class="fas fa-image text-info me-1"></i> Photoshop</span>
-                    <span class="badge bg-secondary-subtle text-secondary border rounded-pill"><i
-                            class="fas fa-layer-group text-purple me-1"></i> Design Systems</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Database Management Card -->
-        <div class="col-12 col-md-6 col-xl-4">
-            <div class="p-4 border rounded-3 bg-light h-100 d-flex flex-column hover-lift">
-                <div class="rounded-3 p-3 d-inline-flex align-items-center justify-content-center mb-3 glow-box"
-                    style="width: 48px; height: 48px; background: rgba(99, 102, 241, 0.12); color: var(--accent-start);">
-                    <i class="fas fa-database fs-5"></i>
-                </div>
-                <h4 class="h6 fw-bold text-dark mb-2">Database Management</h4>
-                <p class="small text-muted mb-3 flex-grow-1" style="line-height: 1.5;">
-                    Structuring efficient data schemas using MySQL for scalable web applications.
-                </p>
-                <div class="d-flex flex-wrap gap-1 mt-auto">
-                    <span class="badge bg-secondary-subtle text-secondary border rounded-pill"><i
-                            class="fas fa-database text-info me-1"></i> MySQL</span>
-                    <span class="badge bg-secondary-subtle text-secondary border rounded-pill"><i
-                            class="fas fa-server text-success me-1"></i> XAMPP/PHP</span>
-                    <span class="badge bg-secondary-subtle text-secondary border rounded-pill"><i
-                            class="fas fa-shield-alt text-warning me-1"></i> Secure Queries</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- My Approach Section -->
-    <div class="mb-4">
-        <h3 class="h6 mb-3 fw-bold text-uppercase text-muted" style="letter-spacing: 0.1em; font-size: 0.72rem;">
-            <i class="fas fa-compass me-1 glow-text"></i> My Approach
-        </h3>
-        <div class="p-4 rounded-3 border bg-light position-relative overflow-hidden hover-lift"
-            style="border-left: 4px solid var(--accent-start) !important;">
-            <div class="row align-items-center">
-                <div class="col-12 col-md-2 text-center mb-3 mb-md-0">
-                    <div class="rounded-circle p-3 d-inline-flex align-items-center justify-content-center glow-box"
-                        style="width: 60px; height: 60px; background: rgba(99, 102, 241, 0.12); color: var(--accent-start);">
-                        <i class="fas fa-layer-group fs-3"></i>
+        <!-- TILE 1: IDENTITY & TELEMETRY CARD (4 cols desktop, left) -->
+        <div class="col-12 col-lg-4">
+            <div class="glass-card p-4 h-100 d-flex flex-column align-items-center justify-content-between text-center position-relative">
+                <!-- Avatar with Liquid Glow Ring -->
+                <div class="mt-2 mb-3">
+                    <div class="rounded-circle p-2 shadow-lg d-inline-flex align-items-center justify-content-center profile-ring"
+                        style="width: 124px; height: 124px;">
+                        <img src="assets/img/Timothy.jpg" alt="Timothy Bibat" width="110" height="110"
+                            class="rounded-circle border border-2 border-white object-fit-cover"
+                            fetchpriority="high" decoding="async"
+                            style="width: 110px; height: 110px; object-fit: cover;">
                     </div>
                 </div>
-                <div class="col-12 col-md-10">
-                    <p class="fst-italic mb-0 text-muted" style="line-height: 1.65; font-size: 0.95rem;">
-                        "I believe that a great website starts with a clear vision. My workflow bridges the gap between
-                        <strong class="text-dark">UI Design</strong> and <strong class="text-dark">Frontend
-                            Development</strong>.
-                        I start by prototyping intuitive interfaces in <strong class="text-dark">Figma</strong>, then I
-                        bring them to life
-                        with clean, responsive code using <strong class="text-dark">Bootstrap</strong>.
-                        I don't just build sites that work; I build sites that users enjoy navigating."
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Currently Learning Section -->
-    <div class="mb-4">
-        <h3 class="h6 mb-3 fw-bold text-uppercase text-muted" style="letter-spacing: 0.1em; font-size: 0.72rem;">
-            <i class="fas fa-graduation-cap me-1 glow-text"></i> Currently Learning
-        </h3>
+                <!-- Title & Meta -->
+                <div class="w-100 mb-3">
+                    <h3 class="h5 fw-bold mb-1 text-dark">Timothy Bibat</h3>
+                    <p class="text-secondary small mb-3">BS Information Technology Candidate</p>
 
-        <div class="row g-3">
-            <div class="col-12 col-md-6 col-xl-4">
-                <div class="p-3 border rounded-3 bg-light h-100 d-flex align-items-start gap-3 hover-lift">
-                    <div class="p-2 rounded-3 text-primary d-flex align-items-center justify-content-center"
-                        style="background: rgba(99, 102, 241, 0.12); width: 40px; height: 40px; min-width: 40px;">
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <div>
-                        <div class="d-flex align-items-center justify-content-between mb-1">
-                            <strong class="text-dark small">Backend Integration</strong>
-                            <span class="badge bg-primary-subtle text-primary border border-primary-subtle"
-                                style="font-size: 0.65rem;">In Progress</span>
+                    <!-- Telemetry Badges -->
+                    <div class="d-flex flex-column gap-2 w-100 px-2">
+                        <div class="p-2 border rounded-pill bg-light d-flex align-items-center justify-content-center gap-2 small">
+                            <i class="fas fa-map-marker-alt text-danger"></i>
+                            <span class="text-secondary fw-semibold">Calamba, Laguna, PH</span>
                         </div>
-                        <small class="text-muted d-block" style="font-size: 0.78rem;">Connecting frontend interfaces to
-                            MySQL databases using PHP and XAMPP environment.</small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-xl-4">
-                <div class="p-3 border rounded-3 bg-light h-100 d-flex align-items-start gap-3 hover-lift">
-                    <div class="p-2 rounded-3 text-success d-flex align-items-center justify-content-center"
-                        style="background: rgba(34, 197, 94, 0.12); width: 40px; height: 40px; min-width: 40px;">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <div>
-                        <div class="d-flex align-items-center justify-content-between mb-1">
-                            <strong class="text-dark small">Responsive Design</strong>
-                            <span class="badge bg-success-subtle text-success border border-success-subtle"
-                                style="font-size: 0.65rem;">Mastering</span>
+                        <div class="p-2 border rounded-pill bg-light d-flex align-items-center justify-content-center gap-2 small">
+                            <i class="fas fa-university text-primary"></i>
+                            <span class="text-secondary fw-semibold">PUP BSIT (4th Year)</span>
                         </div>
-                        <small class="text-muted d-block" style="font-size: 0.78rem;">Mastering flex layout, CSS grid,
-                            and Bootstrap responsive utilities across devices.</small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-xl-4">
-                <div class="p-3 border rounded-3 bg-light h-100 d-flex align-items-start gap-3 hover-lift">
-                    <div class="p-2 rounded-3 text-warning d-flex align-items-center justify-content-center"
-                        style="background: rgba(245, 158, 11, 0.12); width: 40px; height: 40px; min-width: 40px;">
-                        <i class="fas fa-shield-virus"></i>
-                    </div>
-                    <div>
-                        <div class="d-flex align-items-center justify-content-between mb-1">
-                            <strong class="text-dark small">Secure Coding</strong>
-                            <span class="badge bg-warning-subtle text-warning border border-warning-subtle"
-                                style="font-size: 0.65rem;">Exploring</span>
+                        <div class="p-2 border rounded-pill bg-light d-flex align-items-center justify-content-center gap-2 small">
+                            <i class="fas fa-award text-warning"></i>
+                            <span class="text-secondary fw-semibold">President's & Dean's Lister</span>
                         </div>
-                        <small class="text-muted d-block" style="font-size: 0.78rem;">Learning input sanitization and
-                            mitigating common OWASP vulnerabilities like SQL Injection.</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Skills & Education Row -->
-    <div class="row g-3 mt-1">
-        <!-- Key Skills Column -->
-        <div class="col-12 col-md-6">
-            <div class="p-4 border rounded-3 bg-light h-100">
-                <h3 class="h6 mb-3 fw-bold text-uppercase text-muted"
-                    style="letter-spacing: 0.1em; font-size: 0.72rem;">
-                    <i class="fas fa-chart-bar me-1 glow-text"></i> Key Skills
-                </h3>
-
-                <!-- Frontend & UI/UX -->
-                <div class="mb-3">
-                    <div class="d-flex justify-content-between mb-1">
-                        <small class="text-dark fw-semibold">Frontend & UI/UX Design</small>
-                        <small class="text-muted">Advanced — 80%</small>
-                    </div>
-                    <div class="progress" role="progressbar" aria-label="Frontend skill" aria-valuenow="80"
-                        aria-valuemin="0" aria-valuemax="100">
-                        <div class="progress-bar" style="width: 80%"></div>
                     </div>
                 </div>
 
-                <!-- Networking -->
-                <div class="mb-3">
-                    <div class="d-flex justify-content-between mb-1">
-                        <small class="text-dark fw-semibold">Networking Fundamentals</small>
-                        <small class="text-muted">Intermediate — 65%</small>
-                    </div>
-                    <div class="progress" role="progressbar" aria-label="Networking skill" aria-valuenow="65"
-                        aria-valuemin="0" aria-valuemax="100">
-                        <div class="progress-bar" style="width: 65%"></div>
-                    </div>
-                </div>
-
-                <!-- Web Security -->
-                <div class="mb-3">
-                    <div class="d-flex justify-content-between mb-1">
-                        <small class="text-dark fw-semibold">Web Security & Pentesting</small>
-                        <small class="text-muted">Active Learning — 50%</small>
-                    </div>
-                    <div class="progress" role="progressbar" aria-label="Web security skill" aria-valuenow="50"
-                        aria-valuemin="0" aria-valuemax="100">
-                        <div class="progress-bar" style="width: 50%"></div>
-                    </div>
-                </div>
-
-                <!-- Python -->
-                <div class="mb-0">
-                    <div class="d-flex justify-content-between mb-1">
-                        <small class="text-dark fw-semibold">Python Programming</small>
-                        <small class="text-muted">Beginner — 45%</small>
-                    </div>
-                    <div class="progress" role="progressbar" aria-label="Python skill" aria-valuenow="45"
-                        aria-valuemin="0" aria-valuemax="100">
-                        <div class="progress-bar" style="width: 45%"></div>
-                    </div>
+                <!-- Frosted Social Dock -->
+                <div class="w-100 pt-3 border-top d-flex justify-content-center gap-2" style="border-color: var(--glass-border) !important;">
+                    <a href="https://github.com/timbibat" target="_blank" rel="noopener noreferrer"
+                        class="social-icon-btn" aria-label="GitHub" title="GitHub Profile">
+                        <i class="fab fa-github fa-lg"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/timothy-bibat-5ab419182" target="_blank" rel="noopener noreferrer"
+                        class="social-icon-btn" aria-label="LinkedIn" title="LinkedIn Profile">
+                        <i class="fab fa-linkedin fa-lg"></i>
+                    </a>
+                    <a href="https://www.facebook.com/chimochip" target="_blank" rel="noopener noreferrer"
+                        class="social-icon-btn" aria-label="Facebook" title="Facebook Profile">
+                        <i class="fab fa-facebook fa-lg"></i>
+                    </a>
+                    <a href="https://www.instagram.com/chimoshii_p" target="_blank" rel="noopener noreferrer"
+                        class="social-icon-btn" aria-label="Instagram" title="Instagram Profile">
+                        <i class="fab fa-instagram fa-lg"></i>
+                    </a>
                 </div>
             </div>
         </div>
 
-        <!-- Education & Focus Column -->
-        <div class="col-12 col-md-6">
-            <div class="p-4 border rounded-3 bg-light h-100 d-flex flex-column justify-content-between">
+        <!-- TILE 2: HERO INTRO & VALUE PROPOSITION (8 cols desktop, right) -->
+        <div class="col-12 col-lg-8">
+            <div class="glass-card p-4 p-md-5 h-100 d-flex flex-column justify-content-between position-relative overflow-hidden">
+                <!-- Ambient corner glow -->
+                <div class="position-absolute top-0 end-0 p-5 rounded-circle pointer-events-none opacity-25"
+                    style="background: radial-gradient(circle, var(--accent-start) 0%, transparent 70%); width: 220px; height: 220px; transform: translate(30%, -30%);"></div>
+
                 <div>
-                    <h3 class="h6 mb-3 fw-bold text-uppercase text-muted"
-                        style="letter-spacing: 0.1em; font-size: 0.72rem;">
-                        <i class="fas fa-university me-1 glow-text"></i> Education
-                    </h3>
-
-                    <div class="p-3 border rounded-3 mb-3" style="background: rgba(255,255,255,0.03);">
-                        <div class="d-flex align-items-center justify-content-between mb-1">
-                            <strong class="text-dark small">Polytechnic University of the Philippines</strong>
-                            <span class="badge bg-secondary-subtle text-secondary border">4th Year</span>
-                        </div>
-                        <p class="small text-muted mb-0">Bachelor of Science in Information Technology (BS IT)</p>
+                    <!-- Availability Pill with Pulsing Radar Dot -->
+                    <div class="d-inline-flex align-items-center mb-3">
+                        <span class="availability-badge badge px-3 py-2 d-inline-flex align-items-center">
+                            <span class="radar-dot me-2"></span>Available for opportunities
+                        </span>
                     </div>
 
-                    <h3 class="h6 mb-2 fw-bold text-uppercase text-muted"
-                        style="letter-spacing: 0.1em; font-size: 0.72rem;">
-                        <i class="fas fa-bullseye me-1 glow-text"></i> Current Focus
-                    </h3>
-                    <p class="text-muted small mb-3" style="line-height: 1.6;">
-                        Practicing CTF challenges (TryHackMe & HackTheBox), learning offensive & defensive
-                        methodologies, analyzing traffic with Wireshark, and building security-focused open-source
-                        projects on GitHub.
+                    <!-- Main Display Headline -->
+                    <h1 class="display-6 fw-bold mb-2 text-dark">
+                        Hi, I'm <span class="glow-text">Timothy Bibat</span>
+                    </h1>
+
+                    <!-- Specialty Subtitle -->
+                    <h2 class="h5 fw-semibold text-primary mb-3 d-flex align-items-center flex-wrap gap-2">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Cybersecurity Specialist & Full-Stack Developer</span>
+                    </h2>
+
+                    <!-- Elevator Pitch -->
+                    <p class="text-secondary mb-4" style="font-size: 1.02rem; line-height: 1.7; max-width: 680px;">
+                        Bridging defensive application security, vulnerability mitigation, and penetration testing with clean, responsive full-stack software development. Currently in my 4th year pursuing BS Information Technology at the Polytechnic University of the Philippines.
                     </p>
+
+                    <!-- Quick Highlights -->
+                    <div class="d-flex flex-wrap gap-2 mb-4">
+                        <span class="badge bg-secondary-subtle text-secondary border rounded-pill px-3 py-2">
+                            <i class="fas fa-user-shield text-primary me-1"></i> Web Security & Pentesting
+                        </span>
+                        <span class="badge bg-secondary-subtle text-secondary border rounded-pill px-3 py-2">
+                            <i class="fas fa-laptop-code text-success me-1"></i> Full-Stack JS & Python
+                        </span>
+                        <span class="badge bg-secondary-subtle text-secondary border rounded-pill px-3 py-2">
+                            <i class="fas fa-palette text-info me-1"></i> Figma UI/UX Systems
+                        </span>
+                    </div>
                 </div>
 
-                <div class="d-flex flex-wrap gap-1">
-                    <span class="badge bg-danger-subtle text-danger border border-danger-subtle"><i
-                            class="fas fa-flag me-1"></i> TryHackMe</span>
-                    <span class="badge bg-success-subtle text-success border border-success-subtle"><i
-                            class="fas fa-cube me-1"></i> HackTheBox</span>
-                    <span class="badge bg-info-subtle text-info border border-info-subtle"><i
-                            class="fas fa-network-wired me-1"></i> Wireshark</span>
-                    <span class="badge bg-secondary-subtle text-secondary border"><i class="fab fa-github me-1"></i>
-                        GitHub Labs</span>
+                <!-- Call to Action Button Group -->
+                <div class="d-flex flex-wrap align-items-center gap-2 pt-3 border-top" style="border-color: var(--glass-border) !important;">
+                    <a href="#portfolio" class="btn btn-primary rounded-pill px-4 py-2 fw-semibold d-inline-flex align-items-center gap-2 shadow-sm">
+                        <i class="fas fa-rocket"></i><span>View Projects</span>
+                    </a>
+                    <a href="#contact" class="btn btn-outline-primary rounded-pill px-4 py-2 fw-semibold d-inline-flex align-items-center gap-2">
+                        <i class="fas fa-paper-plane"></i><span>Get in Touch</span>
+                    </a>
+                    <a href="assets/files/Timothy_Bibat_CV.pdf" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-outline-secondary rounded-pill px-3 py-2 fw-semibold d-inline-flex align-items-center gap-2">
+                        <i class="fas fa-file-pdf text-danger"></i><span>Resume PDF</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ========================================================
+         ROW 2: ENGINEERING & SECURITY SPOTLIGHT
+         ======================================================== -->
+    <div class="row g-3 g-md-4 mb-3 mb-md-4">
+
+        <!-- TILE 3: FLAGSHIP PROJECT SPOTLIGHT — BYAHERO (7 cols) -->
+        <div class="col-12 col-lg-7">
+            <div class="glass-card p-4 p-md-4 h-100 d-flex flex-column justify-content-between hover-lift">
+                <div>
+                    <!-- Header Badges -->
+                    <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+                        <span class="badge bg-warning-subtle text-warning border border-warning-subtle rounded-pill px-3 py-1">
+                            <i class="fas fa-star me-1"></i>Flagship Engineering Project
+                        </span>
+                        <span class="live-status-badge badge rounded-pill px-3 py-1">
+                            <i class="fas fa-circle me-1" style="font-size: 7px;"></i>Real-Time Telemetry
+                        </span>
+                    </div>
+
+                    <!-- Title & Overview -->
+                    <h3 class="h4 fw-bold text-dark mb-2">ByaHero — Commuter & Transit Tracking System</h3>
+                    <p class="text-secondary small mb-3" style="line-height: 1.65;">
+                        Cross-platform commuter tracking application designed for public transportation. Features real-time vehicle seat availability calculation, background geolocation updates, push notifications, and resilient AJAX synchronization. Built with CapacitorJS for hybrid deployment.
+                    </p>
+
+                    <!-- Stack Pills -->
+                    <div class="d-flex flex-wrap gap-1 mb-3">
+                        <span class="badge bg-secondary-subtle text-secondary border rounded-pill">
+                            <i class="fab fa-js text-warning me-1"></i> CapacitorJS
+                        </span>
+                        <span class="badge bg-secondary-subtle text-secondary border rounded-pill">
+                            <i class="fas fa-map-marked-alt text-primary me-1"></i> Geolocation Tracking
+                        </span>
+                        <span class="badge bg-secondary-subtle text-secondary border rounded-pill">
+                            <i class="fas fa-chair text-info me-1"></i> Seat Occupancy Engine
+                        </span>
+                        <span class="badge bg-secondary-subtle text-secondary border rounded-pill">
+                            <i class="fas fa-sync text-success me-1"></i> AJAX Sync
+                        </span>
+                        <span class="badge bg-secondary-subtle text-secondary border rounded-pill">
+                            <i class="fas fa-fire text-danger me-1"></i> Firebase
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="d-flex align-items-center justify-content-between pt-3 border-top" style="border-color: var(--glass-border) !important;">
+                    <a href="#portfolio" class="text-primary text-decoration-none fw-semibold small d-inline-flex align-items-center gap-1">
+                        <span>View Project in Portfolio</span><i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="https://github.com/timbibat" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-sm btn-outline-secondary rounded-pill px-3 d-inline-flex align-items-center gap-1">
+                        <i class="fab fa-github"></i><span>Repository</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- TILE 4: CYBERSECURITY & CTF TELEMETRY (5 cols) -->
+        <div class="col-12 col-lg-5">
+            <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between hover-lift">
+                <div>
+                    <!-- Header Badges -->
+                    <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+                        <span class="badge bg-danger-subtle text-danger border border-danger-subtle rounded-pill px-3 py-1">
+                            <i class="fas fa-shield-alt me-1"></i>Security Telemetry
+                        </span>
+                        <span class="badge bg-secondary-subtle text-secondary border rounded-pill px-2 py-1 small">
+                            <i class="fas fa-trophy text-warning me-1"></i>EduCTF 2024
+                        </span>
+                    </div>
+
+                    <!-- Title & Body -->
+                    <h3 class="h5 fw-bold text-dark mb-2">Defensive Security & Pentesting</h3>
+                    <p class="text-secondary small mb-3" style="line-height: 1.65;">
+                        Earned special recognition in the EduCTF Computer Society Cybersecurity Competition. Practicing hands-on exploit identification and mitigation for OWASP Top 10 vulnerabilities (SQLi, XSS, CSRF), coupled with packet inspection in Wireshark.
+                    </p>
+
+                    <!-- Practice Environment Box -->
+                    <div class="p-3 rounded-3 mb-3" style="background: rgba(99, 102, 241, 0.05); border: 1px dashed var(--glass-border);">
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <span class="small fw-semibold text-dark"><i class="fas fa-terminal text-primary me-1"></i>Hands-on Labs</span>
+                            <span class="badge bg-primary-subtle text-primary border" style="font-size: 0.65rem;">Active</span>
+                        </div>
+                        <div class="d-flex flex-wrap gap-1">
+                            <span class="badge bg-secondary-subtle text-secondary border rounded-pill">
+                                <i class="fas fa-flag text-danger me-1"></i> TryHackMe
+                            </span>
+                            <span class="badge bg-secondary-subtle text-secondary border rounded-pill">
+                                <i class="fas fa-cube text-success me-1"></i> HackTheBox
+                            </span>
+                            <span class="badge bg-secondary-subtle text-secondary border rounded-pill">
+                                <i class="fas fa-network-wired text-info me-1"></i> Wireshark
+                            </span>
+                            <span class="badge bg-secondary-subtle text-secondary border rounded-pill">
+                                <i class="fab fa-linux text-warning me-1"></i> Kali Linux
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="pt-2 border-top" style="border-color: var(--glass-border) !important;">
+                    <a href="#tech-stack" class="text-primary text-decoration-none fw-semibold small d-inline-flex align-items-center gap-1">
+                        <span>Explore Security Toolsets</span><i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ========================================================
+         ROW 3: AI INNOVATION & CAPABILITIES
+         ======================================================== -->
+    <div class="row g-3 g-md-4 mb-3 mb-md-4">
+
+        <!-- TILE 5: AI INNOVATION — SNAPEAT (5 cols) -->
+        <div class="col-12 col-md-6 col-lg-5">
+            <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between hover-lift">
+                <div>
+                    <!-- Header -->
+                    <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+                        <span class="badge bg-info-subtle text-info border border-info-subtle rounded-pill px-3 py-1">
+                            <i class="fas fa-robot me-1"></i>AI & Computer Vision
+                        </span>
+                        <span class="badge bg-success-subtle text-success border rounded-pill px-2 py-1 small">
+                            Python Flask
+                        </span>
+                    </div>
+
+                    <!-- Title & Details -->
+                    <h3 class="h5 fw-bold text-dark mb-2">SnapEat — AI Nutrition Scanner</h3>
+                    <p class="text-secondary small mb-3" style="line-height: 1.65;">
+                        Dietary assistant application that parses meal photos and nutrition facts labels using Google Cloud Vision OCR and Google Gemini API for automated caloric and macronutrient calculation with dual SQLite/PostgreSQL support.
+                    </p>
+
+                    <!-- Tech Tags -->
+                    <div class="d-flex flex-wrap gap-1 mb-3">
+                        <span class="badge bg-secondary-subtle text-secondary border rounded-pill">
+                            <i class="fab fa-python text-primary me-1"></i> Python
+                        </span>
+                        <span class="badge bg-secondary-subtle text-secondary border rounded-pill">
+                            <i class="fas fa-eye text-info me-1"></i> Cloud Vision OCR
+                        </span>
+                        <span class="badge bg-secondary-subtle text-secondary border rounded-pill">
+                            <i class="fas fa-brain text-purple me-1"></i> Gemini API
+                        </span>
+                        <span class="badge bg-secondary-subtle text-secondary border rounded-pill">
+                            <i class="fas fa-database text-warning me-1"></i> PostgreSQL
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="pt-2 border-top" style="border-color: var(--glass-border) !important;">
+                    <a href="#portfolio" class="text-primary text-decoration-none fw-semibold small d-inline-flex align-items-center gap-1">
+                        <span>View Project in Portfolio</span><i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- TILE 6: CORE ARCHITECTURE & CAPABILITIES (7 cols) -->
+        <div class="col-12 col-md-6 col-lg-7">
+            <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between hover-lift">
+                <div>
+                    <!-- Header -->
+                    <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+                        <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3 py-1">
+                            <i class="fas fa-cubes me-1"></i>Core Capabilities
+                        </span>
+                        <a href="#tech-stack" class="small text-decoration-none fw-semibold text-primary">
+                            Full Stack Matrix →
+                        </a>
+                    </div>
+
+                    <h3 class="h5 fw-bold text-dark mb-3">Engineering & Design Expertise</h3>
+
+                    <!-- 3 Domain Columns (Bootstrap Grid) -->
+                    <div class="row g-2 mb-3">
+                        <div class="col-12 col-sm-4">
+                            <div class="p-3 border rounded-3 bg-light h-100 d-flex flex-column">
+                                <div class="text-primary mb-2"><i class="fas fa-code fs-5"></i></div>
+                                <h4 class="h6 fw-bold text-dark mb-1">Web Systems</h4>
+                                <small class="text-muted" style="font-size: 0.76rem; line-height: 1.4;">JavaScript (ES6+), Python, Next.js, Bootstrap 5, Flask</small>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                            <div class="p-3 border rounded-3 bg-light h-100 d-flex flex-column">
+                                <div class="text-danger mb-2"><i class="fas fa-shield-virus fs-5"></i></div>
+                                <h4 class="h6 fw-bold text-dark mb-1">Cyber Defense</h4>
+                                <small class="text-muted" style="font-size: 0.76rem; line-height: 1.4;">OWASP Top 10, Kali Linux, Wireshark, Pentesting</small>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                            <div class="p-3 border rounded-3 bg-light h-100 d-flex flex-column">
+                                <div class="text-info mb-2"><i class="fas fa-pen-nib fs-5"></i></div>
+                                <h4 class="h6 fw-bold text-dark mb-1">UI/UX Systems</h4>
+                                <small class="text-muted" style="font-size: 0.76rem; line-height: 1.4;">Figma Prototyping, Design Systems, Adobe Photoshop</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="d-flex align-items-center justify-content-between pt-2 border-top" style="border-color: var(--glass-border) !important;">
+                    <span class="small text-muted"><i class="fas fa-check-circle text-success me-1"></i>Tested, secure & accessible code</span>
+                    <a href="#tech-stack" class="btn btn-sm btn-outline-primary rounded-pill px-3">
+                        Explore All Tech
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ========================================================
+         ROW 4: EDUCATION & PHILOSOPHY
+         ======================================================== -->
+    <div class="row g-3 g-md-4 mb-3 mb-md-4">
+
+        <!-- TILE 7: EDUCATION & HONORS (6 cols) -->
+        <div class="col-12 col-md-6">
+            <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between hover-lift">
+                <div>
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <span class="badge bg-secondary-subtle text-secondary border rounded-pill px-3 py-1">
+                            <i class="fas fa-graduation-cap text-primary me-1"></i>Academic Foundation
+                        </span>
+                        <span class="badge bg-primary-subtle text-primary border rounded-pill px-2 py-1 small">4th Year Candidate</span>
+                    </div>
+
+                    <h3 class="h5 fw-bold text-dark mb-2">Polytechnic University of the Philippines</h3>
+                    <p class="text-secondary small mb-3">
+                        Bachelor of Science in Information Technology (BSIT) — <strong class="text-dark">Consistent President’s Lister and Dean’s Lister</strong>.
+                    </p>
+
+                    <!-- Verified Certifications -->
+                    <div class="d-flex flex-column gap-2 mb-3">
+                        <div class="p-2 border rounded-3 bg-light d-flex align-items-center justify-content-between small">
+                            <span class="text-dark fw-semibold"><i class="fas fa-certificate text-primary me-2"></i>Data Science Essentials with Python</span>
+                            <span class="text-muted">2025</span>
+                        </div>
+                        <div class="p-2 border rounded-3 bg-light d-flex align-items-center justify-content-between small">
+                            <span class="text-dark fw-semibold"><i class="fas fa-shield-alt text-success me-2"></i>Introduction to Cybersecurity</span>
+                            <span class="text-muted">2026</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-2 border-top" style="border-color: var(--glass-border) !important;">
+                    <a href="#cv" class="text-primary text-decoration-none fw-semibold small d-inline-flex align-items-center gap-1">
+                        <span>View Complete CV & Timeline</span><i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- TILE 8: PHILOSOPHY & WORKFLOW (6 cols) -->
+        <div class="col-12 col-md-6">
+            <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between hover-lift"
+                style="border-left: 4px solid var(--accent-start) !important;">
+                <div>
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <span class="badge bg-secondary-subtle text-secondary border rounded-pill px-3 py-1">
+                            <i class="fas fa-compass text-warning me-1"></i>Engineering Workflow
+                        </span>
+                        <span class="badge bg-secondary-subtle text-secondary border rounded-pill px-2 py-1 small">Design + Code</span>
+                    </div>
+
+                    <h3 class="h5 fw-bold text-dark mb-2">Bridging UI/UX & Secure Systems</h3>
+                    <p class="fst-italic text-secondary small mb-3" style="line-height: 1.7;">
+                        "I believe that a great application begins with a clear vision and rigorous defenses. I start by prototyping intuitive, accessible user interfaces in <strong class="text-dark">Figma</strong>, then translate them into performant, clean <strong class="text-dark">Bootstrap</strong> frontend code backed by secure development principles and input sanitization."
+                    </p>
+
+                    <div class="d-flex flex-wrap gap-1 mb-3">
+                        <span class="badge bg-secondary-subtle text-secondary border rounded-pill">User-Centered</span>
+                        <span class="badge bg-secondary-subtle text-secondary border rounded-pill">Defensive Architecture</span>
+                        <span class="badge bg-secondary-subtle text-secondary border rounded-pill">Responsive Layouts</span>
+                        <span class="badge bg-secondary-subtle text-secondary border rounded-pill">Micro-Interactions</span>
+                    </div>
+                </div>
+
+                <div class="pt-2 border-top" style="border-color: var(--glass-border) !important;">
+                    <a href="#contact" class="text-primary text-decoration-none fw-semibold small d-inline-flex align-items-center gap-1">
+                        <span>Discuss a Project or Collaboration</span><i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ========================================================
+         ROW 5: SEMANTIC AEO DIRECT ANSWERS & FAQ (12 cols)
+         ======================================================== -->
+    <div class="row g-3 g-md-4">
+        <div class="col-12">
+            <div class="glass-card p-4 p-md-5">
+                <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
+                    <div>
+                        <h3 class="h5 fw-bold text-dark mb-1">
+                            <span class="glow-text"><i class="fas fa-question-circle me-2"></i></span>Quick Facts & Direct Answers
+                        </h3>
+                        <p class="text-muted small mb-0">Direct reference summary for recruiters, hiring teams, and AI search engines</p>
+                    </div>
+                    <span class="badge bg-primary-subtle text-primary border rounded-pill px-3 py-2" style="font-size: 0.72rem;">
+                        <i class="fas fa-robot me-1"></i> AI & Recruiter Summary
+                    </span>
+                </div>
+
+                <div class="accordion" id="faqAccordion">
+                    <!-- Q1 -->
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                <i class="fas fa-user-check text-primary me-2"></i> Who is Timothy Bibat?
+                            </button>
+                        </h3>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                            data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-secondary" style="line-height: 1.65;">
+                                Timothy Bibat is an aspiring cybersecurity professional, full-stack web developer, and UI/UX designer based in Calamba, Laguna, Philippines. He is currently in his 4th year pursuing a Bachelor of Science in Information Technology at the Polytechnic University of the Philippines (PUP), where he is a consistent President's and Dean's Lister.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <i class="fas fa-laptop-code text-primary me-2"></i> What technologies and security tools does Timothy specialize in?
+                            </button>
+                        </h3>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                            data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-secondary" style="line-height: 1.65;">
+                                Timothy specializes in web security (OWASP Top 10 mitigation, Kali Linux, Wireshark packet analysis, CTF competitions) and full-stack software development with JavaScript (ES6+), Python (Flask), React, Next.js, Bootstrap 5, CapacitorJS, MySQL, SQLite, and PostgreSQL. He also designs intuitive UI/UX prototypes and wireframes using Figma.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <i class="fas fa-project-diagram text-primary me-2"></i> What are Timothy's flagship projects?
+                            </button>
+                        </h3>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-secondary" style="line-height: 1.65;">
+                                His primary projects are <strong>ByaHero</strong> (a real-time commuter transit tracking mobile and web application featuring live seat availability, background geolocation, and CapacitorJS integration) and <strong>SnapEat</strong> (an AI food nutrition scanner integrating Google Cloud Vision OCR and Google Gemini API with a Python Flask backend).
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q4 -->
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                <i class="fas fa-envelope text-primary me-2"></i> How can you contact or hire Timothy Bibat?
+                            </button>
+                        </h3>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                            data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-secondary" style="line-height: 1.65;">
+                                You can email Timothy directly at <a href="mailto:timothybibat654@gmail.com" class="text-primary text-decoration-none fw-semibold">timothybibat654@gmail.com</a>, connect on <a href="https://www.linkedin.com/in/timothy-bibat-5ab419182" target="_blank" rel="noopener noreferrer" class="text-primary text-decoration-none fw-semibold">LinkedIn</a>, or message through the <a href="#contact" class="text-primary text-decoration-none fw-semibold">contact form</a>. He is currently available for full-time opportunities, internships, and freelance projects.
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Quick Facts & FAQ Section (AEO Direct Answers) -->
-    <div class="mt-4 pt-3 border-top" style="border-color: var(--glass-border) !important;">
-        <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
-            <h3 class="h6 mb-0 fw-bold text-uppercase text-muted" style="letter-spacing: 0.1em; font-size: 0.72rem;">
-                <i class="fas fa-question-circle me-1 glow-text"></i> Quick Facts & Direct Answers
-            </h3>
-            <span class="badge bg-primary-subtle text-primary border rounded-pill" style="font-size: 0.68rem;">
-                <i class="fas fa-robot me-1"></i> AI & Recruiter Summary
-            </span>
-        </div>
-
-        <div class="accordion" id="faqAccordion">
-            <!-- Q1 -->
-            <div class="accordion-item">
-                <h3 class="accordion-header" id="headingOne">
-                    <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                        <i class="fas fa-user-check text-primary me-2"></i> Who is Timothy Bibat?
-                    </button>
-                </h3>
-                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                    data-bs-parent="#faqAccordion">
-                    <div class="accordion-body">
-                        Timothy Bibat is an aspiring cybersecurity professional, full-stack web developer, and UI/UX
-                        designer based in Calamba, Laguna, Philippines. He is currently in his 4th year pursuing a
-                        Bachelor of Science in Information Technology at the Polytechnic University of the Philippines
-                        (PUP), where he is a consistent President's and Dean's Lister.
-                    </div>
-                </div>
-            </div>
-
-            <!-- Q2 -->
-            <div class="accordion-item">
-                <h3 class="accordion-header" id="headingTwo">
-                    <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        <i class="fas fa-laptop-code text-primary me-2"></i> What technologies and security tools does
-                        Timothy specialize in?
-                    </button>
-                </h3>
-                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                    data-bs-parent="#faqAccordion">
-                    <div class="accordion-body">
-                        Timothy specializes in web security (OWASP Top 10 mitigation, Kali Linux, Wireshark packet
-                        analysis, CTF competitions) and full-stack software development with JavaScript (ES6+), Python
-                        (Flask), React, Next.js, Bootstrap 5, CapacitorJS, MySQL, SQLite, and PostgreSQL. He also
-                        designs intuitive UI/UX prototypes and wireframes using Figma.
-                    </div>
-                </div>
-            </div>
-
-            <!-- Q3 -->
-            <div class="accordion-item">
-                <h3 class="accordion-header" id="headingThree">
-                    <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        <i class="fas fa-project-diagram text-primary me-2"></i> What are Timothy's flagship projects?
-                    </button>
-                </h3>
-                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                    data-bs-parent="#faqAccordion">
-                    <div class="accordion-body">
-                        His primary projects are <strong>ByaHero</strong> (a real-time commuter transit tracking mobile
-                        and web application featuring live seat availability, background geolocation, and CapacitorJS
-                        integration) and <strong>SnapEat</strong> (an AI food nutrition scanner integrating Google Cloud
-                        Vision OCR and Google Gemini API with a Python Flask backend).
-                    </div>
-                </div>
-            </div>
-
-            <!-- Q4 -->
-            <div class="accordion-item">
-                <h3 class="accordion-header" id="headingFour">
-                    <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                        <i class="fas fa-envelope text-primary me-2"></i> How can you contact or hire Timothy Bibat?
-                    </button>
-                </h3>
-                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-                    data-bs-parent="#faqAccordion">
-                    <div class="accordion-body">
-                        You can email Timothy directly at <a href="mailto:timothybibat654@gmail.com"
-                            class="text-primary text-decoration-none fw-semibold">timothybibat654@gmail.com</a>, connect
-                        on <a href="https://www.linkedin.com/in/timothy-bibat-5ab419182" target="_blank"
-                            rel="noopener noreferrer"
-                            class="text-primary text-decoration-none fw-semibold">LinkedIn</a>, or message through the
-                        <a href="#contact" class="text-primary text-decoration-none fw-semibold">contact form</a>. He is
-                        currently available for full-time opportunities, internships, and freelance projects.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
